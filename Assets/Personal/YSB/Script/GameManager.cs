@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     //임시로 작성
     //public PlayerManager playerManager;
     //public UIManager uiManager;
-    //public SoundManager soundManager;
+    public SoundManager soundManager;
     //public CustomSceneManager sceneManager;
     //public SkillManager skillManager;
     #endregion
@@ -32,11 +32,11 @@ public class GameManager : MonoBehaviour
     {
         //playerManager = PlayerManager.Instance;
         //uiManager = UIManager.Instance;
-        //soundManager = SoundManager.Instance;
+        soundManager = SoundManager.Instance;
         //sceneManager = CustomSceneManager.Instance;
         //skillManager = SkillManager.Instance;
         //CurrentState = GameState.Title; //처음에는 타이틀
-        CurrentState = GameState.InGame;
+        ChangeState(GameState.InGame);
     }
 
     private void Update()
@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
                 //각종 매니저들 호출?
                 break;
             case GameState.InGame:
+                PlayBGM();
                 Time.timeScale = 1f;
                 //각종 매니저들 호출?
                 break;
@@ -99,6 +100,14 @@ public class GameManager : MonoBehaviour
             case GameState.InGame:
                 //제가 respawn이나 팬던트 획득 함수를 따로 만들어서 별다른걸
                 //처리 안해도 될수도있는데 나중에 리팩토링 해봐야겠네요
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    soundManager.PlayEnvSFX("Thunder1");
+                }
+                else if(Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    soundManager.PlayEnvSFX("Thunder2");
+                }
                 break;
 
             case GameState.Paused:
@@ -114,6 +123,17 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    private void PlayBGM()
+    {
+        soundManager.PlayBGM("MainTheme");
+    }
+
+    //private void StopAllSound()
+    //{
+    //    soundManager.StopAllSFX();
+    //}
+
     private void TogglePause()
     {
         Debug.Log("토글 퍼즈 호출됐어요.");
