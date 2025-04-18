@@ -15,11 +15,11 @@
 
 |    팀원    |                      GitHub                       |
 | :--------: | :---------------------------------------------: |
-| **YSB1026** | [@YSB1026](https://github.com/YSB1026) |
-| **팀원1** | [@JungGwanHoWoo](https://github.com/JungGwanHoWoo) |
-| **팀원2** | [@dbrud1008](https://github.com/dbrud1008) |
-| **팀원3** | [@gwon716](https://github.com/gwon716) |
-| **팀원4** | [@gwon716](https://github.com/jpleekr) |
+| **유승배** | [@YSB1026](https://github.com/YSB1026) |
+| **정관호** | [@JungGwanHoWoo](https://github.com/JungGwanHoWoo) |
+| **박유경** | [@dbrud1008](https://github.com/dbrud1008) |
+| **이지원** | [@gwon716](https://github.com/gwon716) |
+| **이진표** | [@jpleekr](https://github.com/jpleekr) |
 
 <br>
 
