@@ -17,11 +17,11 @@
 | :--------: | :---------------------------------------------: |
 | **YSB1026** | [@YSB1026](https://github.com/YSB1026) |
 | **팀원1** | [@JungGwanHoWoo](https://github.com/JungGwanHoWoo) |
-| **팀원2** | [@dbrud1008](https://github.com/dbrud1008)] |
+| **팀원2** | [@dbrud1008](https://github.com/dbrud1008) |
 | **팀원3** | [@gwon716](https://github.com/gwon716) |
 | **팀원4** | [@gwon716](https://github.com/jpleekr) |
 
 <br>
 
 # Notion Link
-[나중에 노션링크추가]
+[@노션링크](https://www.notion.so/1d21d6fe70d98020998ecf6d1f05dcda)
