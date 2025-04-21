@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TestScirpts : MonoBehaviour
@@ -6,6 +7,12 @@ public class TestScirpts : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Vector2 moveDir;
     [SerializeField] private bool isFacingLeft = true;
+
+    //일단 임시로 코루틴으로 0.5초마다 실행시켰습니다.
+    //애니메이션에서 add event가 조금더 괜찮아 보이네요.
+    public bool isWalking = false;
+    private Coroutine walkSoundCoroutine;
+
 
     void Start()
     {
@@ -17,11 +24,13 @@ public class TestScirpts : MonoBehaviour
         HandleInput();
         FlipControl();
         Move();
+        SoundHandler();
     }
 
     void HandleInput()
     {
         moveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        isWalking = moveDir == Vector2.zero ? false : true;
     }
     private void FlipControl()
     {
@@ -45,4 +54,25 @@ public class TestScirpts : MonoBehaviour
         transform.Translate(moveDir * moveSpeed * Time.deltaTime);
     }
 
+    private void SoundHandler()
+    {
+        if (isWalking && walkSoundCoroutine == null)
+        {
+            walkSoundCoroutine = StartCoroutine(PlayWalkSoundPeriodically());
+        }
+        else if (!isWalking && walkSoundCoroutine != null)
+        {
+            StopCoroutine(walkSoundCoroutine);
+            walkSoundCoroutine = null;
+        }
+    }
+
+    private IEnumerator PlayWalkSoundPeriodically()
+    {
+        while (isWalking)
+        {
+            SoundManager.Instance.PlayPlayerSFX("Walk");
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
 }
