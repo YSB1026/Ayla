@@ -1,0 +1,680 @@
+fileFormatVersion: 2
+guid: e0cc536fa50bcfb4abb6ba44cc12e2d8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7993113819333583854
+    second: misc-bg-element-ripple-removebg-preview_0
+  - first:
+      213: 3334646511919494298
+    second: misc-bg-element-ripple-removebg-preview_1
+  - first:
+      213: -6596093061982957347
+    second: misc-bg-element-ripple-removebg-preview_2
+  - first:
+      213: -7622561648787863266
+    second: misc-bg-element-ripple-removebg-preview_3
+  - first:
+      213: 7210476331347541186
+    second: misc-bg-element-ripple-removebg-preview_4
+  - first:
+      213: -1478080286923773840
+    second: misc-bg-element-ripple-removebg-preview_5
+  - first:
+      213: 79602018691092092
+    second: misc-bg-element-ripple-removebg-preview_6
+  - first:
+      213: -6590932620702991874
+    second: misc-bg-element-ripple-removebg-preview_7
+  - first:
+      213: 7735279398786150715
+    second: misc-bg-element-ripple-removebg-preview_8
+  - first:
+      213: 7231961200799124384
+    second: misc-bg-element-ripple-removebg-preview_9
+  - first:
+      213: -4919142501291162395
+    second: misc-bg-element-ripple-removebg-preview_10
+  - first:
+      213: 5738778301701112912
+    second: misc-bg-element-ripple-removebg-preview_11
+  - first:
+      213: 5373572758343867256
+    second: misc-bg-element-ripple-removebg-preview_12
+  - first:
+      213: 2057363573005788619
+    second: misc-bg-element-ripple-removebg-preview_13
+  - first:
+      213: 5903105531703341819
+    second: misc-bg-element-ripple-removebg-preview_14
+  - first:
+      213: -2372901547898551015
+    second: misc-bg-element-ripple-removebg-preview_15
+  - first:
+      213: 9075870606014066035
+    second: misc-bg-element-ripple-removebg-preview_16
+  - first:
+      213: -2365520443688059062
+    second: misc-bg-element-ripple-removebg-preview_17
+  - first:
+      213: 1226731089903146656
+    second: misc-bg-element-ripple-removebg-preview_18
+  - first:
+      213: -90201383056340035
+    second: misc-bg-element-ripple-removebg-preview_19
+  - first:
+      213: -4723728608582826757
+    second: misc-bg-element-ripple-removebg-preview_20
+  - first:
+      213: 1172692182484301035
+    second: misc-bg-element-ripple-removebg-preview_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 108
+        width: 301
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c1b55a451c21190800000000000000
+      internalID: -7993113819333583854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 410
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a94f47ab55b074e20800000000000000
+      internalID: 3334646511919494298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 411
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd05617ce48f574a0800000000000000
+      internalID: -6596093061982957347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 318
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e19cb750198373690800000000000000
+      internalID: -7622561648787863266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 303
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ccf4574502c01460800000000000000
+      internalID: 7210476331347541186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 299
+        width: 24
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 078a66c6fcdcc7be0800000000000000
+      internalID: -1478080286923773840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 294
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7e8c7f3d9dca1100800000000000000
+      internalID: 79602018691092092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 262
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef9b674a3bd4884a0800000000000000
+      internalID: -6590932620702991874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 271
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b31bb0341ab395b60800000000000000
+      internalID: 7735279398786150715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 224
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ab0a0345661d5460800000000000000
+      internalID: 7231961200799124384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 232
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e4830335f1bbbbb0800000000000000
+      internalID: -4919142501291162395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 194
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0544d95c57c34af40800000000000000
+      internalID: 5738778301701112912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 166
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b5dcb04f3c29a40800000000000000
+      internalID: 5373572758343867256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 158
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc5a6dee4493d8c10800000000000000
+      internalID: 2057363573005788619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 91
+        width: 64
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf232d0843b0ce150800000000000000
+      internalID: 5903105531703341819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 173
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91548864d92c11fd0800000000000000
+      internalID: -2372901547898551015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 110
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37da0eaea38f3fd70800000000000000
+      internalID: 9075870606014066035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 101
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4f7c0580bbfb2fd0800000000000000
+      internalID: -2365520443688059062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 111
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a6da904d69360110800000000000000
+      internalID: 1226731089903146656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 107
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb8dace15a8fbef0800000000000000
+      internalID: -90201383056340035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 72
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4021e9bd1f17eb0800000000000000
+      internalID: -4723728608582826757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: misc-bg-element-ripple-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 87
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be4bad7a35d364010800000000000000
+      internalID: 1172692182484301035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
