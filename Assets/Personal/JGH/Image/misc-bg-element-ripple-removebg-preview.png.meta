@@ -172,6 +172,45 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -672,7 +711,29 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      misc-bg-element-ripple-removebg-preview_0: -7993113819333583854
+      misc-bg-element-ripple-removebg-preview_1: 3334646511919494298
+      misc-bg-element-ripple-removebg-preview_10: -4919142501291162395
+      misc-bg-element-ripple-removebg-preview_11: 5738778301701112912
+      misc-bg-element-ripple-removebg-preview_12: 5373572758343867256
+      misc-bg-element-ripple-removebg-preview_13: 2057363573005788619
+      misc-bg-element-ripple-removebg-preview_14: 5903105531703341819
+      misc-bg-element-ripple-removebg-preview_15: -2372901547898551015
+      misc-bg-element-ripple-removebg-preview_16: 9075870606014066035
+      misc-bg-element-ripple-removebg-preview_17: -2365520443688059062
+      misc-bg-element-ripple-removebg-preview_18: 1226731089903146656
+      misc-bg-element-ripple-removebg-preview_19: -90201383056340035
+      misc-bg-element-ripple-removebg-preview_2: -6596093061982957347
+      misc-bg-element-ripple-removebg-preview_20: -4723728608582826757
+      misc-bg-element-ripple-removebg-preview_21: 1172692182484301035
+      misc-bg-element-ripple-removebg-preview_3: -7622561648787863266
+      misc-bg-element-ripple-removebg-preview_4: 7210476331347541186
+      misc-bg-element-ripple-removebg-preview_5: -1478080286923773840
+      misc-bg-element-ripple-removebg-preview_6: 79602018691092092
+      misc-bg-element-ripple-removebg-preview_7: -6590932620702991874
+      misc-bg-element-ripple-removebg-preview_8: 7735279398786150715
+      misc-bg-element-ripple-removebg-preview_9: 7231961200799124384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
