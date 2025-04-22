@@ -50,7 +50,10 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            sceneManager.LoadScene("YSB_Test2");
+            UIManager.Instance.FadeOut(() => {
+                SceneManager.LoadScene("YSB_test2");
+                UIManager.Instance.FadeIn();
+            });
             soundManager.StopAllSFX();
         }
     }
