@@ -35,6 +35,7 @@ public class LightMeshDetector : MonoBehaviour
         }
     }
 
+    // 다각형 안에 점이 포함되는지 확인하는 로직 (Ray Casting 방식)
     private bool PointInPolygon(Vector2 point, Vector3[] polygon)
     {
         int crossings = 0;
