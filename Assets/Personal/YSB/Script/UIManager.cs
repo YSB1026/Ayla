@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
+    [Header("Fade Effect")]
     [SerializeField] private Image fadeImage;
     [SerializeField] private float fadeDuration = 1f;
 

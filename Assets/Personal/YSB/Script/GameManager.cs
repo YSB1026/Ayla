@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     #region 참조 매니저
     //임시로 작성
     //public PlayerManager playerManager;
-    //public UIManager uiManager;
+    public UIManager uiManager;
     public SoundManager soundManager;
     public CustomSceneManager sceneManager;
     //public SkillManager skillManager;
@@ -31,12 +31,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //playerManager = PlayerManager.Instance;
-        //uiManager = UIManager.Instance;
+        uiManager = UIManager.Instance;
         soundManager = SoundManager.Instance;
         sceneManager = CustomSceneManager.Instance;
         //skillManager = SkillManager.Instance;
-        //CurrentState = GameState.Title; //처음에는 타이틀
-        ChangeState(GameState.InGame);
+        ChangeState(GameState.Lobby);
     }
 
     private void Update()
@@ -48,19 +47,20 @@ public class GameManager : MonoBehaviour
             TogglePause();
         }
 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            UIManager.Instance.FadeOut(() => {
-                SceneManager.LoadScene("YSB_test2");
-                UIManager.Instance.FadeIn();
-            });
-            soundManager.StopAllSFX();
-        }
+        //if (Input.GetKeyDown(KeyCode.H))//테스트
+        //{
+        //    uiManager.FadeOut(() => {
+        //        sceneManager.LoadScene("YSB_test2");
+        //        uiManager.FadeIn();
+        //    });
+        //    soundManager.StopAllSFX();
+        //}
     }
 
     public void InitGame()
     {
-        ChangeState(GameState.Title);
+        //고민중 
+        //ChangeState(GameState.Lobby);
     }
 
     public void ChangeState(GameState newState)
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
         switch (newState)
         {
-            case GameState.Title:
+            case GameState.Lobby:
                 //각종 매니저들 호출?
                 //사운드라든지 
                 break;
@@ -77,13 +77,13 @@ public class GameManager : MonoBehaviour
                 //각종 매니저들 호출?
                 break;
             case GameState.InGame:
-                PlayBGM();
-                Time.timeScale = 1f;
                 //각종 매니저들 호출?
+                Time.timeScale = 1f;
+                soundManager.PlayBGM("MainTheme");//테스트용
                 break;
             case GameState.Paused:
-                Time.timeScale = 0f;
                 //각종 매니저들 호출?
+                Time.timeScale = 0f;
                 break;
             case GameState.Respawn:
                 //각종 매니저들 호출?
@@ -94,7 +94,12 @@ public class GameManager : MonoBehaviour
     {
         switch (CurrentState)
         {
-            case GameState.Title:
+            case GameState.Lobby:
+                uiManager.FadeOut(() => {
+                    sceneManager.LoadScene("Lobby");
+                    uiManager.FadeIn();
+                });
+                soundManager.PlayBGM("MainTheme");
                 //각종 매니저 호출?
                 break;
 
@@ -105,14 +110,15 @@ public class GameManager : MonoBehaviour
             case GameState.InGame:
                 //제가 respawn이나 팬던트 획득 함수를 따로 만들어서 별다른걸
                 //처리 안해도 될수도있는데 나중에 리팩토링 해봐야겠네요
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    soundManager.PlayEnvSFX("Thunder1");
-                }
-                else if(Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    soundManager.PlayEnvSFX("Thunder2");
-                }
+                //테스트용
+                //if (Input.GetKeyDown(KeyCode.Alpha1))
+                //{
+                //    soundManager.PlayEnvSFX("Thunder1");
+                //}
+                //else if(Input.GetKeyDown(KeyCode.Alpha2))
+                //{
+                //    soundManager.PlayEnvSFX("Thunder2");
+                //}
                 break;
 
             case GameState.Paused:
@@ -129,19 +135,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void PlayBGM()
-    {
-        soundManager.PlayBGM("MainTheme");
-    }
-
-    //private void StopAllSound()
-    //{
-    //    soundManager.StopAllSFX();
-    //}
-
     private void TogglePause()
     {
-        Debug.Log("토글 퍼즈 호출됐어요.");
         if (CurrentState == GameState.Paused)
             ResumeGame();
         else if (CurrentState == GameState.InGame)
@@ -168,7 +163,7 @@ public class GameManager : MonoBehaviour
         // 컷씬 or 다음 상태로 전환
         ChangeState(GameState.Cutscene);
     }
-
+    
     public void RespawnPlayer()
     {
         //실제 리스폰 로직은 플레이어 매니저에서 Respawn을 구현하는게 좋을거같아요
