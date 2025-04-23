@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     //public PlayerManager playerManager;
     //public UIManager uiManager;
     public SoundManager soundManager;
-    //public CustomSceneManager sceneManager;
+    public CustomSceneManager sceneManager;
     //public SkillManager skillManager;
     #endregion
 
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         //playerManager = PlayerManager.Instance;
         //uiManager = UIManager.Instance;
         soundManager = SoundManager.Instance;
-        //sceneManager = CustomSceneManager.Instance;
+        sceneManager = CustomSceneManager.Instance;
         //skillManager = SkillManager.Instance;
         //CurrentState = GameState.Title; //처음에는 타이틀
         ChangeState(GameState.InGame);
@@ -45,8 +45,16 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("ESC 눌렀어요");
             TogglePause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            UIManager.Instance.FadeOut(() => {
+                SceneManager.LoadScene("YSB_test2");
+                UIManager.Instance.FadeIn();
+            });
+            soundManager.StopAllSFX();
         }
     }
 
@@ -57,11 +65,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(GameState newState)
     {
-        Debug.Log("change state 호출 됐어요.");
-        Debug.Log("지금 " + CurrentState + " 스테이트 바뀌었어요.");
-
         CurrentState = newState;
-        // 상태 진입 시 사전 처리
+
         switch (newState)
         {
             case GameState.Title:
