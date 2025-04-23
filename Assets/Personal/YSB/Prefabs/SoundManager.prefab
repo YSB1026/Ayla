@@ -307,7 +307,7 @@ MonoBehaviour:
   bgmSource: {fileID: 4734611960729580420}
   sfxSource: {fileID: 5048394232498431317}
   bgmClips:
-  - {fileID: 8300000, guid: bc5ad9430fb483046ad75ba7ff63007e, type: 3}
+  - {fileID: 8300000, guid: 6b08ccefe2c8c5e4fb69ec0c3d5d92df, type: 3}
   playerSfxClips:
   - {fileID: 8300000, guid: 26195c19cac80e445812094c974cc57a, type: 3}
   enemySfxClips: []
