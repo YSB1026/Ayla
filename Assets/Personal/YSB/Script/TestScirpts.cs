@@ -16,7 +16,7 @@ public class TestScirpts : MonoBehaviour
 
     void Start()
     {
-        
+        DontDestroyOnLoad(this);
     }
 
     void Update()
