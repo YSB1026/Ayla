@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Windows;
 
-public class PlayerIdleState : PlayerState
+public class Player_IdleState : PlayerState
 {
-    public PlayerIdleState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
+    public Player_IdleState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
 
@@ -19,8 +19,9 @@ public class PlayerIdleState : PlayerState
 
         if (xInput == player.facingDir && player.IsWallDetected())
             return;
+
         if (xInput != 0)
-            stateMachine.ChangeState(player.runState);
+            stateMachine.ChangeState(player.walkState);
     }
 
     public override void Exit()

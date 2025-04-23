@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerRunState : PlayerState
+public class Player_RunState : PlayerState
 {
-    public PlayerRunState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
+    public Player_RunState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
 
@@ -18,7 +18,7 @@ public class PlayerRunState : PlayerState
         player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
 
         if (xInput == 0 || player.IsWallDetected())
-            stateMachine.ChangeState(player.idleState);
+            stateMachine.ChangeState(player.inputState);
     }
 
     public override void Exit()

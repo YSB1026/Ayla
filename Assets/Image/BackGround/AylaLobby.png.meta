@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AylaLobby_0: 1485904228570730346
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
