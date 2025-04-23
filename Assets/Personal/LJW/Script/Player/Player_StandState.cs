@@ -15,7 +15,10 @@ public class Player_StandState : PlayerState
 
     public override void Update()
     {
-        base.Update(); 
+        base.Update();
+
+        if (triggerCalled)
+            stateMachine.ChangeState(player.inputState);
     }
 
     public override void Exit()

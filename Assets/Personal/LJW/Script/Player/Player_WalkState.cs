@@ -15,7 +15,16 @@ public class Player_WalkState : PlayerState
     {
         base.Update();
 
-        player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.ChangeState(player.jumpState);
+            return;
+        }
+
+        if (xInput != 0)
+            player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
+        else
+            stateMachine.ChangeState(player.inputState);
 
         if (Input.GetKey(KeyCode.LeftShift))
             stateMachine.ChangeState(player.runState);

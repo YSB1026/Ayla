@@ -16,6 +16,9 @@ public class Player_SitState : PlayerState
     {
         base.Update();
 
+        if (xInput != 0)
+            stateMachine.ChangeState(player.sitWalkState);
+
         if (Input.GetKeyDown(KeyCode.W))
             stateMachine.ChangeState(player.standState);
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class Player_IdleState : PlayerState
 {
@@ -16,6 +15,12 @@ public class Player_IdleState : PlayerState
     public override void Update()
     {
         base.Update();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.ChangeState(player.jumpState);
+            return;
+        }
 
         if (xInput == player.facingDir && player.IsWallDetected())
             return;
