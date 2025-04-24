@@ -594,8 +594,9 @@ GameObject:
   - component: {fileID: 949314897}
   - component: {fileID: 949314896}
   - component: {fileID: 949314895}
+  - component: {fileID: 949314898}
   m_Layer: 5
-  m_Name: Start Button
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -703,6 +704,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949314893}
   m_CullTransparentMesh: 1
+--- !u!114 &949314898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949314893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c841b13260ffb24289912a652dce0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 1.2
+  scaleSpeed: 10
 --- !u!1001 &965995579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -711,10 +726,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3269885612734179888, guid: 1c70a96fb4a37334f963fe6863ecaa65, type: 3}
-      propertyPath: fadeImage
-      value: 
-      objectReference: {fileID: 965995580}
     - target: {fileID: 7994714556901090322, guid: 1c70a96fb4a37334f963fe6863ecaa65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -764,17 +775,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c70a96fb4a37334f963fe6863ecaa65, type: 3}
---- !u!114 &965995580 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5764988664964410570, guid: 1c70a96fb4a37334f963fe6863ecaa65, type: 3}
-  m_PrefabInstance: {fileID: 965995579}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1063837572
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +961,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1191157364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8555055418456499013, guid: 1c70a96fb4a37334f963fe6863ecaa65, type: 3}
+  m_PrefabInstance: {fileID: 965995579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1198304395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,8 +1193,9 @@ GameObject:
   - component: {fileID: 1285626560}
   - component: {fileID: 1285626559}
   - component: {fileID: 1285626558}
+  - component: {fileID: 1285626561}
   m_Layer: 5
-  m_Name: Exit Button
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1196,7 +1208,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285626556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1291,6 +1303,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285626556}
   m_CullTransparentMesh: 1
+--- !u!114 &1285626561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285626556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c841b13260ffb24289912a652dce0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 1.2
+  scaleSpeed: 10
 --- !u!1 &1376344398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4668090256212203971, guid: 486fa86a67a544c4cbb70a48e21341e8, type: 3}
+      propertyPath: quitButton
+      value: 
+      objectReference: {fileID: 1191157364}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1459,8 +1489,9 @@ GameObject:
   - component: {fileID: 1896828217}
   - component: {fileID: 1896828216}
   - component: {fileID: 1896828215}
+  - component: {fileID: 1896828218}
   m_Layer: 5
-  m_Name: Option Button
+  m_Name: SettingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1568,6 +1599,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896828213}
   m_CullTransparentMesh: 1
+--- !u!114 &1896828218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896828213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c841b13260ffb24289912a652dce0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 1.2
+  scaleSpeed: 10
 --- !u!1001 &1933884355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1638,7 +1683,7 @@ GameObject:
   - component: {fileID: 2038435575}
   - component: {fileID: 2038435574}
   m_Layer: 5
-  m_Name: Text_Canvas
+  m_Name: LobbyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause();
+            uiManager.ToggleSettings();
         }
 
         //if (Input.GetKeyDown(KeyCode.H))//테스트
@@ -70,23 +70,16 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Lobby:
-                //각종 매니저들 호출?
-                //사운드라든지 
+                soundManager.PlayBGM("MainTheme");
+                sceneManager.LoadScene("Lobby");
                 break;
             case GameState.Cutscene:
-                //각종 매니저들 호출?
                 break;
             case GameState.InGame:
-                //각종 매니저들 호출?
                 Time.timeScale = 1f;
                 soundManager.PlayBGM("MainTheme");//테스트용
                 break;
-            case GameState.Paused:
-                //각종 매니저들 호출?
-                Time.timeScale = 0f;
-                break;
             case GameState.Respawn:
-                //각종 매니저들 호출?
                 break;
         }
     }
@@ -95,16 +88,9 @@ public class GameManager : MonoBehaviour
         switch (CurrentState)
         {
             case GameState.Lobby:
-                uiManager.FadeOut(() => {
-                    sceneManager.LoadScene("Lobby");
-                    uiManager.FadeIn();
-                });
-                soundManager.PlayBGM("MainTheme");
-                //각종 매니저 호출?
                 break;
 
             case GameState.Cutscene:
-                //각종 매니저 호출?
                 break;
 
             case GameState.InGame:
@@ -121,10 +107,6 @@ public class GameManager : MonoBehaviour
                 //}
                 break;
 
-            case GameState.Paused:
-                //정지 상태에서는 별도로 처리 안해도 될 거 같아요.
-                break;
-
             case GameState.Respawn:
                 // Fade in/out 처리같은걸 해주면 좋겠네요.
                 // 리스폰 처리는 단발성이라, game manager에서 안해도 될수도있겠네요.
@@ -133,24 +115,6 @@ public class GameManager : MonoBehaviour
                 RespawnPlayer();
                 break;
         }
-    }
-
-    private void TogglePause()
-    {
-        if (CurrentState == GameState.Paused)
-            ResumeGame();
-        else if (CurrentState == GameState.InGame)
-            PauseGame();
-    }
-
-    private void PauseGame()
-    {
-        ChangeState(GameState.Paused);
-    }
-
-    private void ResumeGame()
-    {
-        ChangeState(GameState.InGame);
     }
 
     //팬던트 획득 처리
@@ -175,8 +139,8 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
 
-#if UNITY_EDITO
+        #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        #endif
     }
 }
