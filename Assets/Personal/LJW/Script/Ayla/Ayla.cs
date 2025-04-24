@@ -12,6 +12,7 @@ public class Ayla : Entity
     public float followSmoothTime = 0.3f;   // 따라가는 부드러움 정도
     public float floatSpeed = 2f;           // 위아래 떠다니는 속도
     public float floatAmplitude = 0.15f;    // 떠다니는 높이
+    public float moveSpeed = 3f;
 
     private Vector3 velocity = Vector3.zero;
     private Vector3 followBasePosition;     // 따라갈 기준 위치
@@ -19,11 +20,22 @@ public class Ayla : Entity
     private SpriteRenderer playerSpriteRenderer;
     private SpriteRenderer aylaSpriteRenderer;
 
+    private bool controlEnabled = false;  // 키 조작 여부
+    private bool isFixed = false;         // R 키로 고정 여부
+    public bool isCurrentlyControlled;  // 현재 조작되고 있는지 감지
+
+    [SerializeField] private float holdTime = 0f;
+    [SerializeField] private float holdDuration = 2f;
+
     #region States
     public AylaStateMachine stateMachine { get; private set; }
-    // public AylaIdleState idleState { get; private set; }
 
     #endregion
+
+    public void SetControlEnabled(bool isEnabled)
+    {
+        controlEnabled = isEnabled;
+    }
 
     protected override void Awake()
     {
@@ -34,13 +46,12 @@ public class Ayla : Entity
 
         // 상태 머신 인스턴스 생성
         stateMachine = new AylaStateMachine();
-        // idleState = new AylaIdleState(this, stateMachine, "Idle");
     }
 
     protected override void Start()
     {
         base.Start();
-        // stateMachine.Initialize(idleState);
+        followBasePosition = transform.position;
     }
 
     protected override void Update()
@@ -48,23 +59,81 @@ public class Ayla : Entity
         base.Update();
         stateMachine.currentState?.Update();
 
-        FollowAndFloat();
+        FixedKey();
+
+        if (isFixed)
+        {
+            Float();
+            return;
+        }
+
+        Vector2 inputDir = Vector2.zero;
+
+        if (controlEnabled)
+        {
+            // WASD 조작
+            float x = Input.GetAxisRaw("Horizontal");
+            float y = Input.GetAxisRaw("Vertical");
+            inputDir = new Vector2(x, y);
+        }
+        else
+        {
+            Follow();
+        }
+
+        followBasePosition += new Vector3(inputDir.x, inputDir.y, 0) * moveSpeed * Time.deltaTime;
+
+        Float();
     }
 
-    private void FollowAndFloat()
+    // 플레이어 따라다니는 로직
+    private void Follow()
     {
         // 플레이어가 보고 있는 방향에 따라 따라갈 포인트 결정
         Transform targetPoint = playerSpriteRenderer.flipX ? followPointLeft : followPointRight;
 
         // 기준 위치까지 부드럽게 이동
         followBasePosition = Vector3.SmoothDamp(followBasePosition, targetPoint.position, ref velocity, followSmoothTime);
+        transform.position = followBasePosition;
+    }
 
+    // 둥둥 뜨는 효과
+    private void Float()
+    {
         // 둥실둥실 효과
         Vector3 floatOffset = new Vector3(0f, Mathf.Sin(Time.time * floatSpeed) * floatAmplitude, 0f);
         transform.position = followBasePosition + floatOffset;
-
-        // 아일라 방향 반전: 왼쪽에 있으면 오른쪽 보고, 오른쪽에 있으면 왼쪽 봄
-        aylaSpriteRenderer.flipX = (targetPoint == followPointLeft) ? false : true;
     }
+
+    // R 키로 고정 시키기
+    private void FixedKey()
+    {
+        if (!isCurrentlyControlled)
+            return;
+
+        // R 키로 고정
+        if (Input.GetKey(KeyCode.R))
+        {
+            holdTime += Time.deltaTime;
+
+            if (holdTime >= holdDuration)
+            {
+                isFixed = !isFixed;         // 고정 상태 토글
+                controlEnabled = !isFixed;  // 조작 비활성화
+
+                if (isFixed)    // 고정
+                {
+                    followBasePosition = transform.position;
+                }
+
+                holdTime = 0f;             // 리셋 (한 번만 토글되도록)
+            }
+        }
+        else
+        {
+            holdTime = 0f;  // R 누르고 있지 않으면 초기화
+        }
+    }
+
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 }

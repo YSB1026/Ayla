@@ -23,6 +23,13 @@ public class Player : Entity
     public Player_SitWalkState sitWalkState { get; private set; }
     #endregion
 
+    public bool controlEnabled = true;
+
+    public void SetControlEnabled(bool isEnabled)
+    {
+        controlEnabled = isEnabled;
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -51,7 +58,11 @@ public class Player : Entity
 
     protected override void Update()
     {
+        if (!controlEnabled)
+            return;
+
         base.Update();
+
         stateMachine.currentState.Update();
     }
 

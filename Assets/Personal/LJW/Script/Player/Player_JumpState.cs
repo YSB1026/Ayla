@@ -13,8 +13,6 @@ public class Player_JumpState : PlayerState
 
         rb.linearVelocity = new Vector2(rb.linearVelocityX, player.jumpForce);
         isJumping = true; // Á¡ÇÁ ½ÃÀÛ
-
-        Debug.Log("Jump Started: force " + player.jumpForce);
     }
 
     public override void Update()
@@ -38,7 +36,6 @@ public class Player_JumpState : PlayerState
         // ¶¥ Ã¼Å©
         if (player.IsGroundDetected())
         {
-            Debug.Log("ÂøÁö °¨ÁöµÊ");
             stateMachine.ChangeState(player.idleState);
         }
 

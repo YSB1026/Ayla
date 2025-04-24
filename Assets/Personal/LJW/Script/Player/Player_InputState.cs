@@ -14,6 +14,9 @@ public class Player_InputState : PlayerState
     }
     public override void Update()
     {
+        if (!player.controlEnabled)
+            return;
+
         base.Update();
 
         if (Input.GetKeyDown(KeyCode.Space))
