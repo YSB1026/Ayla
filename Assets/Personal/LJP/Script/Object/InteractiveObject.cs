@@ -21,7 +21,7 @@ public class InteractiveObject : MonoBehaviour
 		}
 		else
 		{
-			rb.constraints = RigidbodyConstraints2D.None;
+			rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
 	}
 
