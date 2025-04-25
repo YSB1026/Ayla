@@ -3,23 +3,35 @@ using UnityEngine;
 
 public class TestPlayer : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float defaultMoveSpeed;
+    [SerializeField] private float pushMoveSpeed;
+    [SerializeField] private float sitMoveSpeed;
     [SerializeField] private float jumpForce;
+    private float moveSpeed;
     private float faceDir = 1;
 
     private bool isCol = false;
 
-    private Rigidbody2D rb => GetComponent<Rigidbody2D>();
-    private BoxCollider2D boxCol => GetComponent<BoxCollider2D>();
+    private Rigidbody2D rb;
+    private BoxCollider2D boxCol;
 
     private InteractiveObject interactive;
-    private void Update()
+
+	private void Start()
+	{
+        moveSpeed = defaultMoveSpeed;
+
+        rb = GetComponent<Rigidbody2D>();
+        boxCol = GetComponent<BoxCollider2D>();
+	}
+
+	private void Update()
     {
         KeyEvent();
 
         if(interactive != null)
         {
-            CollisionKeyEvent();
+            //CollisionKeyEvent();
 
 		}
     }
@@ -28,7 +40,7 @@ public class TestPlayer : MonoBehaviour
 	{
 		if(collision.gameObject.CompareTag("Object"))
         {
-            interactive = collision.gameObject.GetComponent<InteractiveObject>();
+            // = collision.gameObject.GetComponent<InteractiveObject>();
         }
 	}
 
@@ -38,9 +50,9 @@ public class TestPlayer : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Object"))
         {
-            isCol = false;
+            /*isCol = false;
 			interactive.FreezeObject(true);
-            interactive = null;
+            interactive = null;*/
         }
 	}
 
@@ -67,12 +79,14 @@ public class TestPlayer : MonoBehaviour
             {
                 boxCol.offset = new Vector2(0, -0.25f);
                 boxCol.size = new Vector2(1, 0.5f);
+                moveSpeed = sitMoveSpeed;
             }
 
             if(Input.GetKeyUp(KeyCode.X))
             {
 			    boxCol.offset = new Vector2(0, 0);
 			    boxCol.size = new Vector2(1, 1);
+                moveSpeed = defaultMoveSpeed;
 		    }
         }    
 
@@ -82,6 +96,8 @@ public class TestPlayer : MonoBehaviour
     {
 		if (Input.GetKeyDown(KeyCode.F))
         {
+            moveSpeed = pushMoveSpeed;
+            rb.linearVelocity = new Vector2(0, 0);
 			interactive?.FreezeObject(false);
             isCol = true;
         }
@@ -103,6 +119,7 @@ public class TestPlayer : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.C))
 		{
+            moveSpeed = defaultMoveSpeed;
 			interactive?.FreezeObject(true);
             isCol = false;
 		}
