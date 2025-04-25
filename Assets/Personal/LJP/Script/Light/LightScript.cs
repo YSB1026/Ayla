@@ -5,7 +5,7 @@ public class LightScript : MonoBehaviour
     [SerializeField] private LightColor lightColor;
 
     private Light lightCompo;
-    [SerializeField]private GameObject go = null;
+    private GameObject go = null;
 
     private void Start()
     {
