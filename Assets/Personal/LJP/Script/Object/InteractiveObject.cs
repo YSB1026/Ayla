@@ -21,12 +21,12 @@ public class InteractiveObject : MonoBehaviour
 		}
 		else
 		{
-			rb.constraints = RigidbodyConstraints2D.None;
+			rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
 	}
 
 	public void MoveObject(float moveDir)//moveDir방향으로 오브젝트를 움직인다
 	{
-		rb.linearVelocity = new Vector2(moveSpeed * moveDir, rb.linearVelocityY);
+		transform.position += new Vector3(moveSpeed * moveDir * Time.deltaTime, 0);
 	}
 }
