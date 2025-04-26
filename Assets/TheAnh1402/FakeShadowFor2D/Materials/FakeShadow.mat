@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New
-  m_Shader: {fileID: 4800000, guid: 87b8a49dde6077b4dbfa9ca0e5790052, type: 3}
+  m_Name: FakeShadow
+  m_Shader: {fileID: 4800000, guid: cbf85ded9945a6249b7dce66a76cc5bc, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,37 +23,28 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DissolveTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _FlowMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParticleTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
-    - _Cutoff: 0.5
-    - _DissolveBorder: 0
-    - _FlowStrength: 1
-    - _Glow: 1
-    - _ParticleAmount: 20
-    - _ParticleSize: 0.1
-    - _Weight: 0
-    - _ZWrite: 0
+    - _Direction: 1
+    - _Fade: 0
+    - _FadeAmount: 0.933
+    - _Height: 0.5
+    - _Intensity: 0
+    - _OnlyShadow: 0
+    - _Quality: 4
+    - _Soft: 0
+    - _Tilt: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Direction: {r: 0, g: 1, b: 0, a: 0}
-    - _DisintegrationColor: {r: 1, g: 1, b: 1, a: 1}
-    - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpritePivot: {r: 0, g: 0, b: 0, a: 0}
+    - _SpriteSize: {r: 0, g: 0, b: 0, a: 0}
+    - _SpriteSizeRel: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
