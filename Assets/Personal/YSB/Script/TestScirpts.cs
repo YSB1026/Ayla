@@ -13,6 +13,12 @@ public class TestScirpts : MonoBehaviour
     public bool isWalking = false;
     private Coroutine walkSoundCoroutine;
 
+
+    void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     void Update()
     {
         HandleInput();

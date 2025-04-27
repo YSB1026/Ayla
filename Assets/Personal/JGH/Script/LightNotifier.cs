@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 public class LightMeshDetector : MonoBehaviour
 {
-    public Transform player;
+    public Transform secret;
     public float transitionDuration = 1.0f; // 전환에 걸리는 시간 (초)
     
     private Mesh lightMesh;
@@ -19,7 +19,7 @@ public class LightMeshDetector : MonoBehaviour
 
     void Update()
     {
-        if (player == null || lightMesh == null) return;
+        if (secret == null || lightMesh == null) return;
 
         Vector3[] verts = lightMesh.vertices;
         meshWorldPoints = new Vector3[verts.Length];
@@ -30,7 +30,7 @@ public class LightMeshDetector : MonoBehaviour
             meshWorldPoints[i] = transform.TransformPoint(verts[i]);
         }
 
-        bool isInside = PointInPolygon(player.position, meshWorldPoints);
+        bool isInside = PointInPolygon(secret.position, meshWorldPoints);
         
         // 상태가 변경되었을 때만 전환 실행
         if (isInside != wasInside)
@@ -46,13 +46,13 @@ public class LightMeshDetector : MonoBehaviour
             {
                 // 안으로 들어왔을 때: 1f → 0f로 전환
                 transitionCoroutine = StartCoroutine(TransitionThreshold(0.1f, 0f, transitionDuration));
-                Debug.Log("Player가 Light Mesh 영역 안으로 들어옴");
+                Debug.Log("물체가 Light Mesh 영역 안으로 들어옴");
             }
             else
             {
                 // 밖으로 나갔을 때: 0f → 1f로 전환
                 transitionCoroutine = StartCoroutine(TransitionThreshold(0f, 0.1f, transitionDuration));
-                Debug.Log("Player가 Light Mesh 영역 밖으로 나감");
+                Debug.Log("물체가 Light Mesh 영역 밖으로 나감");
             }
             
             wasInside = isInside;
@@ -81,7 +81,7 @@ public class LightMeshDetector : MonoBehaviour
     // 임계값을 부드럽게 전환하는 코루틴
     IEnumerator TransitionThreshold(float startValue, float endValue, float duration)
     {
-        Renderer playerRenderer = player.GetComponent<Renderer>();
+        Renderer playerRenderer = secret.GetComponent<Renderer>();
         if (playerRenderer == null) yield break;
 
         Material mat = playerRenderer.material;
