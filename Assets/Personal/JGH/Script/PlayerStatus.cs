@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     public bool InLight = false;
-    public Transform targetChild; // 🔥 사이즈 변경할 자식 오브젝트
+    public Transform targetChild; //  사이즈 변경할 자식 오브젝트
 
     private Vector3 originalScale;
     public Vector3 lightScale = new Vector3(1.5f, 1.5f, 1.5f);

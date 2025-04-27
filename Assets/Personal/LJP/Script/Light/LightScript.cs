@@ -2,46 +2,24 @@ using UnityEngine;
 
 public class LightScript : MonoBehaviour
 {
-    [SerializeField] private LightColor lightColor;
+    private LightColor lightColor;
 
     private Light lightCompo;
-    private GameObject go = null;
 
     private void Start()
     {
         lightCompo = GetComponent<Light>();
     }
 
-	private void Update()
+	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if(go != null)
-		{			
-			LightAbility();
+		if (collision.CompareTag("Object"))
+		{
+		    LightAbility(collision);		
 		}
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.CompareTag("FireObject") && (lightColor == LightColor.RED || lightColor == LightColor.BLACK))
-		{
-		   go = collision.gameObject;
-		}
-
-		if (collision.CompareTag("Enemy") && lightColor == LightColor.BLUE)
-		{
-		   go = collision.gameObject;
-		}
-	}
-
-	private void OnTriggerExit2D(Collider2D collision)
-	{
-		if (collision.CompareTag("FireObject") && (lightColor == LightColor.RED || lightColor == LightColor.BLACK))
-		{
-			go = null;
-		}
-	}
-
-	public void ChangeLightColer(LightColor _lightColor)//Light의 enum과 color를 바뀐다
+    public void ChangeLightColer(LightColor _lightColor)//Light의 enum과 color를 바뀐다
     {
         lightColor = _lightColor;
 
@@ -67,24 +45,21 @@ public class LightScript : MonoBehaviour
 		}
 	}
 
-    private void LightAbility()//스페이스바를 누르면 LightColor에 따른 능력이 발휘된다
+    private void LightAbility(Collider2D collision)//스페이스바를 누르면 LightColor에 따른 능력이 발휘된다
     {
-        if(Input.GetKey(KeyCode.F))
+        if(Input.GetKey(KeyCode.Space))
         {
             switch (lightColor)
             {
                 case LightColor.WHITE:
                     break;
                 case LightColor.BLACK:
-					go?.GetComponent<CanFireObject>().FireOff();
-					break;
+                    break;
                 case LightColor.RED:
-					go.GetComponent<CanFireObject>().FireOn();
                     break;
                 case LightColor.GREEN:
                     break;
                 case LightColor.BLUE:
-					go?.GetComponent<TestEnemy>().Slow();
                     break;
                 default:
                     break;
