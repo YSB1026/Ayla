@@ -32,11 +32,11 @@ Material:
     - PixelSnap: 0
     - _Direction: 1
     - _Fade: 0
-    - _FadeAmount: 0.933
-    - _Height: 0.5
-    - _Intensity: 0
+    - _FadeAmount: 1
+    - _Height: 0.47
+    - _Intensity: 0.0013
     - _OnlyShadow: 0
-    - _Quality: 4
+    - _Quality: 3.97
     - _Soft: 0
     - _Tilt: 0
     m_Colors:
