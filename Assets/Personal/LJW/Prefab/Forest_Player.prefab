@@ -221,9 +221,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 5
+  runSpeed: 12
   jumpForce: 5
   crawlSpeed: 3
   sitWalkSpeed: 2
+  controlEnabled: 1
 --- !u!114 &7135631352633047744
 MonoBehaviour:
   m_ObjectHideFlags: 0

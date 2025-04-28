@@ -5,6 +5,7 @@ public class Player : Entity
 {
     [Header("이동 정보")]
     public float moveSpeed = 12f;
+    public float runSpeed;
     public float jumpForce;
     public float crawlSpeed;
     public float sitWalkSpeed;
