@@ -221,6 +221,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   moveSpeed: 5
+  runSpeed: 12
   jumpForce: 5
   crawlSpeed: 3
   sitWalkSpeed: 2
