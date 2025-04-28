@@ -6,9 +6,6 @@ public class CustomSceneManager : MonoBehaviour
 {
     public static CustomSceneManager Instance { get; private set; }
 
-    [Header("¾À ÀüÈ¯ È¿°ú")]
-    [SerializeField] private float loadDelay = 0.5f;
-
     private void Awake()
     {
         if (Instance == null)
@@ -24,12 +21,16 @@ public class CustomSceneManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        StartCoroutine(LoadSceneRoutine(sceneName));
-    }
+        Time.timeScale = 1f;
+        if (SceneManager.GetActiveScene().name == sceneName)
+        {
+            return;
+        }
 
-    private IEnumerator LoadSceneRoutine(string sceneName)
-    {
-        yield return new WaitForSeconds(loadDelay);
-        SceneManager.LoadScene(sceneName);
+        UIManager.Instance.FadeOut(() => {
+            SceneManager.LoadScene(sceneName);
+            UIManager.Instance.FadeIn();
+        });
+
     }
 }
