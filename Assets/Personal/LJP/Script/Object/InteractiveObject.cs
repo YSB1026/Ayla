@@ -27,6 +27,6 @@ public class InteractiveObject : MonoBehaviour
 
 	public void MoveObject(float moveDir)//moveDir방향으로 오브젝트를 움직인다
 	{
-		transform.position += new Vector3(moveSpeed * moveDir * Time.deltaTime, 0);
+		rb.linearVelocity = new Vector2(moveSpeed * moveDir, rb.linearVelocityY);
 	}
 }
