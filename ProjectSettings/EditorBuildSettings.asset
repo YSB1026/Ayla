@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+<<<<<<< HEAD
+=======
+    path: Assets/Scenes/Lobby.unity
+    guid: ade1b6ff0144169449af3779ed9fb991
+  - enabled: 0
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
     path: Assets/Personal/YSB/Scene/YSB_test.unity
     guid: 855b9dfd66de68647a47c4f5489aee4e
   - enabled: 1

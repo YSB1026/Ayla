@@ -6,6 +6,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
+<<<<<<< HEAD
+=======
+    [Header("Fade Effect")]
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
     [SerializeField] private Image fadeImage;
     [SerializeField] private float fadeDuration = 1f;
 

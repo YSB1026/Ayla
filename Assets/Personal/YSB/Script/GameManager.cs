@@ -69,7 +69,11 @@ public class GameManager : MonoBehaviour
 
         switch (newState)
         {
+<<<<<<< HEAD
             case GameState.Title:
+=======
+            case GameState.Lobby:
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
                 //각종 매니저들 호출?
                 //사운드라든지 
                 break;
@@ -77,13 +81,21 @@ public class GameManager : MonoBehaviour
                 //각종 매니저들 호출?
                 break;
             case GameState.InGame:
+<<<<<<< HEAD
                 PlayBGM();
+=======
+                //각종 매니저들 호출?
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
                 Time.timeScale = 1f;
                 //각종 매니저들 호출?
                 break;
             case GameState.Paused:
                 Time.timeScale = 0f;
                 //각종 매니저들 호출?
+                break;
+            case GameState.Paused:
+                //각종 매니저들 호출?
+                Time.timeScale = 0f;
                 break;
             case GameState.Respawn:
                 //각종 매니저들 호출?
@@ -94,7 +106,16 @@ public class GameManager : MonoBehaviour
     {
         switch (CurrentState)
         {
+<<<<<<< HEAD
             case GameState.Title:
+=======
+            case GameState.Lobby:
+                uiManager.FadeOut(() => {
+                    sceneManager.LoadScene("Lobby");
+                    uiManager.FadeIn();
+                });
+                soundManager.PlayBGM("MainTheme");
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
                 //각종 매니저 호출?
                 break;
 
@@ -119,6 +140,10 @@ public class GameManager : MonoBehaviour
                 //정지 상태에서는 별도로 처리 안해도 될 거 같아요.
                 break;
 
+            case GameState.Paused:
+                //정지 상태에서는 별도로 처리 안해도 될 거 같아요.
+                break;
+
             case GameState.Respawn:
                 // Fade in/out 처리같은걸 해주면 좋겠네요.
                 // 리스폰 처리는 단발성이라, game manager에서 안해도 될수도있겠네요.
@@ -129,6 +154,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     private void PlayBGM()
     {
         soundManager.PlayBGM("MainTheme");
@@ -142,6 +168,10 @@ public class GameManager : MonoBehaviour
     private void TogglePause()
     {
         Debug.Log("토글 퍼즈 호출됐어요.");
+=======
+    private void TogglePause()
+    {
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
         if (CurrentState == GameState.Paused)
             ResumeGame();
         else if (CurrentState == GameState.InGame)
