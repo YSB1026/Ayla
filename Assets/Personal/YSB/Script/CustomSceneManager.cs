@@ -21,7 +21,7 @@ public class CustomSceneManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         if (SceneManager.GetActiveScene().name == sceneName)
         {
             return;
@@ -31,6 +31,5 @@ public class CustomSceneManager : MonoBehaviour
             SceneManager.LoadScene(sceneName);
             UIManager.Instance.FadeIn();
         });
-
     }
 }

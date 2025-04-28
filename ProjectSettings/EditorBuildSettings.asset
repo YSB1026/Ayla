@@ -9,14 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: ade1b6ff0144169449af3779ed9fb991
   - enabled: 1
-    path: Assets/Personal/YSB/Scene/YSB_test.unity
-    guid: 855b9dfd66de68647a47c4f5489aee4e
-  - enabled: 0
-    path: Assets/Personal/YSB/Scene/YSB_test2.unity
-    guid: 5bf410f8701af894bb918a0d335ebacf
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/House.unity
+    guid: 56576e3c9efccf34bba4cd1472d8f909
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

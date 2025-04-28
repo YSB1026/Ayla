@@ -18,7 +18,7 @@ public class Player_RunState : PlayerState
         if (Input.GetKeyDown(KeyCode.Space))
             stateMachine.ChangeState(player.jumpState);
 
-        player.SetVelocity(xInput * player.runSpeed, rb.linearVelocityY);
+        player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
 
         if (xInput == 0 || player.IsWallDetected())
             stateMachine.ChangeState(player.inputState);
