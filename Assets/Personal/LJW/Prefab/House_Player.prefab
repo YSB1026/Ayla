@@ -319,12 +319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e4044998ce6eb44eb6a7f5a14dde91e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ayla: {fileID: 3053704867269281536, guid: b515af5a8b9778b48aadcc59ed986d80, type: 3}
-  player: {fileID: 5185966435915577290}
+  ayla: {fileID: 0}
+  player: {fileID: 0}
   Camera: {fileID: 0}
-  targets:
-  - {fileID: 7429834073741896695}
-  - {fileID: 4572178256437348768, guid: b515af5a8b9778b48aadcc59ed986d80, type: 3}
+  targets: []
 --- !u!114 &5185966435915577290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,9 +341,8 @@ MonoBehaviour:
   wallCheckDistance: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   moveSpeed: 5
-  runSpeed: 12
   jumpForce: 5
   crawlSpeed: 3
   sitWalkSpeed: 2
