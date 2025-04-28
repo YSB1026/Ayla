@@ -4,6 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags: []
+=======
+  tags:
+  - Object
+>>>>>>> parent of f55d700 (LightScript)
   layers:
   - Default
   - TransparentFX

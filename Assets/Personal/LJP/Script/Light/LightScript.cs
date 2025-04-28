@@ -5,6 +5,10 @@ public class LightScript : MonoBehaviour
     private LightColor lightColor;
 
     private Light lightCompo;
+<<<<<<< HEAD
+=======
+    [SerializeField]private GameObject go = null;
+>>>>>>> parent of f55d700 (LightScript)
 
     private void Start()
     {
