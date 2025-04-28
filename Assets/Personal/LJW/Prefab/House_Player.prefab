@@ -207,8 +207,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1761585829
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: -3548415255626926844, guid: 5c37c7037b62adc4882de32246313bcc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -343,9 +343,8 @@ MonoBehaviour:
   wallCheckDistance: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   moveSpeed: 5
-  runSpeed: 12
   jumpForce: 5
   crawlSpeed: 3
   sitWalkSpeed: 2
