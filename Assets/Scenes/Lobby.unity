@@ -232,15 +232,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 949314895}
   - component: {fileID: 949314898}
   m_Layer: 5
-  m_Name: Start Button
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1178,7 +1178,7 @@ GameObject:
   - component: {fileID: 1285626558}
   - component: {fileID: 1285626561}
   m_Layer: 5
-  m_Name: Exit Button
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1308,34 +1308,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 461305337935009027, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3781605453491686838, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4937569454911654738, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5399730203064962440, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
       propertyPath: _source
       value: 
       objectReference: {fileID: 2017159934}
-    - target: {fileID: 7443937681157612690, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7635411145722767321, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985259916114491504, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7994714556901090322, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1433,6 +1409,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3370404187993749887, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
+      propertyPath: bgmClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3370404187993749887, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
+      propertyPath: 'bgmClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b08ccefe2c8c5e4fb69ec0c3d5d92df, type: 3}
+    - target: {fileID: 3370404187993749887, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
+      propertyPath: 'bgmClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bc5ad9430fb483046ad75ba7ff63007e, type: 3}
     - target: {fileID: 4654844049674288394, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -1581,7 +1569,7 @@ GameObject:
   - component: {fileID: 1896828215}
   - component: {fileID: 1896828218}
   m_Layer: 5
-  m_Name: Option Button
+  m_Name: OptionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1872,7 +1860,7 @@ GameObject:
   - component: {fileID: 2038435575}
   - component: {fileID: 2038435574}
   m_Layer: 5
-  m_Name: Text_Canvas
+  m_Name: LobbyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2190,8 +2178,8 @@ SceneRoots:
   - {fileID: 2071917773}
   - {fileID: 1533467923}
   - {fileID: 577046308}
-  - {fileID: 287192152}
   - {fileID: 1790840266}
   - {fileID: 486867715}
   - {fileID: 1373224070}
+  - {fileID: 287192152}
   - {fileID: 1311158202}

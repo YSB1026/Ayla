@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public static ButtonManager Instance {  get; private set; }
+    public static ButtonManager Instance { get; private set; }
     [Header("Setting Button")]
-    [SerializeField] private Button backButton;//로비로 돌아가는 버튼
+    [SerializeField] private Button backButton;//옵션 끄는 버튼
 
     #region 로비 버튼
     private Button startButton;
@@ -44,11 +44,9 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
     private void OnQuitToLobbyClicked()
     {
         UIManager.Instance.ToggleSettings();
-        CustomSceneManager.Instance.LoadScene("Lobby");
     }
 
     #region Lobby 
@@ -64,7 +62,7 @@ public class ButtonManager : MonoBehaviour
             }
 
             TryFindButton(lobbyCanvas, "StartButton", ref startButton, OnPlayClicked);
-            TryFindButton(lobbyCanvas, "SettingButton", ref settingsButton, OnSettingsClicked);
+            TryFindButton(lobbyCanvas, "OptionButton", ref settingsButton, OnSettingsClicked);
             TryFindButton(lobbyCanvas, "ExitButton", ref exitButton, OnExitClicked);
         }
     }
@@ -87,7 +85,7 @@ public class ButtonManager : MonoBehaviour
     private void OnPlayClicked()
     {
         //임시로 테스트
-        CustomSceneManager.Instance.LoadScene("YSB_test");
+        CustomSceneManager.Instance.LoadScene("House");
     }
 
     private void OnSettingsClicked()
