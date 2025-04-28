@@ -7,6 +7,10 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    [Header("Fade Effect")]
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
 =======
     [Header("Fade Effect")]
 >>>>>>> parent of ea70223 (Merge branch 'main' into LJW)

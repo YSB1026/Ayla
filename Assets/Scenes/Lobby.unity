@@ -590,7 +590,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 949314893}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
 --- !u!1001 &965995579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,6 +666,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
+=======
 >>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
 --- !u!1 &1063837572
 GameObject:
@@ -1181,7 +1187,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 1285626556}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
 --- !u!1 &1376344398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,7 +1470,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 1896828213}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
 --- !u!1001 &1933884355
 PrefabInstance:
   m_ObjectHideFlags: 0

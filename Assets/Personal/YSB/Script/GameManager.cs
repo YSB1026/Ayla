@@ -73,6 +73,9 @@ public class GameManager : MonoBehaviour
             case GameState.Title:
 =======
             case GameState.Lobby:
+<<<<<<< HEAD
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
+=======
 >>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
                 //각종 매니저들 호출?
                 //사운드라든지 
@@ -82,7 +85,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.InGame:
 <<<<<<< HEAD
+<<<<<<< HEAD
                 PlayBGM();
+=======
+                //각종 매니저들 호출?
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
 =======
                 //각종 매니저들 호출?
 >>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
@@ -92,6 +99,10 @@ public class GameManager : MonoBehaviour
             case GameState.Paused:
                 Time.timeScale = 0f;
                 //각종 매니저들 호출?
+                break;
+            case GameState.Paused:
+                //각종 매니저들 호출?
+                Time.timeScale = 0f;
                 break;
             case GameState.Paused:
                 //각종 매니저들 호출?
@@ -115,6 +126,9 @@ public class GameManager : MonoBehaviour
                     uiManager.FadeIn();
                 });
                 soundManager.PlayBGM("MainTheme");
+<<<<<<< HEAD
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
+=======
 >>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
                 //각종 매니저 호출?
                 break;
@@ -144,6 +158,10 @@ public class GameManager : MonoBehaviour
                 //정지 상태에서는 별도로 처리 안해도 될 거 같아요.
                 break;
 
+            case GameState.Paused:
+                //정지 상태에서는 별도로 처리 안해도 될 거 같아요.
+                break;
+
             case GameState.Respawn:
                 // Fade in/out 처리같은걸 해주면 좋겠네요.
                 // 리스폰 처리는 단발성이라, game manager에서 안해도 될수도있겠네요.
@@ -154,6 +172,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     private void PlayBGM()
     {
@@ -168,6 +187,10 @@ public class GameManager : MonoBehaviour
     private void TogglePause()
     {
         Debug.Log("토글 퍼즈 호출됐어요.");
+=======
+    private void TogglePause()
+    {
+>>>>>>> parent of ea70223 (Merge branch 'main' into LJW)
 =======
     private void TogglePause()
     {
