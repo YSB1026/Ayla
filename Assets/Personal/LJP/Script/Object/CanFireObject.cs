@@ -26,7 +26,7 @@ public class CanFireObject : MonoBehaviour
 	private void InitComponent()
 	{
 		anim = GetComponentInChildren<Animator>();
-		lightCompo = GetComponentInChildren<Light>();
+		lightCompo = GetComponent<Light>();
 	}
 
 	private void InitFire()

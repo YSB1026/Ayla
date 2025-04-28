@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7429834073741896695
 Transform:
   m_ObjectHideFlags: 0
@@ -319,12 +319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e4044998ce6eb44eb6a7f5a14dde91e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ayla: {fileID: 0}
+  ayla: {fileID: 3053704867269281536, guid: b515af5a8b9778b48aadcc59ed986d80, type: 3}
   player: {fileID: 5185966435915577290}
   Camera: {fileID: 0}
   targets:
   - {fileID: 7429834073741896695}
-  - {fileID: 0}
+  - {fileID: 4572178256437348768, guid: b515af5a8b9778b48aadcc59ed986d80, type: 3}
 --- !u!114 &5185966435915577290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,9 +345,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 5
+  runSpeed: 12
   jumpForce: 5
   crawlSpeed: 3
   sitWalkSpeed: 2
+  controlEnabled: 1
 --- !u!114 &5497977795480589695
 MonoBehaviour:
   m_ObjectHideFlags: 0
