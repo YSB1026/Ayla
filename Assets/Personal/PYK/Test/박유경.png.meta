@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 494d59e53c15de14d959dbda1487a7ad
+guid: a757e33123b6fe046a9523bd73c7d2af
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5097888443166127757
-    second: ParitcleIMG_0
+      213: 452084328360384427
+    second: "\uBC15\uC720\uACBD_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -84,7 +84,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Standalone
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -109,17 +109,56 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ParitcleIMG_0
+      name: "\uBC15\uC720\uACBD_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 379
-        height: 537
+        x: 29
+        y: 19
+        width: 202
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d867c7f77865fb640800000000000000
-      internalID: 5097888443166127757
+      spriteID: ba711782d40264600800000000000000
+      internalID: 452084328360384427
       vertices: []
       indices: 
       edges: []
@@ -148,7 +187,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ParitcleIMG_0: 5097888443166127757
+<<<<<<< HEAD:Assets/Personal/JGH/Image/dissolve.jpg.meta
+      dissolve_0: 4061772098762986246
+=======
+      "\uBC15\uC720\uACBD_0": 452084328360384427
+>>>>>>> parent of 20da511 (DissolveEffect):Assets/Personal/PYK/Test/박유경.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
