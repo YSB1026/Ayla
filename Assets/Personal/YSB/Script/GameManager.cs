@@ -46,15 +46,6 @@ public class GameManager : MonoBehaviour
         {
             uiManager.ToggleSettings();
         }
-
-        //if (Input.GetKeyDown(KeyCode.H))//Å×½ºÆ®
-        //{
-        //    uiManager.FadeOut(() => {
-        //        sceneManager.LoadScene("YSB_test2");
-        //        uiManager.FadeIn();
-        //    });
-        //    soundManager.StopAllSFX();
-        //}
     }
 
     public void InitGame()
