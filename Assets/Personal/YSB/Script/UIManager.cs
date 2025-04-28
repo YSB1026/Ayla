@@ -6,16 +6,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    //setting panel이랑 paused panel 같아도 될거같은데
-    [Header("공통 UI")]
-    [Space]
-
-    [Header("Setting")]    
-    [SerializeField] private GameObject settingsPanel;
-    private bool isSettingsOpen = false;
-    [Header("Fade")]
     [SerializeField] private Image fadeImage;
     [SerializeField] private float fadeDuration = 1f;
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,6 +21,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void FadeIn(System.Action onComplete = null)
     {
         fadeImage.gameObject.SetActive(true);
@@ -36,11 +30,13 @@ public class UIManager : MonoBehaviour
             onComplete?.Invoke();
         }));
     }
+
     public void FadeOut(System.Action onComplete = null)
     {
         fadeImage.gameObject.SetActive(true);
         StartCoroutine(FadeRoutine(0, 1, onComplete));
     }
+
     private IEnumerator FadeRoutine(float startAlpha, float endAlpha, System.Action onComplete)
     {
         float time = 0f;
@@ -58,17 +54,5 @@ public class UIManager : MonoBehaviour
         fadeImage.color = color;
 
         onComplete?.Invoke();
-    }
-    public void ToggleSettings()
-    {
-        isSettingsOpen = !isSettingsOpen;
-        settingsPanel.SetActive(isSettingsOpen);
-
-        Time.timeScale = isSettingsOpen ? 0f : 1f;
-    }
-
-    public bool IsSettingsOpen()
-    {
-        return isSettingsOpen;
     }
 }
