@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
 
     #region 참조 매니저
     //임시로 작성
-    //public PlayerManager playerManager;
-    public UIManager uiManager;
-    public SoundManager soundManager;
-    public CustomSceneManager sceneManager;
-    //public SkillManager skillManager;
+    //private PlayerManager playerManager;
+    private UIManager uiManager;
+    private SoundManager soundManager;
+    private CustomSceneManager sceneManager;
+    //private SkillManager skillManager;
     #endregion
 
     private void Awake()
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         soundManager = SoundManager.Instance;
         sceneManager = CustomSceneManager.Instance;
         //skillManager = SkillManager.Instance;
-        ChangeState(GameState.Lobby);
+        //ChangeState(GameState.Lobby);
     }
 
     private void Update()
