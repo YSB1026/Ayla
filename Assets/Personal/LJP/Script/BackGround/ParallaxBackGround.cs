@@ -15,7 +15,7 @@ public class ParallaxBackGround : MonoBehaviour
     {
         mainCam = Camera.main;
 
-        paddingX = GetComponentInChildren<SpriteRenderer>().bounds.size.x;
+        paddingX = GetComponent<SpriteRenderer>().bounds.size.x;
         postionX = transform.position.x;
     }
 
@@ -26,9 +26,9 @@ public class ParallaxBackGround : MonoBehaviour
 
 		transform.position = new Vector3(postionX + distanceToMove, transform.position.y);
 
-		if (distanceMoved > postionX + paddingX)
-			postionX = postionX + paddingX;
-		else if (distanceMoved < postionX - paddingX)
-			postionX = postionX - paddingX;
+		if (distanceMoved > postionX + (paddingX * 2))
+			postionX += (paddingX * 3);
+		else if (distanceMoved < postionX - (paddingX * 2))
+			postionX -= (paddingX * 3);
 	}
 }
