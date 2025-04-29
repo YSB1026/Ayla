@@ -110,7 +110,7 @@ MonoBehaviour:
   wallCheckDistance: 0
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   player: {fileID: 0}
   followPointLeft: {fileID: 0}
   followPointRight: {fileID: 0}
