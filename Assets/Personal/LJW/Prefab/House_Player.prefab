@@ -323,7 +323,11 @@ MonoBehaviour:
   player: {fileID: 0}
   Camera: {fileID: 0}
   targets: []
---- !u!114 &5185966435915577290
+  player: {fileID: 5185966435915577290}
+  Camera: {fileID: 0}
+  targets:
+  - {fileID: 7429834073741896695}
+  - {fileID: 0}
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,8 +345,9 @@ MonoBehaviour:
   wallCheckDistance: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   moveSpeed: 5
+  runSpeed: 12
   jumpForce: 5
   crawlSpeed: 3
   sitWalkSpeed: 2
