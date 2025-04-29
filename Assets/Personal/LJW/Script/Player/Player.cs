@@ -23,6 +23,7 @@ public class Player : Entity
     public Player_SitState sitState { get; private set; }
     public Player_StandState standState { get; private set; }
     public Player_SitWalkState sitWalkState { get; private set; }
+    public Player_DeadState deadState { get; private set; }
     #endregion
 
     public bool controlEnabled = true;
@@ -48,6 +49,7 @@ public class Player : Entity
         sitState = new Player_SitState(this, stateMachine, "Sit");
         standState = new Player_StandState(this, stateMachine, "Stand");
         sitWalkState = new Player_SitWalkState(this, stateMachine, "SitWalk");
+        deadState = new Player_DeadState(this, stateMachine, "Dead");
     }
 
     protected override void Start()
