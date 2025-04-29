@@ -10,9 +10,9 @@ public class Player_SitState : PlayerState
     {
         base.Enter();
         player.SetZeroVelocity();
-        player.col.offset = sitColOffset;
-        player.col.size = sitColSize;
-    }
+		player.col.offset = sitColOffset;
+		player.col.size = sitColSize;
+	}
 
     public override void Update()
     {

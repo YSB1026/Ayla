@@ -11,15 +11,15 @@ public class PlayerState
     protected float xInput;
     protected float yInput;
 
-    protected Vector2 idleColOffset = new Vector2(0f  , 0f);
-    protected Vector2 idleColSize   = new Vector2(0.9f, 1.3f);
-    protected Vector2 sitColOffset  = new Vector2(0f  , -0.1f);
-    protected Vector2 sitColSize    = new Vector2(0.9f, 1.1f);
-    protected Vector2 crawColOffset = new Vector2(0f  , -0.2f);
-    protected Vector2 crawColSize   = new Vector2(2f  , 0.9f);
+	protected Vector2 idleColOffset = new Vector2(0f, 0f);
+	protected Vector2 idleColSize = new Vector2(0.9f, 1.3f);
+	protected Vector2 sitColOffset = new Vector2(0f, -0.1f);
+	protected Vector2 sitColSize = new Vector2(0.9f, 1.1f);
+	protected Vector2 crawColOffset = new Vector2(0f, -0.2f);
+	protected Vector2 crawColSize = new Vector2(2f, 0.9f);
 
-    // 애니메이션 이벤트(Trigger)가 호출되었는지 여부
-    protected bool triggerCalled;
+	// 애니메이션 이벤트(Trigger)가 호출되었는지 여부
+	protected bool triggerCalled;
 
     // 생성자: 상태를 만들 때 플레이어, 상태머신, 애니메이션 Bool 이름을 설정
     public PlayerState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
