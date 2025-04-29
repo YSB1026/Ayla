@@ -7,6 +7,7 @@ public class EnemyState
 
     protected Rigidbody2D rb;
     private string animBoolName;
+
     protected float xInput;
     protected float yInput;
 

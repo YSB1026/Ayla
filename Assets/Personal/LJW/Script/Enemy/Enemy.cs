@@ -4,18 +4,15 @@ public class Enemy : Entity
 {
     [Header("이동 정보")]
     public float moveSpeed = 12f;
-    public float runSpeed;
-    public float jumpForce;
-    public float crawlSpeed;
-    public float sitWalkSpeed;
+    public float defaultMoveSpeed = 5f;
 
-    #region States
-    public PlayerStateMachine stateMachine { get; private set; }
-    #endregion
+    public EnemyStateMachine stateMachine { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
+
+        stateMachine = new EnemyStateMachine();
     }
 
     protected override void Start()
@@ -24,8 +21,9 @@ public class Enemy : Entity
     }
 
     protected override void Update()
-    { 
-        
+    {
+        base.Update();
+        stateMachine.currentState.Update();
     }
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
