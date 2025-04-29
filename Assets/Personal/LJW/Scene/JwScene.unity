@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 604025002}
   - component: {fileID: 604025001}
   - component: {fileID: 604025000}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 1939905328}
   - component: {fileID: 1939905327}
   - component: {fileID: 1939905326}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
