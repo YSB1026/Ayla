@@ -10,9 +10,10 @@ public class Player : Entity
     public float crawlSpeed;
     public float sitWalkSpeed;
 
+	[HideInInspector] public CapsuleCollider2D col;
 
-    #region States
-    public PlayerStateMachine stateMachine { get; private set; }
+	#region States
+	public PlayerStateMachine stateMachine { get; private set; }
     public Player_InputState inputState { get; private set; }
 
     public Player_IdleState idleState { get; private set; }
@@ -56,8 +57,10 @@ public class Player : Entity
     {
         base.Start();
 
-        // 게임 시작 시 초기 상태를 대기 상태(inputState)로 설정
-        stateMachine.Initialize(inputState);
+		col = GetComponent<CapsuleCollider2D>();
+
+		// 게임 시작 시 초기 상태를 대기 상태(inputState)로 설정
+		stateMachine.Initialize(inputState);
     }
 
     protected override void Update()

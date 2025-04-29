@@ -9,7 +9,10 @@ public class Player_CrawlState : PlayerState
     public override void Enter()
     {
         base.Enter();
-    }
+        player.col.direction = CapsuleDirection2D.Horizontal;
+		player.col.offset = crawColOffset;
+		player.col.size = crawColSize;
+	}
 
     public override void Update()
     {
@@ -43,5 +46,8 @@ public class Player_CrawlState : PlayerState
     public override void Exit()
     {
         base.Exit();
-    }
+        player.col.direction = CapsuleDirection2D.Vertical;
+		player.col.offset = idleColOffset;
+		player.col.size = idleColSize;
+	}
 }
