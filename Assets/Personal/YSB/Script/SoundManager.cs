@@ -7,23 +7,30 @@ public class SoundManager : MonoBehaviour
 
     [Header("오디오 소스")]
     [SerializeField] private AudioSource bgmSource;
-    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource entitySource;
+    [SerializeField] private AudioSource envSource;
+    [SerializeField] private AudioSource ambienceSource;
 
-    [Header("BGM Clips")]
+    [Header("BGM Clips")]//bgm
     [SerializeField] private List<AudioClip> bgmClips;
     private Dictionary<string, int> bgmDict = new();
 
-    [Header("Player SFX Clips")]
+    [Header("Player SFX Clips")]//player sfx
     [SerializeField] private List<AudioClip> playerSfxClips;
     private Dictionary<string, int> playerSfxDict = new();
 
-    [Header("Enemy SFX Clips")]
+    [Header("Enemy SFX Clips")]//enemy sfx
     [SerializeField] private List<AudioClip> enemySfxClips;
     private Dictionary<string, int> enemySfxDict = new();
 
-    [Header("Env SFX Clips")]
+    [Header("Ambience SFX Clips")]//bgm 배경으로 깔리는 sfx
+    [SerializeField] private List<AudioClip> ambienceSfxClips;
+    private Dictionary<string, int> ambienceSfxDict = new();
+
+    [Header("Environment SFX Clips")]//천둥같은 sfx
     [SerializeField] private List<AudioClip> envSfxClips;
     private Dictionary<string, int> envSfxDict = new();
+
 
     private void Awake()
     {
@@ -43,21 +50,56 @@ public class SoundManager : MonoBehaviour
     {
         //List 순서에 맞게 Key - Value 설정해주세요 :)
 
+        //bgm
+        #region BGM 
         bgmDict["MainTheme"] = 0;
+        #endregion
 
-        playerSfxDict["Walk"] = 0;
+        #region Player
+        playerSfxDict["Footstep_Forest"] = 0;
+        #endregion
 
+        #region Enemy
         //enemySfxDict["Walk"] = 0;
+        #endregion
 
+        #region Environment
         envSfxDict["Thunder1"] = 0;
         envSfxDict["Thunder2"] = 1;
+        #endregion
+
+        #region ambience
+        ambienceSfxDict["ForestAmbience"] = 0;
+        #endregion
+
+        /*
+        //for (int i = 0; i < bgmClips.Count; i++)
+        //{
+        //    bgmDict[bgmClips[i].name] = i;
+        //}
+
+        //for (int i = 0; i < playerSfxClips.Count; i++)
+        //{
+        //    playerSfxDict[playerSfxClips[i].name] = i;
+        //}
+
+        //for (int i = 0; i < enemySfxClips.Count; i++)
+        //{
+        //    enemySfxDict[enemySfxClips[i].name] = i;
+        //}
+
+        //for (int i = 0; i < envSfxClips.Count; i++)
+        //{
+        //    envSfxDict[envSfxClips[i].name] = i;
+        //}
+        */
     }
 
-    public void StopAllSFX()
-    {
-        bgmSource.Stop();
-        sfxSource.Stop();
-    }
+    //public void StopAllSFX()
+    //{
+    //    bgmSource.Stop();
+    //    entitySource.Stop();
+    //}
 
     #region BGM
     public void PlayBGM(string key)
@@ -82,7 +124,31 @@ public class SoundManager : MonoBehaviour
     }
     #endregion
 
-    #region SFX
+    #region Ambience
+    public void PlayAmbienceSFX(string key)
+    {
+        if (!ambienceSfxDict.TryGetValue(key, out int idx))
+        {
+            Debug.LogWarning($"[SoundManager] Ambience '{key}' not found!");
+            return;
+        }
+
+        StopAmbience();
+
+        ambienceSource.clip = bgmClips[idx];
+        ambienceSource.loop = true;
+        ambienceSource.Play();
+    }
+
+    public void StopAmbience()
+    {
+        if (ambienceSource.isPlaying && ambienceSource.loop)
+            ambienceSource.Stop();
+    }
+
+    #endregion
+
+    #region Entity
     public void PlayPlayerSFX(string key)
     {
         if (!playerSfxDict.TryGetValue(key, out int idx))
@@ -90,7 +156,7 @@ public class SoundManager : MonoBehaviour
             Debug.LogWarning($"[SoundManager] Player SFX '{key}' not found!");
             return;
         }
-        sfxSource.PlayOneShot(playerSfxClips[idx]);
+        entitySource.PlayOneShot(playerSfxClips[idx]);
     }
 
     public void PlayEnemySFX(string key)
@@ -100,9 +166,30 @@ public class SoundManager : MonoBehaviour
             Debug.LogWarning($"[SoundManager] Enemy SFX '{key}' not found!");
             return;
         }
-        sfxSource.PlayOneShot(enemySfxClips[idx]);
+        entitySource.PlayOneShot(enemySfxClips[idx]);
     }
 
+    public void PlayFootstep(SurfaceType type)
+    {
+        switch (type)
+        {
+            case SurfaceType.Forest:
+                PlayPlayerSFX("Footstep_Forest");
+                break;
+            case SurfaceType.Stone:
+                //PlayPlayerSFX("Footstep_Stone");
+                break;
+            case SurfaceType.Wood:
+                //PlayPlayerSFX("Footstep_Wood");
+                break;
+            default:
+                Debug.LogWarning("[SoundManager] - Something wrong with Ground Layer");
+                break;
+        }
+    }
+    #endregion
+
+    #region Env
     public void PlayEnvSFX(string key)
     {
         if (!envSfxDict.TryGetValue(key, out int idx))
@@ -110,8 +197,8 @@ public class SoundManager : MonoBehaviour
             Debug.LogWarning($"[SoundManager] Env SFX '{key}' not found!");
             return;
         }
-        sfxSource.PlayOneShot(envSfxClips[idx]);
+        envSource.PlayOneShot(envSfxClips[idx]);
     }
-
     #endregion
+
 }
