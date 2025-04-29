@@ -10,6 +10,8 @@ public class Player_SitState : PlayerState
     {
         base.Enter();
         player.SetZeroVelocity();
+        player.col.offset = sitColOffset;
+        player.col.size = sitColSize;
     }
 
     public override void Update()
@@ -29,5 +31,7 @@ public class Player_SitState : PlayerState
     public override void Exit()
     {
         base.Exit();
-    }
+		player.col.offset = idleColOffset;
+		player.col.size = idleColSize;
+	}
 }
