@@ -9,6 +9,7 @@ public class Player_WalkState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        SoundManager.Instance.PlayFootstep(player.SurfaceType);
     }
 
     public override void Update()
@@ -35,6 +36,7 @@ public class Player_WalkState : PlayerState
 
     public override void Exit()
     {
+        //SoundManager.Instance.PlayFootstep(player.SurfaceType);
         base.Exit();
     }
 }
