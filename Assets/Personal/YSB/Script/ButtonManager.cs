@@ -85,7 +85,7 @@ public class ButtonManager : MonoBehaviour
     private void OnPlayClicked()
     {
         //임시로 테스트
-        CustomSceneManager.Instance.LoadScene("House");
+        CustomSceneManager.Instance.LoadScene("Forest");
     }
 
     private void OnSettingsClicked()

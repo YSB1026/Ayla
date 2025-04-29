@@ -21,7 +21,8 @@ public class CustomSceneManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        //Time.timeScale = 1f;
+        PlaySceneBGM(sceneName);
+
         if (SceneManager.GetActiveScene().name == sceneName)
         {
             return;
@@ -31,5 +32,20 @@ public class CustomSceneManager : MonoBehaviour
             SceneManager.LoadScene(sceneName);
             UIManager.Instance.FadeIn();
         });
+    }
+
+    private void PlaySceneBGM(string sceneName)
+    {
+        switch (sceneName)
+        {
+            case "Lobby":
+                SoundManager.Instance.PlayBGM("MainTheme");
+                break;
+            case "Forest"://나중에 수정할 것
+                SoundManager.Instance.PlayBGM("ForestBGM");
+                break;
+            default:
+                break;
+        }
     }
 }

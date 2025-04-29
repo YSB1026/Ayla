@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         soundManager = SoundManager.Instance;
         sceneManager = CustomSceneManager.Instance;
         //skillManager = SkillManager.Instance;
-        //ChangeState(GameState.Lobby);
+        ChangeState(GameState.Lobby);
     }
 
     private void Update()
@@ -61,14 +61,12 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Lobby:
-                soundManager.PlayBGM("MainTheme");
                 sceneManager.LoadScene("Lobby");
                 break;
             case GameState.Cutscene:
                 break;
             case GameState.InGame:
                 Time.timeScale = 1f;
-                soundManager.PlayBGM("MainTheme");//테스트용
                 break;
             case GameState.Respawn:
                 break;

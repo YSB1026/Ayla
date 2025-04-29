@@ -45,7 +45,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -184,8 +184,11 @@ MonoBehaviour:
   bgmClips:
   - {fileID: 8300000, guid: 6b08ccefe2c8c5e4fb69ec0c3d5d92df, type: 3}
   - {fileID: 8300000, guid: 535a349f918052740ac64cdd35f62aaa, type: 3}
-  playerSfxClips:
-  - {fileID: 8300000, guid: 26195c19cac80e445812094c974cc57a, type: 3}
+  footstepForestClips:
+  - {fileID: 8300000, guid: 4973d6803efe39b40916efd802c786bb, type: 3}
+  - {fileID: 8300000, guid: 191049907031b414dacea756c9a402b6, type: 3}
+  footstepStoneClips: []
+  footstepWoodClips: []
   enemySfxClips: []
   ambienceSfxClips:
   - {fileID: 8300000, guid: 8f591092ef4b78847ac15b5210980e6c, type: 3}
@@ -237,7 +240,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -366,7 +369,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
