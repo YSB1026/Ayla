@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CanFireObject : MonoBehaviour
+public class FireTrigger : MonoBehaviour
 {
     private Animator anim;
     private  Light lightCompo;
@@ -26,7 +26,7 @@ public class CanFireObject : MonoBehaviour
 	private void InitComponent()
 	{
 		anim = GetComponentInChildren<Animator>();
-		lightCompo = GetComponent<Light>();
+		lightCompo = GetComponentInChildren<Light>();
 	}
 
 	private void InitFire()
