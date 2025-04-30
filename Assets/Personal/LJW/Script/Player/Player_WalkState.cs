@@ -57,7 +57,7 @@ public class Player_WalkState : PlayerState
         if (footstepTimer <= 0f) // 움직일 때만 재생
         {
             SurfaceType surface = player.SurfaceType;
-            SoundManager.Instance.PlayFootstep(surface);
+            //SoundManager.Instance.PlayFootstep(surface);
             footstepTimer = footstepInterval;
         }
     }
