@@ -22,6 +22,9 @@ public class Player_InputState : PlayerState
         if (Input.GetKeyDown(KeyCode.Space))
             stateMachine.ChangeState(player.jumpState);
 
+        else if (Input.GetKeyDown(KeyCode.F) && player.IsObjectDetected())
+            stateMachine.ChangeState(player.grabState);
+
         else if (Input.GetKey(KeyCode.LeftShift) && xInput != 0)
             stateMachine.ChangeState(player.runState);
 
