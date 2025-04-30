@@ -10058,7 +10058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345994201}
   m_Layer: 0
-  m_Name: "\uBC29\uACFC \uBC29 \uC5F0\uACB0\uD558\uB294 Door"
+  m_Name: Room Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
