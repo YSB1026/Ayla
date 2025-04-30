@@ -10,9 +10,19 @@ public class Player : Entity
     public float crawlSpeed;
     public float sitWalkSpeed;
 
+	private CapsuleCollider2D col;
 
-    #region States
-    public PlayerStateMachine stateMachine { get; private set; }
+	#region ColliderSetting
+	private Vector2 idleColOffset = new Vector2(0f, 0f);
+	private Vector2 idleColSize = new Vector2(0.9f, 1.3f);
+	private Vector2 sitColOffset = new Vector2(0f, -0.1f);
+	private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
+	private Vector2 crawColOffset = new Vector2(0f, -0.2f);
+	private Vector2 crawColSize = new Vector2(2f, 0.9f);
+	#endregion
+
+	#region States
+	public PlayerStateMachine stateMachine { get; private set; }
     public Player_InputState inputState { get; private set; }
 
     public Player_IdleState idleState { get; private set; }
@@ -56,8 +66,10 @@ public class Player : Entity
     {
         base.Start();
 
-        // 게임 시작 시 초기 상태를 대기 상태(inputState)로 설정
-        stateMachine.Initialize(inputState);
+		col = GetComponent<CapsuleCollider2D>();
+
+		// 게임 시작 시 초기 상태를 대기 상태(inputState)로 설정
+		stateMachine.Initialize(inputState);
     }
 
     protected override void Update()
@@ -84,4 +96,25 @@ public class Player : Entity
     }
     public SurfaceType SurfaceType => GetSurfaceTypeUnderPlayer();
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+
+    public void SetIdleCollider()
+    {
+        col.direction = CapsuleDirection2D.Vertical;
+		col.offset = idleColOffset;
+		col.size = idleColSize;
+	}
+
+	public void SetSitCollider()
+	{
+        col.direction = CapsuleDirection2D.Vertical;
+		col.offset = sitColOffset;
+		col.size = sitColSize;
+	}
+
+	public void SetCrawCollider()
+	{
+        col.direction = CapsuleDirection2D.Horizontal;
+		col.offset = crawColOffset;
+		col.size = crawColSize;
+	}
 }

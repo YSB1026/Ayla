@@ -10,7 +10,8 @@ public class Player_SitState : PlayerState
     {
         base.Enter();
         player.SetZeroVelocity();
-    }
+        player.SetSitCollider();
+	}
 
     public override void Update()
     {
@@ -29,5 +30,6 @@ public class Player_SitState : PlayerState
     public override void Exit()
     {
         base.Exit();
-    }
+        player.SetIdleCollider();
+	}
 }

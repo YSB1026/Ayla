@@ -44,6 +44,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4373eb68e9ba84b91fcd98c2d57d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
-  soundManager: {fileID: 0}
-  sceneManager: {fileID: 0}

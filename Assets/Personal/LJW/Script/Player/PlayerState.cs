@@ -11,8 +11,8 @@ public class PlayerState
     protected float xInput;
     protected float yInput;
 
-    // 애니메이션 이벤트(Trigger)가 호출되었는지 여부
-    protected bool triggerCalled;
+	// 애니메이션 이벤트(Trigger)가 호출되었는지 여부
+	protected bool triggerCalled;
 
     // 생성자: 상태를 만들 때 플레이어, 상태머신, 애니메이션 Bool 이름을 설정
     public PlayerState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)

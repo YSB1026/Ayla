@@ -9,7 +9,8 @@ public class Player_CrawlState : PlayerState
     public override void Enter()
     {
         base.Enter();
-    }
+        player.SetCrawCollider();
+	}
 
     public override void Update()
     {
@@ -43,5 +44,6 @@ public class Player_CrawlState : PlayerState
     public override void Exit()
     {
         base.Exit();
-    }
+        player.SetIdleCollider();
+	}
 }

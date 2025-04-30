@@ -15,9 +15,13 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private List<AudioClip> bgmClips;
     private Dictionary<string, int> bgmDict = new();
 
-    [Header("Player SFX Clips")]//player sfx
-    [SerializeField] private List<AudioClip> playerSfxClips;
-    private Dictionary<string, int> playerSfxDict = new();
+    [Header("Player FootStep SFX Clips")]//player sfx
+    [SerializeField] private List<AudioClip> footstepForestClips;
+    [SerializeField] private List<AudioClip> footstepStoneClips;
+    [SerializeField] private List<AudioClip> footstepWoodClips;
+    private Dictionary<SurfaceType, List<AudioClip>> footstepDict = new();
+
+    //외에 플레이어 사운드 있으면 비슷한구조로
 
     [Header("Enemy SFX Clips")]//enemy sfx
     [SerializeField] private List<AudioClip> enemySfxClips;
@@ -53,10 +57,14 @@ public class SoundManager : MonoBehaviour
         //bgm
         #region BGM 
         bgmDict["MainTheme"] = 0;
+        bgmDict["ForestBGM"] = 1;
         #endregion
 
-        #region Player
-        playerSfxDict["Footstep_Forest"] = 0;
+        #region Player 
+        //playerSfxDict["Footstep_Forest"] = 0;
+        footstepDict[SurfaceType.Forest] = footstepForestClips;
+        footstepDict[SurfaceType.Stone] = footstepStoneClips;
+        footstepDict[SurfaceType.Wood] = footstepWoodClips;
         #endregion
 
         #region Enemy
@@ -149,16 +157,6 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #region Entity
-    public void PlayPlayerSFX(string key)
-    {
-        if (!playerSfxDict.TryGetValue(key, out int idx))
-        {
-            Debug.LogWarning($"[SoundManager] Player SFX '{key}' not found!");
-            return;
-        }
-        entitySource.PlayOneShot(playerSfxClips[idx]);
-    }
-
     public void PlayEnemySFX(string key)
     {
         if (!enemySfxDict.TryGetValue(key, out int idx))
@@ -171,21 +169,14 @@ public class SoundManager : MonoBehaviour
 
     public void PlayFootstep(SurfaceType type)
     {
-        switch (type)
+        if (!footstepDict.TryGetValue(type, out var clipList) || clipList.Count == 0)
         {
-            case SurfaceType.Forest:
-                PlayPlayerSFX("Footstep_Forest");
-                break;
-            case SurfaceType.Stone:
-                //PlayPlayerSFX("Footstep_Stone");
-                break;
-            case SurfaceType.Wood:
-                //PlayPlayerSFX("Footstep_Wood");
-                break;
-            default:
-                Debug.LogWarning("[SoundManager] - Something wrong with Ground Layer");
-                break;
+            Debug.LogWarning($"[SoundManager] footstep clips not found for {type}");
+            return;
         }
+
+        int randomIdx = Random.Range(0, clipList.Count);
+        entitySource.PlayOneShot(clipList[randomIdx]);
     }
     #endregion
 
