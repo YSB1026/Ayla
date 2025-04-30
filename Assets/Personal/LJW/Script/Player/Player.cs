@@ -10,7 +10,16 @@ public class Player : Entity
     public float crawlSpeed;
     public float sitWalkSpeed;
 
-	[HideInInspector] public CapsuleCollider2D col;
+	private CapsuleCollider2D col;
+
+	#region ColliderSetting
+	private Vector2 idleColOffset = new Vector2(0f, 0f);
+	private Vector2 idleColSize = new Vector2(0.9f, 1.3f);
+	private Vector2 sitColOffset = new Vector2(0f, -0.1f);
+	private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
+	private Vector2 crawColOffset = new Vector2(0f, -0.2f);
+	private Vector2 crawColSize = new Vector2(2f, 0.9f);
+	#endregion
 
 	#region States
 	public PlayerStateMachine stateMachine { get; private set; }
@@ -87,4 +96,25 @@ public class Player : Entity
     }
     public SurfaceType SurfaceType => GetSurfaceTypeUnderPlayer();
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+
+    public void SetIdleCollider()
+    {
+        col.direction = CapsuleDirection2D.Vertical;
+		col.offset = idleColOffset;
+		col.size = idleColSize;
+	}
+
+	public void SetSitCollider()
+	{
+        col.direction = CapsuleDirection2D.Vertical;
+		col.offset = sitColOffset;
+		col.size = sitColSize;
+	}
+
+	public void SetCrawCollider()
+	{
+        col.direction = CapsuleDirection2D.Horizontal;
+		col.offset = crawColOffset;
+		col.size = crawColSize;
+	}
 }
