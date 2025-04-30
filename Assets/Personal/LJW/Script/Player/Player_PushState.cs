@@ -1,0 +1,44 @@
+using UnityEngine;
+
+public class Player_PushState : PlayerState
+{
+	public Player_PushState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) 
+		: base(_player, _stateMachine, _animBoolName)
+	{
+	}
+
+	public override void Enter()
+	{
+		base.Enter();
+		hit = player.GetObjectHitInfo();
+		Debug.Log(hit.collider.gameObject.name);
+		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(false);
+	}
+
+	public override void Update()
+	{
+		base.Update();
+
+		if (Input.GetKeyDown(KeyCode.F) || !player.IsObjectDetected())
+			stateMachine.ChangeState(player.inputState);
+
+		hit.collider.gameObject.GetComponent<InteractiveObject>()?.MoveObject(player.facingDir);
+		player.transform.position += new Vector3(player.grabSpeed * player.facingDir * Time.deltaTime, 0, 0);
+
+		if (xInput < 0 && player.facingDir == 1)
+			stateMachine.ChangeState(player.pullState);
+
+		if (xInput > 0 && player.facingDir == -1)
+			stateMachine.ChangeState(player.pullState);
+
+		if (xInput == 0)
+			stateMachine.ChangeState(player.grabState);
+	}
+
+	public override void Exit()
+	{
+		base.Exit();
+		player.SetZeroVelocity();
+		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(true);
+	}
+}

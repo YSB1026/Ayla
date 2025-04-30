@@ -9,6 +9,7 @@ public class Player : Entity
     public float jumpForce;
     public float crawlSpeed;
     public float sitWalkSpeed;
+    public float grabSpeed;
 
 	private CapsuleCollider2D col;
 
@@ -34,6 +35,9 @@ public class Player : Entity
     public Player_StandState standState { get; private set; }
     public Player_SitWalkState sitWalkState { get; private set; }
     public Player_DeadState deadState { get; private set; }
+    public Player_GrabState grabState { get; private set; }
+    public Player_PullState pullState { get; private set; }
+    public Player_PushState pushState { get; private set; }
     #endregion
 
     public bool controlEnabled = true;
@@ -60,6 +64,9 @@ public class Player : Entity
         standState = new Player_StandState(this, stateMachine, "Stand");
         sitWalkState = new Player_SitWalkState(this, stateMachine, "SitWalk");
         deadState = new Player_DeadState(this, stateMachine, "Dead");
+        grabState = new Player_GrabState(this, stateMachine, "Grab");
+        pullState = new Player_PullState(this, stateMachine, "Pull");
+        pushState = new Player_PushState(this, stateMachine, "Push");
     }
 
     protected override void Start()
