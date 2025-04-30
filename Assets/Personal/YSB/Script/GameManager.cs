@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
 
     #region 참조 매니저
     //임시로 작성
-    //public PlayerManager playerManager;
-    public UIManager uiManager;
-    public SoundManager soundManager;
-    public CustomSceneManager sceneManager;
-    //public SkillManager skillManager;
+    //private PlayerManager playerManager;
+    private UIManager uiManager;
+    private SoundManager soundManager;
+    private CustomSceneManager sceneManager;
+    //private SkillManager skillManager;
     #endregion
 
     private void Awake()
@@ -61,14 +61,12 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Lobby:
-                soundManager.PlayBGM("MainTheme");
                 sceneManager.LoadScene("Lobby");
                 break;
             case GameState.Cutscene:
                 break;
             case GameState.InGame:
                 Time.timeScale = 1f;
-                soundManager.PlayBGM("MainTheme");//테스트용
                 break;
             case GameState.Respawn:
                 break;

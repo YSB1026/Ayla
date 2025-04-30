@@ -65,7 +65,7 @@ public class TestScirpts : MonoBehaviour
     {
         while (isWalking)
         {
-            SoundManager.Instance.PlayPlayerSFX("Walk");
+            //SoundManager.Instance.PlayPlayerSFX("Walk");
             yield return new WaitForSeconds(0.5f);
         }
     }

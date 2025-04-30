@@ -1411,7 +1411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3370404187993749887, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: bgmClips.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3370404187993749887, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: 'bgmClips.Array.data[0]'
@@ -1420,7 +1420,7 @@ PrefabInstance:
     - target: {fileID: 3370404187993749887, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: 'bgmClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: bc5ad9430fb483046ad75ba7ff63007e, type: 3}
+      objectReference: {fileID: 8300000, guid: 535a349f918052740ac64cdd35f62aaa, type: 3}
     - target: {fileID: 4654844049674288394, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: m_Name
       value: SoundManager

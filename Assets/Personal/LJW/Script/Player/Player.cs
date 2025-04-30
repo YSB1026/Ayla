@@ -10,8 +10,19 @@ public class Player : Entity
     public float crawlSpeed;
     public float sitWalkSpeed;
 
-    #region States
-    public PlayerStateMachine stateMachine { get; private set; }
+	private CapsuleCollider2D col;
+
+	#region ColliderSetting
+	private Vector2 idleColOffset = new Vector2(0f, 0f);
+	private Vector2 idleColSize = new Vector2(0.9f, 1.3f);
+	private Vector2 sitColOffset = new Vector2(0f, -0.1f);
+	private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
+	private Vector2 crawColOffset = new Vector2(0f, -0.2f);
+	private Vector2 crawColSize = new Vector2(2f, 0.9f);
+	#endregion
+
+	#region States
+	public PlayerStateMachine stateMachine { get; private set; }
     public Player_InputState inputState { get; private set; }
 
     public Player_IdleState idleState { get; private set; }
@@ -22,6 +33,7 @@ public class Player : Entity
     public Player_SitState sitState { get; private set; }
     public Player_StandState standState { get; private set; }
     public Player_SitWalkState sitWalkState { get; private set; }
+    public Player_DeadState deadState { get; private set; }
     #endregion
 
     public bool controlEnabled = true;
@@ -47,14 +59,17 @@ public class Player : Entity
         sitState = new Player_SitState(this, stateMachine, "Sit");
         standState = new Player_StandState(this, stateMachine, "Stand");
         sitWalkState = new Player_SitWalkState(this, stateMachine, "SitWalk");
+        deadState = new Player_DeadState(this, stateMachine, "Dead");
     }
 
     protected override void Start()
     {
         base.Start();
 
-        // 게임 시작 시 초기 상태를 대기 상태(inputState)로 설정
-        stateMachine.Initialize(inputState);
+		col = GetComponent<CapsuleCollider2D>();
+
+		// 게임 시작 시 초기 상태를 대기 상태(inputState)로 설정
+		stateMachine.Initialize(inputState);
     }
 
     protected override void Update()
@@ -66,6 +81,40 @@ public class Player : Entity
 
         stateMachine.currentState.Update();
     }
-
+    private SurfaceType GetSurfaceTypeUnderPlayer()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+        if (hit.collider != null)
+        {
+            Surface surface = hit.collider.GetComponent<Surface>();
+            if (surface != null)
+            {
+                return surface.surfaceType;
+            }
+        }
+        return SurfaceType.None;
+    }
+    public SurfaceType SurfaceType => GetSurfaceTypeUnderPlayer();
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+
+    public void SetIdleCollider()
+    {
+        col.direction = CapsuleDirection2D.Vertical;
+		col.offset = idleColOffset;
+		col.size = idleColSize;
+	}
+
+	public void SetSitCollider()
+	{
+        col.direction = CapsuleDirection2D.Vertical;
+		col.offset = sitColOffset;
+		col.size = sitColSize;
+	}
+
+	public void SetCrawCollider()
+	{
+        col.direction = CapsuleDirection2D.Horizontal;
+		col.offset = crawColOffset;
+		col.size = crawColSize;
+	}
 }
