@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Enemy_Light_MoveState : EnemyState
 {
+    private Transform player;
     private Enemy_Light enemyLight;
+    private int Enemy_moveDir;
 
     public Enemy_Light_MoveState(Enemy_Light _enemyLight, EnemyStateMachine stateMachine, string animBoolName)
         : base(_enemyLight, stateMachine, animBoolName)
@@ -14,16 +16,9 @@ public class Enemy_Light_MoveState : EnemyState
     {
         base.Enter();
     }
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
     public override void Update()
     {
         base.Update();
-        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDir, rb.linearVelocity.y);
 
         // 빛 안에 있으면 멈춤
         if (enemyLight.isInLight)
@@ -32,8 +27,9 @@ public class Enemy_Light_MoveState : EnemyState
             return;
         }
 
-        // 플레이어 방향으로 이동
-        MoveTowardsPlayer();
+        Vector2 dirToPlayer = (enemyLight.player.position - enemy.transform.position).normalized;
+        enemy.SetVelocity(dirToPlayer.x * enemy.moveSpeed, rb.linearVelocity.y);
+        enemy.FlipController(dirToPlayer.x);
 
         if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
         {
@@ -42,10 +38,9 @@ public class Enemy_Light_MoveState : EnemyState
         }
     }
 
-    private void MoveTowardsPlayer()
+    public override void Exit()
     {
-        if (enemyLight.player == null) return;
-
-        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDir, rb.linearVelocity.y);
+        base.Exit();
     }
+
 }

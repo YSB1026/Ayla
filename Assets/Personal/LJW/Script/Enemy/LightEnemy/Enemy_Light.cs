@@ -5,7 +5,6 @@ public class Enemy_Light : Enemy
     [Header("추가 정보")]
     public Transform player;
     public LayerMask lightLayer;
-    public float detectRadius = 0.5f;
 
     public bool isInLight { get; private set; }
 
