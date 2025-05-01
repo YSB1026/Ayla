@@ -6,12 +6,19 @@ public class InteractiveObject : MonoBehaviour
 
 	[SerializeField] private float moveSpeed;
 
+	private void Awake()
+	{
+		InitComponent();		
+	}
 	private void Start()
 	{
-		rb = GetComponent<Rigidbody2D>();
-
 		FreezeObject(true);
-	}	
+	}
+
+	private void InitComponent()
+	{
+		rb = GetComponent<Rigidbody2D>();
+	}
 
 	public void FreezeObject(bool isFreezed)//True이면 Rigidbody를 얼리고 false이면 Rigidbody를 푼다
 	{
