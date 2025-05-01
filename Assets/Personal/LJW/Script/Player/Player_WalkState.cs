@@ -19,13 +19,16 @@ public class Player_WalkState : PlayerState
     {
         base.Update();
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    stateMachine.ChangeState(player.jumpState);
-        //    return;
-        //}
+		//if (Input.GetKeyDown(KeyCode.Space))
+		//{
+		//    stateMachine.ChangeState(player.jumpState);
+		//    return;
+		//}
 
-        if (xInput != 0)
+		if (!player.IsGroundDetected())
+			stateMachine.ChangeState(player.airState);
+
+		if (xInput != 0)
         {
             player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
             PlayFootstepSound();

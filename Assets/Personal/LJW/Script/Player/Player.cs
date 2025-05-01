@@ -38,6 +38,7 @@ public class Player : Entity
     public Player_GrabState grabState { get; private set; }
     public Player_PullState pullState { get; private set; }
     public Player_PushState pushState { get; private set; }
+    public Player_AirState airState { get; private set; }
     #endregion
 
     public bool controlEnabled = true;
@@ -63,10 +64,11 @@ public class Player : Entity
         sitState = new Player_SitState(this, stateMachine, "Sit");
         standState = new Player_StandState(this, stateMachine, "Stand");
         sitWalkState = new Player_SitWalkState(this, stateMachine, "SitWalk");
-        deadState = new Player_DeadState(this, stateMachine, "Dead");
+        deadState = new Player_DeadState(this, stateMachine, "Die");
         grabState = new Player_GrabState(this, stateMachine, "Grab");
         pullState = new Player_PullState(this, stateMachine, "Pull");
         pushState = new Player_PushState(this, stateMachine, "Push");
+		airState = new Player_AirState(this, stateMachine, "Fall");
     }
 
     protected override void Start()
