@@ -19,8 +19,8 @@ public class Player_WalkState : PlayerState
     {
         base.Update();
 
-        if (!player.IsGroundDetected())
-            stateMachine.ChangeState(player.airState);
+        //if (!player.IsGroundDetected())
+        //    stateMachine.ChangeState(player.airState);
 
         if (xInput != 0)
         {

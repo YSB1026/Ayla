@@ -38,6 +38,7 @@ public class Player : Entity
     public Player_GrabState grabState { get; private set; }
     public Player_PullState pullState { get; private set; }
     public Player_PushState pushState { get; private set; }
+
     #endregion
 
     public bool controlEnabled = true;
