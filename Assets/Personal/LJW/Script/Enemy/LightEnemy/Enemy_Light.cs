@@ -50,6 +50,7 @@ public class Enemy_Light : Enemy
         UpdateSpeedBasedOnPlayerDistance();
     }
 
+    // 일정 거리안에서는 속도 증가 함수
     private void UpdateSpeedBasedOnPlayerDistance()
     {
         if (player == null) return;
@@ -67,6 +68,7 @@ public class Enemy_Light : Enemy
         }
     }
 
+    // 플레이어 감지 기지모
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
