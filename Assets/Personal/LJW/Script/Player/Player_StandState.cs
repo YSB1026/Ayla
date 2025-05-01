@@ -9,7 +9,6 @@ public class Player_StandState : PlayerState
     public override void Enter()
     {
         base.Enter();
-
         player.SetZeroVelocity();
     }
 

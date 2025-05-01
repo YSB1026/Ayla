@@ -57,4 +57,14 @@ public class PlayerState
         triggerCalled = true;
     }
 
+    #region FootStep Sound
+    public void PlayFootstepSound()
+    {
+        SoundManager.Instance.PlayFootstep(player.SurfaceType);
+    }
+    public void PlayCrawlingSound()
+    {
+        SoundManager.Instance.PlayCrawling(player.SurfaceType);
+    }
+    #endregion
 }
