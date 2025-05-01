@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,30 +12,38 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource envSource;
     [SerializeField] private AudioSource ambienceSource;
 
-    [Header("BGM Clips")]//bgm
+    [Header("BGM Clips")]
     [SerializeField] private List<AudioClip> bgmClips;
     private Dictionary<string, int> bgmDict = new();
 
-    [Header("Player FootStep SFX Clips")]//player sfx
+    #region Player
+    [Header("Player FootStep SFX Clips")]
     [SerializeField] private List<AudioClip> footstepForestClips;
     [SerializeField] private List<AudioClip> footstepStoneClips;
     [SerializeField] private List<AudioClip> footstepWoodClips;
     private Dictionary<SurfaceType, List<AudioClip>> footstepDict = new();
 
-    //외에 플레이어 사운드 있으면 비슷한구조로
+    [Header("Player Crawling SFX Clips")]
+    [SerializeField] private List<AudioClip> crawlingForestClips;
+    [SerializeField] private List<AudioClip> crawlingStoneClips;
+    [SerializeField] private List<AudioClip> crawlingWoodClips;
+    private Dictionary<SurfaceType, List<AudioClip>> crawlingDict = new();
 
-    [Header("Enemy SFX Clips")]//enemy sfx
+    private enum EntitySoundType { Footstep, Crawling }
+    private HashSet<EntitySoundType> playingSounds = new();
+    #endregion
+
+    [Header("Enemy SFX Clips")]
     [SerializeField] private List<AudioClip> enemySfxClips;
     private Dictionary<string, int> enemySfxDict = new();
 
-    [Header("Ambience SFX Clips")]//bgm 배경으로 깔리는 sfx
+    [Header("Ambience SFX Clips")]
     [SerializeField] private List<AudioClip> ambienceSfxClips;
     private Dictionary<string, int> ambienceSfxDict = new();
 
-    [Header("Environment SFX Clips")]//천둥같은 sfx
+    [Header("Environment SFX Clips")]
     [SerializeField] private List<AudioClip> envSfxClips;
     private Dictionary<string, int> envSfxDict = new();
-
 
     private void Awake()
     {
@@ -52,62 +61,22 @@ public class SoundManager : MonoBehaviour
 
     private void InitializeDictionaries()
     {
-        //List 순서에 맞게 Key - Value 설정해주세요 :)
-
-        //bgm
-        #region BGM 
         bgmDict["MainTheme"] = 0;
         bgmDict["ForestBGM"] = 1;
-        #endregion
 
-        #region Player 
-        //playerSfxDict["Footstep_Forest"] = 0;
         footstepDict[SurfaceType.Forest] = footstepForestClips;
         footstepDict[SurfaceType.Stone] = footstepStoneClips;
         footstepDict[SurfaceType.Wood] = footstepWoodClips;
-        #endregion
 
-        #region Enemy
-        //enemySfxDict["Walk"] = 0;
-        #endregion
+        crawlingDict[SurfaceType.Forest] = crawlingForestClips;
+        crawlingDict[SurfaceType.Stone] = crawlingStoneClips;
+        crawlingDict[SurfaceType.Wood] = crawlingWoodClips;
 
-        #region Environment
         envSfxDict["Thunder1"] = 0;
         envSfxDict["Thunder2"] = 1;
-        #endregion
 
-        #region ambience
         ambienceSfxDict["ForestAmbience"] = 0;
-        #endregion
-
-        /*
-        //for (int i = 0; i < bgmClips.Count; i++)
-        //{
-        //    bgmDict[bgmClips[i].name] = i;
-        //}
-
-        //for (int i = 0; i < playerSfxClips.Count; i++)
-        //{
-        //    playerSfxDict[playerSfxClips[i].name] = i;
-        //}
-
-        //for (int i = 0; i < enemySfxClips.Count; i++)
-        //{
-        //    enemySfxDict[enemySfxClips[i].name] = i;
-        //}
-
-        //for (int i = 0; i < envSfxClips.Count; i++)
-        //{
-        //    envSfxDict[envSfxClips[i].name] = i;
-        //}
-        */
     }
-
-    //public void StopAllSFX()
-    //{
-    //    bgmSource.Stop();
-    //    entitySource.Stop();
-    //}
 
     #region BGM
     public void PlayBGM(string key)
@@ -119,7 +88,6 @@ public class SoundManager : MonoBehaviour
         }
 
         StopBGM();
-
         bgmSource.clip = bgmClips[idx];
         bgmSource.loop = true;
         bgmSource.Play();
@@ -142,8 +110,7 @@ public class SoundManager : MonoBehaviour
         }
 
         StopAmbience();
-
-        ambienceSource.clip = bgmClips[idx];
+        ambienceSource.clip = ambienceSfxClips[idx];
         ambienceSource.loop = true;
         ambienceSource.Play();
     }
@@ -153,7 +120,6 @@ public class SoundManager : MonoBehaviour
         if (ambienceSource.isPlaying && ambienceSource.loop)
             ambienceSource.Stop();
     }
-
     #endregion
 
     #region Entity
@@ -169,14 +135,38 @@ public class SoundManager : MonoBehaviour
 
     public void PlayFootstep(SurfaceType type)
     {
-        if (!footstepDict.TryGetValue(type, out var clipList) || clipList.Count == 0)
+        if (!footstepDict.TryGetValue(type, out var clipList)) return;
+        PlayPlayerSound(EntitySoundType.Footstep, clipList);
+    }
+
+    public void PlayCrawling(SurfaceType type)
+    {
+        if (!crawlingDict.TryGetValue(type, out var clipList)) return;
+        PlayPlayerSound(EntitySoundType.Crawling, clipList);
+    }
+
+    private void PlayPlayerSound(EntitySoundType soundType, List<AudioClip> clips)
+    {
+        if (playingSounds.Contains(soundType)) return;
+
+        if (clips == null || clips.Count == 0)
         {
-            Debug.LogWarning($"[SoundManager] footstep clips not found for {type}");
+            Debug.LogWarning($"[SoundManager] No clips found for {soundType}");
             return;
         }
 
-        int randomIdx = Random.Range(0, clipList.Count);
-        entitySource.PlayOneShot(clipList[randomIdx]);
+        int randomIdx = Random.Range(0, clips.Count);
+        AudioClip clip = clips[randomIdx];
+
+        entitySource.PlayOneShot(clip);
+        StartCoroutine(WaitForSoundEnd(clip.length, soundType));
+    }
+
+    private IEnumerator WaitForSoundEnd(float clipLength, EntitySoundType type)
+    {
+        playingSounds.Add(type);
+        yield return new WaitForSeconds(clipLength);
+        playingSounds.Remove(type);
     }
     #endregion
 
@@ -191,5 +181,4 @@ public class SoundManager : MonoBehaviour
         envSource.PlayOneShot(envSfxClips[idx]);
     }
     #endregion
-
 }
