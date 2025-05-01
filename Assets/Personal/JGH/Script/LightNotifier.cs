@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+
 [RequireComponent(typeof(MeshFilter))]
 public class LightMeshDetector : MonoBehaviour
 {

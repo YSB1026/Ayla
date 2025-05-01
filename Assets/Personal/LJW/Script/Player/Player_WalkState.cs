@@ -19,19 +19,20 @@ public class Player_WalkState : PlayerState
     {
         base.Update();
 
-        //if (!player.IsGroundDetected())
-        //    stateMachine.ChangeState(player.airState);
 
-        if (xInput != 0)
+		if (!player.IsGroundDetected())
+			stateMachine.ChangeState(player.airState);
+
+		if (xInput != 0)
         {
             player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
             PlayFootstepSound();
         }
 
-        // YSB ÄÚµå ¼öÁ¤ ÇÔ.
-        if (Input.GetKey(KeyCode.LeftShift)) //´Ş¸®±â
+        // YSB ì½”ë“œ ìˆ˜ì • í•¨.
+        if (Input.GetKey(KeyCode.LeftShift)) //ë‹¬ë¦¬ê¸°
             stateMachine.ChangeState(player.runState);
-        else if (Input.GetKeyDown(KeyCode.Space)) //Á¡ÇÁ
+        else if (Input.GetKeyDown(KeyCode.Space)) //ì í”„
             stateMachine.ChangeState(player.jumpState);
         else if (xInput == 0 || player.IsWallDetected())//idle(input)
             stateMachine.ChangeState(player.inputState);

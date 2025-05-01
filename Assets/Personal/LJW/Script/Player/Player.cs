@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    [Header("ÀÌµ¿ Á¤º¸")]
+    [Header("ì´ë™ ì •ë³´")]
     public float moveSpeed;
     public float runSpeed;
     public float jumpForce;
@@ -38,6 +38,7 @@ public class Player : Entity
     public Player_GrabState grabState { get; private set; }
     public Player_PullState pullState { get; private set; }
     public Player_PushState pushState { get; private set; }
+    public Player_AirState airState { get; private set; }
 
     #endregion
 
@@ -52,7 +53,7 @@ public class Player : Entity
     {
         base.Awake();
 
-        // »óÅÂ ¸Ó½Å ÀÎ½ºÅÏ½º »ı¼º
+        // ìƒíƒœ ë¨¸ì‹  ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
         stateMachine = new PlayerStateMachine();
         inputState = new Player_InputState(this, stateMachine, "Idle");
 
@@ -64,10 +65,11 @@ public class Player : Entity
         sitState = new Player_SitState(this, stateMachine, "Sit");
         standState = new Player_StandState(this, stateMachine, "Stand");
         sitWalkState = new Player_SitWalkState(this, stateMachine, "SitWalk");
-        deadState = new Player_DeadState(this, stateMachine, "Dead");
+        deadState = new Player_DeadState(this, stateMachine, "Die");
         grabState = new Player_GrabState(this, stateMachine, "Grab");
         pullState = new Player_PullState(this, stateMachine, "Pull");
         pushState = new Player_PushState(this, stateMachine, "Push");
+		airState = new Player_AirState(this, stateMachine, "Fall");
     }
 
     protected override void Start()
@@ -76,7 +78,7 @@ public class Player : Entity
 
 		col = GetComponent<CapsuleCollider2D>();
 
-		// °ÔÀÓ ½ÃÀÛ ½Ã ÃÊ±â »óÅÂ¸¦ ´ë±â »óÅÂ(inputState)·Î ¼³Á¤
+		// ê²Œì„ ì‹œì‘ ì‹œ ì´ˆê¸° ìƒíƒœë¥¼ ëŒ€ê¸° ìƒíƒœ(inputState)ë¡œ ì„¤ì •
 		stateMachine.Initialize(inputState);
     }
 

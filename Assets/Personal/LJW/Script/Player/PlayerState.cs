@@ -11,7 +11,7 @@ public class PlayerState
     protected float xInput;
     protected float yInput;
 
-    protected RaycastHit2D hit;
+	protected RaycastHit2D hit;
 
 	// 애니메이션 이벤트(Trigger)가 호출되었는지 여부
 	protected bool triggerCalled;
