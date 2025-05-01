@@ -19,24 +19,20 @@ public class Player_WalkState : PlayerState
     {
         base.Update();
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    stateMachine.ChangeState(player.jumpState);
-        //    return;
-        //}
 
-        if (xInput != 0)
+		if (!player.IsGroundDetected())
+			stateMachine.ChangeState(player.airState);
+
+		if (xInput != 0)
         {
             player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
             PlayFootstepSound();
         }
-        //else //¾Æ·¡ else if¹®ÀÌ¶û Áßº¹ YSB ÄÚµå ¼öÁ¤ÇÔ.
-        //    stateMachine.ChangeState(player.inputState);
 
-        // YSB ÄÚµå ¼öÁ¤ ÇÔ.
-        if (Input.GetKey(KeyCode.LeftShift)) //´Ş¸®±â
+        // YSB ì½”ë“œ ìˆ˜ì • í•¨.
+        if (Input.GetKey(KeyCode.LeftShift)) //ë‹¬ë¦¬ê¸°
             stateMachine.ChangeState(player.runState);
-        else if (Input.GetKeyDown(KeyCode.Space)) //Á¡ÇÁ
+        else if (Input.GetKeyDown(KeyCode.Space)) //ì í”„
             stateMachine.ChangeState(player.jumpState);
         else if (xInput == 0 || player.IsWallDetected())//idle(input)
             stateMachine.ChangeState(player.inputState);
@@ -44,22 +40,7 @@ public class Player_WalkState : PlayerState
 
     public override void Exit()
     {
-        //SoundManager.Instance.PlayFootstep(player.SurfaceType);
         base.Exit();
         footstepTimer = 0f;
     }
-
-    #region FootStep Sound
-    private void PlayFootstepSound()
-    {
-        footstepTimer -= Time.deltaTime;
-
-        if (footstepTimer <= 0f) // ¿òÁ÷ÀÏ ¶§¸¸ Àç»ı
-        {
-            SurfaceType surface = player.SurfaceType;
-            //SoundManager.Instance.PlayFootstep(surface);
-            footstepTimer = footstepInterval;
-        }
-    }
-    #endregion
 }

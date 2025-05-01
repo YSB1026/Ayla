@@ -11,7 +11,7 @@ public class PlayerState
     protected float xInput;
     protected float yInput;
 
-    protected RaycastHit2D hit;
+	protected RaycastHit2D hit;
 
 	// 애니메이션 이벤트(Trigger)가 호출되었는지 여부
 	protected bool triggerCalled;
@@ -57,4 +57,14 @@ public class PlayerState
         triggerCalled = true;
     }
 
+    #region FootStep Sound
+    public void PlayFootstepSound()
+    {
+        SoundManager.Instance.PlayFootstep(player.SurfaceType);
+    }
+    public void PlayCrawlingSound()
+    {
+        SoundManager.Instance.PlayCrawling(player.SurfaceType);
+    }
+    #endregion
 }
