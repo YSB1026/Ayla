@@ -23,23 +23,26 @@ public class Player_JumpState : PlayerState
         if (xInput != 0)
             player.SetVelocity(player.moveSpeed * 0.8f * xInput, rb.linearVelocityY);
 
-        // 하강
-        if (isJumping)
-        {
-            if (rb.linearVelocity.y < 0)
-            {
-                isJumping = false;
-            }
-            return; // isJumping이면 착지 판정 무시
-        }
+        if (rb.linearVelocity.y < 0)
+            stateMachine.ChangeState(player.airState);
 
-        // 땅 체크
-        if (player.IsGroundDetected())
-        {
-            stateMachine.ChangeState(player.idleState);
-        }
+		// 하강
+			/*if (isJumping)
+			{
+				if (rb.linearVelocity.y < 0)
+				{
+					isJumping = false;
+				}
+				return; // isJumping이면 착지 판정 무시
+			}*/
 
-    }
+			// 땅 체크
+			/*if (player.IsGroundDetected())
+			{
+				stateMachine.ChangeState(player.idleState);
+			}*/
+
+	}
 
     public override void Exit()
     {

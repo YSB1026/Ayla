@@ -15,7 +15,10 @@ public class Player_RunState : PlayerState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+		if (!player.IsGroundDetected())
+			stateMachine.ChangeState(player.airState);
+
+		if (Input.GetKeyDown(KeyCode.Space))
             stateMachine.ChangeState(player.jumpState);
 
         player.SetVelocity(xInput * player.runSpeed, rb.linearVelocityY);
