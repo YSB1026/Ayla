@@ -33,8 +33,8 @@ Material:
     - _Direction: 1
     - _Fade: 0
     - _FadeAmount: 1
-    - _Height: 0.47
-    - _Intensity: 0.0013
+    - _Height: 0.2
+    - _Intensity: 0
     - _OnlyShadow: 0
     - _Quality: 3.97
     - _Soft: 0
