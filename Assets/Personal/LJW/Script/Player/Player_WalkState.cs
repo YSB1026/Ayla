@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Player_WalkState : PlayerState
 {
+    private float footstepTimer;
+    private float footstepInterval = 0.45f;
+
     public Player_WalkState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
@@ -9,11 +12,15 @@ public class Player_WalkState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        footstepTimer = 0f;
     }
 
     public override void Update()
     {
         base.Update();
+
+        if (!player.IsGroundDetected())
+            stateMachine.ChangeState(player.airState);
 
         if (xInput != 0)
         {
@@ -33,5 +40,6 @@ public class Player_WalkState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        footstepTimer = 0f;
     }
 }
