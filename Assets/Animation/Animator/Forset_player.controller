@@ -529,24 +529,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Grab
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Pull
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Push
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -646,8 +628,7 @@ AnimatorState:
   m_Name: push
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 4435189139362478109}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -822,8 +803,7 @@ AnimatorState:
   m_Name: pull
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -8262033635132485113}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -895,7 +875,7 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2186610152950704194}
-    m_Position: {x: 310, y: 620, z: 0}
+    m_Position: {x: 690, y: -80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4359863252795211530}
     m_Position: {x: 300, y: 10, z: 0}
@@ -916,7 +896,7 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6682693051040037444}
-    m_Position: {x: 310, y: 560, z: 0}
+    m_Position: {x: 690, y: -30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5041084363814360842}
     m_Position: {x: 460, y: 230, z: 0}
@@ -925,10 +905,7 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -812165734843173214}
-    m_Position: {x: 720, y: 620, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 8960509005275860289}
-    m_Position: {x: 310, y: 490, z: 0}
+    m_Position: {x: 350, y: 490, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
@@ -937,9 +914,6 @@ AnimatorStateMachine:
   - {fileID: 6853140022952611311}
   - {fileID: 2719791149227420873}
   - {fileID: -4148360208546656958}
-  - {fileID: 1744166150246506169}
-  - {fileID: -3409100402793626890}
-  - {fileID: 198065893470197180}
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 0, y: 0, z: 0}
