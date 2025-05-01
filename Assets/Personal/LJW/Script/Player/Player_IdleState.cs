@@ -22,10 +22,7 @@ public class Player_IdleState : PlayerState
             return;
         }
 
-        if (xInput == player.facingDir && player.IsWallDetected())
-            return;
-
-        if (xInput != 0)
+        if (xInput != 0 && !player.IsWallDetected())
             stateMachine.ChangeState(player.walkState);
     }
 
