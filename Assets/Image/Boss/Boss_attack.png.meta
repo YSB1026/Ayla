@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 0ba360b50b992ed44a599e661a9da797
+guid: ef30ebe6e122c614b94c3066be4e2609
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5100120550573919780
-    second: Boss_idle_0
+      213: 1841555500142569212
+    second: Boss_attack_0
   - first:
-      213: -1399601623187779255
-    second: Boss_idle_1
+      213: -131953746362460905
+    second: Boss_attack_1
   - first:
-      213: 7755866159424499840
-    second: Boss_idle_2
+      213: -3205947046700173849
+    second: Boss_attack_2
   - first:
-      213: -923624157603757574
-    second: Boss_idle_3
+      213: 5037907476814582778
+    second: Boss_attack_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -161,12 +161,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_idle_0
+      name: Boss_attack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 33
+        width: 38
         height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -176,19 +176,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd13f5f716bb839b0800000000000000
-      internalID: -5100120550573919780
+      spriteID: cf62a2c68f48e8910800000000000000
+      internalID: 1841555500142569212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_idle_1
+      name: Boss_attack_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 38
         y: 0
-        width: 33
+        width: 38
         height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -198,19 +198,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 94115d63dbd939ce0800000000000000
-      internalID: -1399601623187779255
+      spriteID: 715984d44c43b2ef0800000000000000
+      internalID: -131953746362460905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_idle_2
+      name: Boss_attack_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 76
         y: 0
-        width: 33
+        width: 38
         height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -220,19 +220,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08078fdfd2f52ab60800000000000000
-      internalID: 7755866159424499840
+      spriteID: 7e539b895203283d0800000000000000
+      internalID: -3205947046700173849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_idle_3
+      name: Boss_attack_3
       rect:
         serializedVersion: 2
-        x: 99
+        x: 114
         y: 0
-        width: 33
+        width: 38
         height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -242,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: af10f04e8b0ae23f0800000000000000
-      internalID: -923624157603757574
+      spriteID: af351de782e3ae540800000000000000
+      internalID: 5037907476814582778
       vertices: []
       indices: 
       edges: []
@@ -252,7 +252,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e90a960b22cf6d04c8694cf9dd868177
+    spriteID: 5c8cf4e73a78f6e49b34b2dfd28c9b5d
     internalID: 0
     vertices: []
     indices: 
@@ -262,10 +262,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Boss_idle_0: -5100120550573919780
-      Boss_idle_1: -1399601623187779255
-      Boss_idle_2: 7755866159424499840
-      Boss_idle_3: -923624157603757574
+      Boss_attack_0: 1841555500142569212
+      Boss_attack_1: -131953746362460905
+      Boss_attack_2: -3205947046700173849
+      Boss_attack_3: 5037907476814582778
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
