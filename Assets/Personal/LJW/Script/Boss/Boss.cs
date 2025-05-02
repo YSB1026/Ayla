@@ -3,14 +3,18 @@ using UnityEngine;
 public class Boss : Entity
 {
     public Transform player;
+
     [Header("이동 정보")]
-    public float moveSpeed = 1f;
+    public float moveSpeed;
+    public float idleTime;
+    // private float defaultMoveSpeed;
 
     #region States
     public BossStateMachine stateMachine { get; private set; }
     public Boss_IdleState idleState {  get; private set; }
     public Boss_WalkState walkState { get; private set; }
     public Boss_RunState runState { get; private set; }
+    public Boss_AttackState attackState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -21,6 +25,8 @@ public class Boss : Entity
         idleState = new Boss_IdleState(this, stateMachine, "Idle");
         walkState = new Boss_WalkState(this, stateMachine, "Walk");
         runState = new Boss_RunState(this, stateMachine, "Run");
+        attackState = new Boss_AttackState(this, stateMachine, "Attack");
+        // defaultMoveSpeed = moveSpeed;
     }
 
     protected override void Start()

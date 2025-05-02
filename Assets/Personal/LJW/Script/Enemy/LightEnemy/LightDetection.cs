@@ -10,6 +10,10 @@ public class LightDetection : MonoBehaviour
     public Enemy_Light enemy;           // 빛 감지 대상
     private bool enemyDetected = false; // 감지 상태 저장
 
+    // 과부화 방지
+    private float lightCheckCooldown = 0.1f;
+    private float lastCheckTime = 0f;
+
     void Start()
     {
         lightMesh = GetComponent<MeshFilter>().mesh;
@@ -22,6 +26,9 @@ public class LightDetection : MonoBehaviour
 
     void Update()
     {
+        if (Time.time - lastCheckTime < lightCheckCooldown) return;
+        lastCheckTime = Time.time;
+
         if (enemy == null || lightMesh == null) return;
 
         // 월드 좌표로 변환
