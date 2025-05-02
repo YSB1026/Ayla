@@ -12,6 +12,7 @@ public class Player_PushState : PlayerState
 		base.Enter();
 		hit = player.GetObjectHitInfo();
 		Debug.Log(hit.collider.gameObject.name);
+		hit.collider.gameObject.GetComponent<InteractiveObject>()?.SetTrigger(false);
 		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(false);
 	}
 
@@ -19,19 +20,16 @@ public class Player_PushState : PlayerState
 	{
 		base.Update();
 
+		hit.collider.gameObject.GetComponent<InteractiveObject>()?.MoveObject(player.facingDir);
+
+		player.transform.position += new Vector3(player.grabSpeed * player.facingDir * Time.deltaTime, 0, 0);
 		if (Input.GetKeyDown(KeyCode.F) || !player.IsObjectDetected())
 			stateMachine.ChangeState(player.inputState);
-
-		hit.collider.gameObject.GetComponent<InteractiveObject>()?.MoveObject(player.facingDir);
-		player.transform.position += new Vector3(player.grabSpeed * player.facingDir * Time.deltaTime, 0, 0);
-
-		if (xInput < 0 && player.facingDir == 1)
+		else if (xInput < 0 && player.facingDir == 1)
 			stateMachine.ChangeState(player.pullState);
-
-		if (xInput > 0 && player.facingDir == -1)
+		else if (xInput > 0 && player.facingDir == -1)
 			stateMachine.ChangeState(player.pullState);
-
-		if (xInput == 0)
+		else if (xInput == 0)
 			stateMachine.ChangeState(player.grabState);
 	}
 
@@ -39,6 +37,7 @@ public class Player_PushState : PlayerState
 	{
 		base.Exit();
 		player.SetZeroVelocity();
+		hit.collider.gameObject.GetComponent<InteractiveObject>()?.SetTrigger(true);
 		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(true);
 	}
 }

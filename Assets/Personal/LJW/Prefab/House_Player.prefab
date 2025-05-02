@@ -236,7 +236,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ayla: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 6237841828521876274}
   Camera: {fileID: 0}
   targets:
   - {fileID: 7429834073741896695}
@@ -356,9 +356,13 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
   moveSpeed: 5
   runSpeed: 12
   jumpForce: 10
   crawlSpeed: 2
   sitWalkSpeed: 3
+  grabSpeed: 0
   controlEnabled: 1
