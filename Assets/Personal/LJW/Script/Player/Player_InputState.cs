@@ -22,22 +22,16 @@ public class Player_InputState : PlayerState
 
         if (Input.GetKeyDown(KeyCode.C))
             stateMachine.ChangeState(player.deadState);
-
-		if (!player.IsGroundDetected())
+		else if (!player.IsGroundDetected())
             stateMachine.ChangeState(player.airState);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space))
             stateMachine.ChangeState(player.jumpState);
-
         else if (Input.GetKeyDown(KeyCode.F) && player.IsObjectDetected())
             stateMachine.ChangeState(player.grabState);
-
         else if (Input.GetKey(KeyCode.LeftShift) && xInput != 0)
             stateMachine.ChangeState(player.runState);
-
         else if (Input.GetKeyDown(KeyCode.S))
             stateMachine.ChangeState(player.sitState);
-
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             stateMachine.ChangeState(player.walkState);
     }

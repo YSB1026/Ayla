@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
 
+    public Vector3 savePont;
+
     #region 참조 매니저
     //임시로 작성
     //private PlayerManager playerManager;
@@ -119,8 +121,16 @@ public class GameManager : MonoBehaviour
     
     public void RespawnPlayer()
     {
-        //실제 리스폰 로직은 플레이어 매니저에서 Respawn을 구현하는게 좋을거같아요
-        //playerManager.Respawn();
+
+		if (SceneManager.GetActiveScene().name == "Forest")
+        {
+            SpawnManager.Instance.PlayerSpawn(savePont, PlayerType.FOREST);
+        }
+        else if(SceneManager.GetActiveScene().name == "House")
+        {
+			SpawnManager.Instance.PlayerSpawn(savePont, PlayerType.HOUSE);
+        }
+
         ChangeState(GameState.InGame);
     }
 

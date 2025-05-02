@@ -18,4 +18,12 @@ public class Player_AnimationTrigger : MonoBehaviour
     {
         player.PlayCrawlingSound();
     }
+
+    private void DeadAnimtionEndEvent()
+    {
+        /*GameManager.Instance.RespawnPlayer();
+        Destroy(this.gameObject);*/
+        player.transform.position = GameManager.Instance.savePont;
+        player.stateMachine.ChangeState(player.inputState);
+    }
 }

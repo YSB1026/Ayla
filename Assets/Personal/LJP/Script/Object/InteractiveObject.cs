@@ -3,8 +3,10 @@ using UnityEngine;
 public class InteractiveObject : MonoBehaviour
 {
 	private Rigidbody2D rb;
+	private Collider2D col;
 
-	[SerializeField] private float moveSpeed;
+	[SerializeField] private float moveSpeed = 3f;
+	private bool defualtTrigger;
 
 	private void Awake()
 	{
@@ -12,12 +14,14 @@ public class InteractiveObject : MonoBehaviour
 	}
 	private void Start()
 	{
+		defualtTrigger = col.isTrigger;
 		FreezeObject(true);
 	}
 
 	private void InitComponent()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		col = GetComponent<Collider2D>();
 	}
 
 	public void FreezeObject(bool isFreezed)//True이면 Rigidbody를 얼리고 false이면 Rigidbody를 푼다
@@ -28,8 +32,16 @@ public class InteractiveObject : MonoBehaviour
 		}
 		else
 		{
-			rb.constraints = RigidbodyConstraints2D.None;
+			rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
+	}
+
+	public void SetTrigger(bool _isTrigger)
+	{
+		if(_isTrigger)
+			col.isTrigger = defualtTrigger;
+		else 
+			col.isTrigger = _isTrigger;
 	}
 
 	public void MoveObject(float moveDir)//moveDir방향으로 오브젝트를 움직인다
