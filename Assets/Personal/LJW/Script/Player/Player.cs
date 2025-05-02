@@ -106,8 +106,8 @@ public class Player : Entity
     }
     public SurfaceType SurfaceType => GetSurfaceTypeUnderPlayer();
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
-    public void PlayFootstepSound() => stateMachine.currentState.PlayFootstepSound();
 
+    public void PlayFootstepSound() => stateMachine.currentState.PlayFootstepSound();
     public void PlayCrawlingSound() => stateMachine.currentState.PlayCrawlingSound();
 
     public void SetIdleCollider()
