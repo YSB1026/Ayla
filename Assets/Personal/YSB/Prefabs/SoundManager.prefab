@@ -45,7 +45,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -191,12 +191,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c05de95bc374c734e844bca72c58d780, type: 3}
   - {fileID: 8300000, guid: c05de95bc374c734e844bca72c58d780, type: 3}
   - {fileID: 8300000, guid: 76be1b3e91b2345429a216d3a9223595, type: 3}
-  footstepStoneClips: []
+  footstepStoneClips:
+  - {fileID: 8300000, guid: 61af47b86d8d5804aa67cf9672c9862e, type: 3}
+  - {fileID: 8300000, guid: 3de217631d48b9748a0cd103fba9f26c, type: 3}
+  - {fileID: 8300000, guid: 54a81260130cb564fa36897786e193e8, type: 3}
+  - {fileID: 8300000, guid: eb8f19796d364e34b87f46b686811387, type: 3}
+  - {fileID: 8300000, guid: ee2335cbecdf57942b5216f00ef7b99e, type: 3}
   footstepWoodClips:
   - {fileID: 8300000, guid: b973130a7cbf0944cb2aff0a08a0b915, type: 3}
   - {fileID: 8300000, guid: 363e75cfb674cec46a7a83fd218a8f84, type: 3}
   - {fileID: 8300000, guid: fd54520ab43f8e2458e8a3b23eb0008b, type: 3}
   - {fileID: 8300000, guid: 768426097689dbe4fa4a1bd564fd1d85, type: 3}
+  - {fileID: 8300000, guid: 25c383240e4bd79408b2fab86e0b0d0c, type: 3}
   crawlingForestClips:
   - {fileID: 8300000, guid: f897fbf73ca3479458ce4ee269897270, type: 3}
   - {fileID: 8300000, guid: cb74ea654ed25d34ebf24ff1191d59f3, type: 3}
@@ -253,7 +259,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -382,7 +388,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -511,8 +517,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1
+  m_Volume: 0.1
+  m_Pitch: 2.5
   Loop: 0
   Mute: 0
   Spatialize: 0
