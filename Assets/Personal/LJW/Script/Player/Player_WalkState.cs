@@ -1,10 +1,8 @@
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Player_WalkState : PlayerState
 {
-    private float footstepTimer;
-    private float footstepInterval = 0.45f;
-
     public Player_WalkState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
@@ -12,21 +10,15 @@ public class Player_WalkState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        footstepTimer = 0f;
     }
 
     public override void Update()
     {
         base.Update();
 
-
-		if (!player.IsGroundDetected())
-			stateMachine.ChangeState(player.airState);
-
 		if (xInput != 0)
         {
             player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
-            PlayFootstepSound();
         }
 
         // YSB 코드 수정 함.
@@ -36,11 +28,12 @@ public class Player_WalkState : PlayerState
             stateMachine.ChangeState(player.jumpState);
         else if (xInput == 0 || player.IsWallDetected())//idle(input)
             stateMachine.ChangeState(player.inputState);
+        else if (!player.IsGroundDetected())
+            stateMachine.ChangeState(player.airState);
     }
 
     public override void Exit()
     {
         base.Exit();
-        footstepTimer = 0f;
     }
 }

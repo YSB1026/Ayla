@@ -67,6 +67,7 @@ public class SoundManager : MonoBehaviour
         footstepDict[SurfaceType.Forest] = footstepForestClips;
         footstepDict[SurfaceType.Stone] = footstepStoneClips;
         footstepDict[SurfaceType.Wood] = footstepWoodClips;
+        footstepDict[SurfaceType.Stair] = footstepStoneClips;
 
         crawlingDict[SurfaceType.Forest] = crawlingForestClips;
         crawlingDict[SurfaceType.Stone] = crawlingStoneClips;
