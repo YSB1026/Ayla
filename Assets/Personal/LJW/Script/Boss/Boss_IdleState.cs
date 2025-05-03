@@ -9,11 +9,17 @@ public class Boss_IdleState : BossState
     public override void Enter()
     {
         base.Enter();
+        stateTimer = boss.idleTime; // idle 유지 시간
     }
 
     public override void Update()
     {
         base.Update();
+
+        if (stateTimer <= 0)
+        {
+            stateMachine.ChangeState(boss.walkState);
+        }
     }
 
     public override void Exit()
