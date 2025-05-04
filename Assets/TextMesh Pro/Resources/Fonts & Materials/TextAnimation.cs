@@ -1,12 +1,12 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI; // 레거시 Text 컴포넌트를 위한 네임스페이스
 
-public class TypewriterEffect : MonoBehaviour
+public class TypewriterEffectLegacy : MonoBehaviour
 {
     public float typingSpeed = 0.05f;          // 일반 글자 출력 속도
     public float lineBreakDelay = 0.3f;        // 줄바꿈(\n) 시 대기 시간
-    public TMP_Text textComponent;
+    public Text textComponent;                 // TMP_Text 대신 레거시 Text 사용
     [TextArea] public string fullText;
 
     private Coroutine typingCoroutine;
