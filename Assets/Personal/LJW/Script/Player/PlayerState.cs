@@ -42,6 +42,15 @@ public class PlayerState
     {
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
+
+        if (player.SurfaceType == SurfaceType.Stair)
+        {
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = 3;
+        }
     }
 
     // 상태에서 나갈 때 호출되는 함수

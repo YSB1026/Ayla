@@ -14,6 +14,15 @@ public class Boss_WalkState : BossState
     public override void Update()
     {
         base.Update();
+
+        boss.SetVelocity(boss.moveSpeed * boss.facingDir, rb.linearVelocity.y);
+
+        if (!boss.IsGroundDetected())
+        {
+            boss.Flip();
+            stateMachine.ChangeState(boss.idleState);
+        }
+
     }
 
     public override void Exit()

@@ -1,15 +1,14 @@
 using UnityEngine;
 
-public class BossState : MonoBehaviour
+public class BossState
 {
     protected BossStateMachine stateMachine;
     protected Boss boss;
-
     protected Rigidbody2D rb;
+
     private string animBoolName;
 
-    protected float xInput;
-    protected float yInput;
+    protected float stateTimer;
 
     // 애니메이션 이벤트(Trigger)가 호출되었는지 여부
     protected bool triggerCalled;
@@ -38,8 +37,7 @@ public class BossState : MonoBehaviour
     // 상태 유지 중 매 프레임마다 실행되는 함수
     public virtual void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        stateTimer -= Time.deltaTime;
     }
 
     // 상태에서 나갈 때 호출되는 함수

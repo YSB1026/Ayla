@@ -1,4 +1,6 @@
+using HardLight2DUtil;
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(MeshFilter))]
 public class LightMeshPlayerDetector : MonoBehaviour
@@ -24,12 +26,12 @@ public class LightMeshPlayerDetector : MonoBehaviour
     {
         if (player == null || lightMesh == null || playerState == null) return;
 
-        Vector3[] verts = lightMesh.vertices;
-        meshWorldPoints = new Vector3[verts.Length];
+        List<Vector3> outline = GetOutline(lightMesh);
+        meshWorldPoints = new Vector3[outline.Count];
 
-        for (int i = 0; i < verts.Length; i++)
+        for (int i = 0; i < outline.Count; i++)
         {
-            meshWorldPoints[i] = transform.TransformPoint(verts[i]); // local -> world
+            meshWorldPoints[i] = transform.TransformPoint(outline[i]);
         }
 
         Vector2 playerPos2D = new Vector2(player.transform.position.x, player.transform.position.y);
@@ -50,7 +52,6 @@ public class LightMeshPlayerDetector : MonoBehaviour
         }
     }
 
-    // 2D 다각형 내부 판정 (레이캐스트 방식)
     private bool PointInPolygon(Vector2 point, Vector2[] polygon)
     {
         int crossings = 0;
@@ -73,6 +74,76 @@ public class LightMeshPlayerDetector : MonoBehaviour
 
         return crossings % 2 == 1;
     }
+    #region github code with gpt
+    private List<Vector3> GetOutline(Mesh mesh)
+    {
+        var edges = new Dictionary<(int, int), int>();
+        var triangles = mesh.triangles;
+        var verts = mesh.vertices;
+
+        for (int i = 0; i < triangles.Length; i += 3)
+        {
+            int[] tri = { triangles[i], triangles[i + 1], triangles[i + 2] };
+
+            for (int e = 0; e < 3; e++)
+            {
+                int a = tri[e];
+                int b = tri[(e + 1) % 3];
+                var edge = (Mathf.Min(a, b), Mathf.Max(a, b));
+
+                if (edges.ContainsKey(edge)) edges[edge]++;
+                else edges[edge] = 1;
+            }
+        }
+
+        List<(int, int)> outlineEdges = new();
+        foreach (var kvp in edges)
+        {
+            if (kvp.Value == 1) outlineEdges.Add(kvp.Key);
+        }
+
+        List<int> ordered = new();
+        if (outlineEdges.Count > 0)
+        {
+            var current = outlineEdges[0];
+            ordered.Add(current.Item1);
+            ordered.Add(current.Item2);
+            outlineEdges.RemoveAt(0);
+
+            while (outlineEdges.Count > 0)
+            {
+                bool found = false;
+                for (int i = 0; i < outlineEdges.Count; i++)
+                {
+                    var (a, b) = outlineEdges[i];
+                    if (ordered[^1] == a)
+                    {
+                        ordered.Add(b);
+                        outlineEdges.RemoveAt(i);
+                        found = true;
+                        break;
+                    }
+                    else if (ordered[^1] == b)
+                    {
+                        ordered.Add(a);
+                        outlineEdges.RemoveAt(i);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) break;
+            }
+        }
+
+        List<Vector3> outlinePoints = new();
+        foreach (var i in ordered)
+        {
+            outlinePoints.Add(verts[i]);
+        }
+
+        return outlinePoints;
+    }
+    #endregion
 
     void OnDrawGizmos()
     {
