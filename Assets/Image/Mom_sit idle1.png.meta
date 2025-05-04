@@ -286,7 +286,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mom_sit idle1_0: -3202677130276947669
+      Mom_sit idle1_1: -5910187174543832216
+      Mom_sit idle1_2: 8535319993667624918
+      Mom_sit idle1_3: 9135566459613026593
+      Mom_sit idle1_4: 9105442234514851294
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
