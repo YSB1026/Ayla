@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 007c5f712bd4d2d49b27feeef23b6ad7
+guid: b8a731176720e9c4aba413fe5d04563b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3202677130276947669
-    second: Mom_sit idle1_0
+      213: 5815346444209245126
+    second: Pieces_0
   - first:
-      213: -5910187174543832216
-    second: Mom_sit idle1_1
+      213: -5707208235025365451
+    second: Pieces_1
   - first:
-      213: 8535319993667624918
-    second: Mom_sit idle1_2
+      213: 1801684832408766203
+    second: Pieces_2
   - first:
-      213: 9135566459613026593
-    second: Mom_sit idle1_3
-  - first:
-      213: 9105442234514851294
-    second: Mom_sit idle1_4
+      213: 5262411738066956617
+    second: Pieces_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,7 +93,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: iOS
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,19 +107,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -164,13 +148,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mom_sit idle1_0
+      name: Pieces_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 0
-        width: 33
-        height: 49
+        x: 0
+        y: 244
+        width: 170
+        height: 224
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2933975e1ecd83d0800000000000000
-      internalID: -3202677130276947669
+      spriteID: 6cb4ceca7c244b050800000000000000
+      internalID: 5815346444209245126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mom_sit idle1_1
+      name: Pieces_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 0
-        width: 35
-        height: 49
+        x: 181
+        y: 288
+        width: 276
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 86bce39041ccafda0800000000000000
-      internalID: -5910187174543832216
+      spriteID: 536012c295cebc0b0800000000000000
+      internalID: -5707208235025365451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mom_sit idle1_2
+      name: Pieces_2
       rect:
         serializedVersion: 2
-        x: 79
-        y: 0
-        width: 37
-        height: 49
+        x: 0
+        y: 50
+        width: 225
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,20 +207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6df19daef4c837670800000000000000
-      internalID: 8535319993667624918
+      spriteID: bf60fe03fced00910800000000000000
+      internalID: 1801684832408766203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mom_sit idle1_3
+      name: Pieces_3
       rect:
         serializedVersion: 2
-        x: 120
-        y: 0
-        width: 35
-        height: 49
+        x: 232
+        y: 2
+        width: 174
+        height: 276
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,30 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 129153fea4d08ce70800000000000000
-      internalID: 9135566459613026593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mom_sit idle1_4
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 0
-        width: 33
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed5c81738770d5e70800000000000000
-      internalID: 9105442234514851294
+      spriteID: 941b3552897d70940800000000000000
+      internalID: 5262411738066956617
       vertices: []
       indices: 
       edges: []
@@ -287,11 +249,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mom_sit idle1_0: -3202677130276947669
-      Mom_sit idle1_1: -5910187174543832216
-      Mom_sit idle1_2: 8535319993667624918
-      Mom_sit idle1_3: 9135566459613026593
-      Mom_sit idle1_4: 9105442234514851294
+      Pieces_0: 5815346444209245126
+      Pieces_1: -5707208235025365451
+      Pieces_2: 1801684832408766203
+      Pieces_3: 5262411738066956617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
