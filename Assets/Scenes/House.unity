@@ -73451,7 +73451,6 @@ GameObject:
   - component: {fileID: 1800944110}
   - component: {fileID: 1800944112}
   - component: {fileID: 1800944111}
-  - component: {fileID: 1800944113}
   m_Layer: 6
   m_Name: basement floorColider
   m_TagString: Untagged
@@ -73533,19 +73532,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.056298, y: 4.2874937}
   m_EdgeRadius: 0
---- !u!114 &1800944113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800944109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6153760ea89b1134c97af5b07c336685, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  surfaceType: 0
 --- !u!1 &1807669794
 GameObject:
   m_ObjectHideFlags: 0
@@ -73654,7 +73640,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -73834,7 +73820,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -73859,18 +73845,18 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 8
     m_Data: {fileID: -7198701333627354638, guid: 90d9026b05b91b74092c7c722b475aca, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 8730919477091423845, guid: 0063895bda564804f8853d4815b86c15, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 8030999439081643189, guid: 6418d694cb705a74c87fcf6d117c88f4, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 10
     m_Data: {fileID: -8802193375107625744, guid: 881578cd260bb9747a4e393b4cccd860, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 8030999439081643189, guid: 6418d694cb705a74c87fcf6d117c88f4, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 8730919477091423845, guid: 0063895bda564804f8853d4815b86c15, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 20
     m_Data:
