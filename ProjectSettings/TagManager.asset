@@ -65,5 +65,8 @@ TagManager:
   - name: Object_Front
     uniqueID: 3013101423
     locked: 0
+  - name: Chat
+    uniqueID: 1734002479
+    locked: 0
   m_RenderingLayers:
   - Default
