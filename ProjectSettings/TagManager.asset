@@ -16,8 +16,8 @@ TagManager:
   - Ground
   - Light
   - Object
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
