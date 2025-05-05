@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 7cff6540c83dba5439e722fc35e560af
+guid: cab9fbcb0d5db8445a21c4fc9cf944a5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8377946709109620314
-    second: Ayla_0
+      213: 7647240639167449756
+    second: Leaf_0
+  - first:
+      213: 7778570650710507745
+    second: Leaf_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 130
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,56 +112,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ayla_0
+      name: Leaf_1
       rect:
         serializedVersion: 2
-        x: 699
-        y: 403
-        width: 86
-        height: 86
+        x: 0
+        y: 82
+        width: 163
+        height: 126
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a5eb1a7c422744470800000000000000
-      internalID: 8377946709109620314
+      spriteID: 1e001ef4bc803fb60800000000000000
+      internalID: 7778570650710507745
       vertices: []
       indices: 
       edges: []
@@ -177,7 +141,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a3921d0ef85aee242aac9d8775a085e9
+    spriteID: 5685c113be6202f4893261aaee9d6106
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +151,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ayla_0: 8377946709109620314
+      Leaf_0: 7647240639167449756
+      Leaf_1: 7778570650710507745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
