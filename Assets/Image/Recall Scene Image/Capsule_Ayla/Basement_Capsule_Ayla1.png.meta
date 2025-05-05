@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b5742a62e937a42469c6093f8a9e6a60
+guid: 5db11953db0dc4d41b9a2fca8926761e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8430137894388489581
-    second: Window_0
+      213: 7599496162025699965
+    second: Basement_Capsule_Ayla1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Window_0
+      name: Basement_Capsule_Ayla1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 55
-        height: 100
+        width: 50
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3922a65ff32220b80800000000000000
-      internalID: -8430137894388489581
+      spriteID: d7a7c79de75d67960800000000000000
+      internalID: 7599496162025699965
       vertices: []
       indices: 
       edges: []
@@ -187,7 +187,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Window_0: -8430137894388489581
+      Basement_Capsule_Ayla1_0: 7599496162025699965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
