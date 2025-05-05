@@ -6,10 +6,9 @@ public class Enemy_Light_MoveState : EnemyState
     private Enemy_Light enemyLight;
     private int Enemy_moveDir;
 
-    public Enemy_Light_MoveState(Enemy_Light _enemyLight, EnemyStateMachine stateMachine, string animBoolName)
-        : base(_enemyLight, stateMachine, animBoolName)
+    public Enemy_Light_MoveState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_Light _enemylight) : base(_enemy, _stateMachine, _animBoolName)
     {
-        this.enemyLight = _enemyLight;
+        this.enemyLight = _enemylight;
     }
 
     public override void Enter()
@@ -24,6 +23,12 @@ public class Enemy_Light_MoveState : EnemyState
         if (enemyLight.isInLight)
         {
             enemy.SetZeroVelocity();
+            return;
+        }
+
+        if (enemyLight.IsPlayerInAttackBox())
+        {
+            stateMachine.ChangeState(enemyLight.attackState);
             return;
         }
 

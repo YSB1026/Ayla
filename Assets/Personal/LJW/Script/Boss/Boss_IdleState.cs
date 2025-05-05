@@ -16,6 +16,13 @@ public class Boss_IdleState : BossState
     {
         base.Update();
 
+        if (boss.IsPlayerInAttackBox())
+        {
+            Debug.Log("플레이어 감지됨");
+            stateMachine.ChangeState(boss.battleState);
+            return;
+        }
+
         if (stateTimer <= 0)
         {
             stateMachine.ChangeState(boss.walkState);

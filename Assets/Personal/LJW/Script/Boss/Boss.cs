@@ -1,20 +1,43 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Boss : Entity
 {
-    public Transform player;
+    public LayerMask whatIsPlayer;
 
-    [Header("�̵� ����")]
+    [Header("이동 info")]
     public float moveSpeed;
+    public float runSpeed;
     public float idleTime;
-    // private float defaultMoveSpeed;
+
+    [Header("플레이어 탐지 info")]
+    [SerializeField]
+    public Transform playerDetect;
+    public Vector2 detectBoxSize = new Vector2(1.5f, 1f);  // 가로: 1.5, 세로: 1
+
+    [Header("원거리 공격(Attack1) info")]
+    public Transform longRangeCheck;
+    public Vector2 longRangeBoxSize = new Vector2(1f, 1f);
+
+    [Header("근접 공격(Attack2) info")]
+    public Transform closeRangeCheck;
+    public Vector2 closeRangeBoxSize = new Vector2(1f, 1f);
+
+    [Header("Long Range Cooldown")]
+    public float longRCoolTime = 3f;
+    public float longRCoolTimer = 0f;
+
+    public bool CanDetectLongRange => longRCoolTimer <= 0f;
+
+    public float battleTime;
 
     #region States
     public BossStateMachine stateMachine { get; private set; }
-    public Boss_IdleState idleState {  get; private set; }
+    public Boss_IdleState idleState { get; private set; }
     public Boss_WalkState walkState { get; private set; }
+    public Boss_BattleState battleState { get; private set; }
     public Boss_RunState runState { get; private set; }
-    public Boss_AttackState attackState { get; private set; }
+    public Boss_Attack1State attack1State { get; private set; }
+    public Boss_Attack2State attack2State { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -24,9 +47,10 @@ public class Boss : Entity
         stateMachine = new BossStateMachine();
         idleState = new Boss_IdleState(this, stateMachine, "Idle");
         walkState = new Boss_WalkState(this, stateMachine, "Walk");
+        battleState = new Boss_BattleState(this, stateMachine, "Battle");
         runState = new Boss_RunState(this, stateMachine, "Run");
-        attackState = new Boss_AttackState(this, stateMachine, "Attack");
-        // defaultMoveSpeed = moveSpeed;
+        attack1State = new Boss_Attack1State(this, stateMachine, "Attack1");
+        attack2State = new Boss_Attack2State(this, stateMachine, "Attack2");
     }
 
     protected override void Start()
@@ -40,6 +64,55 @@ public class Boss : Entity
     {
         base.Update();
         stateMachine.currentState.Update();
+
+        if (longRCoolTimer > 0f)
+            longRCoolTimer -= Time.deltaTime;
+    }
+
+    public bool IsPlayerInAttackBox()
+    {
+        return Physics2D.OverlapBox(playerDetect.position, detectBoxSize, 0, whatIsPlayer);
+    }
+
+    public bool IsPlayerInLongRange()
+    {
+        return Physics2D.OverlapBox(longRangeCheck.position, longRangeBoxSize, 0, whatIsPlayer);
+    }
+
+    public bool IsPlayerInCloseRange()
+    {
+        return Physics2D.OverlapBox(closeRangeCheck.position, closeRangeBoxSize, 0, whatIsPlayer);
+    }
+
+    public bool CanDetectPlayer()
+    {
+        // 공격 감지는 쿨다운 아닐 때만
+        return IsPlayerInAttackBox() || (CanDetectLongRange && IsPlayerInLongRange());
+    }
+
+    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, 50, whatIsPlayer);
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        if (playerDetect != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(playerDetect.position, detectBoxSize);
+        }
+
+        if (longRangeCheck != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(longRangeCheck.position, longRangeBoxSize);
+        }
+
+        if (closeRangeCheck != null)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireCube(closeRangeCheck.position, closeRangeBoxSize);
+        }
+
     }
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();

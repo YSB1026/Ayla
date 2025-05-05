@@ -26,5 +26,10 @@ public class Enemy : Entity
         stateMachine.currentState.Update();
     }
 
-    public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+    public virtual void HitPlayer()
+    {
+       
+    }
+
+    public void AnimationTrigger() => stateMachine.currentState.AnimationEndTrigger();
 }

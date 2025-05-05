@@ -17,6 +17,11 @@ public class Boss_WalkState : BossState
 
         boss.SetVelocity(boss.moveSpeed * boss.facingDir, rb.linearVelocity.y);
 
+        if (boss.CanDetectPlayer())
+        {
+            stateMachine.ChangeState(boss.battleState);
+        }
+
         if (!boss.IsGroundDetected())
         {
             boss.Flip();
