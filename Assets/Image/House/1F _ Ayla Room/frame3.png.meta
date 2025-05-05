@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0e8c114b515288a4daa128cc9857491d
+guid: bc0327b528b6dbe4f87cc6e2da174971
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6752961402722528392
-    second: Forest_Ground_test6_0
+      213: 1177578112082225661
+    second: frame3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 22
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -152,23 +152,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Forest_Ground_test6_0
+      name: frame3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 50
+        height: 63
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88c2337fd9657bd50800000000000000
-      internalID: 6752961402722528392
+      spriteID: df9afe9cd09975010800000000000000
+      internalID: 1177578112082225661
       vertices: []
       indices: 
       edges: []
@@ -177,7 +177,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d0f2bc277730a9b4c81eb2862b6f1617
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +187,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Forest_Ground_test6_0: 6752961402722528392
+      frame3_0: 1177578112082225661
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
