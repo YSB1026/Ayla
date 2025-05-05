@@ -9,7 +9,7 @@ public class LightMeshPlayerDetector : MonoBehaviour
     private Vector3[] meshWorldPoints;
     public GameObject player;
     private PlayerStatus playerState;
-    private bool playerDetected = false;
+    [SerializeField] private bool playerDetected = false;
 
     void Start()
     {
