@@ -1369,6 +1369,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 109137978387625679, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 662963213175188762, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1409,9 +1413,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3348615963701441402, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4654844049674288394, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908673133271695589, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
