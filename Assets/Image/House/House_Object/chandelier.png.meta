@@ -3,8 +3,23 @@ guid: 8fdf96c1d3d23d845a783ed17391bc3d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2919204272581083483
-    second: chandelier1_0
+      213: 671432340607560884
+    second: chandelier_0
+  - first:
+      213: 6697846350502538087
+    second: chandelier_1
+  - first:
+      213: -5528652350257775897
+    second: chandelier_2
+  - first:
+      213: -7507117016328437140
+    second: chandelier_3
+  - first:
+      213: -4233468908198836717
+    second: chandelier_4
+  - first:
+      213: 8601535765634349984
+    second: chandelier_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 12
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -152,12 +167,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chandelier1_0
+      name: chandelier_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38
+        width: 40
         height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -167,19 +182,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b518ffdb1d8138820800000000000000
-      internalID: 2919204272581083483
+      spriteID: 4bc6f980828615900800000000000000
+      internalID: 671432340607560884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chandelier1_1
+      name: chandelier_1
       rect:
         serializedVersion: 2
-        x: 38
+        x: 40
         y: 0
-        width: 38
+        width: 40
         height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,21 +202,21 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7bdbe8dd7d1e6da42a29a3fc7efa9703
-      internalID: 604633745
+      spriteID: 76ba9d1e4c783fc50800000000000000
+      internalID: 6697846350502538087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chandelier1_2
+      name: chandelier_2
       rect:
         serializedVersion: 2
-        x: 76
+        x: 80
         y: 0
-        width: 38
+        width: 40
         height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -209,10 +224,76 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2dc382cddb7b7eb4aa56374e786e39c4
-      internalID: -1566391542
+      spriteID: 7eab140caf74643b0800000000000000
+      internalID: -5528652350257775897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chandelier_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c62047a19dc51d790800000000000000
+      internalID: -7507117016328437140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chandelier_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 316c5273572bf35c0800000000000000
+      internalID: -4233468908198836717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chandelier_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0abf379b43bce5770800000000000000
+      internalID: 8601535765634349984
       vertices: []
       indices: 
       edges: []
@@ -221,7 +302,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fe41493c9b0c18d4d86f6977e4cdc405
+    spriteID: 9cbf3a05c279c614d8393178e4890186
     internalID: 0
     vertices: []
     indices: 
@@ -231,9 +312,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      chandelier1_0: 2919204272581083483
-      chandelier1_1: 604633745
-      chandelier1_2: -1566391542
+      chandelier_0: 671432340607560884
+      chandelier_1: 6697846350502538087
+      chandelier_2: -5528652350257775897
+      chandelier_3: -7507117016328437140
+      chandelier_4: -4233468908198836717
+      chandelier_5: 8601535765634349984
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
