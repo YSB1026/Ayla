@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FireTrigger : MonoBehaviour
+public class FirebleObject : MonoBehaviour
 {
     private Animator anim;
     private  Light lightCompo;
