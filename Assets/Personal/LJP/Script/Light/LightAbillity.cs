@@ -76,10 +76,10 @@ public class LightAbillity : MonoBehaviour
 				case LightColor.WHITE:
 					break;
 				case LightColor.BLACK:
-					go?.GetComponent<FireTrigger>().FireOff();
+					go?.GetComponent<FirebleObject>().FireOff();
 					break;
 				case LightColor.RED:
-					go.GetComponent<FireTrigger>().FireOn();
+					go.GetComponent<FirebleObject>().FireOn();
 					break;
 				case LightColor.GREEN:
 					break;
