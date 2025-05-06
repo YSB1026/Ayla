@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [Header("Setting")]    
     [SerializeField] private GameObject settingsPanel;
     private bool isSettingsOpen = false;
-    [Header("Fade")]
+    [Header("Fade Image")]
     [SerializeField] private Image fadeImage;
     [SerializeField] private float fadeDuration = 1f;
     private void Awake()
