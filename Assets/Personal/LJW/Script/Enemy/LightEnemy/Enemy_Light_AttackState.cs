@@ -26,7 +26,15 @@ public class Enemy_Light_AttackState : EnemyState
     {
         if (!attackSuccess)
         {
-            stateMachine.ChangeState(enemyLight.moveState);
+            // 아직도 공격 범위 안에 플레이어가 있다면 → 다시 공격
+            if (enemyLight.IsPlayerInAttackBox())
+            {
+                stateMachine.ChangeState(enemyLight.attackState);
+            }
+            else
+            {
+                stateMachine.ChangeState(enemyLight.moveState);
+            }
         }
     }
 
