@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         soundManager = SoundManager.Instance;
         sceneManager = CustomSceneManager.Instance;
         //skillManager = SkillManager.Instance;
-        ChangeState(GameState.Lobby);
+        //ChangeState(GameState.Lobby);
     }
 
     private void Update()
@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
                 sceneManager.LoadScene("Lobby");
                 break;
             case GameState.Cutscene:
+                Time.timeScale = 0f;
                 break;
             case GameState.InGame:
                 Time.timeScale = 1f;
@@ -85,17 +86,6 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.InGame:
-                //제가 respawn이나 팬던트 획득 함수를 따로 만들어서 별다른걸
-                //처리 안해도 될수도있는데 나중에 리팩토링 해봐야겠네요
-                //테스트용
-                //if (Input.GetKeyDown(KeyCode.Alpha1))
-                //{
-                //    soundManager.PlayEnvSFX("Thunder1");
-                //}
-                //else if(Input.GetKeyDown(KeyCode.Alpha2))
-                //{
-                //    soundManager.PlayEnvSFX("Thunder2");
-                //}
                 break;
 
             case GameState.Respawn:
