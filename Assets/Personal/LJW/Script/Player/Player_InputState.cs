@@ -20,9 +20,7 @@ public class Player_InputState : PlayerState
         base.Update();
 
 
-        if (Input.GetKeyDown(KeyCode.C))
-            stateMachine.ChangeState(player.deadState);
-		else if (!player.IsGroundDetected())
+        if (!player.IsGroundDetected())
             stateMachine.ChangeState(player.airState);
         else if (Input.GetKeyDown(KeyCode.Space))
             stateMachine.ChangeState(player.jumpState);
