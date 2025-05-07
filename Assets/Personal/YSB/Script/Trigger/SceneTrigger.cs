@@ -1,15 +1,12 @@
 using NUnit.Framework;
 using UnityEngine;
 
-public class SceneTrigger : MonoBehaviour
+public class SceneTrigger : BaseTrigger
 {
     [SerializeField] private string sceneName;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnPlayerEnter()
     {
-        if (collision.CompareTag("Player"))
-        {
-            CustomSceneManager.Instance.LoadScene(sceneName);
-        }
+        CustomSceneManager.Instance.LoadScene(sceneName);
     }
 }
