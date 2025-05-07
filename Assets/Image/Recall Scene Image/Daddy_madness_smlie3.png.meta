@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: cf8dc06c89bca0c46a3ea0e8fef644c5
+guid: 19f10c2c105660d46bcfc3c47db9eee0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3041206430200969265
-    second: Daddy_Study_lookback_0
+      213: -1677452198374193949
+    second: Daddy_madness_smlie3_0
   - first:
-      213: -7533592341117174594
-    second: Daddy_Study_lookback_1
+      213: -4290801362619945177
+    second: Daddy_madness_smlie3_1
   - first:
-      213: 6410103234797197387
-    second: Daddy_Study_lookback_2
+      213: 7729662881093083915
+    second: Daddy_madness_smlie3_2
   - first:
-      213: -9143891821716819236
-    second: Daddy_Study_lookback_3
-  - first:
-      213: 100255125902313656
-    second: Daddy_Study_lookback_4
+      213: -6502542425835187964
+    second: Daddy_madness_smlie3_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -164,12 +161,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Daddy_Study_lookback_0
+      name: Daddy_madness_smlie3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 33
+        width: 37
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -179,19 +176,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 13833c0a229843a20800000000000000
-      internalID: 3041206430200969265
+      spriteID: 3e44534fc1e78b8e0800000000000000
+      internalID: -1677452198374193949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Daddy_Study_lookback_1
+      name: Daddy_madness_smlie3_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 37
         y: 0
-        width: 33
+        width: 37
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -201,19 +198,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebc7b113ead437790800000000000000
-      internalID: -7533592341117174594
+      spriteID: 72fa643f4e20474c0800000000000000
+      internalID: -4290801362619945177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Daddy_Study_lookback_2
+      name: Daddy_madness_smlie3_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 74
         y: 0
-        width: 33
+        width: 37
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -223,19 +220,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b485bab0ee245f850800000000000000
-      internalID: 6410103234797197387
+      spriteID: b036315df67454b60800000000000000
+      internalID: 7729662881093083915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Daddy_Study_lookback_3
+      name: Daddy_madness_smlie3_3
       rect:
         serializedVersion: 2
-        x: 99
+        x: 111
         y: 0
-        width: 33
+        width: 37
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -245,30 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd238f5a5de5a1180800000000000000
-      internalID: -9143891821716819236
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Daddy_Study_lookback_4
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 0
-        width: 33
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b8c15e718d246100800000000000000
-      internalID: 100255125902313656
+      spriteID: 401df2b9d1452c5a0800000000000000
+      internalID: -6502542425835187964
       vertices: []
       indices: 
       edges: []
@@ -277,7 +252,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3d61d6a610816c24e970420b57524776
+    spriteID: 7cf01394a21a4be47afcd76ba14cda32
     internalID: 0
     vertices: []
     indices: 
@@ -287,11 +262,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Daddy_Study_lookback_0: 3041206430200969265
-      Daddy_Study_lookback_1: -7533592341117174594
-      Daddy_Study_lookback_2: 6410103234797197387
-      Daddy_Study_lookback_3: -9143891821716819236
-      Daddy_Study_lookback_4: 100255125902313656
+      Daddy_madness_smlie3_0: -1677452198374193949
+      Daddy_madness_smlie3_1: -4290801362619945177
+      Daddy_madness_smlie3_2: 7729662881093083915
+      Daddy_madness_smlie3_3: -6502542425835187964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
