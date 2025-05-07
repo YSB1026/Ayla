@@ -14,7 +14,7 @@ public class TextSwitcherMixerBehaviour : PlayableBehaviour
 
     private string m_TargetText = "";
     private float m_TypingStartTime;
-    private float m_CharactersPerSecond = 45f; // 원하는 속도
+    private float m_CharactersPerSecond = 30f; // 원하는 속도
     private ScriptPlayable<TextSwitcherBehaviour> m_PreviousPlayable;
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)

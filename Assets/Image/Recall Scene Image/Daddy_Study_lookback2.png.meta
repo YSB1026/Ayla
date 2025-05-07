@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: cf8dc06c89bca0c46a3ea0e8fef644c5
+guid: 7b544f71a6180d1449f96091420d5bd6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3041206430200969265
-    second: Daddy_Study_lookback_0
+      213: 3470583515387259570
+    second: Daddy_Study_lookback2_0
   - first:
-      213: -7533592341117174594
-    second: Daddy_Study_lookback_1
+      213: -892473312957071343
+    second: Daddy_Study_lookback2_1
   - first:
-      213: 6410103234797197387
-    second: Daddy_Study_lookback_2
+      213: 4799888822848254980
+    second: Daddy_Study_lookback2_2
   - first:
-      213: -9143891821716819236
-    second: Daddy_Study_lookback_3
+      213: 7307046328331631838
+    second: Daddy_Study_lookback2_3
   - first:
-      213: 100255125902313656
-    second: Daddy_Study_lookback_4
+      213: -6600375548560427405
+    second: Daddy_Study_lookback2_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -164,7 +164,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Daddy_Study_lookback_0
+      name: Daddy_Study_lookback2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 13833c0a229843a20800000000000000
-      internalID: 3041206430200969265
+      spriteID: 2baebfdb15df92030800000000000000
+      internalID: 3470583515387259570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Daddy_Study_lookback_1
+      name: Daddy_Study_lookback2_1
       rect:
         serializedVersion: 2
         x: 33
@@ -201,14 +201,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebc7b113ead437790800000000000000
-      internalID: -7533592341117174594
+      spriteID: 1108da9104c4d93f0800000000000000
+      internalID: -892473312957071343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Daddy_Study_lookback_2
+      name: Daddy_Study_lookback2_2
       rect:
         serializedVersion: 2
         x: 66
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b485bab0ee245f850800000000000000
-      internalID: 6410103234797197387
+      spriteID: 404fc371471ac9240800000000000000
+      internalID: 4799888822848254980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Daddy_Study_lookback_3
+      name: Daddy_Study_lookback2_3
       rect:
         serializedVersion: 2
         x: 99
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd238f5a5de5a1180800000000000000
-      internalID: -9143891821716819236
+      spriteID: edc7785dbe7d76560800000000000000
+      internalID: 7307046328331631838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Daddy_Study_lookback_4
+      name: Daddy_Study_lookback2_4
       rect:
         serializedVersion: 2
         x: 132
@@ -267,8 +267,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b8c15e718d246100800000000000000
-      internalID: 100255125902313656
+      spriteID: 376b1eba861c664a0800000000000000
+      internalID: -6600375548560427405
       vertices: []
       indices: 
       edges: []
@@ -277,7 +277,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3d61d6a610816c24e970420b57524776
+    spriteID: c2d58d73b0252004a98fb1d192cba5fb
     internalID: 0
     vertices: []
     indices: 
@@ -287,11 +287,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Daddy_Study_lookback_0: 3041206430200969265
-      Daddy_Study_lookback_1: -7533592341117174594
-      Daddy_Study_lookback_2: 6410103234797197387
-      Daddy_Study_lookback_3: -9143891821716819236
-      Daddy_Study_lookback_4: 100255125902313656
+      Daddy_Study_lookback2_0: 3470583515387259570
+      Daddy_Study_lookback2_1: -892473312957071343
+      Daddy_Study_lookback2_2: 4799888822848254980
+      Daddy_Study_lookback2_3: 7307046328331631838
+      Daddy_Study_lookback2_4: -6600375548560427405
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
