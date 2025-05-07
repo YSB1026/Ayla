@@ -9,6 +9,6 @@ public class PuzzleController : MonoBehaviour
         if (isPuzzleComplete) return;
 
         isPuzzleComplete = true;
-        GreenPendantEvent.OnGreenPuzzleSolved?.Invoke();
+        PendantEvent.OnPuzzleSolved?.Invoke();
     }
 }

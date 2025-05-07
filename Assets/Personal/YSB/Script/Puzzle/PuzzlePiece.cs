@@ -3,7 +3,7 @@ using UnityEngine;
 public class PuzzlePiece : MonoBehaviour
 {
     [SerializeField] private GameObject targetPiece;
-    [SerializeField] private float snapThreshold = 0.5f;
+    [SerializeField] private float snapThreshold = 3f;
     [SerializeField] public bool isLocked = false;
 
     public bool TrySnap()
