@@ -11,10 +11,14 @@ public class MoveTrigger : MonoBehaviour
 {
 	private const float DESTROY_DISTANCE = 0.01f;
 
-	[SerializeField] private GameObject go;
-	[SerializeField] private Transform target;
+	[Header("Object")]
+	[SerializeField] private GameObject movedObject;
+	[SerializeField] private Transform destination;
+
+	[Header("Info")]
 	[SerializeField] private float moveSpeed;
 	[SerializeField] private TrickMoveType moveType;
+	[SerializeField] private bool isDestroy;
 
 	private bool isTrigger = false;
 
@@ -41,13 +45,13 @@ public class MoveTrigger : MonoBehaviour
 		switch (moveType)
 		{
 			case TrickMoveType.MOVETOWARDS:
-				go.transform.position = Vector3.MoveTowards(go.transform.position, target.position, moveSpeed * Time.deltaTime);
+				movedObject.transform.position = Vector3.MoveTowards(movedObject.transform.position, destination.position, moveSpeed * Time.deltaTime);
 				break;
 			case TrickMoveType.LERP:
-				go.transform.position = Vector3.Lerp(go.transform.position, target.position, moveSpeed * Time.deltaTime);
+				movedObject.transform.position = Vector3.Lerp(movedObject.transform.position, destination.position, moveSpeed * Time.deltaTime);
 				break;
 			case TrickMoveType.TELEPORT:
-				go.transform.position = target.position;
+				movedObject.transform.position = destination.position;
 				break;
 		}
 
@@ -55,7 +59,7 @@ public class MoveTrigger : MonoBehaviour
 
 	private void DestroySelf()
 	{
-		if (Vector3.Distance(go.transform.position, target.position) < DESTROY_DISTANCE)
+		if (Vector3.Distance(movedObject.transform.position, destination.position) < DESTROY_DISTANCE && isDestroy)
 			Destroy(gameObject);
 	}
 }
