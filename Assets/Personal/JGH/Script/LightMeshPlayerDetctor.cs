@@ -11,6 +11,10 @@ public class LightMeshPlayerDetector : MonoBehaviour
     private PlayerStatus playerState;
     [SerializeField] private bool playerDetected = false;
 
+    // 그림자 상호작용을 위한 변수들
+    public List<ShadowPuller2D> shadowPullers = new List<ShadowPuller2D>();
+    private bool shadowInLight = false;
+
     void Start()
     {
         lightMesh = GetComponent<MeshFilter>().mesh;
@@ -20,11 +24,20 @@ public class LightMeshPlayerDetector : MonoBehaviour
         {
             playerState = player.GetComponent<PlayerStatus>();
         }
+        
+        // 모든 ShadowPuller2D 찾기
+        FindAllShadowPullers();
+    }
+
+    void FindAllShadowPullers()
+    {
+        ShadowPuller2D[] pullers = FindObjectsOfType<ShadowPuller2D>();
+        shadowPullers.AddRange(pullers);
     }
 
     void Update()
     {
-        if (player == null || lightMesh == null || playerState == null) return;
+        if (lightMesh == null) return;
 
         List<Vector3> outline = GetOutline(lightMesh);
         meshWorldPoints = new Vector3[outline.Count];
@@ -34,22 +47,46 @@ public class LightMeshPlayerDetector : MonoBehaviour
             meshWorldPoints[i] = transform.TransformPoint(outline[i]);
         }
 
-        Vector2 playerPos2D = new Vector2(player.transform.position.x, player.transform.position.y);
-        Vector2[] polygon2D = new Vector2[meshWorldPoints.Length];
-        for (int i = 0; i < meshWorldPoints.Length; i++)
+        // 플레이어 감지 (기존 코드)
+        if (player != null && playerState != null)
         {
-            polygon2D[i] = new Vector2(meshWorldPoints[i].x, meshWorldPoints[i].y);
+            Vector2 playerPos2D = new Vector2(player.transform.position.x, player.transform.position.y);
+            Vector2[] polygon2D = ConvertToVector2Array(meshWorldPoints);
+
+            bool isPlayerInside = PointInPolygon(playerPos2D, polygon2D);
+
+            if (isPlayerInside != playerDetected)
+            {
+                playerDetected = isPlayerInside;
+                playerState.InLight = isPlayerInside;
+                Debug.Log($"플레이어 감지 상태: {(isPlayerInside ? "InLight = true" : "InLight = false")}");
+            }
         }
 
-        bool isPlayerInside = PointInPolygon(playerPos2D, polygon2D);
-
-        if (isPlayerInside != playerDetected)
+        // 그림자 포인트 감지 및 처리
+        foreach (ShadowPuller2D shadowPuller in shadowPullers)
         {
-            playerDetected = isPlayerInside;
-            playerState.InLight = isPlayerInside;
+            if (shadowPuller != null && shadowPuller.shadowPoint != null)
+            {
+                Vector2 shadowPointPos = new Vector2(shadowPuller.shadowPoint.position.x, shadowPuller.shadowPoint.position.y);
+                Vector2[] polygon2D = ConvertToVector2Array(meshWorldPoints);
 
-            Debug.Log($"플레이어 감지 상태: {(isPlayerInside ? "InLight = true" : "InLight = false")}");
+                bool isShadowInLight = PointInPolygon(shadowPointPos, polygon2D);
+                
+                // 그림자 포인트가 빛 안에 있음을 ShadowPuller에게 알림
+                shadowPuller.SetInLightStatus(isShadowInLight);
+            }
         }
+    }
+
+    private Vector2[] ConvertToVector2Array(Vector3[] vector3Array)
+    {
+        Vector2[] vector2Array = new Vector2[vector3Array.Length];
+        for (int i = 0; i < vector3Array.Length; i++)
+        {
+            vector2Array[i] = new Vector2(vector3Array[i].x, vector3Array[i].y);
+        }
+        return vector2Array;
     }
 
     private bool PointInPolygon(Vector2 point, Vector2[] polygon)
@@ -74,7 +111,8 @@ public class LightMeshPlayerDetector : MonoBehaviour
 
         return crossings % 2 == 1;
     }
-    #region github code with gpt
+    
+    
     private List<Vector3> GetOutline(Mesh mesh)
     {
         var edges = new Dictionary<(int, int), int>();
@@ -143,7 +181,7 @@ public class LightMeshPlayerDetector : MonoBehaviour
 
         return outlinePoints;
     }
-    #endregion
+    
 
     void OnDrawGizmos()
     {
@@ -161,6 +199,16 @@ public class LightMeshPlayerDetector : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(player.transform.position, 0.1f);
+        }
+        
+        // 그림자 포인트 시각화
+        foreach (ShadowPuller2D shadowPuller in shadowPullers)
+        {
+            if (shadowPuller != null && shadowPuller.shadowPoint != null)
+            {
+                Gizmos.color = shadowPuller.IsInLight() ? Color.yellow : Color.green;
+                Gizmos.DrawSphere(shadowPuller.shadowPoint.position, 0.15f);
+            }
         }
     }
 }
