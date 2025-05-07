@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FirstFloorTrigger : MonoBehaviour
+public class FirstFloorTrigger : BaseTrigger
 {
     [SerializeField] GameObject firstFloorObject;
 
@@ -11,11 +11,9 @@ public class FirstFloorTrigger : MonoBehaviour
             firstFloorObject.SetActive(false);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    protected override void OnPlayerEnter()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            firstFloorObject.SetActive(true);
-        }
+        firstFloorObject.SetActive(true);
     }
 }

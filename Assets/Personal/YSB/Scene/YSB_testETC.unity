@@ -297,12 +297,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35232400}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.119606, y: -11.903095, z: 0.017917892}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -274.24615, y: -9.765938, z: 0.3134814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1096086518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &40681604
 GameObject:
@@ -349,7 +349,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &40681608
 SpriteMask:
@@ -449,7 +449,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 1801684832408766203, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -636,7 +636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85310079}
   - component: {fileID: 85310080}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,12 +1021,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148684659}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.42, y: -1.32, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -292.94574, y: 0.8171569, z: 0.2955635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1096086518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &156534532
 GameObject:
@@ -1109,12 +1109,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156534532}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 0.37, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -295.24576, y: 2.5071568, z: 0.2955635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1096086518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &156534535
 PolygonCollider2D:
@@ -1255,176 +1255,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1587751989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &175335698
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 11
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 12
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 5
-    localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 4, y: 4, z: 0}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000001000200000002000300000003000400000004000100
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 5
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 24
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 160
-    _typelessdata: 0000000000000000000000000000000000000000000080bf0000003f0000003f00008040000080c0000000000000000000000000000080bf0000803f00000000000080c0000080c0000000000000000000000000000080bf0000000000000000000080c000008040000000000000000000000000000080bf000000000000803f0000804000008040000000000000000000000000000080bf0000803f0000803f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 4, y: 4, z: 0}
-  m_MeshUsageFlags: 0
-  m_CookingOptions: 30
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  'm_MeshMetrics[0]': 1
-  'm_MeshMetrics[1]': 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
---- !u!4 &178045139 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
-  m_PrefabInstance: {fileID: 247931824}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &211273907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,7 +1348,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1562902792}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 764344098298131778, guid: 21de5303cf44542418d34217595fda1b, type: 3}
       propertyPath: m_Name
@@ -1526,15 +1356,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2203195518479424986, guid: 21de5303cf44542418d34217595fda1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.97423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2203195518479424986, guid: 21de5303cf44542418d34217595fda1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.35845
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2203195518479424986, guid: 21de5303cf44542418d34217595fda1b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08070198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2203195518479424986, guid: 21de5303cf44542418d34217595fda1b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1575,7 +1405,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1562902792}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2445022021375192998, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_Name
@@ -1583,15 +1413,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.97423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.35845
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08070198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4469994527538928017, guid: 83e49819ca472b649abc0685ea9f5dec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1731,7 +1561,6 @@ GameObject:
   - component: {fileID: 284598789}
   - component: {fileID: 284598787}
   - component: {fileID: 284598791}
-  - component: {fileID: 284598790}
   - component: {fileID: 284598792}
   m_Layer: 0
   m_Name: "\uD32C\uB358\uD2B8(\uCD08\uB85D)"
@@ -1811,20 +1640,6 @@ Transform:
   - {fileID: 424648167}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &284598790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284598786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f010318305e3dc4eb4cab4cf9391108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleObject: {fileID: 424648166}
-  sceneTrigger: {fileID: 284598792}
 --- !u!61 &284598791
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1878,12 +1693,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284598786}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7611d7643eda44e89e66913e661d31, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f7bfb705e7e8534da7273e464f84df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pendantColor: 4
   sceneName: GreenLight_Recall
+  puzzleObject: {fileID: 424648166}
 --- !u!1 &319960451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,7 +1876,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &350772717
 SpriteMask:
@@ -2159,7 +1976,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 5815346444209245126, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2303,7 +2120,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &390671999
 SpriteMask:
@@ -2403,7 +2220,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 5262411738066956617, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2425,7 +2242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 408760120}
   - component: {fileID: 408760121}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2595,7 +2412,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1562902792}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2409965589164056234, guid: b26eb7d331eec9444a51a5efce2ee184, type: 3}
       propertyPath: m_Name
@@ -2603,15 +2420,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6729213100272340215, guid: b26eb7d331eec9444a51a5efce2ee184, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.97423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6729213100272340215, guid: b26eb7d331eec9444a51a5efce2ee184, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.35845
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6729213100272340215, guid: b26eb7d331eec9444a51a5efce2ee184, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08070198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6729213100272340215, guid: b26eb7d331eec9444a51a5efce2ee184, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2657,7 +2474,7 @@ GameObject:
   - component: {fileID: 424648167}
   - component: {fileID: 424648168}
   - component: {fileID: 424648169}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Puzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2694,6 +2511,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectPiece: {fileID: 0}
+  puzzleLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   controller: {fileID: 424648169}
   pieceCount: 0
   maxPieceCount: 12
@@ -2755,7 +2575,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &457621261
 SpriteMask:
@@ -2855,7 +2675,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 5815346444209245126, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3175,6 +2995,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &537959828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537959829}
+  m_Layer: 0
+  m_Name: ---Manager---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &537959829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537959828}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.54662, y: 1.866681, z: -0.17389531}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &551688059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3340,11 +3191,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.5686264, y: 11.931372}
   m_EdgeRadius: 0
---- !u!4 &562399091 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 662963213175188762, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
-  m_PrefabInstance: {fileID: 937066480}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,7 +3376,7 @@ GameObject:
   - component: {fileID: 632115708}
   - component: {fileID: 632115707}
   - component: {fileID: 632115706}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_2
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -3546,7 +3392,7 @@ Transform:
   m_GameObject: {fileID: 632115704}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -7.674259, y: 4.1804543, z: 0.07161095}
+  m_LocalPosition: {x: -6.09, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3598,11 +3444,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.39684194, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3612,7 +3458,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.515625, y: 2.71875}
+  m_Size: {x: 2.721941, y: 2.71875}
   m_EdgeRadius: 0
 --- !u!210 &632115708
 SortingGroup:
@@ -3836,7 +3682,7 @@ GameObject:
   - component: {fileID: 672051100}
   - component: {fileID: 672051099}
   - component: {fileID: 672051098}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_8
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -3852,7 +3698,7 @@ Transform:
   m_GameObject: {fileID: 672051096}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 10.66574, y: -3.26, z: 0.07161095}
+  m_LocalPosition: {x: -9.59, y: 2.09, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3904,11 +3750,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.41447926}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3918,7 +3764,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.65625, y: 3.5}
+  m_Size: {x: 2.65625, y: 2.6710415}
   m_EdgeRadius: 0
 --- !u!210 &672051100
 SortingGroup:
@@ -4046,11 +3892,6 @@ SpriteRenderer:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4772507680847411901, guid: 59ed56e9a4bd22943ae02b49807910c5, type: 3}
   m_PrefabInstance: {fileID: 270650772094165997}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &722769613 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6729213100272340215, guid: b26eb7d331eec9444a51a5efce2ee184, type: 3}
-  m_PrefabInstance: {fileID: 417980761}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &726754885
 GameObject:
@@ -4323,7 +4164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 767592417}
   - component: {fileID: 767592418}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4445,7 +4286,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &769553385
 SpriteMask:
@@ -4545,7 +4386,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 1801684832408766203, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4557,171 +4398,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!43 &843188735
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 11
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 48
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 17
-    localAABB:
-      m_Center: {x: 1.7812309, y: 4.212077, z: 0}
-      m_Extent: {x: 18.218773, y: 10.305863, z: 0}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000001000200000002000300000003000400000004000500000005000600000006000700000007000800000008000900000009000a0000000a000b0000000b000c0000000c000d0000000d000e0000000e000f0000000f001000000010000100
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 17
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 24
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 544
-    _typelessdata: 0000000000000000000000000000000000000000000080bf0000003f0000003f0200a0414d00c3c0000000000000000000000000ffff7fbf0100803fe1ffb13e5000c3404d00c3c0000000000000000000000000000080bf1000273fe1ffb13e5000c3c04d00c3c0000000000000000000000000000080bfe0ffb13ee1ffb13e76b054c14d00c3c0000000000000000000000000000080bf76b22b3ee1ffb13e36ba54c14d00c3c0000000000000000000000000000080bfdca22b3ee1ffb13e168083c14d00c3c0000000000000000000000000000080bfd865b63de1ffb13e168083c1a926b4c0000000000000000000000000000080bfd865b63d89f0b73e168083c1591db4c0000000000000000000000000000080bfd865b63d43f4b73e168083c19e915641000000000000000000000000000080bfd865b63dd9d3553f168083c128955641000000000000000000000000000080bfd865b63d43d5553f168083c17c496841000000000000000000000000ffff7fbfd865b63d32ea5c3faed969c17c496841000000000000000000000000000080bfead6093e32ea5c3f10d669c17c496841000000000000000000000000000080bfb4dc093e32ea5c3f784968c17c496841000000000000000000000000000080bf40570c3e32ea5c3f804968417c496841000000000000000000000000ffff7fbf33ea5c3f32ea5c3f0200a0417c496841000000000000000000000000ffff7fbf0100803f32ea5c3f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 1.7812309, y: 4.212077, z: 0}
-    m_Extent: {x: 18.218773, y: 10.305863, z: 0}
-  m_MeshUsageFlags: 0
-  m_CookingOptions: 30
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  'm_MeshMetrics[0]': 1
-  'm_MeshMetrics[1]': 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1 &853321592
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,7 +4412,7 @@ GameObject:
   - component: {fileID: 853321596}
   - component: {fileID: 853321595}
   - component: {fileID: 853321594}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_6
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -4752,7 +4428,7 @@ Transform:
   m_GameObject: {fileID: 853321592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6.29426, y: -0.87951636, z: 0.07161095}
+  m_LocalPosition: {x: -6.21, y: 4.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4804,11 +4480,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.03527558}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4818,7 +4494,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.71875, y: 4.3125}
+  m_Size: {x: 2.71875, y: 2.5134828}
   m_EdgeRadius: 0
 --- !u!210 &853321596
 SortingGroup:
@@ -5040,19 +4716,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1562902792}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 662963213175188762, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.97423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 662963213175188762, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.35845
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 662963213175188762, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08070198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 662963213175188762, guid: 0f8f5e53194bfcb4fbc78bdb3c56eca0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5097,19 +4773,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1562902792}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7994714556901090322, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.97423
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994714556901090322, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.35845
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994714556901090322, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08070198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994714556901090322, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5356,8 +5032,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018457829}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.57, y: -1.35, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5638,6 +5314,210 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1096086517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096086518}
+  m_Layer: 0
+  m_Name: ActiveFalsae
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1096086518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096086517}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 295.36575, y: -2.137157, z: -0.2955635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 35232402}
+  - {fileID: 1451845923}
+  - {fileID: 148684662}
+  - {fileID: 1659671504}
+  - {fileID: 1166776419}
+  - {fileID: 1686479476089018224}
+  - {fileID: 3553396992360525563}
+  - {fileID: 156534534}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!43 &1122061611
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 12
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 5
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 4, y: 4, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200000002000300000003000400000004000100
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 5
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 160
+    _typelessdata: 0000000000000000000000000000000000000000000080bf0000003f0000003f00008040000080c0000000000000000000000000000080bf0000803f00000000000080c0000080c0000000000000000000000000000080bf0000000000000000000080c000008040000000000000000000000000000080bf000000000000803f0000804000008040000000000000000000000000000080bf0000803f0000803f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 4, y: 4, z: 0}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1147485044
 GameObject:
   m_ObjectHideFlags: 0
@@ -5735,7 +5615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157151222}
   - component: {fileID: 1157151223}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5939,12 +5819,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166776416}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.123069, y: -4.09667, z: 0.03028252}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -297.48883, y: -1.9595132, z: 0.32584602}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1096086518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1212420537
 GameObject:
@@ -10824,7 +10704,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &1240735108
 SpriteMask:
@@ -10924,7 +10804,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 1801684832408766203, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11124,7 +11004,7 @@ GameObject:
   - component: {fileID: 1272069373}
   - component: {fileID: 1272069372}
   - component: {fileID: 1272069371}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_7
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -11140,7 +11020,7 @@ Transform:
   m_GameObject: {fileID: 1272069369}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 10.4, y: 0.99, z: 0.07161095}
+  m_LocalPosition: {x: -8.26, y: -4.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11192,11 +11072,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.044093728, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -11206,7 +11086,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.3125, y: 2.71875}
+  m_Size: {x: 2.74277, y: 2.71875}
   m_EdgeRadius: 0
 --- !u!210 &1272069373
 SortingGroup:
@@ -11344,7 +11224,7 @@ GameObject:
   - component: {fileID: 1289711707}
   - component: {fileID: 1289711706}
   - component: {fileID: 1289711705}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_11
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -11360,7 +11240,7 @@ Transform:
   m_GameObject: {fileID: 1289711703}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 9.92, y: -2.69, z: 0.07161095}
+  m_LocalPosition: {x: -9.91, y: -5.02, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11412,11 +11292,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.3968424}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -11426,7 +11306,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.65625, y: 3.5}
+  m_Size: {x: 2.65625, y: 2.7063153}
   m_EdgeRadius: 0
 --- !u!210 &1289711707
 SortingGroup:
@@ -11564,7 +11444,7 @@ GameObject:
   - component: {fileID: 1311492134}
   - component: {fileID: 1311492133}
   - component: {fileID: 1311492132}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_9
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -11580,7 +11460,7 @@ Transform:
   m_GameObject: {fileID: 1311492130}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -7.18, y: -3.94, z: 0.07161095}
+  m_LocalPosition: {x: -9.74, y: -1.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11632,11 +11512,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.035274506, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -11646,7 +11526,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.3125, y: 2.71875}
+  m_Size: {x: 2.4429321, y: 2.71875}
   m_EdgeRadius: 0
 --- !u!210 &1311492134
 SortingGroup:
@@ -11784,7 +11664,7 @@ GameObject:
   - component: {fileID: 1378171591}
   - component: {fileID: 1378171590}
   - component: {fileID: 1378171589}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_4
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -11800,7 +11680,7 @@ Transform:
   m_GameObject: {fileID: 1378171587}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.79, y: 4.52, z: 0.07161095}
+  m_LocalPosition: {x: -5.71, y: -2.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11852,11 +11732,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.42329788, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -11866,7 +11746,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.515625, y: 2.71875}
+  m_Size: {x: 2.6690292, y: 2.71875}
   m_EdgeRadius: 0
 --- !u!210 &1378171591
 SortingGroup:
@@ -11990,11 +11870,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1423060937 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2203195518479424986, guid: 21de5303cf44542418d34217595fda1b, type: 3}
-  m_PrefabInstance: {fileID: 243573990}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1426745701
 GameObject:
   m_ObjectHideFlags: 0
@@ -12127,7 +12002,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &1431657711
 SpriteMask:
@@ -12227,7 +12102,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: -5707208235025365451, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12249,7 +12124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1442725750}
   - component: {fileID: 1442725751}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12335,7 +12210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1443279704}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Pieces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12450,12 +12325,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451845921}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.17, y: 1.91, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -301.53577, y: 4.047157, z: 0.2955635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1096086518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1451845924
 CircleCollider2D:
@@ -12594,7 +12469,7 @@ GameObject:
   - component: {fileID: 1462804313}
   - component: {fileID: 1462804312}
   - component: {fileID: 1462804311}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_0
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -12610,7 +12485,7 @@ Transform:
   m_GameObject: {fileID: 1462804309}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.24, y: 1.3809206, z: 0.07161095}
+  m_LocalPosition: {x: -8.05, y: 0.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12662,11 +12537,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.38802314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -12676,7 +12551,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.65625, y: 3.5}
+  m_Size: {x: 2.65625, y: 2.7239537}
   m_EdgeRadius: 0
 --- !u!210 &1462804313
 SortingGroup:
@@ -12965,11 +12840,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 27.553356, y: 1.9741354}
   m_EdgeRadius: 0
---- !u!4 &1520300951 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7994714556901090322, guid: 821f4b8865af6514ea0dd9958870b8e7, type: 3}
-  m_PrefabInstance: {fileID: 963238949}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1529386342
 GameObject:
   m_ObjectHideFlags: 0
@@ -12980,7 +12850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1529386343}
   - component: {fileID: 1529386344}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13102,7 +12972,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &1542735283
 SpriteMask:
@@ -13202,7 +13072,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 5815346444209245126, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13301,42 +13171,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1587751989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1562902791
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1562902792}
-  m_Layer: 0
-  m_Name: Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1562902792
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562902791}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.97423, y: -5.35845, z: -0.08070198}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1520300951}
-  - {fileID: 1423060937}
-  - {fileID: 722769613}
-  - {fileID: 562399091}
-  - {fileID: 178045139}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587751988
 GameObject:
   m_ObjectHideFlags: 0
@@ -13402,7 +13236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1587911630}
   - component: {fileID: 1587911631}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13609,7 +13443,7 @@ GameObject:
   - component: {fileID: 1626587081}
   - component: {fileID: 1626587080}
   - component: {fileID: 1626587079}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_10
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -13625,7 +13459,7 @@ Transform:
   m_GameObject: {fileID: 1626587077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6.2742596, y: -1.5995457, z: 0.07161095}
+  m_LocalPosition: {x: -9.91, y: 4.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13677,11 +13511,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.43211693, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -13691,7 +13525,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.515625, y: 2.71875}
+  m_Size: {x: 2.651391, y: 2.71875}
   m_EdgeRadius: 0
 --- !u!210 &1626587081
 SortingGroup:
@@ -13846,7 +13680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652517525}
   - component: {fileID: 1652517526}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13933,7 +13767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1657745459}
   - component: {fileID: 1657745460}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14091,12 +13925,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659671502}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21908423, y: -2.7666478, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -295.14667, y: -0.62949085, z: 0.2955635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1096086518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1659671506
 MonoBehaviour:
@@ -14156,7 +13990,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &1677449663
 SpriteMask:
@@ -14256,7 +14090,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: -5707208235025365451, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14491,7 +14325,7 @@ GameObject:
   - component: {fileID: 1792326231}
   - component: {fileID: 1792326230}
   - component: {fileID: 1792326229}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_1
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -14507,7 +14341,7 @@ Transform:
   m_GameObject: {fileID: 1792326227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.5242596, y: -4.289546, z: 0.07161095}
+  m_LocalPosition: {x: -7.91, y: 4.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14559,11 +14393,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.017638206, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14573,7 +14407,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.3125, y: 2.71875}
+  m_Size: {x: 2.6898556, y: 2.71875}
   m_EdgeRadius: 0
 --- !u!210 &1792326231
 SortingGroup:
@@ -14829,7 +14663,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &1845379409
 SpriteMask:
@@ -14929,7 +14763,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 5815346444209245126, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14951,7 +14785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1869850466}
   - component: {fileID: 1869850467}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15151,7 +14985,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &1945325962
 SpriteMask:
@@ -15251,7 +15085,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: 5262411738066956617, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15364,7 +15198,7 @@ GameObject:
   - component: {fileID: 1993021732}
   - component: {fileID: 1993021731}
   - component: {fileID: 1993021730}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_3
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -15380,7 +15214,7 @@ Transform:
   m_GameObject: {fileID: 1993021728}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 9.67574, y: 4.2004547, z: 0.07161095}
+  m_LocalPosition: {x: -8.23, y: -1.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15432,11 +15266,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.38802308}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -15446,7 +15280,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.65625, y: 3.5}
+  m_Size: {x: 2.65625, y: 2.7239537}
   m_EdgeRadius: 0
 --- !u!210 &1993021732
 SortingGroup:
@@ -15584,7 +15418,7 @@ GameObject:
   - component: {fileID: 1999590233}
   - component: {fileID: 1999590232}
   - component: {fileID: 1999590231}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_5
   m_TagString: Puzzle
   m_Icon: {fileID: 0}
@@ -15600,7 +15434,7 @@ Transform:
   m_GameObject: {fileID: 1999590229}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.18, y: 4.17, z: 0.07161095}
+  m_LocalPosition: {x: -6.34, y: -5.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15652,11 +15486,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.008818984}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -15666,7 +15500,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.71875, y: 4.3125}
+  m_Size: {x: 2.71875, y: 2.778043}
   m_EdgeRadius: 0
 --- !u!210 &1999590233
 SortingGroup:
@@ -15800,7 +15634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2042712710}
   - component: {fileID: 2042712711}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16087,7 +15921,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!331 &2056348088
 SpriteMask:
@@ -16187,7 +16021,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
-  m_SortingOrder: -1
+  m_SortingOrder: -5
   m_Sprite: {fileID: -5707208235025365451, guid: b8a731176720e9c4aba413fe5d04563b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -16209,7 +16043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071156961}
   - component: {fileID: 2071156962}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16373,6 +16207,171 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!43 &2132456682
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 48
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 17
+    localAABB:
+      m_Center: {x: 1.7812309, y: 4.212077, z: 0}
+      m_Extent: {x: 18.218773, y: 10.305863, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200000002000300000003000400000004000500000005000600000006000700000007000800000008000900000009000a0000000a000b0000000b000c0000000c000d0000000d000e0000000e000f0000000f001000000010000100
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 17
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 544
+    _typelessdata: 0000000000000000000000000000000000000000000080bf0000003f0000003f0200a0414d00c3c0000000000000000000000000ffff7fbf0100803fe1ffb13e5000c3404d00c3c0000000000000000000000000000080bf1000273fe1ffb13e5000c3c04d00c3c0000000000000000000000000000080bfe0ffb13ee1ffb13e76b054c14d00c3c0000000000000000000000000000080bf76b22b3ee1ffb13e36ba54c14d00c3c0000000000000000000000000000080bfdca22b3ee1ffb13e168083c14d00c3c0000000000000000000000000000080bfd865b63de1ffb13e168083c1a926b4c0000000000000000000000000000080bfd865b63d89f0b73e168083c1591db4c0000000000000000000000000000080bfd865b63d43f4b73e168083c19e915641000000000000000000000000000080bfd865b63dd9d3553f168083c128955641000000000000000000000000000080bfd865b63d43d5553f168083c17c496841000000000000000000000000ffff7fbfd865b63d32ea5c3faed969c17c496841000000000000000000000000000080bfead6093e32ea5c3f10d669c17c496841000000000000000000000000000080bfb4dc093e32ea5c3f784968c17c496841000000000000000000000000000080bf40570c3e32ea5c3f804968417c496841000000000000000000000000ffff7fbf33ea5c3f32ea5c3f0200a0417c496841000000000000000000000000ffff7fbf0100803f32ea5c3f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 1.7812309, y: 4.212077, z: 0}
+    m_Extent: {x: 18.218773, y: 10.305863, z: 0}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &2135566468
 GameObject:
   m_ObjectHideFlags: 0
@@ -16591,7 +16590,7 @@ PrefabInstance:
     - target: {fileID: 4865816427392623100, guid: 59ed56e9a4bd22943ae02b49807910c5, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 843188735}
+      objectReference: {fileID: 2132456682}
     - target: {fileID: 5493332692198446080, guid: 59ed56e9a4bd22943ae02b49807910c5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -16715,7 +16714,7 @@ PrefabInstance:
     - target: {fileID: 8300191841998405612, guid: 59ed56e9a4bd22943ae02b49807910c5, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 175335698}
+      objectReference: {fileID: 1122061611}
     - target: {fileID: 9001526212688476495, guid: 59ed56e9a4bd22943ae02b49807910c5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -16757,11 +16756,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1096086518}
     m_Modifications:
     - target: {fileID: 1949243393337303742, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_Name
       value: TextMain_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949243393337303742, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2908113460116504418, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16789,15 +16792,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.44000006
+      value: -294.92575
       objectReference: {fileID: 0}
     - target: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.35
+      value: -10.212843
       objectReference: {fileID: 0}
     - target: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.2955635
       objectReference: {fileID: 0}
     - target: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16805,15 +16808,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16832,13 +16835,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
+--- !u!4 &1686479476089018224 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4884370620880886922, guid: 451d833e13da5ad45bb5fac893ffff75, type: 3}
+  m_PrefabInstance: {fileID: 1686479476089018223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3553396992360525562
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1096086518}
     m_Modifications:
     - target: {fileID: 7448051176075308138, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_Name
@@ -16850,15 +16858,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.64
+      value: -277.72577
       objectReference: {fileID: 0}
     - target: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.48
+      value: 4.617157
       objectReference: {fileID: 0}
     - target: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: -0.70443654
       objectReference: {fileID: 0}
     - target: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16866,15 +16874,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16893,26 +16901,29 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
+--- !u!4 &3553396992360525563 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8834720350142020110, guid: bda6a7a3dd1b65b4fa94eeffc25e57ac, type: 3}
+  m_PrefabInstance: {fileID: 3553396992360525562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 156534534}
-  - {fileID: 3553396992360525562}
-  - {fileID: 1686479476089018223}
-  - {fileID: 270650772094165997}
-  - {fileID: 1018457831}
-  - {fileID: 991641736}
   - {fileID: 1212420540}
-  - {fileID: 35232402}
-  - {fileID: 1451845923}
-  - {fileID: 148684662}
-  - {fileID: 1659671504}
-  - {fileID: 1166776419}
+  - {fileID: 270650772094165997}
+  - {fileID: 991641736}
   - {fileID: 1587751989}
   - {fileID: 1697200097}
   - {fileID: 284598789}
   - {fileID: 1090283345}
-  - {fileID: 1562902792}
+  - {fileID: 537959829}
+  - {fileID: 1018457831}
+  - {fileID: 963238949}
+  - {fileID: 243573990}
+  - {fileID: 417980761}
+  - {fileID: 937066480}
+  - {fileID: 247931824}
+  - {fileID: 1096086518}
