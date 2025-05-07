@@ -20,7 +20,7 @@ public class SwitchVision : MonoBehaviour
     public bool controllingAyla = false;
     public bool canSwitch = true;
 
-    private Camera mainCamera; // 유니티 기본 카메라
+    public Camera mainCamera; // 유니티 기본 카메라
 
     void Start()
     {
