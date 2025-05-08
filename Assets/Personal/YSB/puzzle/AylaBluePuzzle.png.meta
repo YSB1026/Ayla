@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3e2b0587ce398c54ca60f210d9035482
+guid: c0f96c491dae26a46be5cb741b34e266
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8418888124856636273
-    second: Effect3_0
+      213: 983554254046074588
+    second: AylaBluePuzzle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,23 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Effect3_0
+      name: AylaBluePuzzle_0
       rect:
         serializedVersion: 2
-        x: 50
-        y: 50
-        width: 409
-        height: 412
+        x: 186
+        y: 68
+        width: 1100
+        height: 600
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 17395d5f426e5d470800000000000000
-      internalID: 8418888124856636273
+      spriteID: cd69db9026946ad00800000000000000
+      internalID: 983554254046074588
       vertices: []
       indices: 
       edges: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bc9ad73f2f8d2bb4d99591b17bdd4b8b
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Effect3_0: 8418888124856636273
+      AylaBluePuzzle_0: 983554254046074588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
