@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,6 +10,13 @@ public class DragAndDrop : MonoBehaviour
 
     [SerializeField] private int pieceCount = 0;
     [SerializeField] private int maxPieceCount = 12;
+
+    void Start()
+    {
+        Vector3 centerPos = Camera.main.transform.position;
+        centerPos.z = transform.position.z;
+        transform.position = centerPos;
+    }
 
     void Update()
     {
@@ -61,5 +69,5 @@ public class DragAndDrop : MonoBehaviour
 
             selectPiece = null;
         }
-    }
+    }//Update()
 }
