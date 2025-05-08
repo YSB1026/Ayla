@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EyeRigging 1_0: 3660190957950951816
+      EyeRigging 1_1: 8836539390487447794
+      EyeRigging 1_2: 2163834938335563742
+      EyeRigging 1_3: -342034144569224559
+      EyeRigging 1_4: 9035233973303495588
+      EyeRigging 1_5: -4963973964731835338
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
