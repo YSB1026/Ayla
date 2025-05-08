@@ -14,6 +14,9 @@ public class PendantEvent : MonoBehaviour
     [Header("퍼즐")]
     [SerializeField] private GameObject puzzleObject;
 
+    [Header("Green만 넣어요.")]
+    [SerializeField] private GameObject roomTriggerToActivate;
+
     public static Action OnPuzzleSolved;
 
     private void Start()
@@ -54,5 +57,10 @@ public class PendantEvent : MonoBehaviour
         Destroy(gameObject);
 
         GameManager.Instance.OnPendantCollected(pendantColor, sceneName);
+
+        if (roomTriggerToActivate != null)
+        {
+            roomTriggerToActivate.SetActive(true);
+        }
     }
 }

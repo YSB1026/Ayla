@@ -164,9 +164,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -936748867
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: 408166273
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 4776294590571971646, guid: 607f9d55f5da8a540a2b3a9c438866fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2503,7 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 5505817521308374922}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &1831026476516484585
 GameObject:
@@ -2889,7 +2889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 9188340557972463457}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &2057384044552850845
 GameObject:
@@ -3283,7 +3283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 3217145599776656153}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &2555682006193978676
 GameObject:
@@ -3892,7 +3892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 337606412858276999}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &2979887268389477663
 GameObject:
@@ -4199,7 +4199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 7687864115563184067}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &3151961261788537342
 GameObject:
@@ -6379,7 +6379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 2555682006193978676}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &4556691663039371630
 GameObject:
@@ -6883,7 +6883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 8569236665415893266}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &5505817521308374922
 GameObject:
@@ -7069,7 +7069,7 @@ Transform:
   m_GameObject: {fileID: 5743513499861501927}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9, y: 4.35, z: -5}
+  m_LocalPosition: {x: -4.8, y: 4.6, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7331,7 +7331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 7057251859970004997}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &5885064619275232127
 GameObject:
@@ -7795,7 +7795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 1639362934044423001}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &5952115807950149008
 GameObject:
@@ -8102,7 +8102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 215455265127950332}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &6218647737256148427
 GameObject:
@@ -8713,7 +8713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 3231292388181267210}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &7057251859970004997
 GameObject:
@@ -9508,7 +9508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPiece: {fileID: 5940040174337058234}
-  snapThreshold: 1.5
+  snapThreshold: 8
   isLocked: 0
 --- !u!1 &8569236665415893266
 GameObject:
@@ -10182,15 +10182,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 210022467333915686, guid: 8770e7d356eaa504185bac7cefb93b94, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 210022467333915686, guid: 8770e7d356eaa504185bac7cefb93b94, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 210022467333915686, guid: 8770e7d356eaa504185bac7cefb93b94, type: 3}
       propertyPath: m_SortingLayerID
-      value: -936748867
+      value: 408166273
       objectReference: {fileID: 0}
     - target: {fileID: 608110399297817821, guid: 8770e7d356eaa504185bac7cefb93b94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10238,15 +10238,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7846756137863326205, guid: 8770e7d356eaa504185bac7cefb93b94, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7846756137863326205, guid: 8770e7d356eaa504185bac7cefb93b94, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7846756137863326205, guid: 8770e7d356eaa504185bac7cefb93b94, type: 3}
       propertyPath: m_SortingLayerID
-      value: -936748867
+      value: 408166273
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
