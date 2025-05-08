@@ -97,7 +97,17 @@ public class Player : Entity
 
         stateMachine.currentState.Update();
     }
-    private SurfaceType GetSurfaceTypeUnderPlayer()
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if(collision.gameObject.CompareTag("FallTrick"))
+        {
+            collision.gameObject.GetComponent<InteractiveObject>().FreezeObject(false);
+            collision.gameObject.GetComponent<InteractiveObject>().SetTrigger(true);
+        }
+	}
+
+	private SurfaceType GetSurfaceTypeUnderPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
         if (hit.collider != null)
