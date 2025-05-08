@@ -5,6 +5,7 @@ public class ObjectTimelineTrigger : MonoBehaviour
 {
     public PlayableDirector timelineDirector; // 타임라인 실행용
     public GameObject playerObject; // 플레이어 오브젝트 (애니메이터가 있는 오브젝트)
+    public GameObject lockObject;
 
     // 충돌 시 타임라인 실행
     void OnTriggerEnter2D(Collider2D other)
