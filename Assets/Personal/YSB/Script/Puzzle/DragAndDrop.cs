@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,7 +19,6 @@ public class DragAndDrop : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
                 Vector2.zero,
-                Mathf.Infinity,
                 puzzleLayer);
 
             if (hit.collider != null && hit.transform.CompareTag("Puzzle"))
@@ -42,8 +42,7 @@ public class DragAndDrop : MonoBehaviour
         // 드래그 끝났을 때
         if (Input.GetMouseButtonUp(0) && selectPiece != null)
         {
-            // 위치 이동 후 물리 업데이트 동기화
-            Physics2D.SyncTransforms();
+            Physics2D.SyncTransforms(); // 위치 이동 후 물리 업데이트 동기화
 
             PuzzlePiece pieceScript = selectPiece.GetComponent<PuzzlePiece>();
             if (pieceScript != null)
@@ -61,5 +60,5 @@ public class DragAndDrop : MonoBehaviour
 
             selectPiece = null;
         }
-    }
+    }//Update()
 }
