@@ -26,6 +26,11 @@ public class ShadowPuller2D : MonoBehaviour
     public float shadowPointMaxOffset = 2f; // Max offset in either direction (-2 to 2)
 
     private GameObject pullingTarget;
+    
+    [Header("Light Interaction")]
+    [SerializeField] private bool inLight = false; // 빛 안에 있는지 여부
+    public float shadowShrinkSpeed = 3f; // 빛 안에서 그림자가 줄어드는 속도
+    public float minScaleX = 0.5f; // 최소 그림자 크기
 
     void Start()
     {
@@ -46,13 +51,20 @@ public class ShadowPuller2D : MonoBehaviour
 
         Vector3 currentScale = shadowObject.transform.localScale;
 
-        // 그림자 확장
-        if (Input.GetKey(scaleKey))
+        // 그림자 확장/축소 로직 (빛 상호작용 포함)
+        if (Input.GetKey(scaleKey) && !inLight)
         {
+            // 빛 안에 없을 때만 확장 가능
             currentScale.x = Mathf.Min(currentScale.x + scaleSpeed * Time.deltaTime, maxScaleX);
+        }
+        else if (inLight)
+        {
+            // 빛 안에 있으면 그림자 크기 줄이기
+            currentScale.x = Mathf.Max(currentScale.x - shadowShrinkSpeed * Time.deltaTime, minScaleX);
         }
         else
         {
+            // 평소에는 원래 크기로 서서히 돌아감
             currentScale = Vector3.Lerp(currentScale, originalScale, Time.deltaTime * scaleSpeed);
         }
         shadowObject.transform.localScale = currentScale;
@@ -100,6 +112,24 @@ public class ShadowPuller2D : MonoBehaviour
             }
         }
     }
+    
+    // LightMeshPlayerDetector에서 호출하는 메서드
+    public void SetInLightStatus(bool isInLight)
+    {
+        inLight = isInLight;
+        
+        // 상태 변경 시 디버그 로그 추가
+        if (inLight != isInLight)
+        {
+            Debug.Log($"그림자 포인트 상태: {(isInLight ? "빛 안에 있음" : "빛 밖에 있음")}");
+        }
+    }
+    
+    // 그림자 포인트가 빛 안에 있는지 확인하는 메서드 (Gizmo 및 외부 클래스용)
+    public bool IsInLight()
+    {
+        return inLight;
+    }
 
     void OnDrawGizmosSelected()
     {
@@ -108,6 +138,13 @@ public class ShadowPuller2D : MonoBehaviour
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(shadowPoint.position, detectRadius);
+            
+            // 빛 상태에 따라 색상 변경
+            if (Application.isPlaying)
+            {
+                Gizmos.color = inLight ? Color.yellow : Color.green;
+                Gizmos.DrawSphere(shadowPoint.position, 0.15f);
+            }
         }
     }
 }
