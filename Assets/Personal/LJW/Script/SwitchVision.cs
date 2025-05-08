@@ -22,6 +22,9 @@ public class SwitchVision : MonoBehaviour
 
     public Camera mainCamera; // 유니티 기본 카메라
 
+    public Transform aylaPuzzleStartPoint;     // Ayla가 이동할 위치
+    public Transform Phase1_Ayla_CameraTarget; // 인스펙터에서 연결할 퍼즐 위치
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -29,7 +32,7 @@ public class SwitchVision : MonoBehaviour
 
     void Update()
     {
-        if (!canSwitch) return;
+        if (!canSwitch || isPhase1) return;
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -37,11 +40,11 @@ public class SwitchVision : MonoBehaviour
 
             Transform target = targets[currentIndex];
 
-            CCamera.Follow = targets[currentIndex];
-            CCamera.LookAt = targets[currentIndex];
+            CCamera.Follow = target;
+            CCamera.LookAt = target;
 
             // 조작 상태 토글
-            bool controllingAyla = targets[currentIndex] == ayla.transform;
+            bool controllingAyla = target == ayla.transform;
 
             // 조작 제어
             ayla.isCurrentlyControlled = controllingAyla;

@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class Phase1_Manager : MonoBehaviour
 {
+    [Header("Phase1 설정")]
+    public Player player;
+    public Ayla ayla;
+    public SwitchVision switchVision;
+    public Transform aylaPuzzleStartPoint;
+    public Transform playerDownCameraTarget;
+
+    [Header("천장 관련")]
     public Transform ceiling;
-    public float descendSpeed = 0.5f;
+    public float descendSpeed = 1f;
 
     private bool phaseStarted = false;
     private bool puzzleSolved = false;
     private bool phaseStopped = false;
-
-    private Player player;
-    private Ayla ayla;
 
     void Start()
     {
@@ -23,44 +28,73 @@ public class Phase1_Manager : MonoBehaviour
         if (!phaseStarted || phaseStopped || puzzleSolved)
             return;
 
-        if (ceiling != null)
-        {
-            ceiling.position += Vector3.down * descendSpeed * Time.deltaTime;
-        }
-        else
-        {
-            Debug.LogError("ceiling 연결 안 됨!");
-        }
+        ceiling.position += Vector3.down * descendSpeed * Time.deltaTime;
     }
 
     public void StartPhase()
     {
-        Debug.Log("Phase1 시작!");
+        Debug.Log("[Phase1] 시작됨");
+
         phaseStarted = true;
 
+        // 1. 플레이어 조작 막고 쓰러뜨리기
         if (player != null)
-            player.SetControlEnabled(false); // 플레이어 조작 차단
+        {
+            player.SetControlEnabled(false);
+            player.stateMachine.ChangeState(player.downState);
+        }
 
-        if (ayla != null)
-            ayla.SetControlEnabled(true);    // 에일라 조작 허용
+        // 2. Ayla 조작
+        if (ayla != null && aylaPuzzleStartPoint != null)
+        {
+            ayla.SetControlEnabled(false);
+            ayla.isCurrentlyControlled = false;
+        }
+
+        // 시네머신 끄기
+        if (switchVision != null && switchVision.CCamera != null)
+        {
+            switchVision.CCamera.gameObject.SetActive(false);
+        }
+
+        // 4. 메인 카메라 위치를 다운된 플레이어 연출용으로 이동
+        if (switchVision != null && switchVision.mainCamera != null && playerDownCameraTarget != null)
+        {
+            Vector3 targetPos = playerDownCameraTarget.position;
+            Vector3 camPos = new Vector3(targetPos.x, targetPos.y, switchVision.mainCamera.transform.position.z);
+            switchVision.mainCamera.transform.position = camPos;
+        }
+
+        // 5. 플레이어 시야 유지
+        if (switchVision != null && switchVision.mainCamera != null)
+        {
+            switchVision.mainCamera.cullingMask = switchVision.playerViewMask;
+        }
     }
 
     public void SolvePuzzle()
     {
-        Debug.Log("퍼즐 해결됨!");
         puzzleSolved = true;
+        Debug.Log("[Phase1] 퍼즐 해결 완료");
 
-        if (player != null)
-            player.SetControlEnabled(true); // 플레이어 다시 조작 가능
+        // 시네머신 카메라 다시 켜기
+        if (switchVision != null && switchVision.CCamera != null)
+        {
+            switchVision.CCamera.gameObject.SetActive(true);
+            switchVision.CCamera.Follow = player.transform;
+            switchVision.CCamera.LookAt = player.transform;
+            switchVision.mainCamera.cullingMask = switchVision.playerViewMask;
+        }
 
-        if (ayla != null)
-            ayla.SetControlEnabled(false);  // 에일라 따라가기 전환
-
-        // 필요하다면 다음 Phase로 전환하거나 씬 연출 호출
+        switchVision.ayla.GetComponent<AylaPhase1Controller>()?.Deactivate();
+        switchVision.ayla.SetControlEnabled(true); // 기존 Ayla 움직임 ON
     }
+
     public void StopCeiling()
     {
         phaseStopped = true;
-        Debug.Log("천장 멈춤");
+        Debug.Log("[Phase1] 천장 멈춤");
     }
+
+    public bool IsPhaseActive => phaseStarted && !phaseStopped && !puzzleSolved;
 }

@@ -23,13 +23,6 @@ public class Phase1_StartTrigger : MonoBehaviour
             if (switchVision != null)
             {
                 switchVision.isPhase1 = true;
-
-                // Ayla 시점으로 전환
-                switchVision.CCamera.Follow = ayla.transform;
-                switchVision.CCamera.LookAt = ayla.transform;
-
-                // 퍼즐 보이게 레이어 마스크 직접 설정
-                switchVision.mainCamera.cullingMask = switchVision.aylaPhase1ViewMask;
             }
             triggered = true;
         }
