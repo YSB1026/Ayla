@@ -51,6 +51,7 @@ public class MoveTrigger : MonoBehaviour
 				movedObject.transform.position = Vector3.Lerp(movedObject.transform.position, destination.position, moveSpeed * Time.deltaTime);
 				break;
 			case TrickMoveType.TELEPORT:
+				UIManager.Instance.FadeIn();
 				movedObject.transform.position = destination.position;
 				break;
 		}
