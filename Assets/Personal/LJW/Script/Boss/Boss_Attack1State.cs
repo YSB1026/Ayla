@@ -3,7 +3,7 @@ using UnityEngine;
 public class Boss_Attack1State : BossState
 {
     private bool hasAttacked = false;
-    private float attackTimer = 1f;
+    private bool hasThrown = false;
     public Boss_Attack1State(Boss _boss, BossStateMachine _stateMachine, string _animBoolName) : base(_boss, _stateMachine, _animBoolName)
     {
     }
@@ -11,6 +11,9 @@ public class Boss_Attack1State : BossState
     public override void Enter()
     {
         base.Enter();
+
+        hasAttacked = false;
+        hasThrown = false;
     }
 
     public override void Update()
@@ -18,23 +21,26 @@ public class Boss_Attack1State : BossState
         base.Update();
 
         boss.SetZeroVelocity();
-        hasAttacked = false;
-        attackTimer = 1f;
 
-        attackTimer -= Time.deltaTime;
-
-        // 공격 끝났지만 명중 못했으면 idle로 복귀
-        if (triggerCalled && !hasAttacked)
+        if (!hasThrown)
         {
-            Debug.Log("Attack1 실패, idle로 전환");
-            boss.longRCoolTimer = boss.longRCoolTime;
-            stateMachine.ChangeState(boss.idleState);
+            hasThrown = true;
+            ThrowObject();
         }
 
-        // 공격 끝났고 명중했으면 run이나 다음 행동
-        if (triggerCalled && hasAttacked)
+        if (triggerCalled)
         {
-            stateMachine.ChangeState(boss.runState);
+            boss.longRCoolTimer = boss.longRCoolTime;
+
+            if (hasAttacked)
+            {
+                stateMachine.ChangeState(boss.runState);
+            }
+            else
+            {
+                Debug.Log("Attack1 실패, idle로 전환");
+                stateMachine.ChangeState(boss.idleState);
+            }
         }
 
     }
@@ -44,4 +50,28 @@ public class Boss_Attack1State : BossState
         base.Exit();
     }
 
+    private void ThrowObject()
+    {
+        GameObject obj = GameObject.Instantiate(boss.throwObjectPrefab, boss.throwSpawnPoint.position, Quaternion.identity);
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
+        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+        if (rb == null) return;
+
+        // ★ 정확한 방향 계산 (플레이어 중심을 향하게)
+        Vector2 targetPos = player.transform.position + Vector3.up * 0.5f;
+        Vector2 dir = (targetPos - (Vector2)obj.transform.position).normalized;
+
+        float launchForce = 15f;
+        rb.gravityScale = 0f; // 던지는 동안 중력 X
+        rb.linearVelocity = dir * launchForce;
+
+        ThrowingObjects controller = obj.GetComponent<ThrowingObjects>();
+        if (controller != null)
+        {
+            controller.SetPlayer(player);
+        }
+    }
 }

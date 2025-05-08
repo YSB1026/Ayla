@@ -5,22 +5,26 @@ public class Boss : Entity
     public LayerMask whatIsPlayer;
 
     [Header("이동 info")]
-    public float moveSpeed;
-    public float runSpeed;
-    public float idleTime;
+    public float moveSpeed = 1f;
+    public float runSpeed = 5f;
+    public float idleTime = 2f;
 
     [Header("플레이어 탐지 info")]
     [SerializeField]
     public Transform playerDetect;
-    public Vector2 detectBoxSize = new Vector2(1.5f, 1f);  // 가로: 1.5, 세로: 1
+    public Vector2 detectBoxSize = new Vector2(10f, 5f);
+
+    [Header("원거리 무기 info")]
+    public GameObject throwObjectPrefab;
+    public Transform throwSpawnPoint;
 
     [Header("원거리 공격(Attack1) info")]
     public Transform longRangeCheck;
-    public Vector2 longRangeBoxSize = new Vector2(1f, 1f);
+    public Vector2 longRangeBoxSize = new Vector2(15f, 5f);
 
     [Header("근접 공격(Attack2) info")]
     public Transform closeRangeCheck;
-    public Vector2 closeRangeBoxSize = new Vector2(1f, 1f);
+    public Vector2 closeRangeBoxSize = new Vector2(2f, 3f);
 
     [Header("Long Range Cooldown")]
     public float longRCoolTime = 3f;
@@ -29,6 +33,8 @@ public class Boss : Entity
     public bool CanDetectLongRange => longRCoolTimer <= 0f;
 
     public float battleTime;
+
+    [SerializeField] private Transform graphics;
 
     #region States
     public BossStateMachine stateMachine { get; private set; }
@@ -68,6 +74,11 @@ public class Boss : Entity
         if (longRCoolTimer > 0f)
             longRCoolTimer -= Time.deltaTime;
     }
+    public override void Flip()
+    {
+        base.Flip(); 
+        rb.linearVelocity = Vector2.zero; // 방향 전환 시 속도 제거 미끄러짐 방지
+    }
 
     public bool IsPlayerInAttackBox()
     {
@@ -98,19 +109,19 @@ public class Boss : Entity
         if (playerDetect != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(playerDetect.position, detectBoxSize);
+            Gizmos.DrawWireCube(transform.TransformPoint(playerDetect.localPosition), detectBoxSize);
         }
 
         if (longRangeCheck != null)
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(longRangeCheck.position, longRangeBoxSize);
+            Gizmos.DrawWireCube(transform.TransformPoint(longRangeCheck.localPosition), longRangeBoxSize);
         }
 
         if (closeRangeCheck != null)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(closeRangeCheck.position, closeRangeBoxSize);
+            Gizmos.DrawWireCube(transform.TransformPoint(closeRangeCheck.localPosition), closeRangeBoxSize);
         }
 
     }
