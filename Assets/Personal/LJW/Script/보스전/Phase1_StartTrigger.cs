@@ -10,6 +10,12 @@ public class Phase1_StartTrigger : MonoBehaviour
     {
         if (triggered) return;
 
+        Ayla aylaScript = switchVision.ayla.GetComponent<Ayla>();
+        AylaPhase1Controller phaseController = switchVision.ayla.GetComponent<AylaPhase1Controller>();
+
+        if (aylaScript != null) aylaScript.enabled = false;
+        if (phaseController != null) phaseController.enabled = true;
+
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Phase1 트리거 감지됨 -> Phase1 돌입");
