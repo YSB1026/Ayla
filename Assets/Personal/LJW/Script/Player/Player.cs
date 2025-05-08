@@ -40,6 +40,9 @@ public class Player : Entity
     public Player_PushState pushState { get; private set; }
     public Player_AirState airState { get; private set; }
 
+    public Player_DownState downState { get; private set; }
+    public Player_UpState upState { get; private set; }
+
     #endregion
 
     public bool controlEnabled = true;
@@ -70,6 +73,9 @@ public class Player : Entity
         pullState = new Player_PullState(this, stateMachine, "Pull");
         pushState = new Player_PushState(this, stateMachine, "Push");
 		airState = new Player_AirState(this, stateMachine, "Fall");
+
+        downState = new Player_DownState(this, stateMachine, "Down");
+        upState = new Player_UpState(this, stateMachine, "Up");
     }
 
     protected override void Start()
