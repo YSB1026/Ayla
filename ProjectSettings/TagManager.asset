@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - FireTrigger
   - Puzzle
+  - Ayla
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Player
   - Enemy
   - Puzzle
-  - 
-  - 
+  - AylaPuzzle
+  - Phase1_PuzzleWall
   - 
   - 
   - 

@@ -75,14 +75,13 @@ public class Ayla : Entity
             float x = Input.GetAxisRaw("Horizontal");
             float y = Input.GetAxisRaw("Vertical");
             inputDir = new Vector2(x, y);
+
+            followBasePosition += new Vector3(inputDir.x, inputDir.y, 0) * moveSpeed * Time.deltaTime;
         }
         else
         {
             Follow();
         }
-
-        followBasePosition += new Vector3(inputDir.x, inputDir.y, 0) * moveSpeed * Time.deltaTime;
-
         Float();
     }
 
@@ -133,6 +132,11 @@ public class Ayla : Entity
         {
             holdTime = 0f;  // R 누르고 있지 않으면 초기화
         }
+    }
+
+    public void SetFollowBasePosition(Vector3 newPos)
+    {
+        followBasePosition = newPos;
     }
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
