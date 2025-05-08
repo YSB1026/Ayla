@@ -1,66 +1,3 @@
-//using System.Collections;
-//using UnityEngine;
-//using UnityEngine.SceneManagement;
-
-//public class CustomSceneManager : MonoBehaviour
-//{
-//    public static CustomSceneManager Instance { get; private set; }
-
-//    private void Awake()
-//    {
-//        if (Instance == null)
-//        {
-//            Instance = this;
-//            DontDestroyOnLoad(gameObject);
-//        }
-//        else
-//        {
-//            Destroy(gameObject);
-//        }
-//    }
-
-//    public void LoadScene(string sceneName)
-//    {
-//        PlaySceneBGM(sceneName);
-
-//        if (SceneManager.GetActiveScene().name == sceneName)
-//        {
-//            return;
-//        }
-
-//        UIManager.Instance.FadeOut(() => {
-//            SceneManager.LoadScene(sceneName);
-//            UIManager.Instance.FadeIn();
-//        });
-//    }
-
-//    public void LoadSceneFromTimeline(string sceneName)
-//    {
-//        // 씬 로딩
-//        CustomSceneManager.Instance.LoadScene(sceneName);
-//    }
-//    public void UnloadMemoryScene(string memorySceneName)
-//    {
-//        // 회상 씬 언로드
-//        SceneManager.UnloadSceneAsync(memorySceneName);
-//    }
-
-//    private void PlaySceneBGM(string sceneName)
-//    {
-//        switch (sceneName)
-//        {
-//            case "Lobby":
-//                SoundManager.Instance.PlayBGM("MainTheme");
-//                break;
-//            case "Forest"://나중에 수정할 것
-//                SoundManager.Instance.PlayBGM("ForestBGM");
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-//}
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -70,6 +7,7 @@ public class CustomSceneManager : MonoBehaviour
     public static CustomSceneManager Instance { get; private set; }
 
     private Scene previousScene;
+    private string memorySceneName; // 회상 씬 이름 저장용
 
     private void Awake()
     {
@@ -89,9 +27,7 @@ public class CustomSceneManager : MonoBehaviour
         PlaySceneBGM(sceneName);
 
         if (SceneManager.GetActiveScene().name == sceneName)
-        {
             return;
-        }
 
         UIManager.Instance.FadeOut(() => {
             SceneManager.LoadScene(sceneName);
@@ -104,27 +40,31 @@ public class CustomSceneManager : MonoBehaviour
         LoadScene(sceneName);
     }
 
-    public void UnloadMemoryScene(string memorySceneName)
-    {
-        SceneManager.UnloadSceneAsync(memorySceneName);
-
-        // 이전 씬 다시 활성화
-        if (previousScene.IsValid())
-        {
-            SetSceneActive(previousScene);
-        }
-    }
-
-    public void LoadMemoryScene(string memorySceneName)
+    public void LoadMemoryScene(string memorySceneNameParam)
     {
         previousScene = SceneManager.GetActiveScene();
+        memorySceneName = memorySceneNameParam;
 
         StartCoroutine(LoadSceneAdditiveAndDeactivateCurrent(memorySceneName));
     }
 
+    public void UnloadMemoryScene()
+    {
+        if (!string.IsNullOrEmpty(memorySceneName))
+        {
+            SceneManager.UnloadSceneAsync(memorySceneName).completed += (op) =>
+            {
+                if (previousScene.IsValid() && previousScene.isLoaded)
+                {
+                    SetSceneActive(previousScene);
+                }
+            };
+        }
+    }
+
     private IEnumerator LoadSceneAdditiveAndDeactivateCurrent(string memorySceneName)
     {
-        // 현재 씬 비활성화
+        // 현재 씬의 루트 오브젝트 비활성화
         Scene current = SceneManager.GetActiveScene();
         GameObject[] rootObjects = current.GetRootGameObjects();
         foreach (GameObject obj in rootObjects)
@@ -139,7 +79,7 @@ public class CustomSceneManager : MonoBehaviour
             yield return null;
         }
 
-        // 회상 씬을 활성 씬으로 설정
+        // 활성 씬으로 설정
         Scene memoryScene = SceneManager.GetSceneByName(memorySceneName);
         if (memoryScene.IsValid())
         {
@@ -153,7 +93,6 @@ public class CustomSceneManager : MonoBehaviour
     {
         SceneManager.SetActiveScene(scene);
 
-        // 루트 오브젝트 다시 활성화
         GameObject[] rootObjects = scene.GetRootGameObjects();
         foreach (GameObject obj in rootObjects)
         {
