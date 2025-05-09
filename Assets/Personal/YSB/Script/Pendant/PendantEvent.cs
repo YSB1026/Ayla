@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using static LightColorController;
 
@@ -47,25 +48,23 @@ public class PendantEvent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            ActivePuzzle(true);
+            GameManager.Instance.SetPlayerControlEnabled(false);
+            StartCoroutine(ActivePuzzle(true));
         }
     }
 
-    private void ActivePuzzle(bool isActive)
+    private IEnumerator ActivePuzzle(bool isActive)
     {
+        yield return new WaitForSeconds(2f);
         if (puzzleObject != null)
         {
             puzzleObject.SetActive(isActive);
-        }
-        if (isActive)
-        {
-            GameManager.Instance.SetPlayerControlEnabled(false);
         }
     }
 
     private void LoadNextScene()//퍼즐 컨트롤러에서 action을 통해 호출하는 함수에요.
     {
-        ActivePuzzle(false);
+        StartCoroutine(ActivePuzzle(false));
         Destroy(gameObject);
 
         GameManager.Instance.OnPendantCollected(pendantColor, sceneName);
