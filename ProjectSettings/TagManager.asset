@@ -8,7 +8,7 @@ TagManager:
   - FireTrigger
   - Puzzle
   - Ayla
-  - FallTrick
+  - Ground
   layers:
   - Default
   - TransparentFX
