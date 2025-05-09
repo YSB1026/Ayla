@@ -17,10 +17,16 @@ public class Phase1_Manager : MonoBehaviour
     private bool puzzleSolved = false;
     private bool phaseStopped = false;
 
+    // 퍼즐 UI GameObject (LockPattern을 포함한 오브젝트)
+    [SerializeField] private GameObject puzzleUI;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
         ayla = GameObject.FindAnyObjectByType<Ayla>();
+
+        if (puzzleUI != null)
+            puzzleUI.SetActive(false);
     }
 
     void Update()
