@@ -5,7 +5,6 @@ public class Player_InputState : PlayerState
     public Player_InputState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
-
     public override void Enter()
     {
         base.Enter();

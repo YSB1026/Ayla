@@ -41,14 +41,6 @@ public class PlayerState
     // 상태 유지 중 매 프레임마다 실행되는 함수
     public virtual void Update()
     {
-        Debug.Log($"state update 중.. --> 상태 : {stateMachine.currentState.animBoolName}, player control : {!player.controlEnabled}");
-        if (!player.controlEnabled && stateMachine.currentState.animBoolName != "Idle")
-        {
-            stateMachine.ChangeState(player.inputState);
-            Debug.Log("input으로 진입해야해요!");
-            return;
-        }
-
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
