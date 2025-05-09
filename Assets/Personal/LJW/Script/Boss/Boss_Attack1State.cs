@@ -4,6 +4,7 @@ public class Boss_Attack1State : BossState
 {
     private bool hasAttacked = false;
     private bool hasThrown = false;
+    private bool hasEvaluated = false;
     public Boss_Attack1State(Boss _boss, BossStateMachine _stateMachine, string _animBoolName) : base(_boss, _stateMachine, _animBoolName)
     {
     }
@@ -14,6 +15,7 @@ public class Boss_Attack1State : BossState
 
         hasAttacked = false;
         hasThrown = false;
+        hasEvaluated = false;
     }
 
     public override void Update()
@@ -28,12 +30,14 @@ public class Boss_Attack1State : BossState
             ThrowObject();
         }
 
-        if (triggerCalled)
-        {
-            boss.longRCoolTimer = boss.longRCoolTime;
+        if (hit && !hasEvaluated)
+            return;
 
+        if (hit && hasEvaluated)
+        {
             if (hasAttacked)
             {
+                Debug.Log("보스 runState로 전환!");
                 stateMachine.ChangeState(boss.runState);
             }
             else
@@ -49,29 +53,49 @@ public class Boss_Attack1State : BossState
     {
         base.Exit();
     }
+    public override void AnimationFinishTrigger()
+    {
+        base.AnimationFinishTrigger();
 
-    private void ThrowObject()
+        // 애니메이션만 idle로 수동 전환
+        boss.anim.SetBool("Idle", true);
+    }
+
+    public void ThrowObject()
     {
         GameObject obj = GameObject.Instantiate(boss.throwObjectPrefab, boss.throwSpawnPoint.position, Quaternion.identity);
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
 
-        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-        if (rb == null) return;
-
-        // ★ 정확한 방향 계산 (플레이어 중심을 향하게)
-        Vector2 targetPos = player.transform.position + Vector3.up * 0.5f;
+        // 방향 계산 (살짝 위)
+        Vector2 targetPos = player.GetComponent<Collider2D>().bounds.center;
         Vector2 dir = (targetPos - (Vector2)obj.transform.position).normalized;
-
         float launchForce = 15f;
-        rb.gravityScale = 0f; // 던지는 동안 중력 X
-        rb.linearVelocity = dir * launchForce;
 
+        // 보스 전용 스크립트로 처리
         ThrowingObjects controller = obj.GetComponent<ThrowingObjects>();
         if (controller != null)
         {
-            controller.SetPlayer(player);
+            controller.Setup(dir, player.transform, launchForce);
+
+            controller.onHitPlayerCallback = (bool hit) =>
+            {
+                Debug.Log("콜백 도착, hasEvaluated 처리 시작");
+                boss.longRCoolTimer = boss.longRCoolTime;
+
+                if (hit)
+                {
+                    Debug.Log("Boss_Attack1State: 플레이어 타격 성공!");
+                    hasAttacked = true;
+                }
+                else
+                {
+                    Debug.Log("Boss_Attack1State: 타격 실패");
+                    hasAttacked = false;
+                }
+                hasEvaluated = true;
+            };
         }
     }
 }

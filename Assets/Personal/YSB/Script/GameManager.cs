@@ -6,15 +6,15 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
 
-    public Vector3 savePont;
+    public Vector3 savePoint;
 
-    #region 참조 매니저
+    #region 참조
     //임시로 작성
-    //private PlayerManager playerManager;
+    private Player currentPlayer => GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
     private UIManager uiManager;
     private SoundManager soundManager;
     private CustomSceneManager sceneManager;
-    //private SkillManager skillManager;
+    private SpawnManager spawnManager;
     #endregion
 
     private void Awake()
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         uiManager = UIManager.Instance;
         soundManager = SoundManager.Instance;
         sceneManager = CustomSceneManager.Instance;
+        spawnManager = SpawnManager.Instance;
         //skillManager = SkillManager.Instance;
         //ChangeState(GameState.Lobby);
     }
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
             case GameState.Lobby:
                 sceneManager.LoadScene("Lobby");
                 break;
-            case GameState.Cutscene:
+            case GameState.Paused:
                 Time.timeScale = 0f;
                 break;
             case GameState.InGame:
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
             case GameState.Lobby:
                 break;
 
-            case GameState.Cutscene:
+            case GameState.Paused:
                 break;
 
             case GameState.InGame:
@@ -98,7 +99,6 @@ public class GameManager : MonoBehaviour
     }
     public void OnPendantCollected(LightColorController.ColorOption color, string sceneName)
     {
-        ChangeState(GameState.InGame);
         Debug.Log($"팬던트 수집됨: {color}");
 
         // LightManager에서 색상 변경
@@ -110,18 +110,27 @@ public class GameManager : MonoBehaviour
 
         sceneManager.LoadMemoryScene(sceneName);
     }
+
     public void RespawnPlayer()
     {
-		if (SceneManager.GetActiveScene().name == "Forest")
+        if (SceneManager.GetActiveScene().name == "Forest")
         {
-            SpawnManager.Instance.PlayerSpawn(savePont, PlayerType.FOREST);
+            spawnManager.PlayerSpawn(savePoint, PlayerType.FOREST);
         }
-        else if(SceneManager.GetActiveScene().name == "House")
+        else if (SceneManager.GetActiveScene().name == "House")
         {
-			SpawnManager.Instance.PlayerSpawn(savePont, PlayerType.HOUSE);  
+            spawnManager.PlayerSpawn(savePoint, PlayerType.HOUSE);
         }
 
         ChangeState(GameState.InGame);
+    }
+
+    public void SetPlayerControlEnabled(bool isEnabled)
+    {
+        if (currentPlayer != null)
+        {
+            currentPlayer.GetComponent<Player>().SetControlEnabled(isEnabled);
+        }
     }
 
     public void ExitGame()

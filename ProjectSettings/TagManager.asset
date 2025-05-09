@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
-  - FireTrigger
   - Puzzle
   - Ayla
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -23,7 +23,7 @@ TagManager:
   - Puzzle
   - AylaPuzzle
   - Phase1_PuzzleWall
-  - 
+  - Trap
   - 
   - 
   - 

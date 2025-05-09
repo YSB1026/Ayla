@@ -76,7 +76,7 @@ public class Boss : Entity
     }
     public override void Flip()
     {
-        base.Flip(); 
+        base.Flip();
         rb.linearVelocity = Vector2.zero; // 방향 전환 시 속도 제거 미끄러짐 방지
     }
 
@@ -127,4 +127,5 @@ public class Boss : Entity
     }
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+    public void HitTrigger() => stateMachine.currentState.HitTrigger();
 }

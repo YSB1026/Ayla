@@ -1,98 +1,100 @@
+using System;
+using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class ThrowingObjects : MonoBehaviour
 {
+    private Animator anim;
     private Rigidbody2D rb;
-    private Collider2D col;
-
-    private bool hasStuck = false;
-    private bool isFlying = true;
-
+    private Collider2D cd;
     private Transform target;
-    private Vector2 launchDirection;
 
-    [Header("투척 정보")]
-    public float launchSpeed = 15f;
-    public float gravityDelay = 1f;
-    private float gravityTimer;
+    public Action<bool> onHitPlayerCallback;
 
-    [Header("감지")]
-    public LayerMask whatIsGround;
-    private GameObject player;
+    private bool hasHit;
+    private bool canRotate = true;
+    private float returnSpeed = 0f; // 보스는 안 되돌려 받으니까 무시
 
-    void Awake()
+    private Vector2 lastDirection;
+
+    [Header("꽂히기 관련")]
+    public float freezeTimeDuration = 0.5f;
+
+    private void Awake()
     {
+        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
+        cd = GetComponent<Collider2D>();
     }
 
-    public void SetPlayer(GameObject _player)
+    public void Setup(Vector2 dir, Transform _target, float speed = 15f)
     {
-        player = _player;
-        if (player == null) return;
-
-        Vector2 targetPos = (Vector2)player.transform.position + Vector2.up * 0.5f;
-        launchDirection = (targetPos - (Vector2)transform.position).normalized;
-
-        rb.linearVelocity = launchDirection * launchSpeed;
+        target = _target;
         rb.gravityScale = 0f;
-        gravityTimer = gravityDelay;
+        rb.linearVelocity = dir.normalized * speed;
+
+        Invoke("DestroyMe", 7f);
     }
 
-    void Update()
+    private void Update()
     {
-        if (!isFlying || hasStuck) return;
-
-        gravityTimer -= Time.deltaTime;
-        if (gravityTimer <= 0f)
+        if (canRotate)
         {
-            rb.gravityScale = 1f;
+            if (canRotate && rb.linearVelocity.sqrMagnitude > 0.01f)
+            {
+                transform.right = rb.linearVelocity;
+            }
         }
-
-        // 회전 방향 정렬 (optional)
-        transform.right = rb.linearVelocity.normalized;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hasStuck) return;
+        if (hasHit) return;
 
-        if (player != null && collision.gameObject == player)
+        if (collision.CompareTag("Player") || collision.CompareTag("Ground"))
         {
-            StickInto(collision.transform, true);
+            hasHit = true;
+            StuckInto(collision);
+
+            if (collision.CompareTag("Player"))
+                onHitPlayerCallback?.Invoke(true);
+            else
+                onHitPlayerCallback?.Invoke(false); // 실패로 처리
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void StuckInto(Collider2D collision)
     {
-        if (hasStuck) return;
-
-        if (((1 << collision.gameObject.layer) & whatIsGround) != 0)
-        {
-            StickInto(null, false);
-        }
-    }
-
-    private void StickInto(Transform parentTarget, bool isPlayer)
-    {
-        hasStuck = true;
-        isFlying = false;
-
+        // 꽂힘 처리
+        canRotate = false;
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        col.enabled = false;
+        cd.enabled = false;
 
-        transform.rotation = Quaternion.identity;
+        transform.parent = collision.transform;
 
-        if (isPlayer && parentTarget != null)
+        if (collision.CompareTag("Player"))
         {
-            transform.parent = parentTarget;
-            transform.localPosition = Vector3.up * 0.5f;
+            transform.right = lastDirection;
+
+            float offset = 0.3f;
+            Vector3 offsetVector = transform.right * offset;
+
+            offsetVector.y = 0f; // Y축 눌림 제거
+            transform.position -= offsetVector;
+
+            Debug.Log("Player에 닿아 멈춤");
         }
-        else
+        else if (collision.CompareTag("Ground"))
         {
-            transform.parent = null;
+            Debug.Log("Ground에 닿아 멈춤");
         }
+    }
+
+    private void DestroyMe()
+    {
+        Destroy(gameObject);
     }
 }

@@ -12,6 +12,7 @@ public class BossState
 
     // 애니메이션 이벤트(Trigger)가 호출되었는지 여부
     protected bool triggerCalled;
+    protected bool hit;
 
     // 생성자: 상태를 만들 때 플레이어, 상태머신, 애니메이션 Bool 이름을 설정
     public BossState(Boss _boss, BossStateMachine _stateMachine, string _animBoolName)
@@ -51,5 +52,10 @@ public class BossState
     public virtual void AnimationFinishTrigger()
     {
         triggerCalled = true;
+    }
+
+    public virtual void HitTrigger()
+    {
+        hit = true;
     }
 }

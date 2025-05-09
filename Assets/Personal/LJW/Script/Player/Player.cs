@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    [SerializeField] private LayerMask whatIsTrap;
+
     [Header("이동 정보")]
     public float moveSpeed;
     public float runSpeed;
@@ -10,6 +12,7 @@ public class Player : Entity
     public float crawlSpeed;
     public float sitWalkSpeed;
     public float grabSpeed;
+    public bool isInZone;
 
 	private CapsuleCollider2D col;
 
@@ -45,10 +48,11 @@ public class Player : Entity
 
     #endregion
 
-    public bool controlEnabled = true;
+    public bool controlEnabled { get; private set; } = true;
 
     public void SetControlEnabled(bool isEnabled)
     {
+        if(!isEnabled) SetZeroVelocity();
         controlEnabled = isEnabled;
     }
 
@@ -97,7 +101,20 @@ public class Player : Entity
 
         stateMachine.currentState.Update();
     }
-    private SurfaceType GetSurfaceTypeUnderPlayer()
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if(collision.gameObject.CompareTag("Ground") && IsTrapDetected())
+        {
+            collision.gameObject.GetComponent<InteractiveObject>().FreezeObject(false);
+            collision.gameObject.GetComponent<InteractiveObject>().SetTrigger(true);
+        }
+	}
+
+	public virtual bool IsTrapDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsTrap);
+
+
+	private SurfaceType GetSurfaceTypeUnderPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
         if (hit.collider != null)
@@ -112,7 +129,6 @@ public class Player : Entity
     }
     public SurfaceType SurfaceType => GetSurfaceTypeUnderPlayer();
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
-
     public void PlayFootstepSound() => stateMachine.currentState.PlayFootstepSound();
     public void PlayCrawlingSound() => stateMachine.currentState.PlayCrawlingSound();
 
