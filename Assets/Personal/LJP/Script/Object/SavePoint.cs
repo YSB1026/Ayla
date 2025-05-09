@@ -12,7 +12,7 @@ public class SavePoint : MonoBehaviour
 
 	private void SetSavePoint()
 	{
-		GameManager.Instance.savePont = transform.position;
+		GameManager.Instance.savePoint = transform.position;
 		Destroy(gameObject);
 	}
 }

@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AylaRoomTrigger : MonoBehaviour
+public class AylaRoomTrigger : BaseTrigger
 {
     [SerializeField] private GameObject aylaRoomBeforeCutScene;
     [SerializeField] private GameObject aylaRoomAfterCutScene;
 
     [SerializeField] private float fadeDuration = 3f;
 
-    void OnEnable()
+    protected override void OnPlayerEnter()
     {
         StartCoroutine(AfterGreenPendantTrigger());
     }
 
     IEnumerator AfterGreenPendantTrigger()
     {
-        yield return new WaitForSeconds(fadeDuration);
+        yield return null;
 
         Coroutine fadeOut = StartCoroutine(FadeSpritesOutAndDisable(aylaRoomBeforeCutScene));
         Coroutine fadeIn = StartCoroutine(FadeSpritesIn(aylaRoomAfterCutScene));
@@ -120,4 +120,5 @@ public class AylaRoomTrigger : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }
