@@ -9,6 +9,7 @@ public class Player_DownState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("플레이어 Down 상태 진입");
     }
 
     public override void Update()

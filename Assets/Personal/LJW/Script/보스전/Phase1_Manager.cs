@@ -40,8 +40,8 @@ public class Phase1_Manager : MonoBehaviour
         // 1. 플레이어 조작 막고 쓰러뜨리기
         if (player != null)
         {
-            player.SetControlEnabled(false);
             player.stateMachine.ChangeState(player.downState);
+            player.SetControlEnabled(false);
         }
 
         // 2. Ayla 조작
