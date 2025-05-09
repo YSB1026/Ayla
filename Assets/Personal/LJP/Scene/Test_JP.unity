@@ -311,9 +311,9 @@ GameObject:
   - component: {fileID: 275035246}
   - component: {fileID: 275035250}
   - component: {fileID: 275035249}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CanFireObject (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,7 +462,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 300894650}
   - component: {fileID: 300894652}
   - component: {fileID: 300894651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1061,7 @@ GameObject:
   - component: {fileID: 497226231}
   - component: {fileID: 497226230}
   - component: {fileID: 497226229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1195,7 +1195,7 @@ GameObject:
   - component: {fileID: 514896674}
   - component: {fileID: 514896676}
   - component: {fileID: 514896675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2139,9 +2139,9 @@ GameObject:
   - component: {fileID: 917409532}
   - component: {fileID: 917409531}
   - component: {fileID: 917409530}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CanFireObject (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2789,6 +2789,14 @@ PrefabInstance:
     - target: {fileID: 91702061919276501, guid: 68024eccc822d1e469dca6cdcca797d8, type: 3}
       propertyPath: grabSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 91702061919276501, guid: 68024eccc822d1e469dca6cdcca797d8, type: 3}
+      propertyPath: whatIsTrap.m_Bits
+      value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 91702061919276501, guid: 68024eccc822d1e469dca6cdcca797d8, type: 3}
+      propertyPath: whatIsWall.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 214482892868614004, guid: 68024eccc822d1e469dca6cdcca797d8, type: 3}
       propertyPath: m_Name
@@ -3523,7 +3531,7 @@ GameObject:
   - component: {fileID: 1844313750}
   - component: {fileID: 1844313752}
   - component: {fileID: 1844313751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3657,9 +3665,9 @@ GameObject:
   - component: {fileID: 2047999790}
   - component: {fileID: 2047999788}
   - component: {fileID: 2047999787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CanFireObject
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
