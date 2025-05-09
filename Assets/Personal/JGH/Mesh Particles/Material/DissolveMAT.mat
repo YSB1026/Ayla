@@ -54,10 +54,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DissolveAmount: 0
-    - _DissolveScale: 216
-    - _OutlineThickness: 0.088
+    - _DissolveAmount: 1
+    - _DissolveScale: 484
+    - _OutlineThickness: 0.005
     m_Colors:
-    - _OutLineColor: {r: 0.7478139, g: 0.8113208, b: 0.2028302, a: 0}
+    - _OutLineColor: {r: 0.8867924, g: 0, b: 0.025271118, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
