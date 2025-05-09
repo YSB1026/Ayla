@@ -49,6 +49,7 @@ public class Player : Entity
 
     public void SetControlEnabled(bool isEnabled)
     {
+        if(!isEnabled) SetZeroVelocity();
         controlEnabled = isEnabled;
     }
 
@@ -112,7 +113,6 @@ public class Player : Entity
     }
     public SurfaceType SurfaceType => GetSurfaceTypeUnderPlayer();
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
-
     public void PlayFootstepSound() => stateMachine.currentState.PlayFootstepSound();
     public void PlayCrawlingSound() => stateMachine.currentState.PlayCrawlingSound();
 
