@@ -154,4 +154,11 @@ public class Player : Entity
 		col.offset = crawColOffset;
 		col.size = crawColSize;
 	}
+
+
+    public void ForceSetControlEnabled(bool isEnabled)
+    {
+        controlEnabled = isEnabled;
+    }
+
 }
