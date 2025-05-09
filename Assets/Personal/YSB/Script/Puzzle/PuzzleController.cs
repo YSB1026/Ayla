@@ -1,26 +1,3 @@
-//using System.Collections;
-//using UnityEngine;
-
-//public class PuzzleController : MonoBehaviour
-//{
-//    public bool isPuzzleComplete = false;
-//    public void CompletePuzzle()
-//    {
-//        if (isPuzzleComplete) return;
-
-//        StartCoroutine(WaitForCompletePuzzle());
-//    }
-
-//    private IEnumerator WaitForCompletePuzzle()
-//    {
-//        yield return new WaitForSeconds(1.5f);
-
-//        isPuzzleComplete = true;
-//        PendantEvent.OnPuzzleSolved?.Invoke();
-//    }
-//}
-
-
 using System.Collections;
 using UnityEngine;
 
@@ -48,7 +25,7 @@ public class PuzzleController : MonoBehaviour
     }
     private IEnumerator WaitForCompletePuzzle()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(1f);
 
         isPuzzleComplete = true;
 

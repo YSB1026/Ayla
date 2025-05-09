@@ -50,6 +50,8 @@ public class Player : Entity
 
     public void SetControlEnabled(bool isEnabled)
     {
+        if(controlEnabled ==  isEnabled) return;
+
         if(!isEnabled) SetZeroVelocity();
         controlEnabled = isEnabled;
     }
