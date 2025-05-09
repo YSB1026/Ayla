@@ -1,8 +1,11 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player : Entity
 {
+    [SerializeField] private LayerMask whatIsTrap;
+
     [Header("이동 정보")]
     public float moveSpeed;
     public float runSpeed;
@@ -50,7 +53,9 @@ public class Player : Entity
 
     public void SetControlEnabled(bool isEnabled)
     {
-        if(!isEnabled) SetZeroVelocity();
+        if(controlEnabled ==  isEnabled) return;
+        if (!isEnabled) stateMachine.ChangeState(inputState);
+
         controlEnabled = isEnabled;
     }
 
@@ -92,14 +97,26 @@ public class Player : Entity
 
     protected override void Update()
     {
-        if (!controlEnabled)
-            return;
+        if (!controlEnabled) return;
 
         base.Update();
 
         stateMachine.currentState.Update();
     }
-    private SurfaceType GetSurfaceTypeUnderPlayer()
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if(collision.gameObject.CompareTag("Ground") && IsTrapDetected())
+        {
+            collision.gameObject.GetComponent<InteractiveObject>().FreezeObject(false);
+            collision.gameObject.GetComponent<InteractiveObject>().SetTrigger(true);
+        }
+	}
+
+	public virtual bool IsTrapDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsTrap);
+
+
+	private SurfaceType GetSurfaceTypeUnderPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
         if (hit.collider != null)
@@ -137,4 +154,11 @@ public class Player : Entity
 		col.offset = crawColOffset;
 		col.size = crawColSize;
 	}
+
+
+    public void ForceSetControlEnabled(bool isEnabled)
+    {
+        controlEnabled = isEnabled;
+    }
+
 }

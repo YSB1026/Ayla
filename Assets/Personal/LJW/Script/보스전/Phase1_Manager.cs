@@ -17,10 +17,16 @@ public class Phase1_Manager : MonoBehaviour
     private bool puzzleSolved = false;
     private bool phaseStopped = false;
 
+    // 퍼즐 UI GameObject (LockPattern을 포함한 오브젝트)
+    [SerializeField] private GameObject puzzleUI;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
         ayla = GameObject.FindAnyObjectByType<Ayla>();
+
+        if (puzzleUI != null)
+            puzzleUI.SetActive(false);
     }
 
     void Update()
@@ -40,8 +46,8 @@ public class Phase1_Manager : MonoBehaviour
         // 1. 플레이어 조작 막고 쓰러뜨리기
         if (player != null)
         {
-            player.SetControlEnabled(false);
             player.stateMachine.ChangeState(player.downState);
+            player.SetControlEnabled(false);
         }
 
         // 2. Ayla 조작
