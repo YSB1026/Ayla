@@ -14,8 +14,8 @@ public class PendantEvent : MonoBehaviour
     [Header("퍼즐")]
     [SerializeField] private GameObject puzzleObject;
 
-    [Header("Green만 넣어요.")]
-    [SerializeField] private GameObject roomTriggerToActivate;
+    //[Header("Green만 넣어요.")]
+    //[SerializeField] private GameObject roomTriggerToActivate;
 
     public static Action OnPuzzleSolved;
 
@@ -58,9 +58,9 @@ public class PendantEvent : MonoBehaviour
 
         GameManager.Instance.OnPendantCollected(pendantColor, sceneName);
 
-        if (roomTriggerToActivate != null)
-        {
-            roomTriggerToActivate.SetActive(true);
-        }
+        //if (roomTriggerToActivate != null)
+        //{
+        //    roomTriggerToActivate.SetActive(true);
+        //}
     }
 }
