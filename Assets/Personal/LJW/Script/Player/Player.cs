@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player : Entity
 {
+    [SerializeField] private LayerMask whatIsTrap;
+
     [Header("이동 정보")]
     public float moveSpeed;
     public float runSpeed;
@@ -99,7 +101,20 @@ public class Player : Entity
 
         stateMachine.currentState.Update();
     }
-    private SurfaceType GetSurfaceTypeUnderPlayer()
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if(collision.gameObject.CompareTag("Ground") && IsTrapDetected())
+        {
+            collision.gameObject.GetComponent<InteractiveObject>().FreezeObject(false);
+            collision.gameObject.GetComponent<InteractiveObject>().SetTrigger(true);
+        }
+	}
+
+	public virtual bool IsTrapDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsTrap);
+
+
+	private SurfaceType GetSurfaceTypeUnderPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
         if (hit.collider != null)
