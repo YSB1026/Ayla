@@ -12,6 +12,7 @@ public class Player : Entity
     public float crawlSpeed;
     public float sitWalkSpeed;
     public float grabSpeed;
+    public bool isInZone;
 
 	private CapsuleCollider2D col;
 
