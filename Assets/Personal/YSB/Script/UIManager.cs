@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour
     }
     private IEnumerator FadeRoutine(float startAlpha, float endAlpha, System.Action onComplete)
     {
+        GameManager.Instance.SetPlayerControlEnabled(false);
+
         float time = 0f;
         Color color = fadeImage.color;
 
@@ -58,13 +60,21 @@ public class UIManager : MonoBehaviour
         fadeImage.color = color;
 
         onComplete?.Invoke();
+        GameManager.Instance.SetPlayerControlEnabled(true);
     }
     public void ToggleSettings()
     {
         isSettingsOpen = !isSettingsOpen;
         settingsPanel.SetActive(isSettingsOpen);
 
-        Time.timeScale = isSettingsOpen ? 0f : 1f;
+        if (isSettingsOpen)
+        {
+            GameManager.Instance.ChangeState(GameState.Paused);
+        }
+        else
+        {
+            GameManager.Instance.ChangeState(GameState.InGame);
+        }
     }
 
     public bool IsSettingsOpen()

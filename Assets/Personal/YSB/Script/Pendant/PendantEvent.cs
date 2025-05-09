@@ -14,10 +14,18 @@ public class PendantEvent : MonoBehaviour
     [Header("퍼즐")]
     [SerializeField] private GameObject puzzleObject;
 
-    [Header("Green만 넣어요.")]
-    [SerializeField] private GameObject roomTriggerToActivate;
+    [Header("회상씬 이후 이벤트 트리거")]
+    [SerializeField] private GameObject eventAfterRecallScene;
 
     public static Action OnPuzzleSolved;
+
+    private void OnValidate()
+    {
+        if(puzzleObject == null)
+        {
+            Debug.LogError($"{gameObject.name} 퍼즐 넣어주세요!!");
+        }
+    }
 
     private void Start()
     {
@@ -26,6 +34,7 @@ public class PendantEvent : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("PendantEvent enabled, subscribing to OnPuzzleSolved");
         OnPuzzleSolved += LoadNextScene;
     }
 
@@ -39,7 +48,6 @@ public class PendantEvent : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             ActivePuzzle(true);
-            GameManager.Instance.ChangeState(GameState.Cutscene);
         }
     }
 
@@ -49,18 +57,23 @@ public class PendantEvent : MonoBehaviour
         {
             puzzleObject.SetActive(isActive);
         }
+        if (isActive)
+        {
+            GameManager.Instance.SetPlayerControlEnabled(false);
+        }
     }
 
-    private void LoadNextScene()//퍼즐 컨트롤러에서 action을 통해 호출합니다.
+    private void LoadNextScene()//퍼즐 컨트롤러에서 action을 통해 호출하는 함수에요.
     {
         ActivePuzzle(false);
         Destroy(gameObject);
 
         GameManager.Instance.OnPendantCollected(pendantColor, sceneName);
+        GameManager.Instance.SetPlayerControlEnabled(true);
 
-        if (roomTriggerToActivate != null)
+        if (eventAfterRecallScene != null)
         {
-            roomTriggerToActivate.SetActive(true);
+            eventAfterRecallScene.SetActive(true);
         }
     }
 }

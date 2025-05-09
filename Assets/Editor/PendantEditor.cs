@@ -16,7 +16,7 @@ public class PendantEditor : Editor
         var pendantColorProp = serializedObject.FindProperty("pendantColor");
         EditorGUILayout.PropertyField(pendantColorProp);
 
-        var greenPendantTrigger = serializedObject.FindProperty("roomTriggerToActivate");
+        var greenPendantTrigger = serializedObject.FindProperty("eventAfterRecallScene");
         EditorGUILayout.PropertyField(greenPendantTrigger);
 
         SerializedProperty sceneNameProp = serializedObject.FindProperty("sceneName");
