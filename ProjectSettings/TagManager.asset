@@ -69,5 +69,8 @@ TagManager:
   - name: Chat
     uniqueID: 1734002479
     locked: 0
+  - name: OutLight
+    uniqueID: 2715620405
+    locked: 0
   m_RenderingLayers:
   - Default

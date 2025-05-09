@@ -86,8 +86,13 @@ public class Phase1_Manager : MonoBehaviour
             switchVision.mainCamera.cullingMask = switchVision.playerViewMask;
         }
 
-        switchVision.ayla.GetComponent<AylaPhase1Controller>()?.Deactivate();
-        switchVision.ayla.SetControlEnabled(true); // 기존 Ayla 움직임 ON
+        Ayla aylaScript = ayla.GetComponent<Ayla>();
+        AylaPhase1Controller phaseController = ayla.GetComponent<AylaPhase1Controller>();
+
+        if (phaseController != null) phaseController.enabled = false;
+        if (aylaScript != null) aylaScript.enabled = true;
+
+        ayla.SetControlEnabled(true); // 다시 따라가기 허용
     }
 
     public void StopCeiling()
