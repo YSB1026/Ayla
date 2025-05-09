@@ -6,7 +6,6 @@ public class InteractiveObject : MonoBehaviour
 	private Collider2D col;
 
 	[SerializeField] private float moveSpeed = 3f;
-	private bool defualtTrigger;
 
 	private void Awake()
 	{
@@ -14,7 +13,6 @@ public class InteractiveObject : MonoBehaviour
 	}
 	private void Start()
 	{
-		defualtTrigger = col.isTrigger;
 		FreezeObject(true);
 	}
 
@@ -39,7 +37,7 @@ public class InteractiveObject : MonoBehaviour
 	public void SetTrigger(bool _isTrigger)
 	{
 		if(_isTrigger)
-			col.isTrigger = defualtTrigger;
+			col.isTrigger = _isTrigger;
 		else 
 			col.isTrigger = _isTrigger;
 	}
