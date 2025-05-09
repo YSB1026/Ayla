@@ -45,7 +45,7 @@ public class Player : Entity
 
     #endregion
 
-    public bool controlEnabled = true;
+    public bool controlEnabled { get; private set; } = true;
 
     public void SetControlEnabled(bool isEnabled)
     {
