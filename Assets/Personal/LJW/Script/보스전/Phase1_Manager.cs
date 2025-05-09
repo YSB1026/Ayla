@@ -80,6 +80,8 @@ public class Phase1_Manager : MonoBehaviour
 
     public void SolvePuzzle()
     {
+        if (puzzleSolved) return;
+
         puzzleSolved = true;
         Debug.Log("[Phase1] 퍼즐 해결 완료");
 
@@ -92,6 +94,7 @@ public class Phase1_Manager : MonoBehaviour
             switchVision.mainCamera.cullingMask = switchVision.playerViewMask;
         }
 
+        // Ayla 복구
         Ayla aylaScript = ayla.GetComponent<Ayla>();
         AylaPhase1Controller phaseController = ayla.GetComponent<AylaPhase1Controller>();
 
@@ -99,6 +102,14 @@ public class Phase1_Manager : MonoBehaviour
         if (aylaScript != null) aylaScript.enabled = true;
 
         ayla.SetControlEnabled(true); // 다시 따라가기 허용
+
+        // 퍼즐 UI 끄기
+        if (puzzleUI != null)
+            puzzleUI.SetActive(false);
+
+        // 플레이어 Up 상태로 전환
+        if (player != null)
+            player.stateMachine.ChangeState(player.upState);
     }
 
     public void StopCeiling()

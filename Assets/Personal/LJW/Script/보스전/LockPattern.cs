@@ -150,6 +150,8 @@ public class LockPattern : MonoBehaviour
                 return false;
         }
 
+        FindAnyObjectByType<Phase1_Manager>()?.SolvePuzzle();
+
         return true;
     }
 
