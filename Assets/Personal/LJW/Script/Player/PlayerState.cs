@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 // 플레이어 상태 클래스
@@ -27,11 +28,6 @@ public class PlayerState
     // 상태에 진입할 때 실행되는 함수
     public virtual void Enter()
     {
-        if (!player.controlEnabled)
-        {
-            stateMachine.ChangeState(player.inputState);
-            return;
-        }
         // 해당 애니메이션 Bool 파라미터를 true로 설정하여 애니메이션 전환
         player.anim.SetBool(animBoolName, true);
 
