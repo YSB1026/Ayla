@@ -15,15 +15,13 @@ public class Player_RunState : PlayerState
     {
         base.Update();
 
-		if (!player.IsGroundDetected())
-			stateMachine.ChangeState(player.airState);
-
-		if (Input.GetKeyDown(KeyCode.Space))
-            stateMachine.ChangeState(player.jumpState);
-
         player.SetVelocity(xInput * player.runSpeed, rb.linearVelocityY);
 
-        if (xInput == 0 || player.IsWallDetected())
+		if (!player.IsGroundDetected())
+			stateMachine.ChangeState(player.airState);
+		else if (Input.GetKeyDown(KeyCode.Space))
+            stateMachine.ChangeState(player.jumpState);
+        else if (xInput == 0 || player.IsWallDetected())
             stateMachine.ChangeState(player.inputState);
     }
 

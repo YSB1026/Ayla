@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -52,7 +53,9 @@ public class Player : Entity
 
     public void SetControlEnabled(bool isEnabled)
     {
-        if(!isEnabled) SetZeroVelocity();
+        if(controlEnabled ==  isEnabled) return;
+        if (!isEnabled) stateMachine.ChangeState(inputState);
+
         controlEnabled = isEnabled;
     }
 
@@ -94,8 +97,7 @@ public class Player : Entity
 
     protected override void Update()
     {
-        if (!controlEnabled)
-            return;
+        if (!controlEnabled) return;
 
         base.Update();
 
