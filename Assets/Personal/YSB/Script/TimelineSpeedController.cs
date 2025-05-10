@@ -7,8 +7,8 @@ public class TimelineSpeedController : MonoBehaviour
     [SerializeField] KeyCode keyCode = KeyCode.Space;
 
     [Header("배속 설정")]
-    [Range(0.1f, 8f)]
-    public float fastForwardSpeed = 8f;
+    [Range(1f, 10f)]
+    public float fastForwardSpeed = 10f;
 
     private double originalSpeed = 1.0;
     private bool isFastForwarding = false;
