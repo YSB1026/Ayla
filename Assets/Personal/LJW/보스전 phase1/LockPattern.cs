@@ -59,7 +59,6 @@ public class LockPattern : MonoBehaviour
             // 줄이 마우스에 따라 회전
             lineOnEditRcTs.rotation = Quaternion.FromToRotation(
             Vector3.up, (mousePos - circleOnEdit.transform.localPosition).normalized);
-
         }
     }
 
@@ -217,7 +216,7 @@ public class LockPattern : MonoBehaviour
 
             if (IsCorrectPattern())
             {
-                Debug.Log("정답입니다!");
+                Debug.Log("Success-정답입니다!");
                 foreach (var line in lines)
                     EnableColorFade(circles[line.id].gameObject.GetComponent<Animator>(), true);
                 foreach (var line in lines)
@@ -225,7 +224,7 @@ public class LockPattern : MonoBehaviour
             }
             else
             {
-                Debug.Log("오답입니다!");
+                Debug.Log("Fail-오답입니다!");
                 foreach (var line in lines)
                     EnableColorFade(circles[line.id].gameObject.GetComponent<Animator>(), false);
                 foreach (var line in lines)
