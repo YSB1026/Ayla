@@ -6,8 +6,8 @@ public class CustomSceneManager : MonoBehaviour
 {
     public static CustomSceneManager Instance { get; private set; }
 
-    private Scene previousScene;
-    private string memorySceneName; // 회상 씬 이름 저장용
+    private Scene houseScene;
+    private string additiveSceneName;
 
     private void Awake()
     {
@@ -20,10 +20,20 @@ public class CustomSceneManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (SceneManager.GetActiveScene().name == "House")
+        {
+            houseScene = SceneManager.GetActiveScene();
+        }
     }
 
     public void LoadScene(string sceneName)
     {
+        if(sceneName == "House")
+        {
+            houseScene = SceneManager.GetActiveScene();
+        }
+
         PlaySceneBGM(sceneName);
 
         if (SceneManager.GetActiveScene().name == sceneName)
@@ -40,23 +50,22 @@ public class CustomSceneManager : MonoBehaviour
         LoadScene(sceneName);
     }
 
-    public void LoadMemoryScene(string memorySceneNameParam)
+    public void LoadAdditiveScene(string additiveSceneNamePram)
     {
-        previousScene = SceneManager.GetActiveScene();
-        memorySceneName = memorySceneNameParam;
+        additiveSceneName = additiveSceneNamePram;
 
-        StartCoroutine(LoadSceneAdditiveAndDeactivateCurrent(memorySceneName));
+        StartCoroutine(LoadSceneAdditiveAndDeactivateCurrent(additiveSceneName));
     }
 
-    public void UnloadMemoryScene()
+    public void UnloadAdditiveScene()
     {
-        if (!string.IsNullOrEmpty(memorySceneName))
+        if (!string.IsNullOrEmpty(additiveSceneName))
         {
-            SceneManager.UnloadSceneAsync(memorySceneName).completed += (op) =>
+            SceneManager.UnloadSceneAsync(additiveSceneName).completed += (op) =>
             {
-                if (previousScene.IsValid() && previousScene.isLoaded)
+                if (houseScene.IsValid() && houseScene.isLoaded)
                 {
-                    SetSceneActive(previousScene);
+                    SetSceneActive(houseScene);
                 }
             };
         }

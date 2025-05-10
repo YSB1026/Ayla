@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-    public void OnPendantCollected(LightColorController.ColorOption color, string sceneName)
+    public void OnPendantCollected(LightColorController.ColorOption color)
     {
         Debug.Log($"ÆÒ´øÆ® ¼öÁýµÊ: {color}");
 
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         //uiManager.PlayPendantCutscene(color);
         //soundManager.PlayPendantCollectSFX(color);
 
-        sceneManager.LoadMemoryScene(sceneName);
+        //sceneManager.LoadAdditiveScene(sceneName);
     }
 
     public void RespawnPlayer()
@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentPlayer != null)
         {
+            Debug.Log($"È£ÃâµÆ¾î¿ë -> {isEnabled}");
             currentPlayer.GetComponent<Player>().SetControlEnabled(isEnabled);
         }
     }
