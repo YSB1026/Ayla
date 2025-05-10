@@ -1,28 +1,27 @@
 using System.Collections.Generic;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LockPattern : MonoBehaviour
 {
     public GameObject linePrefab;
     public Canvas canvas;
+    public Transform player;
+    public float selectionRadius = 1f; // Ïõê ÏÑ†ÌÉù Î∞òÍ≤Ω
 
-    public Dictionary<int, CircleIdentifier> circles;
+    public List<int> correctPattern = new List<int> { 0, 1, 2, 5, 8 };
 
+    private Dictionary<int, CircleIdentifier> circles;
     private List<CircleIdentifier> lines;
-
-    private List<int> inputPattern = new List<int>(); // ¿‘∑¬µ» ∆–≈œ ¿˙¿ÂøÎ
+    private List<int> inputPattern = new List<int>();
 
     private GameObject lineOnEdit;
     private RectTransform lineOnEditRcTs;
     private CircleIdentifier circleOnEdit;
 
     private bool unLocking;
-
-    new bool enabled = true;
-
-    public List<int> correctPattern = new List<int> { 0, 1, 2, 5, 8 }; // ¡§¥‰ ∆–≈œ øπΩ√
+    private new bool enabled = true;
 
     void Start()
     {
@@ -32,48 +31,149 @@ public class LockPattern : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             var circle = transform.GetChild(i);
-
             var identifier = circle.GetComponent<CircleIdentifier>();
-
             identifier.id = i;
-
             circles.Add(i, identifier);
         }
     }
 
-
     void Update()
     {
-        if (enabled == false)
+        if (!enabled) return;
+
+        // ÌîåÎ†àÏù¥Ïñ¥Í∞Ä E ÌÇ§Î•º ÎàåÎü¨ Í∞ÄÏû• Í∞ÄÍπåÏö¥ ÏõêÏùÑ ÏÑ†ÌÉù
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            return;
+            TrySelectNearestCircle();
         }
 
-        // ¡Ÿ¿ª ∏∂øÏΩ∫∑Œ ¥√∏Æ¥¬ ƒ⁄µÂ
-        if (unLocking)
+        // ÌîåÎ†àÏù¥Ïñ¥ Í∏∞Ï§Ä ÎùºÏù∏ Ìé∏Ïßë
+        if (unLocking && circleOnEdit != null && lineOnEditRcTs != null)
         {
-            Vector3 mousePos = canvas.transform.InverseTransformPoint(Input.mousePosition);
+            Vector3 playerPos = canvas.transform.InverseTransformPoint(player.position);
+            lineOnEditRcTs.sizeDelta = new Vector2(lineOnEditRcTs.sizeDelta.x, Vector3.Distance(playerPos, circleOnEdit.transform.localPosition));
+            lineOnEditRcTs.rotation = Quaternion.FromToRotation(Vector3.up, (playerPos - circleOnEdit.transform.localPosition).normalized);
+        }
 
-            lineOnEditRcTs.sizeDelta = new Vector2(lineOnEditRcTs.sizeDelta.x, Vector3.Distance(mousePos, circleOnEdit.transform.localPosition));
-
-            // ¡Ÿ¿Ã ∏∂øÏΩ∫ø° µ˚∂Û »∏¿¸
-            lineOnEditRcTs.rotation = Quaternion.FromToRotation(
-            Vector3.up, (mousePos - circleOnEdit.transform.localPosition).normalized);
-
+        // Ìå®ÌÑ¥ ÏûÖÎ†• Ï¢ÖÎ£å
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            EndUnlocking();
         }
     }
 
-    // ¡Ÿ ¡¶∞≈ π◊ √ ±‚»≠
+    void TrySelectNearestCircle()
+    {
+        foreach (var pair in circles)
+        {
+            var circle = pair.Value;
+
+            // UI ÏúÑÏπòÎ•º ÏõîÎìú ÏúÑÏπòÎ°ú Î≥ÄÌôò
+            Vector3 worldPos = circle.GetComponent<RectTransform>().position;
+
+            float dist = Vector3.Distance(player.position, worldPos);
+
+            if (dist <= selectionRadius)
+            {
+                if (!unLocking)
+                {
+                    unLocking = true;
+                }
+
+                TrySetLineEdit(circle);
+                break;
+            }
+        }
+    }
+
+
+    void TrySetLineEdit(CircleIdentifier circle)
+    {
+        foreach (var line in lines)
+        {
+            if (line.id == circle.id)
+            {
+                return;
+            }
+        }
+
+        lineOnEdit = CreateLine(circle.transform.localPosition, circle.id);
+        lineOnEditRcTs = lineOnEdit.GetComponent<RectTransform>();
+        circleOnEdit = circle;
+
+        inputPattern.Add(circle.id);
+    }
+
+    GameObject CreateLine(Vector3 pos, int id)
+    {
+        var line = Instantiate(linePrefab, canvas.transform);
+        line.transform.localPosition = pos;
+
+        var lineIdf = line.AddComponent<CircleIdentifier>();
+        lineIdf.id = id;
+
+        lines.Add(lineIdf);
+        return line;
+    }
+
+    bool IsCorrectPattern()
+    {
+        if (inputPattern.Count != correctPattern.Count)
+            return false;
+
+        for (int i = 0; i < correctPattern.Count; i++)
+        {
+            if (inputPattern[i] != correctPattern[i])
+                return false;
+        }
+
+        FindAnyObjectByType<Phase1_Manager>()?.SolvePuzzle();
+        return true;
+    }
+
+    void EnableColorFade(Animator anim, bool isSuccess)
+    {
+        anim.enabled = true;
+        anim.Rebind();
+
+        if (isSuccess)
+            anim.SetBool("Success", true);
+        else
+            anim.SetBool("Fail", true);
+    }
+
+    void EndUnlocking()
+    {
+        if (!unLocking) return;
+
+        bool result = IsCorrectPattern();
+
+        foreach (var line in lines)
+        {
+            EnableColorFade(circles[line.id].GetComponent<Animator>(), result);
+            EnableColorFade(line.GetComponent<Animator>(), result);
+        }
+
+        if (lines.Count > 0)
+        {
+            Destroy(lines[lines.Count - 1].gameObject);
+            lines.RemoveAt(lines.Count - 1);
+        }
+
+        StartCoroutine(Release());
+
+        unLocking = false;
+    }
+
     IEnumerator Release()
     {
         enabled = false;
 
-        // 3√  ¥Î±‚
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3f);
 
         foreach (var circle in circles)
         {
-            circle.Value.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            circle.Value.GetComponent<Image>().color = Color.white;
             circle.Value.GetComponent<Animator>().enabled = false;
         }
 
@@ -90,155 +190,5 @@ public class LockPattern : MonoBehaviour
         circleOnEdit = null;
 
         enabled = true;
-    }
-
-    // ¡Ÿ ¿’±‚
-    GameObject CreateLine(Vector3 pos, int id)
-    {
-        var line = GameObject.Instantiate(linePrefab, canvas.transform);
-
-        line.transform.localPosition = pos;
-
-        var lineIdf = line.AddComponent<CircleIdentifier>();
-
-        lineIdf.id = id;
-
-        lines.Add(lineIdf);
-
-        return line;
-    }
-
-    // ¡ﬂ∫πµ«¥¬ ¡Ÿ ¡¶∞≈
-    void TrySetLineEdit(CircleIdentifier circle)
-    {
-        foreach (var line in lines)
-        {
-            if (line.id == circle.id)
-            {
-                return;
-            }
-        }
-
-        lineOnEdit = CreateLine(circle.transform.localPosition, circle.id);
-        lineOnEditRcTs = lineOnEdit.GetComponent<RectTransform>();
-        circleOnEdit = circle;
-
-        inputPattern.Add(circle.id); // ¿‘∑¬µ» º¯º≠ ±‚∑œ 
-    }
-
-    void EnableColorFade(Animator anim, bool isSuccess) // √ﬂ∞°
-    {
-        anim.enabled = true;
-        anim.Rebind();
-
-        // √ﬂ∞°
-        if (isSuccess)
-            anim.SetBool("Success", isSuccess);
-        else
-            anim.SetBool("Fail", !isSuccess);
-    }
-
-    // ¡§»Æ«— ∆–≈œ¿Œ¡ˆ »Æ¿Œ«œ¥¬ bool
-    bool IsCorrectPattern()
-    {
-        if (inputPattern.Count != correctPattern.Count)
-            return false;
-
-        for (int i = 0; i < correctPattern.Count; i++)
-        {
-            if (inputPattern[i] != correctPattern[i])
-                return false;
-        }
-
-        FindAnyObjectByType<Phase1_Manager>()?.SolvePuzzle();
-
-        return true;
-    }
-
-    public void OnMouseEnterCircle(CircleIdentifier idf)
-    {
-        if (enabled == false)
-        {
-            return;
-        }
-
-        // ¡Ÿ¿Ã µø±◊∂ÛπÃ æ»ø° µÈæÓ∞¨¿ª ∂ß ¿⁄µø ∞°øÓµ• ¡§∑ƒ
-        if (unLocking)
-        {
-            lineOnEditRcTs.sizeDelta = new Vector2(lineOnEditRcTs.sizeDelta.x, Vector3.Distance(circleOnEdit.transform.localPosition, idf.transform.localPosition));
-            lineOnEditRcTs.rotation = Quaternion.FromToRotation(
-                Vector3.up, (idf.transform.localPosition - circleOnEdit.transform.localPosition).normalized);
-
-            TrySetLineEdit(idf);
-        }
-    }
-    public void OnMouseOutCircle(CircleIdentifier idf)
-    {
-        if (enabled == false)
-        {
-            return;
-        }
-    }
-    public void OnMouseDownCircle(CircleIdentifier idf)
-    {
-        if (enabled == false)
-        {
-            return;
-        }
-
-        unLocking = true;
-
-        TrySetLineEdit(idf);
-
-
-    }
-    public void OnMouseUpCircle(CircleIdentifier idf)
-    {
-        if (enabled == false)
-        {
-            return;
-        }
-
-        // µø±◊∂ÛπÃ fade
-        if (unLocking)
-        {
-            /*foreach (var line in lines)
-            {
-                EnableColorFade(circles[line.id].gameObject.GetComponent<Animator>());
-            }*/
-
-
-
-            // ¡Ÿ fade
-            /*foreach (var line in lines)
-            {
-                EnableColorFade(line.GetComponent<Animator>());
-            }*/
-
-            if (IsCorrectPattern())
-            {
-                Debug.Log("¡§¥‰¿‘¥œ¥Ÿ!");
-                foreach (var line in lines)
-                    EnableColorFade(circles[line.id].gameObject.GetComponent<Animator>(), true);
-                foreach (var line in lines)
-                    EnableColorFade(line.GetComponent<Animator>(), true);
-            }
-            else
-            {
-                Debug.Log("ø¿¥‰¿‘¥œ¥Ÿ!");
-                foreach (var line in lines)
-                    EnableColorFade(circles[line.id].gameObject.GetComponent<Animator>(), false);
-                foreach (var line in lines)
-                    EnableColorFade(line.GetComponent<Animator>(), false);
-            }
-
-            // ∏∂¡ˆ∏∑ ¡Ÿ ¡ˆøÏ±‚
-            Destroy(lines[lines.Count - 1].gameObject);
-            lines.RemoveAt(lines.Count - 1);
-
-            StartCoroutine(Release());
-        }
-
-        unLocking = false;
     }
 }
