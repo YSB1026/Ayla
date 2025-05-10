@@ -43,8 +43,6 @@ public class UIManager : MonoBehaviour
     }
     private IEnumerator FadeRoutine(float startAlpha, float endAlpha, System.Action onComplete)
     {
-        GameManager.Instance.SetPlayerControlEnabled(false);
-
         float time = 0f;
         Color color = fadeImage.color;
 
@@ -60,7 +58,6 @@ public class UIManager : MonoBehaviour
         fadeImage.color = color;
 
         onComplete?.Invoke();
-        GameManager.Instance.SetPlayerControlEnabled(true);
     }
     public void ToggleSettings()
     {
