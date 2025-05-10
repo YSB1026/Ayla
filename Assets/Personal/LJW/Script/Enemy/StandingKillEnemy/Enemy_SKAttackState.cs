@@ -27,7 +27,7 @@ public class Enemy_SKAttackState : EnemyState
         {
             return;
         }
-        player.SetControlEnabled(false);
+        //player.SetControlEnabled(false);
         player.stateMachine.ChangeState(player.deadState);
     }
 

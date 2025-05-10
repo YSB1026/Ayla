@@ -5,16 +5,14 @@ using UnityEngine;
 
 public class ThrowingObjects : MonoBehaviour
 {
-    private Animator anim;
     private Rigidbody2D rb;
     private Collider2D cd;
     private Transform target;
 
     public Action<bool> onHitPlayerCallback;
 
-    private bool hasHit;
+    private bool hasHit = false;
     private bool canRotate = true;
-    private float returnSpeed = 0f; // 보스는 안 되돌려 받으니까 무시
 
     private Vector2 lastDirection;
 
@@ -23,7 +21,6 @@ public class ThrowingObjects : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         cd = GetComponent<Collider2D>();
     }
@@ -51,8 +48,27 @@ public class ThrowingObjects : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (hasHit) return;
+        hasHit = true;
 
-        if (collision.CompareTag("Player") || collision.CompareTag("Ground"))
+        canRotate = false;
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        cd.enabled = false;
+
+        transform.parent = collision.transform;
+
+        // 콜백은 무조건 한 번만 호출됨
+        if (collision.CompareTag("Player"))
+        {
+            onHitPlayerCallback?.Invoke(true);
+        }
+        else
+        {
+            onHitPlayerCallback?.Invoke(false);
+        }
+
+        /*if (collision.CompareTag("Player") || collision.CompareTag("Ground"))
         {
             hasHit = true;
             StuckInto(collision);
@@ -61,10 +77,10 @@ public class ThrowingObjects : MonoBehaviour
                 onHitPlayerCallback?.Invoke(true);
             else
                 onHitPlayerCallback?.Invoke(false); // 실패로 처리
-        }
+        }*/
     }
 
-    private void StuckInto(Collider2D collision)
+    /*private void StuckInto(Collider2D collision)
     {
         // 꽂힘 처리
         canRotate = false;
@@ -91,7 +107,7 @@ public class ThrowingObjects : MonoBehaviour
         {
             Debug.Log("Ground에 닿아 멈춤");
         }
-    }
+    }*/
 
     private void DestroyMe()
     {
