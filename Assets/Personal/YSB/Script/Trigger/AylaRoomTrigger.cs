@@ -9,17 +9,6 @@ public class AylaRoomTrigger : BaseTrigger
 
     [SerializeField] private float fadeDuration = 3f;
 
-    [Header("TimeLine After Trigger")]
-    [SerializeField] private GameObject timeline;
-
-    private void Enalbe()
-    {
-        if (timeline.activeSelf)
-        {
-            timeline.SetActive(false);
-        }
-    }
-
     protected override void OnPlayerEnter()
     {
         StartCoroutine(AfterGreenPendantTrigger());
@@ -35,7 +24,6 @@ public class AylaRoomTrigger : BaseTrigger
         yield return fadeOut;
         yield return fadeIn;
 
-        timeline.SetActive(true);
         SelftDestroy();
     }
 

@@ -29,13 +29,7 @@ public class CustomSceneManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        if(sceneName == "House")
-        {
-            houseScene = SceneManager.GetActiveScene();
-        }
-
         PlaySceneBGM(sceneName);
-
         if (SceneManager.GetActiveScene().name == sceneName)
             return;
 
@@ -43,6 +37,43 @@ public class CustomSceneManager : MonoBehaviour
             SceneManager.LoadScene(sceneName);
             UIManager.Instance.FadeIn();
         });
+
+        if(houseScene == null && sceneName == "House")
+        {
+            houseScene = SceneManager.GetActiveScene();
+        }
+    }
+
+    public void ReloadScene()
+    {
+        if (!string.IsNullOrEmpty(additiveSceneName))
+        {
+            StartCoroutine(ReloadAdditiveSceneCoroutine());
+        }
+    }
+
+    private IEnumerator ReloadAdditiveSceneCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        AsyncOperation unloadOp = SceneManager.UnloadSceneAsync(additiveSceneName);
+        while (!unloadOp.isDone)
+            yield return null;
+
+        AsyncOperation loadOp = SceneManager.LoadSceneAsync(additiveSceneName, LoadSceneMode.Additive);
+        while (!loadOp.isDone)
+            yield return null;
+
+        UIManager.Instance.FadeIn();
+
+        Scene additiveScene = SceneManager.GetSceneByName(additiveSceneName);
+        if (additiveScene.IsValid())
+        {
+            SceneManager.SetActiveScene(additiveScene);
+        }
+
+
+        PlaySceneBGM(additiveSceneName);
     }
 
     public void LoadSceneFromTimeline(string sceneName)

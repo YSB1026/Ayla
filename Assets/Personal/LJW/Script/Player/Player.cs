@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
@@ -167,7 +168,6 @@ public class Player : Entity
 
         SetControlEnabled(false);
         stateMachine.ChangeState(deadState);
+        CustomSceneManager.Instance.ReloadScene();
     }
-
-
 }

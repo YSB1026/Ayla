@@ -1,13 +1,19 @@
 using NUnit.Framework;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SceneTrigger : BaseTrigger
 {
     [SerializeField] private string sceneName;
     [SerializeField] private bool isAdditiveMode = false;
+    [SerializeField] private bool isTrigger = false;
 
     protected override void OnPlayerEnter()
     {
+        if (isTrigger) return;
+
+        isTrigger = true;
         Debug.Log($"{gameObject.name} - Trigger");
         if (isAdditiveMode)
         {
