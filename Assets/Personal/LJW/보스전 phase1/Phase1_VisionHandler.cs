@@ -53,6 +53,11 @@ public class Phase1_VisionHandler : MonoBehaviour
                 switchVision.ayla.SetControlEnabled(true);
                 switchVision.ayla.isCurrentlyControlled = true;
                 switchVision.player.SetControlEnabled(false);
+
+                int uiLayer = LayerMask.NameToLayer("UI");
+                switchVision.mainCamera.cullingMask =
+                    switchVision.playerViewMask
+                    | (1 << uiLayer);
             }
             else
             {

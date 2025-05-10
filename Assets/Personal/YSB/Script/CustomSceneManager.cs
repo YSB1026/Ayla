@@ -6,8 +6,8 @@ public class CustomSceneManager : MonoBehaviour
 {
     public static CustomSceneManager Instance { get; private set; }
 
-    private Scene previousScene;
-    private string memorySceneName; // 회상 씬 이름 저장용
+    private Scene houseScene;
+    private string additiveSceneName;
 
     private void Awake()
     {
@@ -20,12 +20,16 @@ public class CustomSceneManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (SceneManager.GetActiveScene().name == "House")
+        {
+            houseScene = SceneManager.GetActiveScene();
+        }
     }
 
     public void LoadScene(string sceneName)
     {
         PlaySceneBGM(sceneName);
-
         if (SceneManager.GetActiveScene().name == sceneName)
             return;
 
@@ -33,6 +37,43 @@ public class CustomSceneManager : MonoBehaviour
             SceneManager.LoadScene(sceneName);
             UIManager.Instance.FadeIn();
         });
+
+        if(houseScene == null && sceneName == "House")
+        {
+            houseScene = SceneManager.GetActiveScene();
+        }
+    }
+
+    public void ReloadScene()
+    {
+        if (!string.IsNullOrEmpty(additiveSceneName))
+        {
+            StartCoroutine(ReloadAdditiveSceneCoroutine());
+        }
+    }
+
+    private IEnumerator ReloadAdditiveSceneCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        AsyncOperation unloadOp = SceneManager.UnloadSceneAsync(additiveSceneName);
+        while (!unloadOp.isDone)
+            yield return null;
+
+        AsyncOperation loadOp = SceneManager.LoadSceneAsync(additiveSceneName, LoadSceneMode.Additive);
+        while (!loadOp.isDone)
+            yield return null;
+
+        UIManager.Instance.FadeIn();
+
+        Scene additiveScene = SceneManager.GetSceneByName(additiveSceneName);
+        if (additiveScene.IsValid())
+        {
+            SceneManager.SetActiveScene(additiveScene);
+        }
+
+
+        PlaySceneBGM(additiveSceneName);
     }
 
     public void LoadSceneFromTimeline(string sceneName)
@@ -40,23 +81,22 @@ public class CustomSceneManager : MonoBehaviour
         LoadScene(sceneName);
     }
 
-    public void LoadMemoryScene(string memorySceneNameParam)
+    public void LoadAdditiveScene(string additiveSceneNamePram)
     {
-        previousScene = SceneManager.GetActiveScene();
-        memorySceneName = memorySceneNameParam;
+        additiveSceneName = additiveSceneNamePram;
 
-        StartCoroutine(LoadSceneAdditiveAndDeactivateCurrent(memorySceneName));
+        StartCoroutine(LoadSceneAdditiveAndDeactivateCurrent(additiveSceneName));
     }
 
-    public void UnloadMemoryScene()
+    public void UnloadAdditiveScene()
     {
-        if (!string.IsNullOrEmpty(memorySceneName))
+        if (!string.IsNullOrEmpty(additiveSceneName))
         {
-            SceneManager.UnloadSceneAsync(memorySceneName).completed += (op) =>
+            SceneManager.UnloadSceneAsync(additiveSceneName).completed += (op) =>
             {
-                if (previousScene.IsValid() && previousScene.isLoaded)
+                if (houseScene.IsValid() && houseScene.isLoaded)
                 {
-                    SetSceneActive(previousScene);
+                    SetSceneActive(houseScene);
                 }
             };
         }
