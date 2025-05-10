@@ -83,7 +83,7 @@ public class Enemy_Light : Enemy
             if (player != null)
             {
                 player.stateMachine.ChangeState(player.deadState);
-                player.SetControlEnabled(false);
+                // player.SetControlEnabled(false);
                 Debug.Log("공격 성공: 플레이어 사망");
                 success = true;
             }
