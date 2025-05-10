@@ -16,6 +16,14 @@ public class Player_UpState : PlayerState
         base.Update();
     }
 
+    public override void AnimationFinishTrigger()
+    {
+        base.AnimationFinishTrigger();
+
+        player.stateMachine.ChangeState(player.inputState); // 조작 가능 상태 복귀
+        player.SetControlEnabled(true); // 조작 다시 허용
+    }
+
     public override void Exit()
     {
         base.Exit();
