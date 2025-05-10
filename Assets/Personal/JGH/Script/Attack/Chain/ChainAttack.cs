@@ -6,6 +6,9 @@ public class ChainAttack : MonoBehaviour
     public float fallDuration = 0.3f;
     public float fadeDuration = 1.2f;
     private SpriteRenderer sr;
+    private Collider2D col;
+
+    private bool hasHitPlayer = false;
 
     public void StartAttack(Vector3 startPos, Vector3 targetPos)
     {
@@ -16,6 +19,10 @@ public class ChainAttack : MonoBehaviour
     IEnumerator AttackRoutine(Vector3 targetPos)
     {
         sr = GetComponent<SpriteRenderer>();
+        col = GetComponent<Collider2D>();
+        if (col != null)
+            col.enabled = true;
+
         float t = 0;
         Vector3 start = transform.position;
 
@@ -26,6 +33,10 @@ public class ChainAttack : MonoBehaviour
             transform.position = Vector3.Lerp(start, targetPos, t);
             yield return null;
         }
+
+        // 도착 후 → 더 이상 충돌 판정 X
+        if (col != null)
+            col.enabled = false;
 
         // 서서히 사라지기
         float timer = fadeDuration;
@@ -41,5 +52,20 @@ public class ChainAttack : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (hasHitPlayer) return;
+
+        if (other.CompareTag("Player"))
+        {
+            Player player = other.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Die();
+                hasHitPlayer = true;
+            }
+        }
     }
 }
