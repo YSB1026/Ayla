@@ -66,7 +66,7 @@ public class LightDetection : MonoBehaviour
     {
         Bounds bounds = collider.bounds;
 
-        int steps = 5;  // 높일수록 정밀도 증가
+        int steps = 9;  // 높일수록 정밀도 증가
         float stepX = bounds.size.x / (steps - 1);
         float stepY = bounds.size.y / (steps - 1);
 

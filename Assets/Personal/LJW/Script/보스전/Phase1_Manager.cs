@@ -17,10 +17,16 @@ public class Phase1_Manager : MonoBehaviour
     private bool puzzleSolved = false;
     private bool phaseStopped = false;
 
+    // 퍼즐 UI GameObject (LockPattern을 포함한 오브젝트)
+    [SerializeField] private GameObject puzzleUI;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
         ayla = GameObject.FindAnyObjectByType<Ayla>();
+
+        if (puzzleUI != null)
+            puzzleUI.SetActive(false);
     }
 
     void Update()
@@ -40,8 +46,8 @@ public class Phase1_Manager : MonoBehaviour
         // 1. 플레이어 조작 막고 쓰러뜨리기
         if (player != null)
         {
-            player.SetControlEnabled(false);
             player.stateMachine.ChangeState(player.downState);
+            //player.SetControlEnabled(false);
         }
 
         // 2. Ayla 조작
@@ -74,6 +80,8 @@ public class Phase1_Manager : MonoBehaviour
 
     public void SolvePuzzle()
     {
+        if (puzzleSolved) return;
+
         puzzleSolved = true;
         Debug.Log("[Phase1] 퍼즐 해결 완료");
 
@@ -86,6 +94,7 @@ public class Phase1_Manager : MonoBehaviour
             switchVision.mainCamera.cullingMask = switchVision.playerViewMask;
         }
 
+        // Ayla 복구
         Ayla aylaScript = ayla.GetComponent<Ayla>();
         AylaPhase1Controller phaseController = ayla.GetComponent<AylaPhase1Controller>();
 
@@ -93,6 +102,14 @@ public class Phase1_Manager : MonoBehaviour
         if (aylaScript != null) aylaScript.enabled = true;
 
         ayla.SetControlEnabled(true); // 다시 따라가기 허용
+
+        // 퍼즐 UI 끄기
+        if (puzzleUI != null)
+            puzzleUI.SetActive(false);
+
+        // 플레이어 Up 상태로 전환
+        if (player != null)
+            player.stateMachine.ChangeState(player.upState);
     }
 
     public void StopCeiling()
