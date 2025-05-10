@@ -129,7 +129,6 @@ public class GameManager : MonoBehaviour
     {
         if (currentPlayer != null)
         {
-            Debug.Log($"È£ÃâµÆ¾î¿ë -> {isEnabled}");
             currentPlayer.GetComponent<Player>().SetControlEnabled(isEnabled);
         }
     }
