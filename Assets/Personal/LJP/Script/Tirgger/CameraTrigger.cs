@@ -6,6 +6,7 @@ public class CameraTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject cam;
 
+	private CinemachineCamera vcam;
 	private CinemachinePositionComposer positionComposer;
 	private CinemachineConfiner2D confiner;
 
@@ -17,7 +18,7 @@ public class CameraTrigger : MonoBehaviour
 	[SerializeField] private Collider2D boundingShape;
 	[SerializeField] private bool isTeleport;
 
-	private void Start()
+    private void Start()
 	{
 		InitComponent();
 	}
@@ -26,16 +27,17 @@ public class CameraTrigger : MonoBehaviour
 	{
 		if(collision.gameObject.CompareTag("Player"))
 		{
-			SetScreenPosition();
+            SetScreenPosition();
 			SetBoundingShape(collision);
 		}
 	}
 
 	private void InitComponent()
 	{
-		positionComposer = cam.gameObject.TryGetComponent<CinemachinePositionComposer>(out var comp) ? comp : null;
-		confiner = cam.gameObject.GetComponent<CinemachineConfiner2D>();
-	}
+        vcam = cam.GetComponent<CinemachineCamera>();
+        positionComposer =vcam.TryGetComponent<CinemachinePositionComposer>(out var comp) ? comp : null;
+		confiner = vcam.GetComponent<CinemachineConfiner2D>();
+    }
 
 	private void SetScreenPosition()
 	{
@@ -52,9 +54,12 @@ public class CameraTrigger : MonoBehaviour
 			confiner.BoundingShape2D = boundingShape;
 			confiner.InvalidateBoundingShapeCache();
 
-			cam.GetComponent<CinemachineCamera>().ForceCameraPosition(collision.gameObject.transform.position, Quaternion.identity);
+            //vcam.ForceCameraPosition(collision.transform.position, Quaternion.identity);
 
-			confiner.enabled = true;
+            Vector3 clampedPos = boundingShape.ClosestPoint(collision.transform.position);
+            vcam.ForceCameraPosition(clampedPos, Quaternion.identity);
+
+            confiner.enabled = true;
 		}
 		else
 		{
