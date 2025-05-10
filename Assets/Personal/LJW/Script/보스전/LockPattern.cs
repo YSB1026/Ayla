@@ -1,242 +1,137 @@
-using System.Collections.Generic;
 using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LockPattern : MonoBehaviour
 {
+    [Header("프리팹 · 캔버스")]
     public GameObject linePrefab;
-    public Canvas canvas;
+    public Canvas canvas;  // World Space Canvas
 
-    public Dictionary<int, CircleIdentifier> circles;
+    Dictionary<int, CircleIdentifier> circles;
+    List<CircleIdentifier> lines;
+    List<int> inputPattern = new List<int>();
 
-    private List<CircleIdentifier> lines;
+    CircleIdentifier lastCircle;
 
-    private List<int> inputPattern = new List<int>(); // 입력된 패턴 저장용
+    bool enabled = true;
 
-    private GameObject lineOnEdit;
-    private RectTransform lineOnEditRcTs;
-    private CircleIdentifier circleOnEdit;
-
-    private bool unLocking;
-
-    new bool enabled = true;
-
-    public List<int> correctPattern = new List<int> { 0, 1, 2, 5, 8 }; // 정답 패턴 예시
+    [Header("정답 패턴")]
+    public List<int> correctPattern = new List<int> { 0, 1, 2, 5, 8 };
 
     void Start()
     {
         circles = new Dictionary<int, CircleIdentifier>();
         lines = new List<CircleIdentifier>();
-
         for (int i = 0; i < transform.childCount; i++)
         {
-            var circle = transform.GetChild(i);
-
-            var identifier = circle.GetComponent<CircleIdentifier>();
-
-            identifier.id = i;
-
-            circles.Add(i, identifier);
+            var c = transform.GetChild(i).GetComponent<CircleIdentifier>();
+            c.id = i;
+            circles[i] = c;
         }
     }
 
-
-    void Update()
-    {
-        if (enabled == false)
-        {
-            return;
-        }
-
-        // 줄을 마우스로 늘리는 코드
-        if (unLocking)
-        {
-            Vector3 mousePos = canvas.transform.InverseTransformPoint(Input.mousePosition);
-
-            lineOnEditRcTs.sizeDelta = new Vector2(lineOnEditRcTs.sizeDelta.x, Vector3.Distance(mousePos, circleOnEdit.transform.localPosition));
-
-            // 줄이 마우스에 따라 회전
-            lineOnEditRcTs.rotation = Quaternion.FromToRotation(
-            Vector3.up, (mousePos - circleOnEdit.transform.localPosition).normalized);
-
-        }
-    }
-
-    // 줄 제거 및 초기화
     IEnumerator Release()
     {
         enabled = false;
+        yield return new WaitForSeconds(3f);
 
-        // 3초 대기
-        yield return new WaitForSeconds(3);
-
-        foreach (var circle in circles)
+        foreach (var c in circles.Values)
         {
-            circle.Value.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            circle.Value.GetComponent<Animator>().enabled = false;
+            var img = c.GetComponent<Image>(); if (img) img.color = Color.white;
+            var anim = c.GetComponent<Animator>(); if (anim) anim.enabled = false;
         }
-
-        foreach (var line in lines)
-        {
-            Destroy(line.gameObject);
-        }
+        foreach (var l in lines)
+            Destroy(l.gameObject);
 
         lines.Clear();
         inputPattern.Clear();
-
-        lineOnEdit = null;
-        lineOnEditRcTs = null;
-        circleOnEdit = null;
-
+        lastCircle = null;
         enabled = true;
     }
 
-    // 줄 잇기
-    GameObject CreateLine(Vector3 pos, int id)
+    GameObject CreateLineBetween(CircleIdentifier start, CircleIdentifier end, int id)
     {
-        var line = GameObject.Instantiate(linePrefab, canvas.transform);
+        var go = Instantiate(linePrefab, canvas.transform);
+        var rect = go.GetComponent<RectTransform>();
 
-        line.transform.localPosition = pos;
+        RectTransform canvasRT = canvas.GetComponent<RectTransform>();
+        Vector2 startLocal = canvasRT.InverseTransformPoint(start.GetComponent<RectTransform>().position);
+        Vector2 endLocal = canvasRT.InverseTransformPoint(end.GetComponent<RectTransform>().position);
 
-        var lineIdf = line.AddComponent<CircleIdentifier>();
+        Vector2 mid = (startLocal + endLocal) * 0.5f;
+        rect.localPosition = mid;
 
-        lineIdf.id = id;
+        Vector2 dir = (endLocal - startLocal).normalized;
+        float dist = Vector2.Distance(startLocal, endLocal);
+        rect.sizeDelta = new Vector2(rect.sizeDelta.x, dist);
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        rect.localRotation = Quaternion.Euler(0, 0, angle);
 
-        lines.Add(lineIdf);
-
-        return line;
+        var idf = go.AddComponent<CircleIdentifier>();
+        idf.id = id;
+        lines.Add(idf);
+        return go;
     }
 
-    // 중복되는 줄 제거
-    void TrySetLineEdit(CircleIdentifier circle)
+    bool IsCorrectPattern()
     {
-        foreach (var line in lines)
-        {
-            if (line.id == circle.id)
-            {
-                return;
-            }
-        }
-
-        lineOnEdit = CreateLine(circle.transform.localPosition, circle.id);
-        lineOnEditRcTs = lineOnEdit.GetComponent<RectTransform>();
-        circleOnEdit = circle;
-
-        inputPattern.Add(circle.id); // 입력된 순서 기록 
+        if (inputPattern.Count != correctPattern.Count) return false;
+        for (int i = 0; i < correctPattern.Count; i++)
+            if (inputPattern[i] != correctPattern[i]) return false;
+        FindAnyObjectByType<Phase1_Manager>()?.SolvePuzzle();
+        return true;
     }
 
-    void EnableColorFade(Animator anim, bool isSuccess) // 추가
+    void EnableColorFade(Animator anim, bool isSuccess)
     {
         anim.enabled = true;
         anim.Rebind();
-
-        // 추가
-        if (isSuccess)
-            anim.SetBool("Success", isSuccess);
-        else
-            anim.SetBool("Fail", !isSuccess);
+        anim.SetBool("Success", isSuccess);
+        anim.SetBool("Fail", !isSuccess);
     }
 
-    // 정확한 패턴인지 확인하는 bool
-    bool IsCorrectPattern()
+    public void OnMouseDownCircle(CircleIdentifier idf)
     {
-        if (inputPattern.Count != correctPattern.Count)
-            return false;
-
-        for (int i = 0; i < correctPattern.Count; i++)
-        {
-            if (inputPattern[i] != correctPattern[i])
-                return false;
-        }
-
-        return true;
+        if (!enabled) return;
+        lastCircle = idf;
+        inputPattern.Clear();
+        lines.ForEach(l => Destroy(l.gameObject));
+        lines.Clear();
+        inputPattern.Add(idf.id);
     }
 
     public void OnMouseEnterCircle(CircleIdentifier idf)
     {
-        if (enabled == false)
-        {
-            return;
-        }
-
-        // 줄이 동그라미 안에 들어갔을 때 자동 가운데 정렬
-        if (unLocking)
-        {
-            lineOnEditRcTs.sizeDelta = new Vector2(lineOnEditRcTs.sizeDelta.x, Vector3.Distance(circleOnEdit.transform.localPosition, idf.transform.localPosition));
-            lineOnEditRcTs.rotation = Quaternion.FromToRotation(
-                Vector3.up, (idf.transform.localPosition - circleOnEdit.transform.localPosition).normalized);
-
-            TrySetLineEdit(idf);
-        }
+        if (!enabled || lastCircle == null || inputPattern.Contains(idf.id)) return;
+        CreateLineBetween(lastCircle, idf, idf.id);
+        inputPattern.Add(idf.id);
+        lastCircle = idf;
     }
-    public void OnMouseOutCircle(CircleIdentifier idf)
-    {
-        if (enabled == false)
-        {
-            return;
-        }
-    }
-    public void OnMouseDownCircle(CircleIdentifier idf)
-    {
-        if (enabled == false)
-        {
-            return;
-        }
 
-        unLocking = true;
-
-        TrySetLineEdit(idf);
-
-
-    }
     public void OnMouseUpCircle(CircleIdentifier idf)
     {
-        if (enabled == false)
+        if (!enabled) return;
+        bool correct = IsCorrectPattern();
+        Debug.Log(correct ? "정답입니다!" : "오답입니다!");
+
+        foreach (var circle in circles.Values)
         {
-            return;
+            if (inputPattern.Contains(circle.id))
+            {
+                var anim = circle.GetComponent<Animator>();
+                if (anim) EnableColorFade(anim, correct);
+            }
         }
 
-        // 동그라미 fade
-        if (unLocking)
+        foreach (var line in lines)
         {
-            /*foreach (var line in lines)
-            {
-                EnableColorFade(circles[line.id].gameObject.GetComponent<Animator>());
-            }*/
-
-
-
-            // 줄 fade
-            /*foreach (var line in lines)
-            {
-                EnableColorFade(line.GetComponent<Animator>());
-            }*/
-
-            if (IsCorrectPattern())
-            {
-                Debug.Log("정답입니다!");
-                foreach (var line in lines)
-                    EnableColorFade(circles[line.id].gameObject.GetComponent<Animator>(), true);
-                foreach (var line in lines)
-                    EnableColorFade(line.GetComponent<Animator>(), true);
-            }
-            else
-            {
-                Debug.Log("오답입니다!");
-                foreach (var line in lines)
-                    EnableColorFade(circles[line.id].gameObject.GetComponent<Animator>(), false);
-                foreach (var line in lines)
-                    EnableColorFade(line.GetComponent<Animator>(), false);
-            }
-
-            // 마지막 줄 지우기
-            Destroy(lines[lines.Count - 1].gameObject);
-            lines.RemoveAt(lines.Count - 1);
-
-            StartCoroutine(Release());
+            var anim = line.GetComponent<Animator>();
+            if (anim) EnableColorFade(anim, correct);
         }
 
-        unLocking = false;
+        StartCoroutine(Release());
     }
 }
+
