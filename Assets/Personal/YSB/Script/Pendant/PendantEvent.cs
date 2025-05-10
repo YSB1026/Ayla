@@ -15,8 +15,6 @@ public class PendantEvent : MonoBehaviour
     [Header("회상 씬 트리거")]
     [SerializeField] private GameObject recallSceneTrigger;
 
-    public static Action OnPuzzleSolved;
-
     private void OnValidate()
     {
         if(puzzleObject == null)
@@ -24,27 +22,23 @@ public class PendantEvent : MonoBehaviour
             Debug.LogError($"{gameObject.name} 퍼즐 넣어주세요!!");
         }
 
-        if(recallSceneTrigger == null)
+        if (recallSceneTrigger == null || recallSceneTrigger.activeSelf)
         {
-            Debug.LogError($"{gameObject.name} 회상씬 넣어주세요!! -> 씬트리거 추가!");
+            Debug.LogWarning($"{gameObject.name} 회상씬 넣어주세요!!, 비활성화도 해주세요");
         }
     }
-
-    private void Start()
-    {
-        if (!puzzleObject.activeSelf) puzzleObject.SetActive(false);
-    }
-
     private void OnEnable()
     {
-        if (recallSceneTrigger.activeSelf) recallSceneTrigger.SetActive(false);
-
-        OnPuzzleSolved += OnPendantEvent;
+        if (puzzleObject.activeSelf) puzzleObject.SetActive(false);
+        if(recallSceneTrigger.activeSelf) recallSceneTrigger.SetActive(false);
     }
-
-    private void OnDisable()
+    private void Start()
     {
-        OnPuzzleSolved -= OnPendantEvent;
+        var controller = puzzleObject.GetComponent<PuzzleController>();
+        if (controller != null)
+        {
+            controller.Init(OnPendantEvent);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

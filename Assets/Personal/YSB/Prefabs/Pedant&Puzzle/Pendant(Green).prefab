@@ -237,9 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pendantColor: 4
-  sceneName: GreenLight_Recall
   puzzleObject: {fileID: 5743513499861501927}
-  eventAfterRecallScene: {fileID: 0}
+  recallSceneTrigger: {fileID: 7137562056050872615, guid: a4653553015c60241b19ef412f8a566c, type: 3}
 --- !u!1 &215455265127950332
 GameObject:
   m_ObjectHideFlags: 0
@@ -7055,7 +7054,7 @@ GameObject:
   - component: {fileID: 3185680917843869044}
   - component: {fileID: 7047528429151177950}
   m_Layer: 0
-  m_Name: Puzzle
+  m_Name: GreenPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
