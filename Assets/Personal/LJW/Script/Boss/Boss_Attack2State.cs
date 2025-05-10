@@ -27,7 +27,6 @@ public class Boss_Attack2State : BossState
                 if (player != null)
                 {
                     player.stateMachine.ChangeState(player.deadState);
-                    player.SetControlEnabled(false); // 조작 차단
                     Debug.Log("Attack2 - 플레이어 명중");
                 }
 

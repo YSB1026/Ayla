@@ -4221,6 +4221,7 @@ GameObject:
   - component: {fileID: 458015810}
   - component: {fileID: 458015809}
   - component: {fileID: 458015808}
+  - component: {fileID: 458015813}
   m_Layer: 5
   m_Name: Timeline Canvas
   m_TagString: Untagged
@@ -4460,6 +4461,20 @@ RectTransform:
   m_AnchoredPosition: {x: -24.4, y: 0}
   m_SizeDelta: {x: 3840, y: 1460}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &458015813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458015807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff9e8468c4a3e9479f03a1063609751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCode: 32
+  fastForwardSpeed: 10
 --- !u!1 &458112854
 GameObject:
   m_ObjectHideFlags: 0
