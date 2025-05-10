@@ -4,11 +4,11 @@ using System.Collections.Generic;
 [RequireComponent(typeof(MeshFilter))]
 public class LightDetection : MonoBehaviour
 {
-    private Mesh lightMesh;             // 광원 영역
-    private Vector3[] meshWorldPoints;  // 매쉬 꼭짓점을 월드 좌표로 변환
-
     public Enemy_Light enemy;           // 빛 감지 대상
     private bool enemyDetected = false; // 감지 상태 저장
+
+    private Mesh lightMesh;             // 광원 영역
+    private Vector3[] meshWorldPoints;  // 매쉬 꼭짓점을 월드 좌표로 변환
 
     // 과부화 방지
     private float lightCheckCooldown = 0.1f;
@@ -27,6 +27,32 @@ public class LightDetection : MonoBehaviour
     void Update()
     {
         if (Time.time - lastCheckTime < lightCheckCooldown) return;
+        lastCheckTime = Time.time;
+
+        if (enemy == null || lightMesh == null) return;
+
+        // 외곽선만 추출
+        List<Vector3> outline = GetOutline(lightMesh);
+        meshWorldPoints = new Vector3[outline.Count];
+
+        for (int i = 0; i < outline.Count; i++)
+        {
+            meshWorldPoints[i] = transform.TransformPoint(outline[i]);
+        }
+
+        // 감지
+        Collider2D enemyCollider = enemy.GetComponent<Collider2D>();
+        bool isEnemyInside = IsAnyPointInLight(enemyCollider, meshWorldPoints);
+
+        if (isEnemyInside != enemyDetected)
+        {
+            enemyDetected = isEnemyInside;
+            enemy.SetInLight(isEnemyInside);
+
+            Debug.Log($"Enemy가 빛에 {(isEnemyInside ? "들어옴 (InLight = true)" : "벗어남 (InLight = false)")}");
+
+        }
+        /*if (Time.time - lastCheckTime < lightCheckCooldown) return;
         lastCheckTime = Time.time;
 
         if (enemy == null || lightMesh == null) return;
@@ -58,7 +84,7 @@ public class LightDetection : MonoBehaviour
             {
                 Debug.Log("Enemy가 빛에서 벗어남 (InLight = false)");
             }
-        }
+        }*/
     }
 
     // 콜라이더 영역 격자로 나눠서 빛 감지
@@ -103,4 +129,86 @@ public class LightDetection : MonoBehaviour
         // 홀수번 교차시 내부
         return (crossings % 2 == 1);
     }
+
+    private void OnDrawGizmos()
+    {
+        if (meshWorldPoints == null || meshWorldPoints.Length == 0) return;
+
+        Gizmos.color = Color.cyan;
+        for (int i = 0; i < meshWorldPoints.Length; i++)
+        {
+            Gizmos.DrawSphere(meshWorldPoints[i], 0.05f);
+            Gizmos.DrawLine(meshWorldPoints[i], meshWorldPoints[(i + 1) % meshWorldPoints.Length]);
+        }
+    }
+
+    private List<Vector3> GetOutline(Mesh mesh)
+    {
+        var edges = new Dictionary<(int, int), int>();
+        var triangles = mesh.triangles;
+        var verts = mesh.vertices;
+
+        for (int i = 0; i < triangles.Length; i += 3)
+        {
+            int[] tri = { triangles[i], triangles[i + 1], triangles[i + 2] };
+
+            for (int e = 0; e < 3; e++)
+            {
+                int a = tri[e];
+                int b = tri[(e + 1) % 3];
+                var edge = (Mathf.Min(a, b), Mathf.Max(a, b));
+
+                if (edges.ContainsKey(edge)) edges[edge]++;
+                else edges[edge] = 1;
+            }
+        }
+
+        List<(int, int)> outlineEdges = new();
+        foreach (var kvp in edges)
+        {
+            if (kvp.Value == 1) outlineEdges.Add(kvp.Key);
+        }
+
+        List<int> ordered = new();
+        if (outlineEdges.Count > 0)
+        {
+            var current = outlineEdges[0];
+            ordered.Add(current.Item1);
+            ordered.Add(current.Item2);
+            outlineEdges.RemoveAt(0);
+
+            while (outlineEdges.Count > 0)
+            {
+                bool found = false;
+                for (int i = 0; i < outlineEdges.Count; i++)
+                {
+                    var (a, b) = outlineEdges[i];
+                    if (ordered[^1] == a)
+                    {
+                        ordered.Add(b);
+                        outlineEdges.RemoveAt(i);
+                        found = true;
+                        break;
+                    }
+                    else if (ordered[^1] == b)
+                    {
+                        ordered.Add(a);
+                        outlineEdges.RemoveAt(i);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) break;
+            }
+        }
+
+        List<Vector3> outlinePoints = new();
+        foreach (var i in ordered)
+        {
+            outlinePoints.Add(verts[i]);
+        }
+
+        return outlinePoints;
+    }
+
 }

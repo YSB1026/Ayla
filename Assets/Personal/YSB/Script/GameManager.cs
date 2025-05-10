@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-    public void OnPendantCollected(LightColorController.ColorOption color, string sceneName)
+    public void OnPendantCollected(LightColorController.ColorOption color)
     {
         Debug.Log($"ฦาด๘ฦฎ ผ๖มýตส: {color}");
 
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         //uiManager.PlayPendantCutscene(color);
         //soundManager.PlayPendantCollectSFX(color);
 
-        sceneManager.LoadMemoryScene(sceneName);
+        //sceneManager.LoadAdditiveScene(sceneName);
     }
 
     public void RespawnPlayer()

@@ -9,6 +9,9 @@ public class SceneTriggerEditor : Editor
     {
         serializedObject.Update();  // 객체 업데이트
 
+        SerializedProperty additiveMode = serializedObject.FindProperty("isAdditiveMode");
+        EditorGUILayout.PropertyField(additiveMode, new GUIContent("Additive Mode"));
+
         // sceneName 속성 그리기 (드롭다운)
         SerializedProperty sceneNameProp = serializedObject.FindProperty("sceneName");
         if (sceneNameProp != null)

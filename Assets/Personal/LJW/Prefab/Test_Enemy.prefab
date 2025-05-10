@@ -283,7 +283,7 @@ MonoBehaviour:
   speedMultiplier: 5
   player: {fileID: 0}
   playerDetect: {fileID: 1306503337408626965}
-  detectBoxSize: {x: 3, y: 3}
+  detectBoxSize: {x: 2, y: 3}
 --- !u!114 &477286689458145782
 MonoBehaviour:
   m_ObjectHideFlags: 0

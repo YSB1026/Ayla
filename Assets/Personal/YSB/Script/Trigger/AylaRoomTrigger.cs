@@ -2,31 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AylaRoomTrigger : BaseTrigger
+public class AylaRoomEvent : MonoBehaviour
 {
     [SerializeField] private GameObject aylaRoomBeforeCutScene;
     [SerializeField] private GameObject aylaRoomAfterCutScene;
 
-    [SerializeField] private float fadeDuration = 3f;
+    [SerializeField] private float fadeDuration = 4f;
 
-    [Header("TimeLine After Trigger")]
-    [SerializeField] private GameObject timeline;
-
-    private void Enalbe()
-    {
-        if (timeline.activeSelf)
-        {
-            timeline.SetActive(false);
-        }
-    }
-
-    protected override void OnPlayerEnter()
+    private void OnEnable()
     {
         StartCoroutine(AfterGreenPendantTrigger());
     }
 
     IEnumerator AfterGreenPendantTrigger()
     {
+        Debug.Log("green event È£ÃâµÆ¾î¿ä!");
         yield return null;
 
         Coroutine fadeOut = StartCoroutine(FadeSpritesOutAndDisable(aylaRoomBeforeCutScene));
@@ -35,7 +25,6 @@ public class AylaRoomTrigger : BaseTrigger
         yield return fadeOut;
         yield return fadeIn;
 
-        timeline.SetActive(true);
         SelftDestroy();
     }
 
@@ -132,5 +121,4 @@ public class AylaRoomTrigger : BaseTrigger
     {
         Destroy(gameObject);
     }
-
 }

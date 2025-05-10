@@ -9,14 +9,11 @@ public class PendantEvent : MonoBehaviour
     [Header("획득할 빛")]
     public ColorOption pendantColor;
 
-    [Header("회상 씬")]
-    [SerializeField] private string sceneName;
-
     [Header("퍼즐")]
     [SerializeField] private GameObject puzzleObject;
 
-    [Header("회상씬 이후 이벤트 트리거")]
-    [SerializeField] private GameObject eventAfterRecallScene;
+    [Header("회상 씬 트리거")]
+    [SerializeField] private GameObject recallSceneTrigger;
 
     public static Action OnPuzzleSolved;
 
@@ -25,6 +22,11 @@ public class PendantEvent : MonoBehaviour
         if(puzzleObject == null)
         {
             Debug.LogError($"{gameObject.name} 퍼즐 넣어주세요!!");
+        }
+
+        if(recallSceneTrigger == null)
+        {
+            Debug.LogError($"{gameObject.name} 회상씬 넣어주세요!! -> 씬트리거 추가!");
         }
     }
 
@@ -35,13 +37,14 @@ public class PendantEvent : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("PendantEvent enabled, subscribing to OnPuzzleSolved");
-        OnPuzzleSolved += LoadNextScene;
+        if (recallSceneTrigger.activeSelf) recallSceneTrigger.SetActive(false);
+
+        OnPuzzleSolved += OnPendantEvent;
     }
 
     private void OnDisable()
     {
-        OnPuzzleSolved -= LoadNextScene;
+        OnPuzzleSolved -= OnPendantEvent;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,17 +65,14 @@ public class PendantEvent : MonoBehaviour
         }
     }
 
-    private void LoadNextScene()//퍼즐 컨트롤러에서 action을 통해 호출하는 함수에요.
+    private void OnPendantEvent()//퍼즐 컨트롤러에서 action을 통해 호출하는 함수에요.
     {
         StartCoroutine(ActivePuzzle(false));
-        Destroy(gameObject);
 
-        GameManager.Instance.OnPendantCollected(pendantColor, sceneName);
+        GameManager.Instance.OnPendantCollected(pendantColor);
         GameManager.Instance.SetPlayerControlEnabled(true);
 
-        if (eventAfterRecallScene != null)
-        {
-            eventAfterRecallScene.SetActive(true);
-        }
+        recallSceneTrigger.SetActive(true);
+        Destroy(gameObject);
     }
 }

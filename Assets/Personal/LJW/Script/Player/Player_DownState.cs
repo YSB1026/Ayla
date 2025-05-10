@@ -17,6 +17,8 @@ public class Player_DownState : PlayerState
     public override void Update()
     {
         base.Update();
+
+        player.ForceSetControlEnabled(false);
     }
 
     public override void Exit()
