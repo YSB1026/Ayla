@@ -47,7 +47,7 @@ public class Phase1_Manager : MonoBehaviour
         if (player != null)
         {
             player.stateMachine.ChangeState(player.downState);
-            player.SetControlEnabled(false);
+            //player.SetControlEnabled(false);
         }
 
         // 2. Ayla ¡∂¿€

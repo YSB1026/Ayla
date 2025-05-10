@@ -1,132 +1,85 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LockPattern : MonoBehaviour
 {
+    [Header("«¡∏Æ∆’ °§ ƒµπˆΩ∫")]
     public GameObject linePrefab;
-    public Canvas canvas;
-    public Transform player;
-    public float selectionRadius = 1f; // Ïõê ÏÑ†ÌÉù Î∞òÍ≤Ω
+    public Canvas canvas;  // World Space Canvas
 
+    Dictionary<int, CircleIdentifier> circles;
+    List<CircleIdentifier> lines;
+    List<int> inputPattern = new List<int>();
+
+    CircleIdentifier lastCircle;
+
+    bool enabled = true;
+
+    [Header("¡§¥‰ ∆–≈œ")]
     public List<int> correctPattern = new List<int> { 0, 1, 2, 5, 8 };
-
-    private Dictionary<int, CircleIdentifier> circles;
-    private List<CircleIdentifier> lines;
-    private List<int> inputPattern = new List<int>();
-
-    private GameObject lineOnEdit;
-    private RectTransform lineOnEditRcTs;
-    private CircleIdentifier circleOnEdit;
-
-    private bool unLocking;
-    private new bool enabled = true;
 
     void Start()
     {
         circles = new Dictionary<int, CircleIdentifier>();
         lines = new List<CircleIdentifier>();
-
         for (int i = 0; i < transform.childCount; i++)
         {
-            var circle = transform.GetChild(i);
-            var identifier = circle.GetComponent<CircleIdentifier>();
-            identifier.id = i;
-            circles.Add(i, identifier);
+            var c = transform.GetChild(i).GetComponent<CircleIdentifier>();
+            c.id = i;
+            circles[i] = c;
         }
     }
 
-    void Update()
+    IEnumerator Release()
     {
-        if (!enabled) return;
+        enabled = false;
+        yield return new WaitForSeconds(3f);
 
-        // ÌîåÎ†àÏù¥Ïñ¥Í∞Ä E ÌÇ§Î•º ÎàåÎü¨ Í∞ÄÏû• Í∞ÄÍπåÏö¥ ÏõêÏùÑ ÏÑ†ÌÉù
-        if (Input.GetKeyDown(KeyCode.E))
+        foreach (var c in circles.Values)
         {
-            TrySelectNearestCircle();
+            var img = c.GetComponent<Image>(); if (img) img.color = Color.white;
+            var anim = c.GetComponent<Animator>(); if (anim) anim.enabled = false;
         }
+        foreach (var l in lines)
+            Destroy(l.gameObject);
 
-        // ÌîåÎ†àÏù¥Ïñ¥ Í∏∞Ï§Ä ÎùºÏù∏ Ìé∏Ïßë
-        if (unLocking && circleOnEdit != null && lineOnEditRcTs != null)
-        {
-            Vector3 playerPos = canvas.transform.InverseTransformPoint(player.position);
-            lineOnEditRcTs.sizeDelta = new Vector2(lineOnEditRcTs.sizeDelta.x, Vector3.Distance(playerPos, circleOnEdit.transform.localPosition));
-            lineOnEditRcTs.rotation = Quaternion.FromToRotation(Vector3.up, (playerPos - circleOnEdit.transform.localPosition).normalized);
-        }
-
-        // Ìå®ÌÑ¥ ÏûÖÎ†• Ï¢ÖÎ£å
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            EndUnlocking();
-        }
+        lines.Clear();
+        inputPattern.Clear();
+        lastCircle = null;
+        enabled = true;
     }
 
-    void TrySelectNearestCircle()
+    GameObject CreateLineBetween(CircleIdentifier start, CircleIdentifier end, int id)
     {
-        foreach (var pair in circles)
-        {
-            var circle = pair.Value;
+        var go = Instantiate(linePrefab, canvas.transform);
+        var rect = go.GetComponent<RectTransform>();
 
-            // UI ÏúÑÏπòÎ•º ÏõîÎìú ÏúÑÏπòÎ°ú Î≥ÄÌôò
-            Vector3 worldPos = circle.GetComponent<RectTransform>().position;
+        RectTransform canvasRT = canvas.GetComponent<RectTransform>();
+        Vector2 startLocal = canvasRT.InverseTransformPoint(start.GetComponent<RectTransform>().position);
+        Vector2 endLocal = canvasRT.InverseTransformPoint(end.GetComponent<RectTransform>().position);
 
-            float dist = Vector3.Distance(player.position, worldPos);
+        Vector2 mid = (startLocal + endLocal) * 0.5f;
+        rect.localPosition = mid;
 
-            if (dist <= selectionRadius)
-            {
-                if (!unLocking)
-                {
-                    unLocking = true;
-                }
+        Vector2 dir = (endLocal - startLocal).normalized;
+        float dist = Vector2.Distance(startLocal, endLocal);
+        rect.sizeDelta = new Vector2(rect.sizeDelta.x, dist);
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        rect.localRotation = Quaternion.Euler(0, 0, angle);
 
-                TrySetLineEdit(circle);
-                break;
-            }
-        }
-    }
-
-
-    void TrySetLineEdit(CircleIdentifier circle)
-    {
-        foreach (var line in lines)
-        {
-            if (line.id == circle.id)
-            {
-                return;
-            }
-        }
-
-        lineOnEdit = CreateLine(circle.transform.localPosition, circle.id);
-        lineOnEditRcTs = lineOnEdit.GetComponent<RectTransform>();
-        circleOnEdit = circle;
-
-        inputPattern.Add(circle.id);
-    }
-
-    GameObject CreateLine(Vector3 pos, int id)
-    {
-        var line = Instantiate(linePrefab, canvas.transform);
-        line.transform.localPosition = pos;
-
-        var lineIdf = line.AddComponent<CircleIdentifier>();
-        lineIdf.id = id;
-
-        lines.Add(lineIdf);
-        return line;
+        var idf = go.AddComponent<CircleIdentifier>();
+        idf.id = id;
+        lines.Add(idf);
+        return go;
     }
 
     bool IsCorrectPattern()
     {
-        if (inputPattern.Count != correctPattern.Count)
-            return false;
-
+        if (inputPattern.Count != correctPattern.Count) return false;
         for (int i = 0; i < correctPattern.Count; i++)
-        {
-            if (inputPattern[i] != correctPattern[i])
-                return false;
-        }
-
+            if (inputPattern[i] != correctPattern[i]) return false;
         FindAnyObjectByType<Phase1_Manager>()?.SolvePuzzle();
         return true;
     }
@@ -135,60 +88,50 @@ public class LockPattern : MonoBehaviour
     {
         anim.enabled = true;
         anim.Rebind();
-
-        if (isSuccess)
-            anim.SetBool("Success", true);
-        else
-            anim.SetBool("Fail", true);
+        anim.SetBool("Success", isSuccess);
+        anim.SetBool("Fail", !isSuccess);
     }
 
-    void EndUnlocking()
+    public void OnMouseDownCircle(CircleIdentifier idf)
     {
-        if (!unLocking) return;
+        if (!enabled) return;
+        lastCircle = idf;
+        inputPattern.Clear();
+        lines.ForEach(l => Destroy(l.gameObject));
+        lines.Clear();
+        inputPattern.Add(idf.id);
+    }
 
-        bool result = IsCorrectPattern();
+    public void OnMouseEnterCircle(CircleIdentifier idf)
+    {
+        if (!enabled || lastCircle == null || inputPattern.Contains(idf.id)) return;
+        CreateLineBetween(lastCircle, idf, idf.id);
+        inputPattern.Add(idf.id);
+        lastCircle = idf;
+    }
+
+    public void OnMouseUpCircle(CircleIdentifier idf)
+    {
+        if (!enabled) return;
+        bool correct = IsCorrectPattern();
+        Debug.Log(correct ? "¡§¥‰¿‘¥œ¥Ÿ!" : "ø¿¥‰¿‘¥œ¥Ÿ!");
+
+        foreach (var circle in circles.Values)
+        {
+            if (inputPattern.Contains(circle.id))
+            {
+                var anim = circle.GetComponent<Animator>();
+                if (anim) EnableColorFade(anim, correct);
+            }
+        }
 
         foreach (var line in lines)
         {
-            EnableColorFade(circles[line.id].GetComponent<Animator>(), result);
-            EnableColorFade(line.GetComponent<Animator>(), result);
-        }
-
-        if (lines.Count > 0)
-        {
-            Destroy(lines[lines.Count - 1].gameObject);
-            lines.RemoveAt(lines.Count - 1);
+            var anim = line.GetComponent<Animator>();
+            if (anim) EnableColorFade(anim, correct);
         }
 
         StartCoroutine(Release());
-
-        unLocking = false;
-    }
-
-    IEnumerator Release()
-    {
-        enabled = false;
-
-        yield return new WaitForSeconds(3f);
-
-        foreach (var circle in circles)
-        {
-            circle.Value.GetComponent<Image>().color = Color.white;
-            circle.Value.GetComponent<Animator>().enabled = false;
-        }
-
-        foreach (var line in lines)
-        {
-            Destroy(line.gameObject);
-        }
-
-        lines.Clear();
-        inputPattern.Clear();
-
-        lineOnEdit = null;
-        lineOnEditRcTs = null;
-        circleOnEdit = null;
-
-        enabled = true;
     }
 }
+
