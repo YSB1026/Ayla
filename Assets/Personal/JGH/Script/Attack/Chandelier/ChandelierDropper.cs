@@ -51,9 +51,49 @@ public class ChandelierDropper : MonoBehaviour
     {
         if (!hasDropped) return;
 
+        // Ground 충돌
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            chandelierRb.bodyType = RigidbodyType2D.Static; // 충돌 후 정지
+            if (!isBreaking)
+            {
+                chandelierAnimator.speed = 1.5f;
+                chandelierAnimator.SetTrigger("Break");
+                isBreaking = true;
+            }
+
+            chandelierRb.bodyType = RigidbodyType2D.Static;
+            return; // 여기서 리턴 추가
+        }
+
+        // Player 충돌
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // 이미 멈춘 상태라면 아무 일도 하지 않음
+            if (chandelierRb.bodyType == RigidbodyType2D.Static)
+                return;
+
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Die(); // 애니메이션 → 리스폰 흐름
+            }
+
+            if (!isBreaking)
+            {
+                chandelierRb.linearVelocity = Vector2.zero;
+                chandelierRb.bodyType = RigidbodyType2D.Static;
+
+                chandelierAnimator.speed = 2.0f;
+                chandelierAnimator.SetTrigger("Break");
+
+                isBreaking = true;
+            }
         }
     }
+
+
+
+
+
+
 }
