@@ -1,8 +1,15 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class TimeLineTrigger : BaseTrigger
 {
+    [Header("GameObject")]
+    [SerializeField] private List<GameObject> gameObjectList = new();
+    [Header("Game Object 활성화 여부")]
+    [SerializeField] private bool isActive = false;
+
     private PlayableDirector director;
     private bool isTriggered = false;
 
@@ -31,6 +38,18 @@ public class TimeLineTrigger : BaseTrigger
 
         director.stopped -= OnTimelineStopped;
 
+        SetActiveGameObjects();
+
         Destroy(gameObject);
+    }
+
+    private void SetActiveGameObjects()
+    {
+        if (gameObjectList.Count == 0) return;
+
+        foreach (var gameObject in gameObjectList)
+        {
+            gameObject.SetActive(isActive);
+        }
     }
 }
