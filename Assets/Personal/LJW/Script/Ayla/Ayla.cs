@@ -88,7 +88,7 @@ public class Ayla : Entity
     // 플레이어 따라다니는 로직
     private void Follow()
     {
-        Debug.Log("Follow 호출됨");
+        //Debug.Log("Follow 호출됨");
 
         // 플레이어가 보고 있는 방향에 따라 따라갈 포인트 결정
         Transform targetPoint = playerSpriteRenderer.flipX ? followPointLeft : followPointRight;

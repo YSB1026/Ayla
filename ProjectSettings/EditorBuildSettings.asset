@@ -7,13 +7,16 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
-    guid: ade1b6ff0144169449af3779ed9fb991
+    guid: 9de53a4c231bd3d4e87acb6f0d402a91
   - enabled: 1
     path: Assets/Scenes/Forest.unity
-    guid: ee1ceca37da5be2448e3740160f3274d
+    guid: a52175c7eb4e80a469d2fc95b915c2b2
   - enabled: 1
     path: Assets/Scenes/House.unity
     guid: 56576e3c9efccf34bba4cd1472d8f909
+  - enabled: 1
+    path: Assets/Scenes/1F _ hallway Chase.unity
+    guid: 22eb22b0b65dcee4398e0e27997dd1a5
   - enabled: 1
     path: Assets/Scenes/GreenLight_Recall.unity
     guid: 1f07fbd9a33e8c440bb28e79b646ac32
@@ -24,8 +27,17 @@ EditorBuildSettings:
     path: Assets/Scenes/RedLight_Recall.unity
     guid: 33025d3b650fe1f4dba10355cbbe61d0
   - enabled: 1
-    path: Assets/Scenes/1F _ hallway Chase.unity
-    guid: 22eb22b0b65dcee4398e0e27997dd1a5
+    path: Assets/Scenes/Last_Recall.unity
+    guid: 03770b8a9e5c77e428ec1466ee661827
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 8101dab0aab42bb4aa81b58ca8fc610b
+  - enabled: 1
+    path: Assets/Scenes/Phase2.unity
+    guid: 5fa5705119e58eb4491067ca65078b2a
+  - enabled: 1
+    path: Assets/Scenes/Phase3.unity
+    guid: b43072648c1cef749950eab3cb5a7f58
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

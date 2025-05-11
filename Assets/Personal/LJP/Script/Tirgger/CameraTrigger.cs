@@ -16,7 +16,7 @@ public class CameraTrigger : MonoBehaviour
 
 	[Header("BoundingShape")]
 	[SerializeField] private Collider2D boundingShape;
-	[SerializeField] private bool isTeleport;
+	//[SerializeField] private bool isTeleport;
 
     private void Start()
 	{
@@ -47,23 +47,26 @@ public class CameraTrigger : MonoBehaviour
 
 	private void SetBoundingShape(Collider2D collision)
 	{
-		if (isTeleport)
-		{
-			confiner.enabled = false;
+        confiner.enabled = false;
 
-			confiner.BoundingShape2D = boundingShape;
-			confiner.InvalidateBoundingShapeCache();
+        confiner.BoundingShape2D = boundingShape;
+        confiner.InvalidateBoundingShapeCache();
 
-            //vcam.ForceCameraPosition(collision.transform.position, Quaternion.identity);
 
-            Vector3 clampedPos = boundingShape.ClosestPoint(collision.transform.position);
-            vcam.ForceCameraPosition(clampedPos, Quaternion.identity);
+        Vector3 clampedPos = boundingShape.ClosestPoint(collision.transform.position);
+        vcam.ForceCameraPosition(clampedPos, Quaternion.identity);
 
-            confiner.enabled = true;
-		}
-		else
-		{
-			confiner.BoundingShape2D = boundingShape;
-		}
+        confiner.enabled = true;
+  //      if (isTeleport)
+		//{
+  //          //vcam.ForceCameraPosition(collision.transform.position, Quaternion.identity);
+
+  //          Vector3 clampedPos = boundingShape.ClosestPoint(collision.transform.position);
+  //          vcam.ForceCameraPosition(clampedPos, Quaternion.identity);
+		//}
+		////else
+		////{
+		////	confiner.BoundingShape2D = boundingShape;
+		////}
 	}
 }

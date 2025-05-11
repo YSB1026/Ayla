@@ -33,14 +33,14 @@ Material:
     - _Direction: 0
     - _Fade: 0
     - _FadeAmount: 1
-    - _Height: 0.2
+    - _Height: 0.19
     - _Intensity: 0
     - _OnlyShadow: 0
-    - _Quality: 3.97
+    - _Quality: 4
     - _Soft: 0
     - _Tilt: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpritePivot: {r: 0, g: 0, b: 0, a: 0}
