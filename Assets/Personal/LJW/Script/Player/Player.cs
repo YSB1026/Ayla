@@ -145,14 +145,16 @@ public class Player : Entity
         col.offset = idleColOffset;
         col.size = idleColSize;
     }
-
+    //private Vector2 sitColOffset = new Vector2(0f, -0.1f);
+    //private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
+    //private Vector2 crawColOffset = new Vector2(0f, -0.2f);
+    //private Vector2 crawColSize = new Vector2(2f, 0.9f);
     public void SetSitCollider()
     {
         col.direction = CapsuleDirection2D.Vertical;
         col.offset = sitColOffset;
         col.size = sitColSize;
     }
-
     public void SetCrawCollider()
     {
         col.direction = CapsuleDirection2D.Horizontal;
