@@ -2,23 +2,18 @@ using UnityEngine;
 
 public class Phase1_Manager : MonoBehaviour
 {
-    [Header("Phase1 º≥¡§")]
     public Player player;
     public Ayla ayla;
     public SwitchVision switchVision;
     public Transform aylaPuzzleStartPoint;
     public Transform playerDownCameraTarget;
-
-    [Header("√µ¿Â ∞¸∑√")]
-    public Transform ceiling;
-    public float descendSpeed = 1f;
+    [SerializeField] private GameObject puzzleUI;
 
     private bool phaseStarted = false;
     private bool puzzleSolved = false;
-    private bool phaseStopped = false;
 
-    // ∆€¡Ò UI GameObject (LockPattern¿ª ∆˜«‘«— ø¿∫Í¡ß∆Æ)
-    [SerializeField] private GameObject puzzleUI;
+    public int currentPuzzleIndex = 0;
+    public int totalPuzzleCount = 4;
 
     void Start()
     {
@@ -29,41 +24,24 @@ public class Phase1_Manager : MonoBehaviour
             puzzleUI.SetActive(false);
     }
 
-    void Update()
-    {
-        if (!phaseStarted || phaseStopped || puzzleSolved)
-            return;
-
-        ceiling.position += Vector3.down * descendSpeed * Time.deltaTime;
-    }
-
     public void StartPhase()
     {
-        Debug.Log("[Phase1] Ω√¿€µ ");
+        Debug.Log("[Phase1] ÏãúÏûëÎê®");
 
         phaseStarted = true;
 
-        // 1. «√∑π¿ÃæÓ ¡∂¿€ ∏∑∞Ì æ≤∑Ø∂ﬂ∏Æ±‚
         if (player != null)
-        {
             player.stateMachine.ChangeState(player.downState);
-            //player.SetControlEnabled(false);
-        }
 
-        // 2. Ayla ¡∂¿€ º≥¡§
         if (ayla != null && aylaPuzzleStartPoint != null)
         {
             ayla.SetControlEnabled(false);
             ayla.isCurrentlyControlled = false;
         }
 
-        // Ω√≥◊∏”Ω≈ ≤Ù±‚
         if (switchVision != null && switchVision.CCamera != null)
-        {
             switchVision.CCamera.gameObject.SetActive(false);
-        }
 
-        // 4. ∏ﬁ¿Œ ƒ´∏ﬁ∂Û ¿ßƒ°∏¶ ¥ŸøÓµ» «√∑π¿ÃæÓ ø¨√‚øÎ¿∏∑Œ ¿Ãµø
         if (switchVision != null && switchVision.mainCamera != null && playerDownCameraTarget != null)
         {
             Vector3 targetPos = playerDownCameraTarget.position;
@@ -71,11 +49,8 @@ public class Phase1_Manager : MonoBehaviour
             switchVision.mainCamera.transform.position = camPos;
         }
 
-        // 5. «√∑π¿ÃæÓ Ω√æﬂ ¿Ø¡ˆ
         if (switchVision != null && switchVision.mainCamera != null)
-        {
             switchVision.mainCamera.cullingMask = switchVision.playerViewMask;
-        }
     }
 
     public void SolvePuzzle()
@@ -83,9 +58,10 @@ public class Phase1_Manager : MonoBehaviour
         if (puzzleSolved) return;
 
         puzzleSolved = true;
-        Debug.Log("[Phase1] ∆€¡Ò «ÿ∞· øœ∑·");
+        currentPuzzleIndex++;
 
-        // Ω√≥◊∏”Ω≈ ƒ´∏ﬁ∂Û ¥ŸΩ√ ƒ—±‚
+        Debug.Log($"[Phase1] ÌçºÏ¶ê {currentPuzzleIndex}Î≤à Ìï¥Í≤∞Îê®");
+
         if (switchVision != null && switchVision.CCamera != null)
         {
             switchVision.CCamera.gameObject.SetActive(true);
@@ -94,33 +70,19 @@ public class Phase1_Manager : MonoBehaviour
             switchVision.mainCamera.cullingMask = switchVision.playerViewMask;
         }
 
-        // Ayla ∫π±∏
-        Ayla aylaScript = ayla.GetComponent<Ayla>();
-        AylaPhase1Controller phaseController = ayla.GetComponent<AylaPhase1Controller>();
-
+        var aylaScript = ayla.GetComponent<Ayla>();
+        var phaseController = ayla.GetComponent<AylaPhase1Controller>();
         if (phaseController != null) phaseController.enabled = false;
+        if (aylaScript != null) aylaScript.enabled = true;
 
-        if (aylaScript != null)
-        {
-            aylaScript.enabled = true;
-        }
+        ayla.SetControlEnabled(true);
 
-        ayla.SetControlEnabled(true); // ¥ŸΩ√ µ˚∂Û∞°±‚ «„øÎ
-
-        // ∆€¡Ò UI ≤Ù±‚
         if (puzzleUI != null)
             puzzleUI.SetActive(false);
 
-        // «√∑π¿ÃæÓ Up ªÛ≈¬∑Œ ¿¸»Ø
         if (player != null)
             player.stateMachine.ChangeState(player.upState);
     }
 
-    public void StopCeiling()
-    {
-        phaseStopped = true;
-        Debug.Log("[Phase1] √µ¿Â ∏ÿ√„");
-    }
-
-    public bool IsPhaseActive => phaseStarted && !phaseStopped && !puzzleSolved;
+    public bool IsPhaseActive => phaseStarted && !puzzleSolved;
 }
