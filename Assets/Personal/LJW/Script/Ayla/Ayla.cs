@@ -20,9 +20,6 @@ public class Ayla : Entity
     private SpriteRenderer playerSpriteRenderer;
     private SpriteRenderer aylaSpriteRenderer;
 
-    private Rigidbody2D rb;
-    private Collider2D cd;
-
     private bool controlEnabled = false;  // 키 조작 여부
     private bool isFixed = false;         // R 키로 고정 여부
     public bool isCurrentlyControlled;  // 현재 조작되고 있는지 감지
@@ -40,27 +37,15 @@ public class Ayla : Entity
         controlEnabled = isEnabled;
     }
 
-    // 평소 상태 (물리, 충돌 X)
-    public void EnablePhysics(bool enabled)
-    {
-        rb.simulated = enabled;
-        cd.enabled = enabled;
-    }
-
     protected override void Awake()
     {
         base.Awake();
 
-        rb = GetComponent<Rigidbody2D>(); // 임시 직접 할당
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
         aylaSpriteRenderer = GetComponent<SpriteRenderer>();
 
         // 상태 머신 인스턴스 생성
         stateMachine = new AylaStateMachine();
-
-        cd = GetComponent<Collider2D>();
-        rb.simulated = false;      // Entity에서 가져온 rb
-        cd.enabled = false;
     }
 
     protected override void Start()
