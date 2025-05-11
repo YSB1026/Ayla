@@ -11,7 +11,6 @@ public class Player_PullState : PlayerState
 	{
 		base.Enter();
 		hit = player.GetObjectHitInfo();
-		hit.collider.gameObject.GetComponent<InteractiveObject>()?.SetTrigger(false);
 		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(false);
 	}
 
@@ -36,7 +35,6 @@ public class Player_PullState : PlayerState
 	{
 		base.Exit();
 		player.SetZeroVelocity();
-		hit.collider.gameObject.GetComponent<InteractiveObject>()?.SetTrigger(true);
 		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(true);
 	}
 }
