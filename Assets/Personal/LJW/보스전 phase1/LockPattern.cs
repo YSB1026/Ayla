@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LockPattern : MonoBehaviour
 {
-    [Header("ÇÁ¸®ÆÕ ¡¤ Äµ¹ö½º")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Äµï¿½ï¿½ï¿½ï¿½")]
     public GameObject linePrefab;
     public Canvas canvas;  // World Space Canvas
 
@@ -17,7 +17,7 @@ public class LockPattern : MonoBehaviour
 
     bool enabled = true;
 
-    [Header("Á¤´ä ÆÐÅÏ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public List<int> correctPattern = new List<int> { 0, 1, 2, 5, 8 };
 
     void Start()
@@ -114,7 +114,7 @@ public class LockPattern : MonoBehaviour
     {
         if (!enabled) return;
         bool correct = IsCorrectPattern();
-        Debug.Log(correct ? "Á¤´äÀÔ´Ï´Ù!" : "¿À´äÀÔ´Ï´Ù!");
+        Debug.Log(correct ? "ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½!" : "ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½!");
 
         foreach (var circle in circles.Values)
         {
@@ -133,5 +133,48 @@ public class LockPattern : MonoBehaviour
 
         StartCoroutine(Release());
     }
+
+    public void TrySelectCircle(CircleIdentifier idf)
+    {
+        if (!enabled) return;
+
+        if (lastCircle == null)
+        {
+            lastCircle = idf;
+            inputPattern.Clear();
+            lines.ForEach(l => Destroy(l.gameObject));
+            lines.Clear();
+            inputPattern.Add(idf.id);
+        }
+        else if (!inputPattern.Contains(idf.id))
+        {
+            CreateLineBetween(lastCircle, idf, idf.id);
+            inputPattern.Add(idf.id);
+            lastCircle = idf;
+        }
+
+        if (inputPattern.Count == correctPattern.Count)
+        {
+            bool correct = IsCorrectPattern();
+
+            foreach (var circle in circles.Values)
+            {
+                if (inputPattern.Contains(circle.id))
+                {
+                    var anim = circle.GetComponent<Animator>();
+                    if (anim) EnableColorFade(anim, correct);
+                }
+            }
+
+            foreach (var line in lines)
+            {
+                var anim = line.GetComponent<Animator>();
+                if (anim) EnableColorFade(anim, correct);
+            }
+
+            StartCoroutine(Release());
+        }
+    }
+
 }
 
