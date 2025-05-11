@@ -14,7 +14,6 @@ public class PuzzleController : MonoBehaviour
     {
         onPuzzleComplete = onCompleteCallback;
     }
-
     public void NotifyPieceSnapped()
     {
         if (isPuzzleComplete) return;
