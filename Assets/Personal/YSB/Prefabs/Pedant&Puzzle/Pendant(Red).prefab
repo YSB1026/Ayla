@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3827116272157390958}
   - component: {fileID: 3243826012200788360}
   - component: {fileID: 181618812603558127}
-  - component: {fileID: 530733953059311861}
   - component: {fileID: 5589625278474537950}
+  - component: {fileID: 3545031911387775349}
   m_Layer: 11
   m_Name: Pieces_3
   m_TagString: Puzzle
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 111886261242702005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 9.52999, y: -0.54000044, z: 0}
+  m_LocalPosition: {x: 10.54, y: -2.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -159,7 +159,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &530733953059311861
+--- !u!114 &5589625278474537950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111886261242702005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 8082866622394585361}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &3545031911387775349
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,7 +208,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.38802308}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -203,23 +218,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.65625, y: 2.7239537}
+  m_Size: {x: 2.65625, y: 3.5}
   m_EdgeRadius: 0
---- !u!114 &5589625278474537950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111886261242702005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 8082866622394585361}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &283083464327231106
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,8 +493,8 @@ GameObject:
   - component: {fileID: 1906800310156510165}
   - component: {fileID: 3454200675358506427}
   - component: {fileID: 2733953948083027617}
-  - component: {fileID: 2500676016205192158}
   - component: {fileID: 5676926988184626826}
+  - component: {fileID: 4478116829783295207}
   m_Layer: 11
   m_Name: Pieces_2
   m_TagString: Puzzle
@@ -511,7 +511,7 @@ Transform:
   m_GameObject: {fileID: 821358716969654099}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -5.9400096, y: 2.8099995, z: 0}
+  m_LocalPosition: {x: -6.99, y: 2.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -640,7 +640,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &2500676016205192158
+--- !u!114 &5676926988184626826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821358716969654099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 7024730288617245949}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &4478116829783295207
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -674,7 +689,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.39684194, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -684,23 +699,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.721941, y: 2.71875}
+  m_Size: {x: 3.515625, y: 2.71875}
   m_EdgeRadius: 0
---- !u!114 &5676926988184626826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821358716969654099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 7024730288617245949}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &825069991870005336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,8 +2445,8 @@ GameObject:
   - component: {fileID: 8761284871943146093}
   - component: {fileID: 8210609875250991077}
   - component: {fileID: 4632629191084057202}
-  - component: {fileID: 2320843696177013135}
   - component: {fileID: 734441632569149888}
+  - component: {fileID: 2233996772076961485}
   m_Layer: 11
   m_Name: Pieces_7
   m_TagString: Puzzle
@@ -2463,7 +2463,7 @@ Transform:
   m_GameObject: {fileID: 1539109843086690524}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6.72001, y: -3.5400004, z: 0}
+  m_LocalPosition: {x: -7.1, y: -2.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2592,7 +2592,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &2320843696177013135
+--- !u!114 &734441632569149888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539109843086690524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 1067632799802652945}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &2233996772076961485
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2626,7 +2641,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.044093728, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2636,23 +2651,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.74277, y: 2.71875}
+  m_Size: {x: 4.3125, y: 2.71875}
   m_EdgeRadius: 0
---- !u!114 &734441632569149888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539109843086690524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 1067632799802652945}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &1734141740540630928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,8 +2665,8 @@ GameObject:
   - component: {fileID: 5091699325331595357}
   - component: {fileID: 406699198981787565}
   - component: {fileID: 5320866296554814555}
-  - component: {fileID: 4426791810477554709}
   - component: {fileID: 8872236681161978586}
+  - component: {fileID: 1810198592007652576}
   m_Layer: 11
   m_Name: Pieces_0
   m_TagString: Puzzle
@@ -2683,7 +2683,7 @@ Transform:
   m_GameObject: {fileID: 1734141740540630928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.78, y: 1.49, z: 0}
+  m_LocalPosition: {x: 11.95, y: 1.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2812,7 +2812,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &4426791810477554709
+--- !u!114 &8872236681161978586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734141740540630928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 5112770058563044688}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &1810198592007652576
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2846,7 +2861,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.38802314}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2856,23 +2871,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.65625, y: 2.7239537}
+  m_Size: {x: 2.65625, y: 3.5}
   m_EdgeRadius: 0
---- !u!114 &8872236681161978586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734141740540630928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 5112770058563044688}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &1820086219491854390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2885,8 +2885,8 @@ GameObject:
   - component: {fileID: 1085074491840477359}
   - component: {fileID: 4896304032188547751}
   - component: {fileID: 3365067496384786998}
-  - component: {fileID: 5028098492433164949}
   - component: {fileID: 8023952020744284614}
+  - component: {fileID: 2791530055196864583}
   m_Layer: 11
   m_Name: Pieces_4
   m_TagString: Puzzle
@@ -2903,7 +2903,7 @@ Transform:
   m_GameObject: {fileID: 1820086219491854390}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.01001, y: -1.2900004, z: 0}
+  m_LocalPosition: {x: -6.68, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3032,7 +3032,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &5028098492433164949
+--- !u!114 &8023952020744284614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820086219491854390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 2490963716455148272}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &2791530055196864583
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3066,7 +3081,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.42329788, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3076,23 +3091,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.6690292, y: 2.71875}
+  m_Size: {x: 3.515625, y: 2.71875}
   m_EdgeRadius: 0
---- !u!114 &8023952020744284614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820086219491854390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 2490963716455148272}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &1844059079707697980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5439,8 +5439,8 @@ GameObject:
   - component: {fileID: 4971860687155278158}
   - component: {fileID: 8424389041594359241}
   - component: {fileID: 5326908470228629429}
-  - component: {fileID: 8151708538515044033}
   - component: {fileID: 5201619995080657404}
+  - component: {fileID: 5980157105194760015}
   m_Layer: 11
   m_Name: Pieces_10
   m_TagString: Puzzle
@@ -5457,7 +5457,7 @@ Transform:
   m_GameObject: {fileID: 3564612372694124100}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 12.23999, y: -1.4400005, z: 0}
+  m_LocalPosition: {x: 10.43, y: -0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5586,7 +5586,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &8151708538515044033
+--- !u!114 &5201619995080657404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3564612372694124100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 6032366140705737391}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &5980157105194760015
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5620,7 +5635,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.43211693, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5630,23 +5645,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.651391, y: 2.71875}
+  m_Size: {x: 3.515625, y: 2.71875}
   m_EdgeRadius: 0
---- !u!114 &5201619995080657404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3564612372694124100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 6032366140705737391}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &3778506594269945018
 GameObject:
   m_ObjectHideFlags: 0
@@ -6005,8 +6005,8 @@ GameObject:
   - component: {fileID: 7060899413617698311}
   - component: {fileID: 1925115495204008922}
   - component: {fileID: 5773196514829567486}
-  - component: {fileID: 6770306541983412074}
   - component: {fileID: 4848990865268187490}
+  - component: {fileID: 2212407106089643749}
   m_Layer: 11
   m_Name: Pieces_8
   m_TagString: Puzzle
@@ -6023,7 +6023,7 @@ Transform:
   m_GameObject: {fileID: 4508050236251300306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -8.78001, y: -1.8300004, z: 0}
+  m_LocalPosition: {x: -7.27, y: -1.69, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6152,7 +6152,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &6770306541983412074
+--- !u!114 &4848990865268187490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508050236251300306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 4893091867817394597}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &2212407106089643749
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6186,7 +6201,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.41447926}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6196,23 +6211,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.65625, y: 2.6710415}
+  m_Size: {x: 2.65625, y: 3.5}
   m_EdgeRadius: 0
---- !u!114 &4848990865268187490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4508050236251300306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 4893091867817394597}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &4508758783380760573
 GameObject:
   m_ObjectHideFlags: 0
@@ -6225,8 +6225,8 @@ GameObject:
   - component: {fileID: 7402961037577826354}
   - component: {fileID: 6965231179408650598}
   - component: {fileID: 3589638233751826780}
-  - component: {fileID: 6464064529124415905}
   - component: {fileID: 6442654304978421588}
+  - component: {fileID: 5248256772370314563}
   m_Layer: 11
   m_Name: Pieces_1
   m_TagString: Puzzle
@@ -6243,7 +6243,7 @@ Transform:
   m_GameObject: {fileID: 4508758783380760573}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.49, y: 2.14, z: 0}
+  m_LocalPosition: {x: -7.25, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6372,7 +6372,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &6464064529124415905
+--- !u!114 &6442654304978421588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508758783380760573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 3462481313508468008}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &5248256772370314563
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6406,7 +6421,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.017638206, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6416,23 +6431,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.6898556, y: 2.71875}
+  m_Size: {x: 4.3125, y: 2.71875}
   m_EdgeRadius: 0
---- !u!114 &6442654304978421588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4508758783380760573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 3462481313508468008}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &4586135351604159741
 GameObject:
   m_ObjectHideFlags: 0
@@ -7165,8 +7165,8 @@ GameObject:
   - component: {fileID: 4457513752391463254}
   - component: {fileID: 7906249600924238719}
   - component: {fileID: 2811191934421230876}
-  - component: {fileID: 3327651654599879949}
   - component: {fileID: 2699160548493426560}
+  - component: {fileID: 809686633297884227}
   m_Layer: 11
   m_Name: Pieces_11
   m_TagString: Puzzle
@@ -7183,7 +7183,7 @@ Transform:
   m_GameObject: {fileID: 5001248019897961581}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 11.30999, y: -4.6100006, z: 0}
+  m_LocalPosition: {x: 10.38, y: -3.85, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7312,7 +7312,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &3327651654599879949
+--- !u!114 &2699160548493426560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5001248019897961581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 3976147605179803146}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &809686633297884227
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7346,7 +7361,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.3968424}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7356,23 +7371,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.65625, y: 2.7063153}
+  m_Size: {x: 2.65625, y: 3.5}
   m_EdgeRadius: 0
---- !u!114 &2699160548493426560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5001248019897961581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 3976147605179803146}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &5112770058563044688
 GameObject:
   m_ObjectHideFlags: 0
@@ -7629,8 +7629,8 @@ GameObject:
   - component: {fileID: 6695403800422006139}
   - component: {fileID: 3867375818990985113}
   - component: {fileID: 2726428986727450259}
-  - component: {fileID: 3682322720773207212}
   - component: {fileID: 3210750539778795718}
+  - component: {fileID: 1161346993165129847}
   m_Layer: 11
   m_Name: Pieces_9
   m_TagString: Puzzle
@@ -7647,7 +7647,7 @@ Transform:
   m_GameObject: {fileID: 5881525568290621791}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -7.70001, y: 1.5399995, z: 0}
+  m_LocalPosition: {x: -7.5299964, y: 1.6799998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7776,7 +7776,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &3682322720773207212
+--- !u!114 &3210750539778795718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5881525568290621791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 8043595184527865052}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &1161346993165129847
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7810,7 +7825,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.035274506, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7820,23 +7835,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.4429321, y: 2.71875}
+  m_Size: {x: 4.3125, y: 2.71875}
   m_EdgeRadius: 0
---- !u!114 &3210750539778795718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5881525568290621791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 8043595184527865052}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &6032366140705737391
 GameObject:
   m_ObjectHideFlags: 0
@@ -8332,8 +8332,8 @@ GameObject:
   - component: {fileID: 5631839065028283715}
   - component: {fileID: 9065140274499239721}
   - component: {fileID: 6973660676679656929}
-  - component: {fileID: 7642404502736099448}
   - component: {fileID: 3758776060471777120}
+  - component: {fileID: 2673058536645974956}
   m_Layer: 11
   m_Name: Pieces_5
   m_TagString: Puzzle
@@ -8350,7 +8350,7 @@ Transform:
   m_GameObject: {fileID: 6683595250663124987}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.87, y: 2.62, z: 0}
+  m_LocalPosition: {x: -7.6999865, y: 2.7600002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8479,7 +8479,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &7642404502736099448
+--- !u!114 &3758776060471777120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683595250663124987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 9011458014774547611}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &2673058536645974956
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8513,7 +8528,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.008818984}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8523,23 +8538,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.71875, y: 2.778043}
+  m_Size: {x: 2.71875, y: 4.3125}
   m_EdgeRadius: 0
---- !u!114 &3758776060471777120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6683595250663124987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 9011458014774547611}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &6747440856920658902
 GameObject:
   m_ObjectHideFlags: 0
@@ -8726,8 +8726,8 @@ GameObject:
   - component: {fileID: 1841929504378469531}
   - component: {fileID: 5332883936418832635}
   - component: {fileID: 1513263723814250889}
-  - component: {fileID: 1052173009093385878}
   - component: {fileID: 7304217825849984234}
+  - component: {fileID: 6260744748279871358}
   m_Layer: 11
   m_Name: Pieces_6
   m_TagString: Puzzle
@@ -8744,7 +8744,7 @@ Transform:
   m_GameObject: {fileID: 6830961917609161649}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 10.38999, y: 2.8499994, z: 0}
+  m_LocalPosition: {x: 10.560003, y: 2.9899998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8873,7 +8873,22 @@ SortingGroup:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
---- !u!61 &1052173009093385878
+--- !u!114 &7304217825849984234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830961917609161649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPiece: {fileID: 4893946889536718771}
+  snapThreshold: 1.5
+  isLocked: 0
+--- !u!61 &6260744748279871358
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8907,7 +8922,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.03527558}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8917,23 +8932,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.71875, y: 2.5134828}
+  m_Size: {x: 2.71875, y: 4.3125}
   m_EdgeRadius: 0
---- !u!114 &7304217825849984234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6830961917609161649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5efa623990c0a498f904d2c33ec091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPiece: {fileID: 4893946889536718771}
-  snapThreshold: 1.5
-  isLocked: 0
 --- !u!1 &6837815161251843821
 GameObject:
   m_ObjectHideFlags: 0
