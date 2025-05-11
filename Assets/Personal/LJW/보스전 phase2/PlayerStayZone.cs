@@ -30,7 +30,7 @@ public class PlayerStayZone : MonoBehaviour
             if (stayTimer >= stayThreshold)
             {
                 Debug.Log("[StayZone] 플레이어 너무 오래 머무름 → 분신 생성!");
-                Phase2_Manager.Instance.SpawnClone(transform.position);
+                //Phase2_Manager.Instance.SpawnClone(transform.position);
                 stayTimer = 0f; // 중복 생성 방지
             }
         }
