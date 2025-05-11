@@ -88,8 +88,16 @@ public class Ayla : Entity
     // 플레이어 따라다니는 로직
     private void Follow()
     {
+        Debug.Log("Follow 호출됨");
+
         // 플레이어가 보고 있는 방향에 따라 따라갈 포인트 결정
         Transform targetPoint = playerSpriteRenderer.flipX ? followPointLeft : followPointRight;
+
+        if (targetPoint == null)
+        {
+            Debug.LogWarning("followPoint가 비어 있음!");
+            return;
+        }
 
         // 기준 위치까지 부드럽게 이동
         followBasePosition = Vector3.SmoothDamp(followBasePosition, targetPoint.position, ref velocity, followSmoothTime);
