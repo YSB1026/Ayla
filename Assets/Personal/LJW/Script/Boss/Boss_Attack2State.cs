@@ -26,7 +26,8 @@ public class Boss_Attack2State : BossState
                 Player player = hit.GetComponent<Player>();
                 if (player != null)
                 {
-                    player.stateMachine.ChangeState(player.deadState);
+                    //player.stateMachine.ChangeState(player.deadState);
+                    player.Die();
                     Debug.Log("Attack2 - 플레이어 명중");
                 }
 
