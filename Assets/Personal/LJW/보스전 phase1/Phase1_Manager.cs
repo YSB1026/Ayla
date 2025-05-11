@@ -50,7 +50,7 @@ public class Phase1_Manager : MonoBehaviour
             //player.SetControlEnabled(false);
         }
 
-        // 2. Ayla 조작
+        // 2. Ayla 조작 설정
         if (ayla != null && aylaPuzzleStartPoint != null)
         {
             ayla.SetControlEnabled(false);
@@ -99,7 +99,11 @@ public class Phase1_Manager : MonoBehaviour
         AylaPhase1Controller phaseController = ayla.GetComponent<AylaPhase1Controller>();
 
         if (phaseController != null) phaseController.enabled = false;
-        if (aylaScript != null) aylaScript.enabled = true;
+
+        if (aylaScript != null)
+        {
+            aylaScript.enabled = true;
+        }
 
         ayla.SetControlEnabled(true); // 다시 따라가기 허용
 
