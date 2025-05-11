@@ -1275,13 +1275,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1318094339791549148, guid: ddbeec229fb14564eb236f01ed202312, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318094339791549148, guid: ddbeec229fb14564eb236f01ed202312, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318094339791549148, guid: ddbeec229fb14564eb236f01ed202312, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2141298773
+      objectReference: {fileID: 0}
     - target: {fileID: 4067603377395416330, guid: ddbeec229fb14564eb236f01ed202312, type: 3}
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 4067603377395416330, guid: ddbeec229fb14564eb236f01ed202312, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5945824582894366760, guid: ddbeec229fb14564eb236f01ed202312, type: 3}
       propertyPath: m_LocalPosition.x
