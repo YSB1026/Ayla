@@ -70,8 +70,8 @@ public class ShadowPuller2D : MonoBehaviour
         shadowObject.transform.localScale = currentScale;
 
         // 그림자 방향 제어
-        if (Input.GetKey(KeyCode.A)) shadowDirection -= directionSpeed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.D)) shadowDirection += directionSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.Q)) shadowDirection -= directionSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.E)) shadowDirection += directionSpeed * Time.deltaTime;
         shadowDirection = Mathf.Clamp(shadowDirection, -1f, 1f);
         shadowMaterial.SetFloat("_Direction", shadowDirection);
         
