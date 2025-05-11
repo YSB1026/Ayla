@@ -1,31 +1,31 @@
-using UnityEngine;
+// using UnityEngine;
 
-public class Phase1_CrushingWall : MonoBehaviour
-{
-    private bool alreadyCrushed = false;
+// public class Phase1_CrushingWall : MonoBehaviour
+// {
+//     private bool alreadyCrushed = false;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (alreadyCrushed) return;
+//     private void OnCollisionEnter2D(Collision2D collision)
+//     {
+//         if (alreadyCrushed) return;
 
-        if (collision.collider.CompareTag("Player"))
-        {
-            Debug.Log("ÇÃ·¹ÀÌ¾î ´­¸²!");
-            // ÇÃ·¹ÀÌ¾î Á×ÀÌ±â
-            Player player = collision.collider.GetComponent<Player>();
-            if (player != null)
-            {
-                player.stateMachine.ChangeState(player.deadState);
-            }
+//         if (collision.collider.CompareTag("Player"))
+//         {
+//             Debug.Log("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½!");
+//             // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
+//             Player player = collision.collider.GetComponent<Player>();
+//             if (player != null)
+//             {
+//                 player.stateMachine.ChangeState(player.deadState);
+//             }
 
-            // ÃµÀå ¸ØÃß±â
-            Phase1_Manager manager = FindObjectOfType<Phase1_Manager>();
-            if (manager != null)
-            {
-                manager.StopCeiling();  // Stop ÇÔ¼ö ÇÊ¿ä
-            }
+//             // Ãµï¿½ï¿½ ï¿½ï¿½ï¿½ß±ï¿½
+//             Phase1_Manager manager = FindObjectOfType<Phase1_Manager>();
+//             if (manager != null)
+//             {
+//                 manager.StopCeiling();  // Stop ï¿½Ô¼ï¿½ ï¿½Ê¿ï¿½
+//             }
 
-            alreadyCrushed = true;
-        }
-    }
-}
+//             alreadyCrushed = true;
+//         }
+//     }
+// }
