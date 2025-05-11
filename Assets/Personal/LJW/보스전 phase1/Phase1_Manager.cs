@@ -50,12 +50,6 @@ public class Phase1_Manager : MonoBehaviour
             //player.SetControlEnabled(false);
         }
 
-        // Ayla 물리 활성화
-        if (ayla != null)
-        {
-            ayla.EnablePhysics(true);
-        }
-
         // 2. Ayla 조작 설정
         if (ayla != null && aylaPuzzleStartPoint != null)
         {
@@ -109,7 +103,6 @@ public class Phase1_Manager : MonoBehaviour
         if (aylaScript != null)
         {
             aylaScript.enabled = true;
-            aylaScript.EnablePhysics(false); // 물리 비활성화
         }
 
         ayla.SetControlEnabled(true); // 다시 따라가기 허용
