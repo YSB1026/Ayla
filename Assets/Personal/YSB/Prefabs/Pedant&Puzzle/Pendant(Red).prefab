@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 111886261242702005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 9.29, y: -1.27, z: 0}
+  m_LocalPosition: {x: 9.52999, y: -0.54000044, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -155,8 +155,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111886261242702005}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &530733953059311861
@@ -296,15 +296,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &466787559713794077
@@ -317,7 +317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2532502951049680334}
   - component: {fileID: 8158668318504609953}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,15 +383,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &607345633342473914
@@ -404,7 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8841799755999662741}
   - component: {fileID: 6538061666165995274}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,15 +470,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &821358716969654099
@@ -511,7 +511,7 @@ Transform:
   m_GameObject: {fileID: 821358716969654099}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6.18, y: 2.08, z: 0}
+  m_LocalPosition: {x: -5.9400096, y: 2.8099995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -636,8 +636,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821358716969654099}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &2500676016205192158
@@ -777,15 +777,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &850923919064961146
@@ -864,15 +864,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &1067632799802652945
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 1305498367534395130}
   - component: {fileID: 7476774882433442098}
   - component: {fileID: 3963322209020345896}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,8 +1028,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067632799802652945}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &1334689659757126300
@@ -1108,15 +1108,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &1339254930328518878
@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 555080765472218654}
   - component: {fileID: 6511387347918391598}
   - component: {fileID: 7813181623848530871}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Timemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2356,7 +2356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4970202128191587956}
   - component: {fileID: 1509010469332170595}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2422,15 +2422,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &1539109843086690524
@@ -2463,7 +2463,7 @@ Transform:
   m_GameObject: {fileID: 1539109843086690524}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6.96, y: -4.27, z: 0}
+  m_LocalPosition: {x: -6.72001, y: -3.5400004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2588,8 +2588,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539109843086690524}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &2320843696177013135
@@ -2683,7 +2683,7 @@ Transform:
   m_GameObject: {fileID: 1734141740540630928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.54, y: 0.76, z: 0}
+  m_LocalPosition: {x: 11.78, y: 1.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2808,8 +2808,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734141740540630928}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &4426791810477554709
@@ -2903,7 +2903,7 @@ Transform:
   m_GameObject: {fileID: 1820086219491854390}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.25, y: -2.02, z: 0}
+  m_LocalPosition: {x: -6.01001, y: -1.2900004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3028,8 +3028,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820086219491854390}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &5028098492433164949
@@ -3169,15 +3169,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &1967765105202340018
@@ -3190,7 +3190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 594852998313774541}
   - component: {fileID: 1624836398043516235}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3256,15 +3256,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &2100438596431859711
@@ -3277,7 +3277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 356971632645092650}
   - component: {fileID: 5851569322387498533}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: 'Puzzle_Frame : Tilemap'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3325,7 +3325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566141328834893253}
   - component: {fileID: 5523313411316232843}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3391,15 +3391,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &2403204562848201487
@@ -3478,15 +3478,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &2490963716455148272
@@ -3501,7 +3501,7 @@ GameObject:
   - component: {fileID: 6551802927180409355}
   - component: {fileID: 4494309326674357744}
   - component: {fileID: 8107946998228396415}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3642,8 +3642,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2490963716455148272}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &3100234613800898034
@@ -3657,7 +3657,7 @@ GameObject:
   - component: {fileID: 4524706178422096355}
   - component: {fileID: 5131347316798858939}
   - component: {fileID: 9057504981713104070}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Timemap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4949,15 +4949,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &3202662988714093426
@@ -4969,7 +4969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1039311227178941741}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: PuzzleBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5014,7 +5014,7 @@ GameObject:
   - component: {fileID: 7182627378454947438}
   - component: {fileID: 5833477778652770342}
   - component: {fileID: 8941622266813538793}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Puzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5030,7 +5030,7 @@ Transform:
   m_GameObject: {fileID: 3443882102874044896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.95, y: 4.25, z: 0}
+  m_LocalPosition: {x: -2.2, y: 4.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5085,7 +5085,7 @@ GameObject:
   - component: {fileID: 2878464753180773698}
   - component: {fileID: 5137479561597017940}
   - component: {fileID: 2338802291948005786}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5226,8 +5226,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3462481313508468008}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &3518873795782465744
@@ -5241,7 +5241,7 @@ GameObject:
   - component: {fileID: 2536280936886974348}
   - component: {fileID: 1810331827173818655}
   - component: {fileID: 4229975931647014463}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Timemap (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5457,7 +5457,7 @@ Transform:
   m_GameObject: {fileID: 3564612372694124100}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 12, y: -2.17, z: 0}
+  m_LocalPosition: {x: 12.23999, y: -1.4400005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5582,8 +5582,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3564612372694124100}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &8151708538515044033
@@ -5723,15 +5723,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &3976147605179803146
@@ -5746,7 +5746,7 @@ GameObject:
   - component: {fileID: 7135287339198364443}
   - component: {fileID: 8236842629029983515}
   - component: {fileID: 3529666808676293157}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5887,8 +5887,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3976147605179803146}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &4376952499466477769
@@ -5903,7 +5903,7 @@ GameObject:
   - component: {fileID: 7395359996320063438}
   - component: {fileID: 7665475457191376418}
   - component: {fileID: 8562399878188962985}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6023,7 +6023,7 @@ Transform:
   m_GameObject: {fileID: 4508050236251300306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -9.02, y: -2.56, z: 0}
+  m_LocalPosition: {x: -8.78001, y: -1.8300004, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6148,8 +6148,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4508050236251300306}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &6770306541983412074
@@ -6243,7 +6243,7 @@ Transform:
   m_GameObject: {fileID: 4508758783380760573}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.34, y: 3.03, z: 0}
+  m_LocalPosition: {x: 11.49, y: 2.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6368,8 +6368,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4508758783380760573}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &6464064529124415905
@@ -6444,7 +6444,7 @@ GameObject:
   - component: {fileID: 2597369143826515213}
   - component: {fileID: 480246454475750527}
   - component: {fileID: 7094051282807438368}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6588,15 +6588,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &4893091867817394597
@@ -6611,7 +6611,7 @@ GameObject:
   - component: {fileID: 1796945063732999249}
   - component: {fileID: 1407830001634311616}
   - component: {fileID: 8621103696487096955}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6752,8 +6752,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4893091867817394597}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &4893946889536718771
@@ -6768,7 +6768,7 @@ GameObject:
   - component: {fileID: 3315705594915246471}
   - component: {fileID: 6064834708060025196}
   - component: {fileID: 816902177483849271}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6909,8 +6909,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4893946889536718771}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &4921536406999432550
@@ -6922,7 +6922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3222828973243522615}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pieces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6967,7 +6967,7 @@ GameObject:
   - component: {fileID: 4410294654110030789}
   - component: {fileID: 7010600358425965242}
   - component: {fileID: 4829541158635194318}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Timemap (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7183,7 +7183,7 @@ Transform:
   m_GameObject: {fileID: 5001248019897961581}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 11.07, y: -5.34, z: 0}
+  m_LocalPosition: {x: 11.30999, y: -4.6100006, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7308,8 +7308,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5001248019897961581}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &3327651654599879949
@@ -7385,7 +7385,7 @@ GameObject:
   - component: {fileID: 8990737267071157477}
   - component: {fileID: 1879301781482853671}
   - component: {fileID: 3999549334020843860}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7526,8 +7526,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5112770058563044688}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &5294239497950452055
@@ -7540,7 +7540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5584727563869451488}
   - component: {fileID: 6729946430915153669}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7606,15 +7606,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &5881525568290621791
@@ -7647,7 +7647,7 @@ Transform:
   m_GameObject: {fileID: 5881525568290621791}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -7.94, y: 0.81, z: 0}
+  m_LocalPosition: {x: -7.70001, y: 1.5399995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7772,8 +7772,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5881525568290621791}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &3682322720773207212
@@ -7849,7 +7849,7 @@ GameObject:
   - component: {fileID: 8750514824201561645}
   - component: {fileID: 5668023500713788936}
   - component: {fileID: 1406142774853857460}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7990,8 +7990,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6032366140705737391}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &6082213555467051773
@@ -8070,15 +8070,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &6489313350143741084
@@ -8157,15 +8157,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 13.74, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &6502937127341055417
@@ -8350,7 +8350,7 @@ Transform:
   m_GameObject: {fileID: 6683595250663124987}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.44, y: -4.69, z: 0}
+  m_LocalPosition: {x: -7.87, y: 2.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8475,8 +8475,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6683595250663124987}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &7642404502736099448
@@ -8616,15 +8616,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &6804760172251917393
@@ -8637,7 +8637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6898082552329208347}
   - component: {fileID: 488181894640326133}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8703,15 +8703,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &6830961917609161649
@@ -8744,7 +8744,7 @@ Transform:
   m_GameObject: {fileID: 6830961917609161649}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 10.15, y: 2.12, z: 0}
+  m_LocalPosition: {x: 10.38999, y: 2.8499994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8869,8 +8869,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6830961917609161649}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &1052173009093385878
@@ -8944,7 +8944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 204409176802686620}
   - component: {fileID: 5538993466235101029}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9010,15 +9010,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &7024730288617245949
@@ -9033,7 +9033,7 @@ GameObject:
   - component: {fileID: 1413695781255336184}
   - component: {fileID: 1302668593382123694}
   - component: {fileID: 8124975912284561147}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9174,8 +9174,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7024730288617245949}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &7378280632568456030
@@ -9188,7 +9188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4641996904145048871}
   - component: {fileID: 5295004770768388458}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9254,15 +9254,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &8043595184527865052
@@ -9277,7 +9277,7 @@ GameObject:
   - component: {fileID: 3797690206631554241}
   - component: {fileID: 6029077374483865842}
   - component: {fileID: 2957801317723598756}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9418,8 +9418,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8043595184527865052}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &8082866622394585361
@@ -9434,7 +9434,7 @@ GameObject:
   - component: {fileID: 2010737708424229246}
   - component: {fileID: 4863094637159961462}
   - component: {fileID: 2475991744853637227}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9575,8 +9575,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8082866622394585361}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &8281570190802498935
@@ -9589,7 +9589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7530406952005380067}
   - component: {fileID: 2190051236826613193}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9676,7 +9676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3046930531733559396}
   - component: {fileID: 4166504920871963080}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9742,15 +9742,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &8727878254202470776
@@ -9763,7 +9763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313266528730066352}
   - component: {fileID: 2953816701122582341}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: pngegg_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9850,7 +9850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7712841593032657382}
   - component: {fileID: 7813508450975235869}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9916,15 +9916,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &9011458014774547611
@@ -9939,7 +9939,7 @@ GameObject:
   - component: {fileID: 552884629111795398}
   - component: {fileID: 4850502339164608439}
   - component: {fileID: 5349395155091002450}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Pieces_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10080,8 +10080,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9011458014774547611}
   m_Enabled: 1
-  m_SortingLayerID: -1281865873
-  m_SortingLayer: 7
+  m_SortingLayerID: -1579346891
+  m_SortingLayer: 9
   m_SortingOrder: -5
   m_SortAtRoot: 0
 --- !u!1 &9053390486625835600
@@ -10094,7 +10094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9043365018490111679}
   - component: {fileID: 5791660812524824020}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: AylaPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10160,15 +10160,15 @@ SpriteRenderer:
   m_SortingLayerID: -1281865873
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -543383404697945608, guid: aa40f687b4bf83141ac66abff5794daa, type: 3}
+  m_Sprite: {fileID: -4984083181129925636, guid: bbcbddde8bd577c4d878b7331c2106ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.56, y: 6.05}
+  m_Size: {x: 12, y: 7.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1001 &6831656850014505990
