@@ -10,7 +10,7 @@ public class TeleportTrigger : MonoBehaviour
         if (collision.CompareTag("Player") && targetPosition != null)
         {
             collision.transform.position = targetPosition.position;
-            Debug.Log($"[TeleportTrigger] 플레이어 텔레포트됨 → {targetPosition.position}");
+            //Debug.Log($"[TeleportTrigger] 플레이어 텔레포트됨 → {targetPosition.position}");
         }
     }
 }
