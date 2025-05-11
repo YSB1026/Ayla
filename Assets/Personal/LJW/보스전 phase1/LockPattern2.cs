@@ -8,7 +8,7 @@ public class LockPattern2 : MonoBehaviour
     public GameObject linePrefab;
     public Canvas canvas;
     public Transform player;
-    public float selectionRadius = 1f; // ¿ø ¼±ÅÃ ¹Ý°æ
+    public float selectionRadius = 1f; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½
 
     public List<int> correctPattern = new List<int> { 0, 1, 2, 5, 8 };
 
@@ -41,13 +41,13 @@ public class LockPattern2 : MonoBehaviour
     {
         if (!enabled) return;
 
-        // ÇÃ·¹ÀÌ¾î°¡ E Å°¸¦ ´­·¯ °¡Àå °¡±î¿î ¿øÀ» ¼±ÅÃ
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ E Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.E))
         {
             TrySelectNearestCircle();
         }
 
-        // ÇÃ·¹ÀÌ¾î ±âÁØ ¶óÀÎ ÆíÁý
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (unLocking && circleOnEdit != null && lineOnEditRcTs != null)
         {
             Vector3 playerPos = canvas.transform.InverseTransformPoint(player.position);
@@ -55,7 +55,7 @@ public class LockPattern2 : MonoBehaviour
             lineOnEditRcTs.rotation = Quaternion.FromToRotation(Vector3.up, (playerPos - circleOnEdit.transform.localPosition).normalized);
         }
 
-        // ÆÐÅÏ ÀÔ·Â Á¾·á
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Return))
         {
             EndUnlocking();

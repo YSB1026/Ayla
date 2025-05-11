@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerStayZone : MonoBehaviour
 {
-    public float stayThreshold = 3f; // ¸Ó¹«¸¦ ½Ã°£ ±âÁØ
+    public float stayThreshold = 3f; // ï¿½Ó¹ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
     private float stayTimer = 0f;
     private bool playerInside = false;
 
@@ -29,9 +29,9 @@ public class PlayerStayZone : MonoBehaviour
 
             if (stayTimer >= stayThreshold)
             {
-                Debug.Log("[StayZone] ÇÃ·¹ÀÌ¾î ³Ê¹« ¿À·¡ ¸Ó¹«¸§ ¡æ ºÐ½Å »ý¼º!");
-                Phase2_Manager.Instance.SpawnClone(transform.position);
-                stayTimer = 0f; // Áßº¹ »ý¼º ¹æÁö
+                Debug.Log("[StayZone] ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¹ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ð½ï¿½ ï¿½ï¿½ï¿½ï¿½!");
+                // Phase2_Manager.Instance.SpawnClone(transform.position);
+                stayTimer = 0f; // ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
         }
     }
