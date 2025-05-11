@@ -22,10 +22,10 @@ public class PendantEvent : MonoBehaviour
             Debug.LogError($"{gameObject.name} 퍼즐 넣어주세요!!");
         }
 
-        if (recallSceneTrigger == null || recallSceneTrigger.activeSelf)
-        {
-            Debug.LogWarning($"{gameObject.name} 회상씬 넣어주세요!!, 비활성화도 해주세요");
-        }
+        //if (recallSceneTrigger == null || recallSceneTrigger.activeSelf)
+        //{
+        //    Debug.LogWarning($"{gameObject.name} 회상씬 넣어주세요!!, 비활성화도 해주세요");
+        //}
     }
     private void OnEnable()
     {

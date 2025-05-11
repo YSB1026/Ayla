@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class UnloadScene : BaseTrigger //클래스 이름 바꾸기
 {
-    [SerializeField] bool isLobby = false;
     public void UnloadMemoryScene()
     {
         CustomSceneManager.Instance.UnloadAdditiveScene();

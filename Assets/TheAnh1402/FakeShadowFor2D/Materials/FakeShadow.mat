@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
-    - _Direction: -1
+    - _Direction: 0
     - _Fade: 0
     - _FadeAmount: 1
     - _Height: 0.19
