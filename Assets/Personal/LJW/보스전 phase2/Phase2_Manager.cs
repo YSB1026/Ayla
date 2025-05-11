@@ -18,6 +18,9 @@ public class Phase2_Manager : MonoBehaviour
     public GameObject teleportScriptObj;
     public Phase2Controller phase2Controller;
 
+    [Header("보스 분신")]
+    public GameObject bossClonePrefab; // 인스펙터에서 할당
+
     [Header("Wind 연출")]
     public GameObject windEffect;
 
@@ -61,37 +64,58 @@ public class Phase2_Manager : MonoBehaviour
         candle.TurnOn();
     }
 
+    public void SpawnClone(Vector3 spawnPosition)
+    {
+        GameObject clone = Instantiate(bossClonePrefab, spawnPosition, Quaternion.identity);
+    }
+
     private IEnumerator WindRoutine()
     {
         yield return new WaitForSeconds(windInterval);  // 시작하자마자 바람 불기 금지
 
         while (phaseActive)
         {
-            // 1. 바람 애니메이션 켜기
+            // 1. wind 애니메이션
             if (windEffect != null)
                 windEffect.SetActive(true);
 
-            // 2. 왼쪽부터 촛불 꺼지기
-            List<CandleTrigger> litCandles = candles
-                .Where(c => c.isLit)
-                .OrderBy(c => c.transform.position.x)
-                .ToList();
-
-            foreach (CandleTrigger candle in litCandles)
+            // 2. 루틴 : 모든 패턴을 순서대로 돌기. 바람 불 때 한번에 꺼지는 촛불
+            List<int[]> windOffPatterns = new List<int[]>
             {
-                candle.TurnOff();
-                yield return new WaitForSeconds(1f); // 1초 간격으로 소등
+                new int[] { 0, 4 },
+                new int[] { 2 },
+                new int[] { 1, 3 }
+            };
+
+
+            foreach (int[] pattern in windOffPatterns)
+            {
+                // 이 패턴에 해당하는 촛불들 중에서, 위치 x기준 오름차순 정렬
+                List<CandleTrigger> candlesToTurnOff = pattern
+                    .Where(idx => idx >= 0 && idx < candles.Count && candles[idx].isLit)
+                    .Select(idx => candles[idx])
+                    .OrderBy(c => c.transform.position.x)
+                    .ToList();
+
+                foreach (var candle in candlesToTurnOff)
+                {
+                    candle.TurnOff();
+                    yield return new WaitForSeconds(1f); // 한 개 꺼질 때마다 1초 대기
+                }
+
+                // 패턴 하나 끝날 때마다 3초 대기
+                yield return new WaitForSeconds(3f);
             }
 
-            // 3. 10초 후 바람 효과 끄기
-            yield return new WaitForSeconds(10f); // wind 연출 지속
+            // 루틴 하나 종료 → wind 연출 종료 + windInterval 줄이기
             if (windEffect != null)
                 windEffect.SetActive(false);
 
-            // 4. 다음 바람까지 간격 줄이기
+            yield return new WaitForSeconds(10f); // wind 효과 종료 후 대기
             windInterval *= 0.85f;
-            windInterval = Mathf.Max(3f, windInterval);
-            yield return new WaitForSeconds(windInterval);
+            windInterval = Mathf.Max(5f, windInterval);
+
+            yield return new WaitForSeconds(windInterval); // 다음 루틴 전까지 대기
         }
     }
 
