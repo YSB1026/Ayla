@@ -37,13 +37,13 @@ public class Boss : Entity
     [SerializeField] private Transform graphics;
 
     #region States
-    public BossStateMachine stateMachine { get; private set; }
+    public BossStateMachine stateMachine { get; protected set; }
     public Boss_IdleState idleState { get; private set; }
     public Boss_WalkState walkState { get; private set; }
     public Boss_BattleState battleState { get; private set; }
     public Boss_RunState runState { get; private set; }
     public Boss_Attack1State attack1State { get; private set; }
-    public Boss_Attack2State attack2State { get; private set; }
+    public Boss_Attack2State attack2State { get; protected set; }
     #endregion
 
     protected override void Awake()

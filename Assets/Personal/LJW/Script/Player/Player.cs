@@ -54,7 +54,7 @@ public class Player : Entity
 
     public void SetControlEnabled(bool isEnabled)
     {
-        //if(controlEnabled ==  isEnabled) return;
+        if(controlEnabled ==  isEnabled) return;
         if (!isEnabled) stateMachine.ChangeState(inputState);
 
         controlEnabled = isEnabled;
@@ -98,7 +98,11 @@ public class Player : Entity
 
     protected override void Update()
     {
-        if (!controlEnabled) return;
+        if (!controlEnabled)
+        {
+            SetZeroVelocity();
+            return;
+        }
 
         base.Update();
 
