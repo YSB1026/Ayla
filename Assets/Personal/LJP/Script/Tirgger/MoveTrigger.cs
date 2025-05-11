@@ -20,25 +20,27 @@ public class MoveTrigger : MonoBehaviour
 	[SerializeField] private TrickMoveType moveType;
 	[SerializeField] private bool isDestroy;
 
-	private bool isTrigger = false;
+	//private bool isTrigger = false;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.CompareTag("Player"))
 		{
-			isTrigger = true;
-		}
+			//isTrigger = true;
+            MoveTrick();
+            DestroySelf();
+        }
 	}
 
-	private void Update()
-	{
-		if (isTrigger)
-		{
-			MoveTrick();
-		}
+	//private void Update()
+	//{
+	//	if (isTrigger)
+	//	{
+	//		MoveTrick();
+	//	}
 
-		DestroySelf();
-	}
+	//	DestroySelf();
+	//}
 
 	private void MoveTrick()
 	{

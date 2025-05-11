@@ -1,12 +1,14 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public enum ObjectActionType
 {
-    None,
+    None,           //None 필요없긴하네요.. 근데 없애면 난리나서 놔둘게요 ;(
     SetActiveTrue,
     SetActiveFalse,
     Destroy
@@ -42,8 +44,15 @@ public class TimeLineTrigger : BaseTrigger
         if (director != null)
         {
             director.stopped += OnTimelineStopped;
-            director.Play();
+            StartCoroutine(PlayTimelineDelayed());
         }
+    }
+
+    private IEnumerator PlayTimelineDelayed()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        director.Play();
     }
 
     private void OnTimelineStopped(PlayableDirector d)
