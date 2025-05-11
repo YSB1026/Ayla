@@ -6,7 +6,7 @@ public class BossState
     protected Boss boss;
     protected Rigidbody2D rb;
 
-    private string animBoolName;
+    public string animBoolName;
 
     protected float stateTimer;
 
