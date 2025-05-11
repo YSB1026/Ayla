@@ -16,9 +16,10 @@ public class DragAndDrop : MonoBehaviour
         if (!Input.GetMouseButtonDown(0)) return;
 
         RaycastHit2D hit = Physics2D.Raycast(
-            Camera.main.ScreenToWorldPoint(Input.mousePosition),
-            Vector2.zero,
-            puzzleLayer);
+        Camera.main.ScreenToWorldPoint(Input.mousePosition),
+        Vector2.zero,
+        Mathf.Infinity,
+        puzzleLayer);
 
         if (hit.collider != null && hit.transform.CompareTag("Puzzle"))
         {
