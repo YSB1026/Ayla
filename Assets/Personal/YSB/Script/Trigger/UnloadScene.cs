@@ -16,6 +16,11 @@ public class UnloadScene : BaseTrigger //클래스 이름 바꾸기
     {
         CustomSceneManager.Instance.LoadScene("Ending");
     }
+    
+    public void LoadEndingCredit()
+    {
+        CustomSceneManager.Instance.LoadScene("EndingCredit");
+    }
 
     protected override void OnPlayerEnter()//얘가 왜 필요햇는지 기억이안나요..
     {
