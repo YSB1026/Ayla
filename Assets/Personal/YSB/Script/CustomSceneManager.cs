@@ -36,12 +36,14 @@ public class CustomSceneManager : MonoBehaviour
         UIManager.Instance.FadeOut(() => {
             SceneManager.LoadScene(sceneName);
             UIManager.Instance.FadeIn();
-        });
 
-        if(houseScene == null && sceneName == "House")
-        {
-            houseScene = SceneManager.GetActiveScene();
-        }
+            if (sceneName == "House")
+            {
+                houseScene = SceneManager.GetSceneByName(sceneName);
+                Debug.Log(houseScene.name);
+                //SceneManager.SetActiveScene(houseScene);
+            }
+        });
     }
 
     public void ReloadScene()
@@ -105,7 +107,7 @@ public class CustomSceneManager : MonoBehaviour
     private IEnumerator LoadSceneAdditiveAndDeactivateCurrent(string memorySceneName)
     {
         // 현재 씬의 루트 오브젝트 비활성화
-        Scene current = SceneManager.GetActiveScene();
+        Scene current = houseScene;
         GameObject[] rootObjects = current.GetRootGameObjects();
         foreach (GameObject obj in rootObjects)
         {
@@ -151,6 +153,9 @@ public class CustomSceneManager : MonoBehaviour
                 break;
             case "Forest":
                 SoundManager.Instance.PlayBGM("ForestBGM");
+                break;
+            case "House":
+                SoundManager.Instance.PlayBGM("HouseBGM");
                 break;
             default:
                 SoundManager.Instance.StopBGM();

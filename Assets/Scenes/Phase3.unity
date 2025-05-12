@@ -5483,7 +5483,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -10525,6 +10525,7 @@ MonoBehaviour:
   cameraScreenPos: {x: 0, y: 0}
   damping: {x: 3, y: 3}
   boundingShape: {fileID: 488160914}
+  isTeleport: 0
 --- !u!114 &1142990420
 MonoBehaviour:
   m_ObjectHideFlags: 0

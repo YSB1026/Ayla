@@ -63,6 +63,7 @@ public class SoundManager : MonoBehaviour
     {
         bgmDict["MainTheme"] = 0;
         bgmDict["ForestBGM"] = 1;
+        bgmDict["HouseBGM"] = 2;
 
         footstepDict[SurfaceType.Forest] = footstepForestClips;
         footstepDict[SurfaceType.Stone] = footstepStoneClips;

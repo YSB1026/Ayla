@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         sceneManager = CustomSceneManager.Instance;
         spawnManager = SpawnManager.Instance;
         //skillManager = SkillManager.Instance;
-        ChangeState(GameState.Lobby);
+        //ChangeState(GameState.Lobby);
     }
 
     private void Update()
