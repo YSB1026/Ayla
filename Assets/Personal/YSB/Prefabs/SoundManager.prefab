@@ -184,6 +184,7 @@ MonoBehaviour:
   bgmClips:
   - {fileID: 8300000, guid: 6b08ccefe2c8c5e4fb69ec0c3d5d92df, type: 3}
   - {fileID: 8300000, guid: 535a349f918052740ac64cdd35f62aaa, type: 3}
+  - {fileID: 8300000, guid: 1eb338883b566dc48bce160a692521ee, type: 3}
   footstepForestClips:
   - {fileID: 8300000, guid: 4973d6803efe39b40916efd802c786bb, type: 3}
   - {fileID: 8300000, guid: 191049907031b414dacea756c9a402b6, type: 3}

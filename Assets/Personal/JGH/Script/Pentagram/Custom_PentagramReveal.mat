@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _GlowPower: 8
-    - _Progress: 0.9900606
+    - _Progress: 0.9790209
     - _TwinkleSpeed: 10
     m_Colors: []
   m_BuildTextureStacks: []
