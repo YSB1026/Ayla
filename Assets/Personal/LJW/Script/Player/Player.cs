@@ -1,7 +1,7 @@
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEditor.Experimental.GraphView;
+//using System.Runtime.InteropServices.WindowsRuntime;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
