@@ -153,6 +153,7 @@ public class CustomSceneManager : MonoBehaviour
                 SoundManager.Instance.PlayBGM("ForestBGM");
                 break;
             default:
+                SoundManager.Instance.StopBGM();
                 break;
         }
     }
