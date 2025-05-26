@@ -52,6 +52,8 @@ public class PlayerState
         {
             rb.gravityScale = 3;
         }
+
+        Debug.Log($"facing = {player.facingDir}, input = {xInput}");
     }
 
     // 상태에서 나갈 때 호출되는 함수
@@ -65,6 +67,12 @@ public class PlayerState
     public virtual void AnimationFinishTrigger()
     {
         triggerCalled = true;
+    }
+
+    protected bool IsBlockedByWall()
+    {
+        //Debug.Log($"facing = {player.facingDir}, input = {xInput}");
+        return player.IsWallDetected() && player.facingDir == xInput;
     }
 
     #region FootStep Sound

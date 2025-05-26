@@ -44,7 +44,7 @@ public class Entity : MonoBehaviour
 
     public virtual void Flip()
     {
-        facingDir = facingDir * -1;
+        facingDir = -facingDir;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }

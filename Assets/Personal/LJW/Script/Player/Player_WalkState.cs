@@ -21,7 +21,6 @@ public class Player_WalkState : PlayerState
             player.SetVelocity(xInput * player.moveSpeed, rb.linearVelocityY);
         }
 
-        // YSB 코드 수정 함.
         if (Input.GetKey(KeyCode.LeftShift)) //달리기
             stateMachine.ChangeState(player.runState);
         else if (Input.GetKeyDown(KeyCode.Space)) //점프

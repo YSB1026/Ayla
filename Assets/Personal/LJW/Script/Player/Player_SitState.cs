@@ -49,6 +49,7 @@ public class Player_SitState : PlayerState
     {
         base.Exit();
         player.SetIdleCollider();
+        player.anim.speed = 1;
 	}
     
     void CheckAnimationTrasition()
