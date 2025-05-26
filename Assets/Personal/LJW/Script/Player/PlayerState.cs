@@ -53,7 +53,6 @@ public class PlayerState
             rb.gravityScale = 3;
         }
 
-        Debug.Log($"facing = {player.facingDir}, input = {xInput}");
     }
 
     // 상태에서 나갈 때 호출되는 함수

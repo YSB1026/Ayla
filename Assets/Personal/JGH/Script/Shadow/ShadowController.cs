@@ -26,11 +26,12 @@ public class ShadowPuller2D : MonoBehaviour
     public float shadowPointMaxOffset = 2f; // Max offset in either direction (-2 to 2)
 
     private GameObject pullingTarget;
-    
+
     [Header("Light Interaction")]
     [SerializeField] private bool inLight = false; // 빛 안에 있는지 여부
     public float shadowShrinkSpeed = 3f; // 빛 안에서 그림자가 줄어드는 속도
     public float minScaleX = 0.5f; // 최소 그림자 크기
+    Player player => GetComponentInParent<Player>();
 
     void Start()
     {
@@ -70,8 +71,8 @@ public class ShadowPuller2D : MonoBehaviour
         shadowObject.transform.localScale = currentScale;
 
         // 그림자 방향 제어
-        if (Input.GetKey(KeyCode.Q)) shadowDirection -= directionSpeed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.E)) shadowDirection += directionSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.Q)) shadowDirection -= player.facingDir * directionSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.E)) shadowDirection += player.facingDir * directionSpeed * Time.deltaTime;
         shadowDirection = Mathf.Clamp(shadowDirection, -1f, 1f);
         shadowMaterial.SetFloat("_Direction", shadowDirection);
         
