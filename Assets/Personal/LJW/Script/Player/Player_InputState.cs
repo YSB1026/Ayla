@@ -15,7 +15,6 @@ public class Player_InputState : PlayerState
     {
         if (!player.controlEnabled)
             return;
-
         base.Update();
 
 
@@ -25,11 +24,11 @@ public class Player_InputState : PlayerState
             stateMachine.ChangeState(player.jumpState);
         else if (Input.GetKeyDown(KeyCode.F) && player.IsObjectDetected())
             stateMachine.ChangeState(player.grabState);
-        else if (Input.GetKey(KeyCode.LeftShift) && xInput != 0)
+        else if (Input.GetKey(KeyCode.LeftShift) && xInput != 0 && !player.IsWallDetected())
             stateMachine.ChangeState(player.runState);
         else if (Input.GetKeyDown(KeyCode.S))
             stateMachine.ChangeState(player.sitState);
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && !player.IsWallDetected())
             stateMachine.ChangeState(player.walkState);
     }
 

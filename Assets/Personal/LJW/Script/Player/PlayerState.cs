@@ -8,7 +8,7 @@ public class PlayerState
     protected Player player;
 
     protected Rigidbody2D rb;
-    private string animBoolName;
+    protected string animBoolName { get; private set; }
     protected float xInput;
     protected float yInput;
 

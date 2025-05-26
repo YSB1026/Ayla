@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//코드 안 쓸 예정
 public class Player_SitWalkState : PlayerState
 {
     public Player_SitWalkState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
@@ -29,17 +30,24 @@ public class Player_SitWalkState : PlayerState
             player.anim.speed = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            stateMachine.ChangeState(player.crawlState);
-
         if (Input.GetKeyDown(KeyCode.W))
         {
             // 애니메이션 재생 속도 복원
             player.anim.speed = 1f;
 
-            stateMachine.ChangeState(player.standState);
+            stateMachine.ChangeState(player.inputState);
         }
 
+        //if (Input.GetKeyDown(KeyCode.LeftControl))
+        //    stateMachine.ChangeState(player.crawlState);
+
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    // 애니메이션 재생 속도 복원
+        //    player.anim.speed = 1f;
+
+        //    stateMachine.ChangeState(player.standState);
+        //}
     }
 
     public override void Exit()

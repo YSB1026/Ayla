@@ -10,7 +10,7 @@ public class Player_CrawlState : PlayerState
     {
         base.Enter();
         player.SetCrawCollider();
-	}
+    }
 
     public override void Update()
     {
@@ -26,13 +26,10 @@ public class Player_CrawlState : PlayerState
         else
         {
             player.SetZeroVelocity();
-
-            // 애니메이션 정지
             player.anim.speed = 0f;
         }
-
-        // LeftControl을 다시 누르면 sit으로 전환
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        // W을 다시 누르면 stand로 전환
+        if (Input.GetKeyDown(KeyCode.W))
         {
             // 애니메이션 재생 속도 복원
             player.anim.speed = 1f;
