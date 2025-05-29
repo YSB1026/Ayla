@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FirebleObject : MonoBehaviour
 {
     private Animator anim;
-    private  Light lightCompo;
+    private Light2D lightCompo;
 
 	[SerializeField] private GameObject FireObject;
 
@@ -11,6 +12,7 @@ public class FirebleObject : MonoBehaviour
 	[SerializeField] private float luminosity;
 
 	private bool isFire;
+	private bool playerInRange;
 
 	private void Start()
 	{
@@ -21,12 +23,25 @@ public class FirebleObject : MonoBehaviour
 	private void Update()
 	{
 		FideInLight();
+
+		if (playerInRange && Input.GetKeyDown(KeyCode.L))
+		{
+			if(isFire)
+			{
+				FireOff();
+			}
+			else
+			{
+				FireOn();
+			}
+		}
+
 	}
 
 	private void InitComponent()
 	{
 		anim = GetComponentInChildren<Animator>();
-		lightCompo = GetComponentInChildren<Light>();
+		lightCompo = GetComponentInChildren<Light2D>();
 	}
 
 	private void InitFire()
@@ -56,5 +71,21 @@ public class FirebleObject : MonoBehaviour
 		//anim.SetBool("Fire", isFire);
 		lightCompo.intensity = 0f;
 		FireObject.SetActive(isFire);
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Player"))
+		{
+			playerInRange = true;
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Player"))
+		{
+			playerInRange = false;
+		}
 	}
 }

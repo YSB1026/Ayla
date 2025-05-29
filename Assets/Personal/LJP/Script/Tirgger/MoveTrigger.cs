@@ -47,10 +47,10 @@ public class MoveTrigger : MonoBehaviour
 		switch (moveType)
 		{
 			case TrickMoveType.MOVETOWARDS:
-				movedObject.transform.position = Vector3.MoveTowards(movedObject.transform.position, destination.position, moveSpeed * Time.deltaTime);
+				//MoveToWardsLogic();
 				break;
 			case TrickMoveType.LERP:
-				movedObject.transform.position = Vector3.Lerp(movedObject.transform.position, destination.position, moveSpeed * Time.deltaTime);
+				//LerpLogic();
 				break;
 			case TrickMoveType.TELEPORT:
 				UIManager.Instance.FadeIn();
@@ -58,6 +58,32 @@ public class MoveTrigger : MonoBehaviour
 				break;
 		}
 
+	}
+
+	private void MoveToWardsLogic()
+	{
+		bool isMoving = false;
+
+		while (!isMoving)
+		{
+			movedObject.transform.position = Vector3.Lerp(movedObject.transform.position, destination.position, moveSpeed * Time.deltaTime);
+
+			if(transform.position == destination.position)
+				isMoving = true;
+		}
+	}
+
+	private void LerpLogic()
+	{
+		bool isMoving = false;
+
+		while (!isMoving)
+		{
+			movedObject.transform.position = Vector3.MoveTowards(movedObject.transform.position, destination.position, moveSpeed * Time.deltaTime);
+
+			if (transform.position == destination.position)
+				isMoving = true;
+		}
 	}
 
 	private void DestroySelf()
