@@ -15,6 +15,13 @@ public class KnifeController : MonoBehaviour
     private bool canRotate = true;
     private bool isMovingToPlayer = false;   // 칼이 플레이어 쪽으로 끌려가는 중인지
 
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float groundCheckRadius = 0.1f;
+    [SerializeField] private LayerMask groundLayer;
+
+    private bool isGrounded;
+    private bool readyToJump = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -62,13 +69,16 @@ public class KnifeController : MonoBehaviour
             }
 
             Vector2 target = player.transform.position;
-            Vector2 prev = transform.position;
+            Vector2 direction = (target - (Vector2)transform.position).normalized;
 
-            transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            // 땅에 닿아 있을 때만 점프 가능
+            isGrounded = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
 
-            if ((Vector2)transform.position == prev)
+            if (isGrounded && readyToJump)
             {
-                Debug.LogWarning("움직이지 않았음! MoveTowards 결과가 기존 위치와 같음.");
+                rb.linearVelocity = new Vector2(direction.x * moveSpeed, jumpForce);
+                readyToJump = false;
+                StartCoroutine(JumpCooldown());
             }
         }
 
@@ -124,7 +134,15 @@ public class KnifeController : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic; // 이 상태 유지
         rb.constraints = RigidbodyConstraints2D.FreezeRotation; // 이동은 허용, 회전만 고정
 
+        rb.gravityScale = 1f;
+
         isMovingToPlayer = true;
+    }
+
+    IEnumerator JumpCooldown()
+    {
+        yield return new WaitForSeconds(0.5f); // 점프 간 간격 조정
+        readyToJump = true;
     }
 
     private IEnumerator RotateZ()
@@ -142,5 +160,11 @@ public class KnifeController : MonoBehaviour
         }
 
         transform.rotation = endRotation;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, groundCheckRadius);
     }
 }

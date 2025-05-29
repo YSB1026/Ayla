@@ -740,13 +740,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1341779942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f171b6aa6c9bbc41a6bb3c839d20ae6, type: 3}
+  m_Script: {fileID: 11500000, guid: 30f95f9595dc6ab4990baf2c24ef0f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravityPivot: {fileID: 124046540}
   rotateDuration: 1
   moveSpeed: 2
   player: {fileID: 1070981183}
+  jumpForce: 5
+  groundCheckRadius: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &1341779946
 Rigidbody2D:
   serializedVersion: 5
