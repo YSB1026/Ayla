@@ -4,7 +4,7 @@ using System.Collections;
 public class KnifeController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private CircleCollider2D cd;
+    //private CircleCollider2D cd;
 
     [SerializeField] private Transform gravityPivot; // 칼 끝 위치
     [SerializeField] private float rotateDuration = 1f; // 회전 완료까지 걸릴 시간
@@ -25,7 +25,7 @@ public class KnifeController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        cd = GetComponent<CircleCollider2D>();
+        //cd = GetComponent<CircleCollider2D>();
 
         if (player == null)
         {
@@ -79,6 +79,7 @@ public class KnifeController : MonoBehaviour
                 rb.linearVelocity = new Vector2(direction.x * moveSpeed, jumpForce);
                 readyToJump = false;
                 StartCoroutine(JumpCooldown());
+                StartCoroutine(RotateZ(-360f));
             }
         }
 
@@ -86,8 +87,6 @@ public class KnifeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnCollisionEnter2D 호출됨");
-
         if (collision.GetComponent<Player>() != null)
         {
             Debug.Log("Player에게 닿음");
@@ -105,14 +104,14 @@ public class KnifeController : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Dynamic; // 떨어지도록 전환
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        StartCoroutine(RotateZ());
+        StartCoroutine(RotateZ(-180f));
     }
 
     // 땅에 꽂히는거
     private void StuckInto()
     {
         canRotate = false;                             // 회전 멈춤
-        cd.enabled = false;                            // 충돌 제거
+        //cd.enabled = false;                            // 충돌 제거
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0f;
@@ -145,22 +144,23 @@ public class KnifeController : MonoBehaviour
         readyToJump = true;
     }
 
-    private IEnumerator RotateZ()
+    private IEnumerator RotateZ(float angle)
     {
         float elapsed = 0f;
-
-        Quaternion startRotation = transform.rotation;
-        Quaternion endRotation = Quaternion.Euler(0f, 0f, 180f);
+        float currentZ = transform.eulerAngles.z;
+        float targetZ = currentZ + angle;
 
         while (elapsed < rotateDuration)
         {
-            transform.rotation = Quaternion.Lerp(startRotation, endRotation, elapsed / rotateDuration);
+            float z = Mathf.Lerp(currentZ, targetZ, elapsed / rotateDuration);
+            transform.rotation = Quaternion.Euler(0, 0, z);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        transform.rotation = endRotation;
+        transform.rotation = Quaternion.Euler(0, 0, targetZ);
     }
+
 
     private void OnDrawGizmosSelected()
     {
