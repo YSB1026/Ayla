@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class KnifeTrigger : MonoBehaviour
 {
-    [SerializeField] private KnifeController knife; // ¶³¾î¶ß¸± Ä®
+    [SerializeField] private KnifeController[] knives; // ¶³¾î¶ß¸± Ä®
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player>() != null)
+        if (collision.CompareTag("Player")/*collision.GetComponent<Player>() != null*/)
         {
-            knife.Drop();                    // Ä® ¶³¾î¶ß¸®±â
-            Destroy(gameObject);            // Æ®¸®°Å´Â 1È¸¿ëÀÌ¸é ÆÄ±«
+            foreach (var knife in knives)
+            {
+                knife.Drop();                    // Ä® ¶³¾î¶ß¸®±â
+                Destroy(gameObject);            // Æ®¸®°Å´Â 1È¸¿ëÀÌ¸é ÆÄ±«
+            }
         }
     }
 }
