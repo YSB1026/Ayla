@@ -60,8 +60,8 @@ public class EnemyFlash : MonoBehaviour
                 spotLight.enabled = false;
         }
 
-        // 플래시 시작은 투명하게
-        if (flashImage) flashImage.color = new Color(1, 1, 1, 0); 
+        // 플래시 시작은 투명하게 + 플래시 색 빨강
+        if (flashImage) flashImage.color = new Color(1, 0, 0, 0); 
     }
 
     private void Update()
@@ -141,10 +141,10 @@ public class EnemyFlash : MonoBehaviour
         spotLight.intensity = targetIntensity * Mathf.Max(1f, flashIntensityMultiplier);
         onFlashBurst?.Invoke(); // 사운드, 셰이크 등 연결
 
-        // 화면 하얀 플래시
+        // 화면 빨간 플래시
         if (flashImage)
         {
-            flashImage.color = new Color(1, 1, 1, 1); // 한 프레임 동안 완전 흰색
+            flashImage.color = new Color(1, 0, 0, 1); // 한 프레임 동안 빨간색
             StartCoroutine(HideFlashAfter());
         }
 
@@ -213,7 +213,7 @@ public class EnemyFlash : MonoBehaviour
             float alpha = Mathf.Lerp(1f, 0f, t);
 
             if (flashImage)
-                flashImage.color = new Color(1, 1, 1, alpha);
+                flashImage.color = new Color(1, 0, 0, alpha);
 
             yield return null;
         }

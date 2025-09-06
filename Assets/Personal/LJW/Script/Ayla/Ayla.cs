@@ -32,6 +32,13 @@ public class Ayla : Entity
 
     #endregion
 
+    private Transform overrideTargetPoint = null;
+
+    public void SetOverrideTarget(Transform target)
+    {
+        overrideTargetPoint = target;
+    }
+
     public void SetControlEnabled(bool isEnabled)
     {
         controlEnabled = isEnabled;
@@ -88,18 +95,19 @@ public class Ayla : Entity
     // 플레이어 따라다니는 로직
     private void Follow()
     {
-        //Debug.Log("Follow 호출됨");
+        Transform targetPoint;
 
-        // 플레이어가 보고 있는 방향에 따라 따라갈 포인트 결정
-        Transform targetPoint = playerSpriteRenderer.flipX ? followPointLeft : followPointRight;
-
-        if (targetPoint == null)
+        if (overrideTargetPoint != null)
         {
-            Debug.LogWarning("followPoint가 비어 있음!");
-            return;
+            targetPoint = overrideTargetPoint;
+        }
+        else
+        {
+            targetPoint = playerSpriteRenderer.flipX ? followPointLeft : followPointRight;
         }
 
-        // 기준 위치까지 부드럽게 이동
+        if (targetPoint == null) return;
+
         followBasePosition = Vector3.SmoothDamp(followBasePosition, targetPoint.position, ref velocity, followSmoothTime);
         transform.position = followBasePosition;
     }
@@ -140,6 +148,17 @@ public class Ayla : Entity
         {
             holdTime = 0f;  // R 누르고 있지 않으면 초기화
         }
+    }
+
+    public void ToggleSide()
+    {
+        // 지금 따라가려는 목표가 뭔지 계산(override가 있으면 그걸, 없으면 기본 로직)
+        Transform currentTarget = overrideTargetPoint != null
+            ? overrideTargetPoint
+            : (playerSpriteRenderer.flipX ? followPointLeft : followPointRight);
+
+        // 반대편으로 전환
+        overrideTargetPoint = (currentTarget == followPointLeft) ? followPointRight : followPointLeft;
     }
 
     public void SetFollowBasePosition(Vector3 newPos)
