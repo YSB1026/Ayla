@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class EnemyFlash : MonoBehaviour
 {
+    [SerializeField] private Transform player;
+
     [Header("쿨타임")]
     [SerializeField] private float cooldownTime = 10f;          // 능력 재사용 대기 시간
     [SerializeField] private TextMeshProUGUI cooldownText;      // 남은 쿨타임 표시용
@@ -22,9 +24,9 @@ public class EnemyFlash : MonoBehaviour
 
 
     [Header("라이트 시작값 (닫힌 상태)")]
-    [SerializeField] private float startInnerAngle = 1f;        // 시작 내부 각도(아주 좁게)
+    [SerializeField] private float startInnerAngle = 0f;        // 시작 내부 각도
     [SerializeField] private float startOuterAngle = 5f;        // 시작 외부 각도
-    [SerializeField] private float startIntensity = 0.2f;     // 시작 밝기(미세하게 켜지는 느낌)
+    [SerializeField] private float startIntensity = 0.2f;     // 시작 밝기
     [SerializeField] private float startOuterRadius = 3f;       // 시작 반경
 
     [Header("타이밍")]
@@ -34,11 +36,11 @@ public class EnemyFlash : MonoBehaviour
     [SerializeField] private float flashIntensityMultiplier = 2f; // 타겟 밝기에 곱해서 순간적으로 더 밝게
     [SerializeField] private bool animateOuterRadius = true;     // 열릴 때 반경도 함께 늘릴지
     [SerializeField] private UnityEngine.UI.Image flashImage; // 전체 화면 플래시용
-    [SerializeField] private float flashHold = 0.12f; // 화면이 하얗게 유지될 시간(초)
+    [SerializeField] private float flashHold = 0.12f; // 화면이 하얗게 유지될 시간
     [SerializeField] private float flashFade = 0.4f;      // 잔상 페이드 시간
 
     [Header("이벤트 훅")]
-    public UnityEvent onFlashBurst;   // 플래시가 ‘팡’ 터지는 정확한 순간에 호출(사운드, 카메라 셰이크 연결 등)
+    public UnityEvent onFlashBurst;   // 플래시 터지는 순간에 호출할 이펙트
 
     [Header("세부 옵션")]
     [SerializeField] private bool animateIntensity = true;    // 밝기 애니메이션 포함 여부
@@ -58,11 +60,14 @@ public class EnemyFlash : MonoBehaviour
                 spotLight.enabled = false;
         }
 
-        if (flashImage) flashImage.color = new Color(1, 1, 1, 0); // 시작은 투명하게
+        // 플래시 시작은 투명하게 + 플래시 색 빨강
+        if (flashImage) flashImage.color = new Color(1, 0, 0, 0); 
     }
 
     private void Update()
     {
+        UpdateFacing();
+
         // 쿨타임 감소
         if (cooldownTimer > 0f)
         {
@@ -73,10 +78,28 @@ public class EnemyFlash : MonoBehaviour
         // 쿨타임 UI
         UpdateCooldownUI();
 
-        // 왼쪽 클릭으로 발동 시도
+        // 왼쪽 클릭으로 발동
         if (Input.GetMouseButtonDown(0))
         {
             TryUseAbility();
+        }
+    }
+
+    private void UpdateFacing()
+    {
+        if (player == null || spotLight == null) return;
+
+        float dx = transform.position.x - player.position.x;
+
+        if (dx < 0f)
+        {
+            // 플레이어 오른쪽에 있음 → 오른쪽 바라보기
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+            // 플레이어 왼쪽에 있음 → 기본값 유지
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 
@@ -87,7 +110,6 @@ public class EnemyFlash : MonoBehaviour
 
         // 연출 시작
         playRoutine = StartCoroutine(PlayLightRoutine());
-        //cooldownTimer = cooldownTime;
     }
 
     private IEnumerator PlayLightRoutine()
@@ -114,19 +136,19 @@ public class EnemyFlash : MonoBehaviour
             openDuration, easeOutCubic: true
         );
 
-        // 1) 플래시
+        // 플래시
         float prevIntensity = spotLight.intensity;
         spotLight.intensity = targetIntensity * Mathf.Max(1f, flashIntensityMultiplier);
         onFlashBurst?.Invoke(); // 사운드, 셰이크 등 연결
 
-        // 화면 하얀 플래시
+        // 화면 빨간 플래시
         if (flashImage)
         {
-            flashImage.color = new Color(1, 1, 1, 1); // 한 프레임 동안 완전 흰색
+            flashImage.color = new Color(1, 0, 0, 1); // 한 프레임 동안 빨간색
             StartCoroutine(HideFlashAfter());
         }
 
-        // 2) 쿨타임 시작
+        // 쿨타임 시작
         cooldownTimer = cooldownTime;
 
         // 다음 사용을 위한 초기화
@@ -191,7 +213,7 @@ public class EnemyFlash : MonoBehaviour
             float alpha = Mathf.Lerp(1f, 0f, t);
 
             if (flashImage)
-                flashImage.color = new Color(1, 1, 1, alpha);
+                flashImage.color = new Color(1, 0, 0, alpha);
 
             yield return null;
         }
