@@ -39,6 +39,9 @@ public class EnemyFlash : MonoBehaviour
     [SerializeField] private float flashHold = 0.12f; // 화면이 하얗게 유지될 시간
     [SerializeField] private float flashFade = 0.4f;      // 잔상 페이드 시간
 
+    [Header("Enemy 스턴")]
+    [SerializeField] private float stunDuration = 2f; // 스턴 지속 시간
+
     [Header("이벤트 훅")]
     public UnityEvent onFlashBurst;   // 플래시 터지는 순간에 호출할 이펙트
 
@@ -141,6 +144,8 @@ public class EnemyFlash : MonoBehaviour
         spotLight.intensity = targetIntensity * Mathf.Max(1f, flashIntensityMultiplier);
         onFlashBurst?.Invoke(); // 사운드, 셰이크 등 연결
 
+        StunEnemiesInLightCone();
+
         // 화면 빨간 플래시
         if (flashImage)
         {
@@ -235,6 +240,90 @@ public class EnemyFlash : MonoBehaviour
         if (animateOuterRadius)
             spotLight.pointLightOuterRadius = Mathf.Max(0f, outerRadius);
     }
+
+    private void StunEnemiesInLightCone()
+    {
+        if (spotLight == null) return;
+
+        Vector2 origin = spotLight.transform.position;
+        Vector2 lightDir = spotLight.transform.TransformDirection(Vector2.up).normalized;
+        float maxR = spotLight.pointLightOuterRadius;
+        float halfDeg = spotLight.pointLightOuterAngle * 0.5f;
+
+        // 디버그(씬 뷰): 빨강=local right, 시안=실제 판정 방향
+        Debug.DrawRay(origin, spotLight.transform.right * maxR, Color.red, 1f);
+        Debug.DrawRay(origin, lightDir * maxR, Color.cyan, 1f);
+
+        var hits = Physics2D.OverlapCircleAll(origin, maxR);
+
+        foreach (var h in hits)
+        {
+            if (!h) continue;
+
+            // 충돌체가 자식이어도, 실제 물리 본체(리짓바디/루트)를 잡는다
+            GameObject root = h.attachedRigidbody ? h.attachedRigidbody.gameObject : h.transform.root.gameObject;
+
+            // 레이어는 루트 기준으로 필터
+            int enemyLayer = LayerMask.NameToLayer("Enemy");
+            if (root.layer != enemyLayer) continue;
+
+            Vector2 toEnemy = (Vector2)root.transform.position - origin;
+            if (toEnemy.sqrMagnitude < 0.0001f) continue;
+
+            float angle = Vector2.Angle(lightDir, toEnemy.normalized);
+            if (angle <= halfDeg)
+            {
+                // 루트(실제 본체)로 넘겨서 스턴
+                StartCoroutine(StunTarget(root, stunDuration));
+            }
+        }
+    }
+
+
+    private IEnumerator StunTarget(GameObject target, float duration)
+    {
+        if (!target) yield break;
+
+        // 애니 정지
+        Animator anim = target.GetComponentInChildren<Animator>();
+        float prevAnimSpeed = 1f;
+        if (anim)
+        {
+            prevAnimSpeed = anim.speed;
+            anim.speed = 0f;
+        }
+
+        // 물리 정지
+        Rigidbody2D rb = target.GetComponent<Rigidbody2D>();
+        RigidbodyConstraints2D prevConstraints = RigidbodyConstraints2D.None;
+        Vector2 prevVelocity = Vector2.zero;
+        float prevGravity = 0f;
+
+        if (rb)
+        {
+            prevConstraints = rb.constraints;
+            prevVelocity = rb.linearVelocity;
+            prevGravity = rb.gravityScale;
+
+            rb.linearVelocity = Vector2.zero;
+            rb.gravityScale = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        yield return new WaitForSeconds(duration);
+
+        // 애니 복구
+        if (anim) anim.speed = prevAnimSpeed;
+
+        // 물리 복구
+        if (rb)
+        {
+            rb.constraints = prevConstraints;
+            rb.gravityScale = prevGravity;
+            rb.linearVelocity = Vector2.zero; // 재폭주 방지(원속도로 복원하고 싶으면 prevVelocity)
+        }
+    }
+
 
     private void UpdateCooldownUI()
     {
