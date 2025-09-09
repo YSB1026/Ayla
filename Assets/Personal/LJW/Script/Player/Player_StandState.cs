@@ -16,7 +16,8 @@ public class Player_StandState : PlayerState
     {
         base.Update();
 
-        if (triggerCalled)
+        var st = player.anim.GetCurrentAnimatorStateInfo(0);
+        if (st.normalizedTime >= 0.95f)
             stateMachine.ChangeState(player.inputState);
     }
 
