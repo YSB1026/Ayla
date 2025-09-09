@@ -33,7 +33,7 @@ public class Enemy_Light_MoveState : EnemyState
         }
 
         Vector2 dirToPlayer = (enemyLight.player.position - enemy.transform.position).normalized;
-        enemy.SetVelocity(dirToPlayer.x * enemy.moveSpeed, rb.linearVelocity.y);
+        enemy.SetVelocity(dirToPlayer.x * enemy.applySpeed, rb.linearVelocity.y);
         enemy.FlipController(dirToPlayer.x);
 
         if (enemy.IsWallDetected() || !enemy.IsGroundDetected())

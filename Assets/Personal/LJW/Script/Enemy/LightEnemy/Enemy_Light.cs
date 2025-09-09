@@ -64,7 +64,7 @@ public class Enemy_Light : Enemy
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         // 플레이어가 범위 안에 들어오면 속도 증가, 아니면 기본 속도
-        moveSpeed = distanceToPlayer <= Range ? defaultMoveSpeed * speedMultiplier : defaultMoveSpeed;
+        applySpeed = distanceToPlayer <= Range ? defaultMoveSpeed * speedMultiplier : defaultMoveSpeed;
     }
 
     public bool IsPlayerInAttackBox()

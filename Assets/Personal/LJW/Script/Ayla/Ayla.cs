@@ -27,6 +27,9 @@ public class Ayla : Entity
     [SerializeField] private float holdTime = 0f;
     [SerializeField] private float holdDuration = 2f;
 
+    [Header("에일란 게이지")]
+    [SerializeField] private float aylaGauge = 100f;
+
     #region States
     public AylaStateMachine stateMachine { get; private set; }
 

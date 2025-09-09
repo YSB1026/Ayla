@@ -102,7 +102,7 @@ public class Enemy_SK : Enemy
         }
     }
 
-    public bool IsPlayerMoving()
+	public bool IsPlayerMoving()
     {
         float movedDistance = Vector2.Distance(player.position, lastPlayerPosition);
         lastPlayerPosition = player.position;
