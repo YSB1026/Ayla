@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class EnemyFlash : MonoBehaviour
 {
+    [SerializeField] private Transform player;
+
     [Header("쿨타임")]
     [SerializeField] private float cooldownTime = 10f;          // 능력 재사용 대기 시간
     [SerializeField] private TextMeshProUGUI cooldownText;      // 남은 쿨타임 표시용
@@ -22,9 +24,9 @@ public class EnemyFlash : MonoBehaviour
 
 
     [Header("라이트 시작값 (닫힌 상태)")]
-    [SerializeField] private float startInnerAngle = 1f;        // 시작 내부 각도(아주 좁게)
+    [SerializeField] private float startInnerAngle = 0f;        // 시작 내부 각도
     [SerializeField] private float startOuterAngle = 5f;        // 시작 외부 각도
-    [SerializeField] private float startIntensity = 0.2f;     // 시작 밝기(미세하게 켜지는 느낌)
+    [SerializeField] private float startIntensity = 0.2f;     // 시작 밝기
     [SerializeField] private float startOuterRadius = 3f;       // 시작 반경
 
     [Header("타이밍")]
@@ -34,11 +36,14 @@ public class EnemyFlash : MonoBehaviour
     [SerializeField] private float flashIntensityMultiplier = 2f; // 타겟 밝기에 곱해서 순간적으로 더 밝게
     [SerializeField] private bool animateOuterRadius = true;     // 열릴 때 반경도 함께 늘릴지
     [SerializeField] private UnityEngine.UI.Image flashImage; // 전체 화면 플래시용
-    [SerializeField] private float flashHold = 0.12f; // 화면이 하얗게 유지될 시간(초)
+    [SerializeField] private float flashHold = 0.12f; // 화면이 하얗게 유지될 시간
     [SerializeField] private float flashFade = 0.4f;      // 잔상 페이드 시간
 
+    [Header("Enemy 스턴")]
+    [SerializeField] private float stunDuration = 2f; // 스턴 지속 시간
+
     [Header("이벤트 훅")]
-    public UnityEvent onFlashBurst;   // 플래시가 ‘팡’ 터지는 정확한 순간에 호출(사운드, 카메라 셰이크 연결 등)
+    public UnityEvent onFlashBurst;   // 플래시 터지는 순간에 호출할 이펙트
 
     [Header("세부 옵션")]
     [SerializeField] private bool animateIntensity = true;    // 밝기 애니메이션 포함 여부
@@ -58,11 +63,14 @@ public class EnemyFlash : MonoBehaviour
                 spotLight.enabled = false;
         }
 
-        if (flashImage) flashImage.color = new Color(1, 1, 1, 0); // 시작은 투명하게
+        // 플래시 시작은 투명하게 + 플래시 색 빨강
+        if (flashImage) flashImage.color = new Color(1, 0, 0, 0); 
     }
 
     private void Update()
     {
+        UpdateFacing();
+
         // 쿨타임 감소
         if (cooldownTimer > 0f)
         {
@@ -73,10 +81,28 @@ public class EnemyFlash : MonoBehaviour
         // 쿨타임 UI
         UpdateCooldownUI();
 
-        // 왼쪽 클릭으로 발동 시도
+        // 왼쪽 클릭으로 발동
         if (Input.GetMouseButtonDown(0))
         {
             TryUseAbility();
+        }
+    }
+
+    private void UpdateFacing()
+    {
+        if (player == null || spotLight == null) return;
+
+        float dx = transform.position.x - player.position.x;
+
+        if (dx < 0f)
+        {
+            // 플레이어 오른쪽에 있음 → 오른쪽 바라보기
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+            // 플레이어 왼쪽에 있음 → 기본값 유지
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 
@@ -87,7 +113,6 @@ public class EnemyFlash : MonoBehaviour
 
         // 연출 시작
         playRoutine = StartCoroutine(PlayLightRoutine());
-        //cooldownTimer = cooldownTime;
     }
 
     private IEnumerator PlayLightRoutine()
@@ -114,19 +139,21 @@ public class EnemyFlash : MonoBehaviour
             openDuration, easeOutCubic: true
         );
 
-        // 1) 플래시
+        // 플래시
         float prevIntensity = spotLight.intensity;
         spotLight.intensity = targetIntensity * Mathf.Max(1f, flashIntensityMultiplier);
         onFlashBurst?.Invoke(); // 사운드, 셰이크 등 연결
 
-        // 화면 하얀 플래시
+        StunEnemiesInLightCone();
+
+        // 화면 빨간 플래시
         if (flashImage)
         {
-            flashImage.color = new Color(1, 1, 1, 1); // 한 프레임 동안 완전 흰색
+            flashImage.color = new Color(1, 0, 0, 1); // 한 프레임 동안 빨간색
             StartCoroutine(HideFlashAfter());
         }
 
-        // 2) 쿨타임 시작
+        // 쿨타임 시작
         cooldownTimer = cooldownTime;
 
         // 다음 사용을 위한 초기화
@@ -191,7 +218,7 @@ public class EnemyFlash : MonoBehaviour
             float alpha = Mathf.Lerp(1f, 0f, t);
 
             if (flashImage)
-                flashImage.color = new Color(1, 1, 1, alpha);
+                flashImage.color = new Color(1, 0, 0, alpha);
 
             yield return null;
         }
@@ -213,6 +240,90 @@ public class EnemyFlash : MonoBehaviour
         if (animateOuterRadius)
             spotLight.pointLightOuterRadius = Mathf.Max(0f, outerRadius);
     }
+
+    private void StunEnemiesInLightCone()
+    {
+        if (spotLight == null) return;
+
+        Vector2 origin = spotLight.transform.position;
+        Vector2 lightDir = spotLight.transform.TransformDirection(Vector2.up).normalized;
+        float maxR = spotLight.pointLightOuterRadius;
+        float halfDeg = spotLight.pointLightOuterAngle * 0.5f;
+
+        // 디버그(씬 뷰): 빨강=local right, 시안=실제 판정 방향
+        Debug.DrawRay(origin, spotLight.transform.right * maxR, Color.red, 1f);
+        Debug.DrawRay(origin, lightDir * maxR, Color.cyan, 1f);
+
+        var hits = Physics2D.OverlapCircleAll(origin, maxR);
+
+        foreach (var h in hits)
+        {
+            if (!h) continue;
+
+            // 충돌체가 자식이어도, 실제 물리 본체(리짓바디/루트)를 잡는다
+            GameObject root = h.attachedRigidbody ? h.attachedRigidbody.gameObject : h.transform.root.gameObject;
+
+            // 레이어는 루트 기준으로 필터
+            int enemyLayer = LayerMask.NameToLayer("Enemy");
+            if (root.layer != enemyLayer) continue;
+
+            Vector2 toEnemy = (Vector2)root.transform.position - origin;
+            if (toEnemy.sqrMagnitude < 0.0001f) continue;
+
+            float angle = Vector2.Angle(lightDir, toEnemy.normalized);
+            if (angle <= halfDeg)
+            {
+                // 루트(실제 본체)로 넘겨서 스턴
+                StartCoroutine(StunTarget(root, stunDuration));
+            }
+        }
+    }
+
+
+    private IEnumerator StunTarget(GameObject target, float duration)
+    {
+        if (!target) yield break;
+
+        // 애니 정지
+        Animator anim = target.GetComponentInChildren<Animator>();
+        float prevAnimSpeed = 1f;
+        if (anim)
+        {
+            prevAnimSpeed = anim.speed;
+            anim.speed = 0f;
+        }
+
+        // 물리 정지
+        Rigidbody2D rb = target.GetComponent<Rigidbody2D>();
+        RigidbodyConstraints2D prevConstraints = RigidbodyConstraints2D.None;
+        Vector2 prevVelocity = Vector2.zero;
+        float prevGravity = 0f;
+
+        if (rb)
+        {
+            prevConstraints = rb.constraints;
+            prevVelocity = rb.linearVelocity;
+            prevGravity = rb.gravityScale;
+
+            rb.linearVelocity = Vector2.zero;
+            rb.gravityScale = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        yield return new WaitForSeconds(duration);
+
+        // 애니 복구
+        if (anim) anim.speed = prevAnimSpeed;
+
+        // 물리 복구
+        if (rb)
+        {
+            rb.constraints = prevConstraints;
+            rb.gravityScale = prevGravity;
+            rb.linearVelocity = Vector2.zero; // 재폭주 방지(원속도로 복원하고 싶으면 prevVelocity)
+        }
+    }
+
 
     private void UpdateCooldownUI()
     {

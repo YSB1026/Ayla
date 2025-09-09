@@ -16,6 +16,9 @@ public class Player : Entity
     public float grabSpeed;
     public bool isInZone;
 
+    private bool canHide;
+    private Transform currentHideAnchor;
+
     private CapsuleCollider2D col;
 
     #region ColliderSetting
@@ -44,6 +47,8 @@ public class Player : Entity
     public Player_PullState pullState { get; private set; }
     public Player_PushState pushState { get; private set; }
     public Player_AirState airState { get; private set; }
+
+    public Player_HideState hideState { get; private set; }
 
     public Player_DownState downState { get; private set; }
     public Player_UpState upState { get; private set; }
@@ -81,6 +86,8 @@ public class Player : Entity
         pullState = new Player_PullState(this, stateMachine, "Pull");
         pushState = new Player_PushState(this, stateMachine, "Push");
         airState = new Player_AirState(this, stateMachine, "Fall");
+
+        hideState = new Player_HideState(this, stateMachine, "isHiding");
 
         downState = new Player_DownState(this, stateMachine, "Down");
         upState = new Player_UpState(this, stateMachine, "Up");
@@ -166,6 +173,21 @@ public class Player : Entity
     public void ForceSetControlEnabled(bool isEnabled)
     {
         controlEnabled = isEnabled;
+    }
+
+    public bool IsHidingSpotDetected() => canHide && currentHideAnchor != null;
+
+    public void SetHidingSpotDetected(bool detected, Transform anchor)
+    {
+        canHide = detected;
+        currentHideAnchor = anchor;
+    }
+
+    public Transform GetHideAnchor() => currentHideAnchor;
+
+    public void SetControlActive(bool value)
+    {
+        controlEnabled = value;
     }
 
     public void Die()
