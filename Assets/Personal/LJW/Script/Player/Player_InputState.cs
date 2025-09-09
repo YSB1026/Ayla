@@ -22,6 +22,8 @@ public class Player_InputState : PlayerState
             stateMachine.ChangeState(player.airState);
         else if (Input.GetKeyDown(KeyCode.Space))
             stateMachine.ChangeState(player.jumpState);
+        else if (Input.GetKeyDown(KeyCode.F) && player.IsHidingSpotDetected())
+            stateMachine.ChangeState(player.hideState);
         else if (Input.GetKeyDown(KeyCode.F) && player.IsObjectDetected())
             stateMachine.ChangeState(player.grabState);
         else if (Input.GetKeyDown(KeyCode.S))
