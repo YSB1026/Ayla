@@ -26,7 +26,25 @@ public class Enemy_SKIdleState : EnemyState
     {
         base.Update();
 
+        // 1) 플레이어가 움직였는지 '항상' 먼저 본다
+        if (enemySK.IsPlayerMoving())
+        {
+            // 바로 사라짐 애니(원위치 복귀)로 전환
+            stateMachine.ChangeState(enemySK.deathState);
+            return;
+        }
+
+        // 2) 안 움직였을 때만 대기 시간 누적 및 공격 준비 판단
         idleTimer += Time.deltaTime;
+
+        if (!attackPrepared && idleTimer >= 10f)
+        {
+            attackPrepared = true;
+            stateMachine.ChangeState(enemySK.attackState);
+            return;
+        }
+
+        /*idleTimer += Time.deltaTime;
 
         // 플레이어가 움직이면 밝게 만들고 상태 전환
         if (enemySK.IsPlayerMoving() && !attackPrepared)
@@ -44,7 +62,7 @@ public class Enemy_SKIdleState : EnemyState
 
             // 공격 시작
             stateMachine.ChangeState(enemySK.attackState);
-        }
+        }*/
 
     }
 
