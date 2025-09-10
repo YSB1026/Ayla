@@ -3,22 +3,13 @@ using UnityEngine;
 public class Player_HideState : PlayerState
 {
     private Transform anchor;
-    private bool prevControlEnabled;
-    private bool prevColliderState;
-    private Collider2D col;
+
+    private Rigidbody2D rb;
+    private RigidbodyType2D prevBodyType;
+    private float prevGravityScale;
+    private RigidbodyConstraints2D prevConstraints;
+
     private SpriteRenderer sr;
-
-    // ¾ÉÀº Æ÷Áî À¯Áö¿ë (³× ¾Ö´Ï¸ŞÀÌÅÍ ÆÄ¶ó¹ÌÅÍ¸í¿¡ ¸ÂÃç º¯°æ °¡´É)
-    private static readonly int HashIsCrouch = Animator.StringToHash("isCrouch");
-    private static readonly int HashHideEnter = Animator.StringToHash("HideEnter");
-    private static readonly int HashHideExit = Animator.StringToHash("HideExit");
-
-    // ¾ŞÄ¿·Î ºÎµå·´°Ô ºÙ´Â ¿¬Ãâ (¼±ÅÃ)
-    private float approachTime = 0.12f;
-    private float approachT;
-    private Vector3 startPos;
-
-    private float originalScaleX;
 
     public Player_HideState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
         : base(_player, _stateMachine, _animBoolName) { }
@@ -30,83 +21,78 @@ public class Player_HideState : PlayerState
         anchor = player.GetHideAnchor();
         player.SetZeroVelocity();
 
-        // Á¦¾î Àá±İ
-        prevControlEnabled = player.controlEnabled;
-        player.SetControlActive(false);               // Á¦¾î ºñÈ°¼ºÈ­
-
-        col = player.GetComponent<Collider2D>();
-        if (col != null)
+        // ë¬¼ë¦¬ ì ê¸ˆ(ì»¨íŠ¸ë¡¤ ë¹„í™œì„±í™”ëŠ” ì‚¬ìš©í•˜ì§€ ì•ŠìŒ)
+        rb = player.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            prevColliderState = col.enabled;
-            col.enabled = false; // Ãæµ¹ ºñÈ°¼ºÈ­·Î ¿ÏÀü ¼û±è
+            prevBodyType = rb.bodyType;
+            prevGravityScale = rb.gravityScale;
+            prevConstraints = rb.constraints;
+
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.gravityScale = 0f;
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
+        // ìˆ¨ëŠ” ë™ì•ˆ ì•‰ê¸° ìœ ì§€ (ì• ë‹ˆ íŒŒë¼ë¯¸í„° + ì½œë¼ì´ë”)
+        if (player.anim != null) player.anim.SetBool("Sit", true);
+        player.SetSitCollider();
+
+        // ë°˜íˆ¬ëª… ì²˜ë¦¬
         sr = player.GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
         {
             var c = sr.color;
-            sr.color = new Color(c.r, c.g, c.b, 0.2f); // »ìÂ¦¸¸ º¸ÀÌ°Ô
+            sr.color = new Color(c.r, c.g, c.b, 0.2f);
         }
 
-        // ¾ŞÄ¿ ¹æÇâ º¸µµ·Ï È¸Àü
-        originalScaleX = player.transform.localScale.x;
+        // ì•µì»¤ë¡œ ì¦‰ì‹œ ìŠ¤ëƒ…
         if (anchor != null)
         {
-            float dir = Mathf.Sign(anchor.position.x - player.transform.position.x);
-            if (dir != 0f)
-            {
-                var sc = player.transform.localScale;
-                sc.x = Mathf.Abs(sc.x) * (dir > 0 ? 1f : -1f);
-                player.transform.localScale = sc;
-            }
+            player.transform.position = new Vector3(
+                anchor.position.x, anchor.position.y, player.transform.position.z);
         }
-
-        // ¼û±â ÁøÀÔ Æ®¸®°Å(ÀÖÀ¸¸é »ç¿ë)
-        if (player.anim != null) player.anim.SetTrigger(HashHideEnter);
-
-        // ¾É±â: SitState°¡ ÇÏ´ø ÀÏÀ» ¿©±â¼­ Á÷Á¢ ¼öÇà
-        // 1) ¾ÉÀº Äİ¶óÀÌ´õ Àû¿ë
-        player.SetSitCollider();
-        // 2) ¿õÅ©¸² ÆÄ¶ó¹ÌÅÍ ÄÑ¼­ "¾ÉÀº Æ÷Áî" À¯Áö
-        if (player.anim != null) player.anim.SetBool(HashIsCrouch, true);
     }
 
     public override void Update()
     {
         base.Update();
 
-        // F·Î Åä±Û ÇØÁ¦
-        if (Input.GetKeyDown(KeyCode.F))
+        // ì•µì»¤ì— ê³„ì† ê³ ì • (ì›ì¹˜ ì•Šìœ¼ë©´ ì´ ë¸”ë¡ ì§€ì›Œë„ ë¨)
+        if (anchor != null)
         {
-            stateMachine.ChangeState(player.standState);
+            player.transform.position = new Vector3(
+                anchor.position.x, anchor.position.y, player.transform.position.z);
         }
+
+        // Fë¡œ í•´ì œ â†’ ì„œê¸°(Stand) ìƒíƒœë¡œ ì „í™˜
+        if (Input.GetKeyDown(KeyCode.F))
+            stateMachine.ChangeState(player.standState);
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        // ¿õÅ©¸² ÇØÁ¦
-        if (player.anim != null)
+        // ì•‰ê¸° í•´ì œ (ì• ë‹ˆ + ì½œë¼ì´ë” ì›ë³µ)
+        if (player.anim != null) player.anim.SetBool("Sit", false);
+        player.SetIdleCollider();
+
+        // ë¬¼ë¦¬ ì›ë³µ
+        if (rb != null)
         {
-            player.anim.ResetTrigger(HashHideEnter);
-            player.anim.SetBool(HashIsCrouch, false);
-            player.anim.SetTrigger(HashHideExit); // ÀÖÀ¸¸é ÀÚ¿¬½º·¯¿ò
+            rb.bodyType = prevBodyType;
+            rb.gravityScale = prevGravityScale;
+            rb.constraints = prevConstraints;
         }
 
-        // Äİ¶óÀÌ´õ/Åõ¸íµµ/ÄÁÆ®·Ñ º¹±¸
-        player.SetIdleCollider();
+        // íˆ¬ëª…ë„ ì›ë³µ
         if (sr != null)
         {
             var c = sr.color;
             sr.color = new Color(c.r, c.g, c.b, 1f);
         }
-        if (col != null) col.enabled = prevColliderState;
-        player.SetControlActive(prevControlEnabled);
-
-        // ¾ó±¼ ¹æÇâ º¹±¸(¿øÄ¡ ¾ÊÀ¸¸é Á¦°Å)
-        var sc = player.transform.localScale;
-        sc.x = originalScaleX;
-        player.transform.localScale = sc;
     }
 }
