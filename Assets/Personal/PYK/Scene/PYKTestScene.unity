@@ -33471,6 +33471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 597973723}
   - component: {fileID: 597973724}
+  - component: {fileID: 597973725}
   m_Layer: 0
   m_Name: kitchen_chair
   m_TagString: Untagged
@@ -33537,17 +33538,39 @@ SpriteRenderer:
   m_SortingLayerID: -936748867
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: 2304719134352574086, guid: e2ba7d8fa15de794384c7f983151d0d1, type: 3}
+  m_Sprite: {fileID: -1042145224, guid: 6803177b6e54f014a9bac3a3c0b6df16, type: 3}
   m_Color: {r: 0.7176471, g: 0.5782305, b: 0.47058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34, y: 0.41}
+  m_Size: {x: 3.0416667, y: 2.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &597973725
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597973722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d8ddc6e9f97667409fca496b3503c91, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &615184772
 GameObject:
   m_ObjectHideFlags: 0
@@ -41731,12 +41754,12 @@ SpriteRenderer:
   m_SortingLayerID: -936748867
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: 2304719134352574086, guid: e2ba7d8fa15de794384c7f983151d0d1, type: 3}
+  m_Sprite: {fileID: -1042145224, guid: 6803177b6e54f014a9bac3a3c0b6df16, type: 3}
   m_Color: {r: 0.7176471, g: 0.5782305, b: 0.47058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34, y: 0.41}
+  m_Size: {x: 3.0416667, y: 2.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -52579,6 +52602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1061995831}
   - component: {fileID: 1061995832}
+  - component: {fileID: 1061995833}
   m_Layer: 0
   m_Name: BookCase (2)
   m_TagString: Untagged
@@ -52595,7 +52619,7 @@ Transform:
   m_GameObject: {fileID: 1061995830}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.92, y: -6.48, z: 0}
+  m_LocalPosition: {x: 51.754, y: -7.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52645,17 +52669,39 @@ SpriteRenderer:
   m_SortingLayerID: 408166273
   m_SortingLayer: 1
   m_SortingOrder: 4
-  m_Sprite: {fileID: 4213217652975362833, guid: 90bde276f5d3c014ca3f286bf22c6c3e, type: 3}
+  m_Sprite: {fileID: 8732277752784484000, guid: 5b9bee8e03bed3747831ba66611b98e1, type: 3}
   m_Color: {r: 0.7264151, g: 0.67501783, b: 0.67501783, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.65, y: 1.05}
+  m_Size: {x: 0.18, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1061995833
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061995830}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eac33096e2932834ca25c19c52f8769b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1072321476
 GameObject:
   m_ObjectHideFlags: 0

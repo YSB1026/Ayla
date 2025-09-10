@@ -20,15 +20,6 @@ TextureImporter:
   - first:
       213: 3533163858134283268
     second: living_bookcase_broken1_5
-  - first:
-      213: -5900410369203194299
-    second: living_bookcase_broken1_6
-  - first:
-      213: 3235857795286665159
-    second: living_bookcase_broken1_7
-  - first:
-      213: 1696635394510741956
-    second: living_bookcase_broken1_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -169,7 +160,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 179
-        height: 178
+        height: 143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,7 +182,7 @@ TextureImporter:
         x: 179
         y: 0
         width: 179
-        height: 178
+        height: 143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,7 +204,7 @@ TextureImporter:
         x: 358
         y: 0
         width: 179
-        height: 178
+        height: 143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,7 +226,7 @@ TextureImporter:
         x: 537
         y: 0
         width: 179
-        height: 178
+        height: 143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,33 +241,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: living_bookcase_broken1_4
-      rect:
-        serializedVersion: 2
-        x: 716
-        y: 0
-        width: 179
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 37bd9829c5f0e9ea0800000000000000
-      internalID: -5864232774519891085
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8dd0ef4ae58a6944fafef07689914ad6
+    spriteID: 697d6923f8e59af498ef97e9372efa07
     internalID: 0
     vertices: []
     indices: 
@@ -286,13 +255,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":179.0,"y":178.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":179.0,"y":143.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       living_bookcase_broken1_0: -535918397979486823
       living_bookcase_broken1_1: 5942700657423811341
       living_bookcase_broken1_2: -7481779553954777656
       living_bookcase_broken1_3: -616419117357092107
-      living_bookcase_broken1_4: -5864232774519891085
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
