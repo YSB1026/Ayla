@@ -11,8 +11,9 @@ public class EnemyState
     protected float xInput;
     protected float yInput;
 
-    // 생성자: 상태를 만들 때 플레이어, 상태머신, 애니메이션 Bool 이름을 설정
-    public EnemyState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animBoolName)
+
+	// 생성자: 상태를 만들 때 플레이어, 상태머신, 애니메이션 Bool 이름을 설정
+	public EnemyState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animBoolName)
     {
         this.enemy = _enemy;
         this.stateMachine = _stateMachine;
