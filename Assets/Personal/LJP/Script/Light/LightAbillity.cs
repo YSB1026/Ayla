@@ -96,7 +96,8 @@ public class LightAbillity : MonoBehaviour
 					go.GetComponent<Enemy>().ApplyStun(stunTime);
 					break;
 				case LightColor.RED:
-					go.GetComponent<FirebleObject>().FireOn();
+					go.GetComponent<FirebleObject>()?.FireOn();
+					go.GetComponent <Enemy>()?.ApplyStun(stunTime);
 					break;
 				case LightColor.GREEN:
 					break;
