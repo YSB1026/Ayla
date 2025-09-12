@@ -87,7 +87,7 @@ public class Player : Entity
         pushState = new Player_PushState(this, stateMachine, "Push");
         airState = new Player_AirState(this, stateMachine, "Fall");
 
-        hideState = new Player_HideState(this, stateMachine, "isHiding");
+        hideState = new Player_HideState(this, stateMachine, "Hide");
 
         downState = new Player_DownState(this, stateMachine, "Down");
         upState = new Player_UpState(this, stateMachine, "Up");
@@ -152,10 +152,7 @@ public class Player : Entity
         col.offset = idleColOffset;
         col.size = idleColSize;
     }
-    //private Vector2 sitColOffset = new Vector2(0f, -0.1f);
-    //private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
-    //private Vector2 crawColOffset = new Vector2(0f, -0.2f);
-    //private Vector2 crawColSize = new Vector2(2f, 0.9f);
+
     public void SetSitCollider()
     {
         col.direction = CapsuleDirection2D.Vertical;
