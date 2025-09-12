@@ -1,27 +1,23 @@
 using NUnit.Framework.Interfaces;
 using UnityEngine;
 
-public class Enemy : Entity
+public abstract class Enemy : Entity
 {
     [Header("이동 정보")]
     private float moveSpeed = 1f;
     public float applySpeed;
     public float defaultMoveSpeed = 1f;
 
-    public float stunTime { get; private set; } = 0f;
+    public float stunTime { get; protected set; } = 0f;
 
-    public EnemyStateMachine stateMachine { get; private set; }
-
-	public Enemy_StunState stunState { get; private set; }
+	public EnemyStateMachine stateMachine { get; private set; }
 
 
 	protected override void Awake()
     {
         base.Awake();
 
-        stateMachine = new EnemyStateMachine();
-		stunState = new Enemy_StunState(this, stateMachine, "Stun", this);
-
+		stateMachine = new EnemyStateMachine();
 	}
 
 	protected override void Start()
@@ -46,11 +42,7 @@ public class Enemy : Entity
         applySpeed = moveSpeed;
     }
 
-    public virtual void ApplyStun(float time)
-    {
-        stunTime = time;
-		stateMachine.ChangeState(stunState);
-    }
+    public abstract void ApplyStun(float time);
 
     public virtual void HitPlayer()
     {

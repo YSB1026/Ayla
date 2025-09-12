@@ -110,4 +110,8 @@ public class Enemy_Light : Enemy
         Gizmos.DrawWireCube(playerDetect.position, detectBoxSize);
     }
 
+	public override void ApplyStun(float time)
+	{
+		throw new System.NotImplementedException();
+	}
 }

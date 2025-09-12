@@ -1,15 +1,31 @@
 using UnityEngine;
 
+public enum LightColor
+{
+	WHITE,
+	BLACK,
+	RED,
+	GREEN,
+	BLUE
+}
+
 public class LightAbillity : MonoBehaviour
 {
+	[Header("스크립트 및 컴포넌트")]
+	[SerializeField] private Ayla ayla;
 	[SerializeField] private LightColor lightColor;
+	[SerializeField] private Collider2D lightCollier;
+	private HardLight2D lightRenderer;
 
-	private Light lightCompo;
+	[Header("능력 밸류")]
+	[SerializeField] private float stunTime = 1.0f;
+	[SerializeField] private float slowRate = 0.3f;
+
 	[SerializeField] private GameObject go = null;
 
 	private void Start()
 	{
-		lightCompo = GetComponent<Light>();
+		lightRenderer = GetComponentInChildren<HardLight2D>();
 	}
 
 	private void Update()
@@ -48,19 +64,19 @@ public class LightAbillity : MonoBehaviour
 		switch (lightColor)
 		{
 			case LightColor.WHITE:
-				lightCompo.color = Color.white;
+				lightRenderer.Color = Color.white;
 				break;
 			case LightColor.BLACK:
-				lightCompo.color = Color.black;
+				lightRenderer.Color = Color.black;
 				break;
 			case LightColor.RED:
-				lightCompo.color = Color.red;
+				lightRenderer.Color = Color.red;
 				break;
 			case LightColor.GREEN:
-				lightCompo.color = Color.green;
+				lightRenderer.Color = Color.green;
 				break;
 			case LightColor.BLUE:
-				lightCompo.color = Color.blue;
+				lightRenderer.Color = Color.blue;
 				break;
 			default:
 				break;
@@ -77,6 +93,7 @@ public class LightAbillity : MonoBehaviour
 					break;
 				case LightColor.BLACK:
 					go?.GetComponent<FirebleObject>().FireOff();
+					go.GetComponent<Enemy>().ApplyStun(stunTime);
 					break;
 				case LightColor.RED:
 					go.GetComponent<FirebleObject>().FireOn();
@@ -84,7 +101,7 @@ public class LightAbillity : MonoBehaviour
 				case LightColor.GREEN:
 					break;
 				case LightColor.BLUE:
-					go?.GetComponent<TestEnemy>().Slow();
+					go?.GetComponent<Enemy>().ApplySlow(slowRate);
 					break;
 				default:
 					break;

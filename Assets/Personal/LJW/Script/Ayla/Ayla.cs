@@ -28,6 +28,7 @@ public class Ayla : Entity
     [SerializeField] private float holdDuration = 2f;
 
     [Header("에일란 게이지")]
+    [SerializeField] private float maxAylaGauge = 100f;
     [SerializeField] private float aylaGauge = 100f;
 
     #region States
@@ -62,6 +63,7 @@ public class Ayla : Entity
     {
         base.Start();
         followBasePosition = transform.position;
+        aylaGauge = maxAylaGauge;
     }
 
     protected override void Update()
@@ -170,4 +172,16 @@ public class Ayla : Entity
     }
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+
+    public void ResroreAylaGauge(float value)
+    {
+        aylaGauge += value;
+        if(aylaGauge >= maxAylaGauge) aylaGauge = maxAylaGauge;
+    }
+
+    public void ConsumeAylaGause(float value)
+    {
+        aylaGauge -= value;
+        if(aylaGauge <= 0) aylaGauge = 0;
+    }
 }

@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class Enemy_StunState : EnemyState
+public class Enemy_SKStunState : EnemyState
 {
-	private Enemy thisEnemy;
+	private Enemy_SK EnemySK;
 
 	private float stunTimer = 0f;
 	private float stunTime = 1f;
 
-	public Enemy_StunState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animBoolName, Enemy enemy) : base(_enemy, _stateMachine, _animBoolName)
+	public Enemy_SKStunState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_SK enemy) : base(_enemy, _stateMachine, _animBoolName)
 	{
-		thisEnemy = enemy;
+		EnemySK = enemy;
 	}
 
 	public override void AnimationEndTrigger()
@@ -20,7 +20,7 @@ public class Enemy_StunState : EnemyState
 	public override void Enter()
 	{
 		base.Enter();
-		stunTime = thisEnemy.stunTime;
+		stunTime = EnemySK.stunTime;
 	}
 
 	public override void Update()
@@ -30,7 +30,7 @@ public class Enemy_StunState : EnemyState
 		stunTime = Time.deltaTime;
 
 		if (stunTimer > stunTime)
-			stateMachine.ChangeState(thisEnemy.idleState);
+			stateMachine.ChangeState(EnemySK.idleState);
 	}
 
 	public override void Exit()
