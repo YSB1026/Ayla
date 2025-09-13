@@ -5,16 +5,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
+    //public Vector3 savePoint;
+    public SaveData currentSave { get; private set; } = new SaveData();
 
-    public Vector3 savePoint;
-
-    #region 참조
-    //임시로 작성
+    #region Private Fields
     private Player currentPlayer => GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
     private UIManager uiManager;
     private SoundManager soundManager;
     private CustomSceneManager sceneManager;
     private SpawnManager spawnManager;
+    private LightColorController lightColorController;
     #endregion
 
     private void Awake()
@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
-        //고민중 
         //ChangeState(GameState.Lobby);
     }
 
@@ -99,29 +98,43 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+    
+    public void RegistLightController(LightColorController controller)
+    {
+        lightColorController = controller;
+    }
     public void OnPendantCollected(LightColorController.ColorOption color)
     {
-        Debug.Log($"팬던트 수집됨: {color}");
+        Debug.Log($"[GameManager] Pendant Collected: {color}");
+        currentSave.pendantColor = color;
 
-        // LightManager에서 색상 변경
+        if(lightColorController != null)
+        {
+            lightColorController.ChangeColorWithFade(color);
+        }
         //LightManager.Instance?.SetLightColor(color);
 
-        // 컷씬 또는 연출 처리 해야할 수 있음
         //uiManager.PlayPendantCutscene(color);
         //soundManager.PlayPendantCollectSFX(color);
 
         //sceneManager.LoadAdditiveScene(sceneName);
     }
 
+    public void SetSavePoint(Vector3 point)
+    {
+        currentSave.savePoint = point;
+        //Debug.Log($"[GameManager] Save Point Set: {point}");
+    }
+
     public void RespawnPlayer()
     {
         if (SceneManager.GetActiveScene().name == "Forest")
         {
-            spawnManager.PlayerSpawn(savePoint, PlayerType.FOREST);
+            spawnManager.PlayerSpawn(currentSave.savePoint, PlayerType.FOREST);
         }
         else if (SceneManager.GetActiveScene().name == "House")
         {
-            spawnManager.PlayerSpawn(savePoint, PlayerType.HOUSE);
+            spawnManager.PlayerSpawn(currentSave.savePoint, PlayerType.HOUSE);
         }
 
         ChangeState(GameState.InGame);

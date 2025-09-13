@@ -23,7 +23,7 @@ public class Player_AnimationTrigger : MonoBehaviour
     {
         /*GameManager.Instance.RespawnPlayer();
         Destroy(this.gameObject);*/
-        player.transform.position = GameManager.Instance.savePoint;
+        player.transform.position = GameManager.Instance.currentSave.savePoint;
         player.stateMachine.ChangeState(player.inputState);
     }
 }

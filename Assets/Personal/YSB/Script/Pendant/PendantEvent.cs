@@ -5,27 +5,21 @@ using static LightColorController;
 
 public class PendantEvent : MonoBehaviour
 {
-    //ÆÛÁñ
-    [Header("È¹µæÇÒ ºû")]
+    [Header("íœë˜íŠ¸ ìƒ‰ìƒ")]
     public ColorOption pendantColor;
 
-    [Header("ÆÛÁñ")]
+    [Header("í¼ì¦ ì˜¤ë¸Œì íŠ¸")]
     [SerializeField] private GameObject puzzleObject;
 
-    [Header("È¸»ó ¾À Æ®¸®°Å")]
+    [Header("íšŒìƒ ì¥ë©´ íŠ¸ë¦¬ê±°")]
     [SerializeField] private GameObject recallSceneTrigger;
 
     private void OnValidate()
     {
         if(puzzleObject == null)
         {
-            Debug.LogError($"{gameObject.name} ÆÛÁñ ³Ö¾îÁÖ¼¼¿ä!!");
+            Debug.LogError($"{gameObject.name} í¼ì¦ ì˜¤ë¸Œì íŠ¸ í• ë‹¹ ì•ˆë¨");
         }
-
-        //if (recallSceneTrigger == null || recallSceneTrigger.activeSelf)
-        //{
-        //    Debug.LogWarning($"{gameObject.name} È¸»ó¾À ³Ö¾îÁÖ¼¼¿ä!!, ºñÈ°¼ºÈ­µµ ÇØÁÖ¼¼¿ä");
-        //}
     }
     private void OnEnable()
     {
@@ -59,7 +53,7 @@ public class PendantEvent : MonoBehaviour
         }
     }
 
-    private void OnPendantEvent()//ÆÛÁñ ÄÁÆ®·Ñ·¯¿¡¼­ actionÀ» ÅëÇØ È£ÃâÇÏ´Â ÇÔ¼ö¿¡¿ä.
+    private void OnPendantEvent()//íœë˜íŠ¸ ìˆ˜ì§‘ ì‹œ í˜¸ì¶œë˜ëŠ” ì´ë²¤íŠ¸
     {
         StartCoroutine(ActivePuzzle(false));
 

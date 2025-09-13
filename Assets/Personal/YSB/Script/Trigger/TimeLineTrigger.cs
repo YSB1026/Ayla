@@ -8,7 +8,7 @@ using UnityEngine.Playables;
 
 public enum ObjectActionType
 {
-    None,           //None ÇÊ¿ä¾ø±äÇÏ³×¿ä.. ±Ùµ¥ ¾ø¾Ö¸é ³­¸®³ª¼­ ³öµÑ°Ô¿ä ;(
+    None,
     SetActiveTrue,
     SetActiveFalse,
     Destroy
@@ -23,9 +23,10 @@ public class ObjectAction
 
 public class TimeLineTrigger : BaseTrigger
 {
-    [Header("¿ÀºêÁ§Æ® Çàµ¿ ¼³Á¤")]
+    [Header("íƒ€ì„ë¼ì¸ ì´í›„ ì˜¤ë¸Œì íŠ¸ ì•¡ì…˜")]
     [SerializeField] private List<ObjectAction> actions = new();
-
+    private Player player;
+    private bool isPlayerFacingRight;
     private PlayableDirector director;
     private bool isTriggered = false;
 
@@ -37,31 +38,26 @@ public class TimeLineTrigger : BaseTrigger
     protected override void OnPlayerEnter()
     {
         if (isTriggered) return;
-
         isTriggered = true;
-        GameManager.Instance.SetPlayerControlEnabled(false);
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        isPlayerFacingRight = player.facingRight;
+
+        Debug.Log($"Player Facing Right: {isPlayerFacingRight}");
 
         if (director != null)
         {
-            director.stopped += OnTimelineStopped;
-            StartCoroutine(PlayTimelineDelayed());
+            GameManager.Instance.SetPlayerControlEnabled(false);
+            director.Play();
+            director.stopped += (PlayableDirector obj) => OnTimelineFinished();
         }
     }
 
-    private IEnumerator PlayTimelineDelayed()
-    {
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        director.Play();
-    }
-
-    private void OnTimelineStopped(PlayableDirector d)
+    private void OnTimelineFinished()
     {
         GameManager.Instance.SetPlayerControlEnabled(true);
-        director.stopped -= OnTimelineStopped;
-
+        SyncPlayerFacing();
         ApplyActions();
-
         Destroy(gameObject);
     }
 
@@ -89,5 +85,25 @@ public class TimeLineTrigger : BaseTrigger
             }
         }
     }
+
+    private void SyncPlayerFacing()
+    {
+        var sr = player.GetComponentInChildren<SpriteRenderer>();
+        if (sr != null && sr.flipX)
+            sr.flipX = false;
+
+        if (isPlayerFacingRight)
+        {
+            player.facingDir = 1;
+            player.facingRight = true;
+        }
+        else
+        {
+            player.Flip();
+            player.facingDir = -1;
+            player.facingRight = false;
+        }
+    }
 }
+
 

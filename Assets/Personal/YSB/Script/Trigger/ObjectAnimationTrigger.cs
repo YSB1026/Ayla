@@ -3,13 +3,13 @@ using UnityEngine;
 public class ObjectAnimationTrigger : MonoBehaviour
 {
     [Header("Object that must enter the trigger")]
-    [SerializeField] private GameObject triggerTarget; // 충돌 오브젝트(플레이어, 열쇠 등)
+    [SerializeField] private GameObject triggerTarget; 
 
     [Header("Object to animate")]
-    [SerializeField] private GameObject animatedObject; // 애니메이션 재생 대상
+    [SerializeField] private GameObject animatedObject; 
 
     [Header("Object to activate (Can be null)")]
-    [SerializeField] private GameObject objectToActivate;// SetActive(true) 대상
+    [SerializeField] private GameObject objectToActivate;
 
     [Header("Destroy Object")]
     [SerializeField] private bool isDestroy;

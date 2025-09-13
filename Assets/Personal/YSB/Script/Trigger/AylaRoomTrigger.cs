@@ -16,7 +16,6 @@ public class AylaRoomEvent : MonoBehaviour
 
     IEnumerator AfterGreenPendantTrigger()
     {
-        Debug.Log("green event 호출됐어요!");
         yield return null;
 
         Coroutine fadeOut = StartCoroutine(FadeSpritesOutAndDisable(aylaRoomBeforeCutScene));
@@ -57,7 +56,6 @@ public class AylaRoomEvent : MonoBehaviour
             yield return null;
         }
 
-        // 완전히 투명하게 만들고 오브젝트 비활성화
         foreach (var sprite in sprites)
         {
             if (sprite != null)
@@ -84,7 +82,7 @@ public class AylaRoomEvent : MonoBehaviour
         {
             Color c = sprite.color;
             c.a = 0f;
-            sprite.color = c; // 처음엔 투명하게
+            sprite.color = c;
             targetColors[sprite] = c;
         }
 
@@ -105,7 +103,6 @@ public class AylaRoomEvent : MonoBehaviour
             yield return null;
         }
 
-        // 완전 불투명으로 보정
         foreach (var sprite in sprites)
         {
             if (sprite != null)
