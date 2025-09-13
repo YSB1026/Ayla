@@ -7,6 +7,9 @@ public class Player : Entity
 {
     [SerializeField] private LayerMask whatIsTrap;
 
+    [Header("Mirror 오브젝트")]
+    [SerializeField] private GameObject mirror;
+
     [Header("이동 정보")]
     public float moveSpeed;
     public float runSpeed;
@@ -56,6 +59,8 @@ public class Player : Entity
     #endregion
 
     public bool controlEnabled { get; private set; } = true;
+    public bool IsHidden { get; private set; } = false;
+    public void SetHidden(bool value) => IsHidden = value;
 
     public void SetControlEnabled(bool isEnabled)
     {
@@ -114,6 +119,16 @@ public class Player : Entity
         base.Update();
 
         stateMachine.currentState.Update();
+
+        // 1번 키로 Mirror 활성화/비활성
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (mirror != null)
+            {
+                bool newState = !mirror.activeSelf;
+                mirror.SetActive(newState);
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
