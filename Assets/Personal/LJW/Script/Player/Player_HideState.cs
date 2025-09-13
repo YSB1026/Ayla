@@ -21,7 +21,7 @@ public class Player_HideState : PlayerState
         anchor = player.GetHideAnchor();
         player.SetZeroVelocity();
 
-        // 물리 잠금(컨트롤 비활성화는 사용하지 않음)
+        // 물리 잠금
         rb = player.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -36,7 +36,7 @@ public class Player_HideState : PlayerState
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
-        // 숨는 동안 앉기 유지 (애니 파라미터 + 콜라이더)
+        // 숨는 동안 앉기 유지
         if (player.anim != null) player.anim.SetBool("Sit", true);
         player.SetSitCollider();
 
@@ -54,13 +54,15 @@ public class Player_HideState : PlayerState
             player.transform.position = new Vector3(
                 anchor.position.x, anchor.position.y, player.transform.position.z);
         }
+
+        player.SetHidden(true);
     }
 
     public override void Update()
     {
         base.Update();
 
-        // 앵커에 계속 고정 (원치 않으면 이 블록 지워도 됨)
+        // 앵커에 계속 고정
         if (anchor != null)
         {
             player.transform.position = new Vector3(
@@ -76,7 +78,7 @@ public class Player_HideState : PlayerState
     {
         base.Exit();
 
-        // 앉기 해제 (애니 + 콜라이더 원복)
+        // 앉기 해제
         if (player.anim != null) player.anim.SetBool("Sit", false);
         player.SetIdleCollider();
 
@@ -94,5 +96,7 @@ public class Player_HideState : PlayerState
             var c = sr.color;
             sr.color = new Color(c.r, c.g, c.b, 1f);
         }
+
+        player.SetHidden(false);
     }
 }
