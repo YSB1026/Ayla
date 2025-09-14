@@ -33,6 +33,7 @@ public class LightColorController : MonoBehaviour
     [SerializeField] private float rangeChangeDuration = 0.5f;
     [SerializeField] private float targetRange = 12f;
 
+    private bool isFading = false;
     private Color whiteColor = new Color(214f / 255f, 236f / 255f, 248f / 255f);
     private Color greenColor = new Color(155f / 255f, 1f, 73f / 255f);
 
@@ -85,6 +86,7 @@ public class LightColorController : MonoBehaviour
     // 색상 페이드 코루틴
     private IEnumerator FadeToColor(ColorOption newColor)
     {
+        if (isFading) yield break;
         Color startColor = GetColorFromEnum(currentColor);
         Color targetColor = GetColorFromEnum(newColor);
 
@@ -179,14 +181,17 @@ public class LightColorController : MonoBehaviour
     {
         if (hardLight2D == null) return;
 
-        if (rangeChangeCoroutine != null)
-            StopCoroutine(rangeChangeCoroutine);
+        // if (rangeChangeCoroutine != null)
+        //     StopCoroutine(rangeChangeCoroutine);
 
-        rangeChangeCoroutine = StartCoroutine(FadeRange());
+        if(!isFading)
+            rangeChangeCoroutine = StartCoroutine(FadeRange());
     }
 
     private IEnumerator FadeRange()
     {
+        isFading = true;
+
         float originalRange = hardLight2D.Range;
         float elapsedTime = 0f;
 
@@ -212,5 +217,6 @@ public class LightColorController : MonoBehaviour
         }
 
         hardLight2D.Range = originalRange;
+        isFading = false;
     }
 }
