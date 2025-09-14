@@ -1,18 +1,16 @@
 using UnityEngine;
 
-public class SavePoint : MonoBehaviour
+public class SavePoint : BaseTrigger
 {
-	private void OnTriggerEnter2D(Collider2D collision)
+	private bool isActivated = false;
+    protected override void OnPlayerEnter()
 	{
-		if(collision.CompareTag("Player"))
-		{
-			SetSavePoint();
-		}
+		SetPoint();
 	}
-
-	private void SetSavePoint()
+	private void SetPoint()
 	{
-		GameManager.Instance.savePoint = transform.position;
-		Destroy(gameObject);
+		if (isActivated) return;
+		isActivated = true;
+		GameManager.Instance.SetSavePoint(transform.position);
 	}
 }

@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
 
-    [Header("¿Àµð¿À ¼Ò½º")]
+    [Header("ì˜¤ë””ì˜¤ ì†ŒìŠ¤")]
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource entitySource;
     [SerializeField] private AudioSource envSource;
