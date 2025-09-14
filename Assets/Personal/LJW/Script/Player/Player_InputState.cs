@@ -9,7 +9,7 @@ public class Player_InputState : PlayerState
     {
         base.Enter();
 
-        player.SetZeroVelocity();   // ют╥б ╢К╠Б ╩Себ
+        player.SetZeroVelocity();   // О©╫т╥О©╫ О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
     }
     public override void Update()
     {

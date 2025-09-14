@@ -21,7 +21,7 @@ public class Player_HideState : PlayerState
         anchor = player.GetHideAnchor();
         player.SetZeroVelocity();
 
-        // 물리 잠금(컨트롤 비활성화는 사용하지 않음)
+        // 물리 잠금
         rb = player.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -36,7 +36,7 @@ public class Player_HideState : PlayerState
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
-        // 숨는 동안 앉기 유지 (애니 파라미터 + 콜라이더)
+        // 숨는 동안 앉기 유지
         if (player.anim != null) player.anim.SetBool("Sit", true);
         player.SetSitCollider();
 
@@ -54,13 +54,19 @@ public class Player_HideState : PlayerState
             player.transform.position = new Vector3(
                 anchor.position.x, anchor.position.y, player.transform.position.z);
         }
+
+        // 레이어 변경 (숨을 때)
+        int hiddenLayer = LayerMask.NameToLayer("HiddenPlayer");
+        SetLayerRecursively(player.gameObject, hiddenLayer);
+
+        player.SetHidden(true);
     }
 
     public override void Update()
     {
         base.Update();
 
-        // 앵커에 계속 고정 (원치 않으면 이 블록 지워도 됨)
+        // 앵커에 계속 고정
         if (anchor != null)
         {
             player.transform.position = new Vector3(
@@ -76,7 +82,7 @@ public class Player_HideState : PlayerState
     {
         base.Exit();
 
-        // 앉기 해제 (애니 + 콜라이더 원복)
+        // 앉기 해제
         if (player.anim != null) player.anim.SetBool("Sit", false);
         player.SetIdleCollider();
 
@@ -93,6 +99,22 @@ public class Player_HideState : PlayerState
         {
             var c = sr.color;
             sr.color = new Color(c.r, c.g, c.b, 1f);
+        }
+
+        // 레이어 원복
+        int playerLayer = LayerMask.NameToLayer("Player");
+        SetLayerRecursively(player.gameObject, playerLayer);
+
+        player.SetHidden(false);
+    }
+
+    // 유틸 함수
+    private void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        obj.layer = newLayer;
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, newLayer);
         }
     }
 }

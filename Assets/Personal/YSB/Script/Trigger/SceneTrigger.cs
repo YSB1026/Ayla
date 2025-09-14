@@ -14,7 +14,7 @@ public class SceneTrigger : BaseTrigger
         if (isTrigger) return;
 
         isTrigger = true;
-        Debug.Log($"{gameObject.name} - Trigger");
+        
         if (isAdditiveMode)
         {
             LoadAdditiveScene();
