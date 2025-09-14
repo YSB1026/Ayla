@@ -8,8 +8,11 @@ public class GameManager : MonoBehaviour
     //public Vector3 savePoint;
     public SaveData currentSave { get; private set; } = new SaveData();
 
+    public bool IsPlayerControlEnabled { get; private set; } = true;
+
     #region Private Fields
-    private Player currentPlayer => GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
+    private Player _currentPlayer;
+    private Player currentPlayer => _currentPlayer ??= GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
     private UIManager uiManager;
     private SoundManager soundManager;
     private CustomSceneManager sceneManager;
@@ -91,24 +94,25 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Respawn:
-                UIManager.Instance.FadeOut(() => {
+                UIManager.Instance.FadeOut(() =>
+                {
                     UIManager.Instance.FadeIn();
                 });
                 RespawnPlayer();
                 break;
         }
     }
-    
+
     public void RegistLightController(LightColorController controller)
     {
         lightColorController = controller;
     }
-    public void OnPendantCollected(LightColorController.ColorOption color)
+    public void OnPendantCollected(ColorOption color)
     {
         Debug.Log($"[GameManager] Pendant Collected: {color}");
         currentSave.pendantColor = color;
 
-        if(lightColorController != null)
+        if (lightColorController != null)
         {
             lightColorController.ChangeColorWithFade(color);
         }
@@ -140,11 +144,12 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.InGame);
     }
 
-    public void SetPlayerControlEnabled(bool isEnabled)
+    public void SetPlayerControl(bool isEnabled)
     {
         if (currentPlayer != null)
         {
             currentPlayer.GetComponent<Player>().SetControlEnabled(isEnabled);
+            IsPlayerControlEnabled = isEnabled;
         }
     }
 
@@ -152,8 +157,8 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#endif
     }
 }

@@ -39,7 +39,7 @@ public class PendantEvent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.SetPlayerControlEnabled(false);
+            GameManager.Instance.SetPlayerControl(false);
             StartCoroutine(ActivePuzzle(true));
         }
     }
@@ -58,7 +58,7 @@ public class PendantEvent : MonoBehaviour
         StartCoroutine(ActivePuzzle(false));
 
         GameManager.Instance.OnPendantCollected(pendantColor);
-        GameManager.Instance.SetPlayerControlEnabled(true);
+        GameManager.Instance.SetPlayerControl(true);
 
         recallSceneTrigger.SetActive(true);
         Destroy(gameObject);
