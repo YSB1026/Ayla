@@ -20,7 +20,7 @@ public class LightColorController : MonoBehaviour
     public HardLight2D hardLight2D;
 
     // 현재 색상
-    public ColorOption currentColor { get; private set; } = ColorOption.Green;
+    public ColorOption currentColor { get; private set; } = ColorOption.White;
 
     // 색상 변경 시간 (초)
     public float colorChangeDuration = 1.0f;
