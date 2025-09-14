@@ -25,8 +25,8 @@ public class Player : Entity
     private CapsuleCollider2D col;
 
     #region ColliderSetting
-    private Vector2 idleColOffset = new Vector2(0.05f, 0f);
-    private Vector2 idleColSize = new Vector2(0.93f, 1.9f);
+    private Vector2 idleColOffset = new Vector2(0.05f, 0.1f);
+    private Vector2 idleColSize = new Vector2(0.93f, 1.5f);
     private Vector2 sitColOffset = new Vector2(0f, -0.1f);
     private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
     private Vector2 crawColOffset = new Vector2(0f, -0.2f);

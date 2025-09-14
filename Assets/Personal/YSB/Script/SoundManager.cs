@@ -138,12 +138,14 @@ public class SoundManager : MonoBehaviour
     public void PlayFootstep(SurfaceType type)
     {
         if (!footstepDict.TryGetValue(type, out var clipList)) return;
+        if (SurfaceType.None == type) return;
         PlayPlayerSound(EntitySoundType.Footstep, clipList);
     }
 
     public void PlayCrawling(SurfaceType type)
     {
         if (!crawlingDict.TryGetValue(type, out var clipList)) return;
+        if(SurfaceType.None == type) return;
         PlayPlayerSound(EntitySoundType.Crawling, clipList);
     }
 
