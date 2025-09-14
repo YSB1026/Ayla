@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GreenLightReactiveObject : MonoBehaviour, ILightReactive
 {
+    private bool isFirst = true;
     private Animator animator;
     private BoxCollider2D col;
     public bool IsInLight { get; set; } = false;
@@ -13,8 +14,12 @@ public class GreenLightReactiveObject : MonoBehaviour, ILightReactive
     }
     public void ApplyLightReaction()
     {
+        if (!isFirst && GameManager.Instance.currentSave.pendantColor != ColorOption.Green) return;
+        if (isFirst) isFirst = false;
+
         if (IsInLight)
         {
+            Debug.Log("Green Light On");
             animator.SetBool("isBroken", false);
             col.enabled = false;
         }

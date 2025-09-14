@@ -21,13 +21,14 @@ namespace YSB
                 lightController.ChangeRangeWithFade();
                 //Debug.Log($"Detected {inLightReactives.Count} light reactives.");
             }
-
             if (inLightReactives != null && inLightReactives.Count > 0)
             {
+                Debug.Log($"Detected {inLightReactives.Count} light reactives.");
                 foreach (var reactive in inLightReactives)
                 {
                     reactive.ApplyLightReaction();
                 }
+                inLightReactives.Clear();
             }
         }
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public enum ObjectActionType
 {
+    None,
     SetActiveTrue,
     SetActiveFalse,
     Destroy

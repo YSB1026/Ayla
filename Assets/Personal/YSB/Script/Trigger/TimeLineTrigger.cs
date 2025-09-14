@@ -22,7 +22,7 @@ public class TimeLineTrigger : BaseTrigger
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         isPlayerFacingRight = player.facingRight;
 
-        Debug.Log($"Player Facing Right: {isPlayerFacingRight}");
+        //Debug.Log($"Player Facing Right: {isPlayerFacingRight}");
 
         if (director != null)
         {
