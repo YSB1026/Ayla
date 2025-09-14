@@ -26,13 +26,15 @@ public class Enemy_SK : Enemy
 
     private SpriteRenderer sr;
 
-    #region States
-    public Enemy_SKIdleState idleState { get; private set; }
+	#region States
+	public Enemy_SKIdleState idleState { get; private set; }
     public Enemy_SKAppearState appearState { get; private set; }
     public Enemy_SKAttackState attackState { get; private set; }
     public Enemy_SKDeathState deathState { get; private set; }
+	public Enemy_SKStunState stunState { get; private set; }
 
-    public Enemy_SK_SAppearState sappearState { get; private set; }
+
+	public Enemy_SK_SAppearState sappearState { get; private set; }
     public Enemy_SK_SIdleState sidleState { get; private set; }
     public Enemy_SK_SDisappearState sdisappearState { get; private set; }
     #endregion
@@ -40,10 +42,11 @@ public class Enemy_SK : Enemy
     {
         base.Awake();
 
-        idleState = new Enemy_SKIdleState(this, stateMachine, "Idle", this);
+		idleState = new Enemy_SKIdleState(this, stateMachine, "Idle", this);
         appearState = new Enemy_SKAppearState(this, stateMachine, "Appear", this);
         attackState = new Enemy_SKAttackState(this, stateMachine, "Attack", this);
         deathState = new Enemy_SKDeathState(this, stateMachine, "Die", this);
+		stunState = new Enemy_SKStunState(this, stateMachine, "Stun", this);
 
         sappearState = new Enemy_SK_SAppearState(this, stateMachine, "SAppear", this);
         sidleState = new Enemy_SK_SIdleState(this, stateMachine, "SIdle", this);
@@ -80,7 +83,13 @@ public class Enemy_SK : Enemy
         DetectPlayerMovement();
     }
 
-    public void OnAppearEnter()
+	public override void ApplyStun(float time)
+	{
+		stunTime = time;
+		stateMachine.ChangeState(stunState);
+	}
+
+	public void OnAppearEnter()
     {
         if (player != null) appearAnchorPos = player.position;
         isPresent = true;
@@ -134,7 +143,7 @@ public class Enemy_SK : Enemy
         }
     }
 
-    public bool IsPlayerMoving()
+	public bool IsPlayerMoving()
     {
         if (player == null) return false;
 
