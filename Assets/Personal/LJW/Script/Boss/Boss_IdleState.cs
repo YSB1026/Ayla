@@ -9,7 +9,8 @@ public class Boss_IdleState : BossState
     public override void Enter()
     {
         base.Enter();
-        stateTimer = boss.idleTime; // idle À¯Áö ½Ã°£
+        Debug.Log("Idle ìƒíƒœ ì§„ì…");
+        stateTimer = boss.idleTime; // idle ìœ ì§€ ì‹œê°„
     }
 
     public override void Update()
@@ -18,13 +19,14 @@ public class Boss_IdleState : BossState
 
         if (boss.IsPlayerInAttackBox())
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î °¨ÁöµÊ");
+            Debug.Log("í”Œë ˆì´ì–´ ê°ì§€ë¨");
             stateMachine.ChangeState(boss.battleState);
             return;
         }
 
         if (stateTimer <= 0)
         {
+            Debug.Log("Idle ì‹œê°„ ì¢…ë£Œ, Walk ìƒíƒœë¡œ ì „í™˜");
             stateMachine.ChangeState(boss.walkState);
         }
     }

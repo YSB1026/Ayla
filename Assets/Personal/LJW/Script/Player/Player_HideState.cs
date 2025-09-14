@@ -55,6 +55,10 @@ public class Player_HideState : PlayerState
                 anchor.position.x, anchor.position.y, player.transform.position.z);
         }
 
+        // 레이어 변경 (숨을 때)
+        int hiddenLayer = LayerMask.NameToLayer("HiddenPlayer");
+        SetLayerRecursively(player.gameObject, hiddenLayer);
+
         player.SetHidden(true);
     }
 
@@ -97,6 +101,20 @@ public class Player_HideState : PlayerState
             sr.color = new Color(c.r, c.g, c.b, 1f);
         }
 
+        // 레이어 원복
+        int playerLayer = LayerMask.NameToLayer("Player");
+        SetLayerRecursively(player.gameObject, playerLayer);
+
         player.SetHidden(false);
+    }
+
+    // 유틸 함수
+    private void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        obj.layer = newLayer;
+        foreach (Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
     }
 }

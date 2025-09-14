@@ -17,7 +17,7 @@ public class Boss_WalkState : BossState
     {
         base.Update();
 
-        // 1) Å¸±ê Ã£±â: long range ¿ì¼±, ¾øÀ¸¸é ÀÏ¹İ ½Ã¾ß ¹Ú½º
+        // 1) íƒ€ê¹ƒ ì°¾ê¸°: long range ìš°ì„ , ì—†ìœ¼ë©´ ì¼ë°˜ ì‹œì•¼ ë°•ìŠ¤
         Transform target = null;
 
         if (boss.longRangeCheck != null)
@@ -29,10 +29,10 @@ public class Boss_WalkState : BossState
                 boss.whatIsPlayer
             );
 
-            if (colLong)
+            if (boss.hasLastSeenPlayerPos || colLong)
             {
-                target = colLong.transform;
-                currentSpeed = boss.runSpeed; // long range °¨Áö ½Ã ¼Óµµ ºÎ½ºÆ®
+                target = colLong?.transform;
+                currentSpeed = boss.runSpeed; // long range ê°ì§€ ì‹œ ì†ë„ ë¶€ìŠ¤íŠ¸
             }
             else
             {
@@ -52,12 +52,12 @@ public class Boss_WalkState : BossState
             if (colSight)
             {
                 target = colSight.transform;
-                // ÀÏ¹İ ½Ã¾ß¿¡¼­´Â Æò¼ÓÀ¸·Î Á¢±Ù
+                // ì¼ë°˜ ì‹œì•¼ì—ì„œëŠ” í‰ì†ìœ¼ë¡œ ì ‘ê·¼
                 currentSpeed = boss.moveSpeed;
             }
         }
 
-        // 2) Å¸±êÀÌ º¸ÀÌ¸é ±× ¹æÇâÀ¸·Î¸¸ È¸Àü
+        // 2) íƒ€ê¹ƒì´ ë³´ì´ë©´ ê·¸ ë°©í–¥ìœ¼ë¡œë§Œ íšŒì „
         if (target != null)
         {
             float dir = Mathf.Sign(target.position.x - boss.transform.position.x);
@@ -65,17 +65,17 @@ public class Boss_WalkState : BossState
                 boss.Flip();
         }
 
-        // 3) ÀÌµ¿
+        // 3) ì´ë™
         boss.SetVelocity(currentSpeed * boss.facingDir, rb.linearVelocity.y);
 
-        // 4) ±ÙÁ¢ ¹üÀ§ µé¾î¿À¸é ¹èÆ²·Î ÀüÈ¯ (°ø°İ µîÀº ¹èÆ²¿¡¼­ Ã³¸®)
+        // 4) ê·¼ì ‘ ë²”ìœ„ ë“¤ì–´ì˜¤ë©´ ë°°í‹€ë¡œ ì „í™˜ (ê³µê²© ë“±ì€ ë°°í‹€ì—ì„œ ì²˜ë¦¬)
         if (boss.IsPlayerInCloseRange())
         {
             stateMachine.ChangeState(boss.battleState);
             return;
         }
 
-        // 5) ³¶¶°·¯Áö µî ¹ßÆÇ ¾øÀ½ ¡æ ¹İÀü ÈÄ idle
+        // 5) ë‚­ë– ëŸ¬ì§€ ë“± ë°œíŒ ì—†ìŒ â†’ ë°˜ì „ í›„ idle
         if (!boss.IsGroundDetected())
         {
             boss.Flip();
