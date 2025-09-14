@@ -75,13 +75,6 @@ public class SpotReflector : MonoBehaviour
     [Tooltip("접점에서 반사 방향으로 아주 조금 전진(겹침 방지)")]
     [SerializeField] private float spriteStartEdgeInset = 0.02f;
 
-    // 받는 빛의 비율로 X 스케일만 조절
-    [SerializeField] private bool scaleXByReceived = true;          // 켜면 동작
-    [SerializeField, Range(0f, 1f)] private float minXScale = 0.1f;  // 최소 가늘기
-    [SerializeField] private float xScaleAtFull = 1f;                // 100% 받을 때 X 스케일(기본 1)
-    [SerializeField] private int incidentRayCount = 9;               // 입사 콘 샘플 수(홀수 권장)
-    [SerializeField] private float incidentHalfAngleDeg = 20f;       // 입사 콘 반쪽 각(도)
-
     private LineRenderer line;
     private readonly List<Vector3> points = new List<Vector3>();
     private readonly List<GameObject> prefabPool = new List<GameObject>();
@@ -136,7 +129,7 @@ public class SpotReflector : MonoBehaviour
             DisableUnusedPrefabs(0);
     }
 
-    // 경로 계산
+    // 경로 계산: points[0]=출발, points[1]=첫 히트(거울), points[2]=반사 끝점 ...
     private void BuildPath()
     {
         points.Clear();
@@ -222,10 +215,15 @@ public class SpotReflector : MonoBehaviour
         for (int i = 0; i < points.Count; i++)
             line.SetPosition(i, points[i]);
 
+        // 단색 디버그(간단하게)
         line.startColor = hitColor;
         line.endColor = hitColor;
     }
 
+    /// <summary>
+    /// 반사 구간에만 프리팹을 배치한다.
+    /// i = 1부터 시작하므로, 0→1(입사)은 프리팹 미사용.
+    /// </summary>
     private void PlaceReflectedPrefabs()
     {
         if (points.Count < 3)
@@ -245,21 +243,6 @@ public class SpotReflector : MonoBehaviour
 
             GameObject go = GetOrCreateFromPool(ref used);
             PositionPrefabOnSegment(go, a, seg, len);
-
-            /*// 1) 받은 비율 계산 (이전 점 → 접점 방향을 입사 중심으로 사용)
-            float received = 1f;
-            if (i >= 1)
-            {
-                Vector2 prev = (Vector2)points[i - 1];   // 명시적 캐스팅
-                Vector2 contact = (Vector2)points[i];       // 접점
-                Vector2 approachDir = (contact - prev).normalized;
-
-                received = ComputeReceivedRatio(prev, approachDir);
-            }
-
-            // 2) X 스케일만 받은 비율에 맞게 조정
-            ScaleXByReceived(go, received);
-*/
             go.SetActive(true);
         }
 
@@ -277,6 +260,9 @@ public class SpotReflector : MonoBehaviour
         return prefabPool[used++];
     }
 
+    /// <summary>
+    /// 프리팹이 Light2D면 꼭짓점을 접점에 두고, 스프라이트면 접점에서 앞으로만 뻗도록 배치.
+    /// </summary>
     private void PositionPrefabOnSegment(GameObject go, Vector2 start, Vector2 seg, float len)
     {
         Vector2 dirN = seg / len;
@@ -321,41 +307,4 @@ public class SpotReflector : MonoBehaviour
         for (int i = used; i < prefabPool.Count; i++)
             prefabPool[i].SetActive(false);
     }
-
-    // 입사 콘을 여러 각도로 샘플해, 최초 히트가 '반사 레이어'인 비율(0..1)을 반환
-    private float ComputeReceivedRatio(Vector2 sampleOrigin, Vector2 centerDir)
-    {
-        int rays = Mathf.Max(1, incidentRayCount);
-        int hitAny = 0, hitReflect = 0;
-
-        for (int i = 0; i < rays; i++)
-        {
-            float t = (rays == 1) ? 0f : (i / (float)(rays - 1));  // 0..1
-            float lerp = t * 2f - 1f;                              // -1..1
-            float ang = lerp * incidentHalfAngleDeg;               // -half..+half
-            Vector2 dir = (Vector2)(Quaternion.Euler(0, 0, ang) * centerDir);
-            dir.Normalize();
-
-            RaycastHit2D hit;
-            bool got = TryCast(sampleOrigin, dir, out hit);        // 네가 쓰는 캐스트 헬퍼 재사용
-            if (!got) continue;
-
-            hitAny++;
-            int layer = hit.collider.gameObject.layer;
-            bool isMirror = (reflectMask.value & (1 << layer)) != 0;
-            if (isMirror) hitReflect++;
-        }
-
-        if (hitAny == 0) return 0f;
-        return (float)hitReflect / hitAny; // 0.0~1.0
-    }
-
-    private void ScaleXByReceived(GameObject go, float received)
-    {
-        if (!scaleXByReceived) return;
-        float x = Mathf.Lerp(minXScale, xScaleAtFull, Mathf.Clamp01(received));
-        var s = go.transform.localScale;
-        go.transform.localScale = new Vector3(x, s.y, s.z);
-    }
-
 }

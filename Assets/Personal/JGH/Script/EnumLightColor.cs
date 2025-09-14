@@ -34,6 +34,7 @@ public class LightColorController : MonoBehaviour
     [SerializeField] private float targetRange = 12f;
 
     private Color whiteColor = new Color(214f / 255f, 236f / 255f, 248f / 255f);
+    private Color greenColor = new Color(155f / 255f, 1f, 73f / 255f);
 
     // Start는 첫 실행 전 한 번 호출됩니다
     void Start()
@@ -168,7 +169,7 @@ public class LightColorController : MonoBehaviour
             case ColorOption.Blue:
                 return Color.blue;
             case ColorOption.Green:
-                return Color.green;
+                return greenColor;
             default:
                 return whiteColor;
         }
