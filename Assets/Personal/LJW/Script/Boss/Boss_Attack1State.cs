@@ -27,7 +27,7 @@ public class Boss_Attack1State : BossState
         if (!hasThrown)
         {
             hasThrown = true;
-            /*ThrowObject();*/
+            ThrowObject();
         }
 
         if (hit && !hasEvaluated)
@@ -61,7 +61,7 @@ public class Boss_Attack1State : BossState
         boss.anim.SetBool("Idle", true);
     }
 
-    /*public void ThrowObject()
+    public void ThrowObject()
     {
         GameObject obj = GameObject.Instantiate(boss.throwObjectPrefab, boss.throwSpawnPoint.position, Quaternion.identity);
 
@@ -97,5 +97,5 @@ public class Boss_Attack1State : BossState
                 hasEvaluated = true;
             };
         }
-    }*/
+    }
 }

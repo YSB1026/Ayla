@@ -22,17 +22,17 @@ public class Boss_BattleState : BossState
     {
         base.Update();
 
-        // 1) 근접 범위면 바로 공격(Attack2)
-        if (boss.IsPlayerInCloseRange())
+
+
+        if (boss.IsPlayerInCloseRange())    // attack2
         {
             stateMachine.ChangeState(boss.attack2State);
             return;
         }
 
-        // 2) 멀리서만 보이거나(노란 박스) 일반 시야 박스에만 닿으면 추적 시작
-        if (boss.IsPlayerInLongRange() || boss.IsPlayerInAttackBox())
+        if (boss.CanDetectLongRange && boss.IsPlayerInLongRange())  // attack1
         {
-            stateMachine.ChangeState(boss.walkState);
+            stateMachine.ChangeState(boss.attack1State);
             return;
         }
 
