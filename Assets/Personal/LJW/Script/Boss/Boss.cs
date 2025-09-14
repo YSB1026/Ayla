@@ -42,7 +42,7 @@ public class Boss : Entity
     public Boss_WalkState walkState { get; private set; }
     public Boss_BattleState battleState { get; private set; }
     public Boss_RunState runState { get; private set; }
-   /* public Boss_Attack1State attack1State { get; private set; }*/
+
     public Boss_Attack2State attack2State { get; protected set; }
     #endregion
 
@@ -88,28 +88,24 @@ public class Boss : Entity
         return false;
     }
 
-    /*public bool IsPlayerInAttackBox()
-    {
-        return Physics2D.OverlapBox(playerDetect.position, detectBoxSize, 0, whatIsPlayer);
-    }
-
+    // 기존 감지 함수들 교체
     public bool IsPlayerInLongRange()
-    {
-        return Physics2D.OverlapBox(longRangeCheck.position, longRangeBoxSize, 0, whatIsPlayer);
-    }
+        => longRangeCheck && OverlapBoxHasVisiblePlayer(longRangeCheck.position, longRangeBoxSize);
+
+    public bool IsPlayerInAttackBox()
+        => playerDetect && OverlapBoxHasVisiblePlayer(playerDetect.position, detectBoxSize);
 
     public bool IsPlayerInCloseRange()
-    {
-        return Physics2D.OverlapBox(closeRangeCheck.position, closeRangeBoxSize, 0, whatIsPlayer);
-    }*/
-    public bool IsPlayerInAttackBox()
+        => closeRangeCheck && OverlapBoxHasVisiblePlayer(closeRangeCheck.position, closeRangeBoxSize);
+
+    /*public bool IsPlayerInAttackBox()
     => playerDetect && OverlapBoxHasVisiblePlayer(playerDetect.position, detectBoxSize);
 
     public bool IsPlayerInLongRange()
         => longRangeCheck && OverlapBoxHasVisiblePlayer(longRangeCheck.position, longRangeBoxSize);
 
     public bool IsPlayerInCloseRange()
-        => closeRangeCheck && OverlapBoxHasVisiblePlayer(closeRangeCheck.position, closeRangeBoxSize);
+        => closeRangeCheck && OverlapBoxHasVisiblePlayer(closeRangeCheck.position, closeRangeBoxSize);*/
 
 
     public bool CanDetectPlayer()

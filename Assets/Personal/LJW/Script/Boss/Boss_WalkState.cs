@@ -17,22 +17,20 @@ public class Boss_WalkState : BossState
     {
         base.Update();
 
-        // 1) 타깃 찾기: long range 우선, 없으면 일반 시야 박스
+        // 1) 타깃 찾기
         Transform target = null;
 
         if (boss.longRangeCheck != null)
         {
-            var colLong = Physics2D.OverlapBox(
-                boss.longRangeCheck.position,
-                boss.longRangeBoxSize,
-                0,
-                boss.whatIsPlayer
-            );
-
-            if (colLong)
+            if (boss.IsPlayerInLongRange())
             {
-                target = colLong.transform;
-                currentSpeed = boss.runSpeed; // long range 감지 시 속도 부스트
+                currentSpeed = boss.runSpeed; // 숨지 않은 플레이어일 때만 가속
+                var go = GameObject.FindGameObjectWithTag("Player");
+                if (go != null)
+                {
+                    float dir = Mathf.Sign(go.transform.position.x - boss.transform.position.x);
+                    if (dir != 0 && dir != boss.facingDir) boss.Flip();
+                }
             }
             else
             {
@@ -40,30 +38,24 @@ public class Boss_WalkState : BossState
             }
         }
 
-        if (target == null && boss.playerDetect != null)
+        if (target == null && boss.IsPlayerInAttackBox())
         {
-            var colSight = Physics2D.OverlapBox(
-                boss.playerDetect.position,
-                boss.detectBoxSize,
-                0,
-                boss.whatIsPlayer
-            );
-
-            if (colSight)
+            currentSpeed = boss.moveSpeed;
+            var go = GameObject.FindGameObjectWithTag("Player");
+            if (go != null)
             {
-                target = colSight.transform;
-                // 일반 시야에서는 평속으로 접근
-                currentSpeed = boss.moveSpeed;
+                float dir = Mathf.Sign(go.transform.position.x - boss.transform.position.x);
+                if (dir != 0 && dir != boss.facingDir) boss.Flip();
             }
         }
 
-        // 2) 타깃이 보이면 그 방향으로만 회전
+       /* // 2) 타깃이 보이면 그 방향으로만 회전
         if (target != null)
         {
             float dir = Mathf.Sign(target.position.x - boss.transform.position.x);
             if (dir != 0 && dir != boss.facingDir)
                 boss.Flip();
-        }
+        }*/
 
         // 3) 이동
         boss.SetVelocity(currentSpeed * boss.facingDir, rb.linearVelocity.y);
@@ -82,20 +74,6 @@ public class Boss_WalkState : BossState
             stateMachine.ChangeState(boss.idleState);
             return;
         }
-
-        /* boss.SetVelocity(boss.moveSpeed * boss.facingDir, rb.linearVelocity.y);
-
-         if (boss.CanDetectPlayer())
-         {
-             stateMachine.ChangeState(boss.battleState);
-         }
-
-         if (!boss.IsGroundDetected())
-         {
-             boss.Flip();
-             stateMachine.ChangeState(boss.idleState);
-         }*/
-
     }
 
     public override void Exit()
