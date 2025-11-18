@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Entity : MonoBehaviour
 {
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
 
-    [Header("�浹")]
+    [Header("레이어 체크")]
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected float groundCheckDistance;
     [SerializeField] protected Transform wallCheck;
@@ -13,8 +14,8 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsGround;
     [SerializeField] protected LayerMask whatIsWall;
 
-    public int facingDir { get; private set; } = 1;
-    protected bool facingRight = true;
+    public int facingDir = 1;
+    public bool facingRight = true;
 
     protected virtual void Awake()
     {

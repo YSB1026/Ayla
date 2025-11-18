@@ -1,31 +1,11 @@
-using NUnit.Framework;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public enum ObjectActionType
-{
-    None,           //None 필요없긴하네요.. 근데 없애면 난리나서 놔둘게요 ;(
-    SetActiveTrue,
-    SetActiveFalse,
-    Destroy
-}
-
-[System.Serializable]
-public class ObjectAction
-{
-    public GameObject target;
-    public ObjectActionType actionType;
-}
-
 public class TimeLineTrigger : BaseTrigger
 {
-    [Header("오브젝트 행동 설정")]
-    [SerializeField] private List<ObjectAction> actions = new();
-
+    private Player player;
+    private bool isPlayerFacingRight;
     private PlayableDirector director;
     private bool isTriggered = false;
 
@@ -37,57 +17,47 @@ public class TimeLineTrigger : BaseTrigger
     protected override void OnPlayerEnter()
     {
         if (isTriggered) return;
-
         isTriggered = true;
-        GameManager.Instance.SetPlayerControlEnabled(false);
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        isPlayerFacingRight = player.facingRight;
+
+        //Debug.Log($"Player Facing Right: {isPlayerFacingRight}");
 
         if (director != null)
         {
-            director.stopped += OnTimelineStopped;
-            StartCoroutine(PlayTimelineDelayed());
+            GameManager.Instance.SetPlayerControl(false);
+            director.Play();
+            director.stopped += (PlayableDirector obj) => OnTimelineFinished();
         }
     }
 
-    private IEnumerator PlayTimelineDelayed()
+    private void OnTimelineFinished()
     {
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        director.Play();
-    }
+        GameManager.Instance.SetPlayerControl(true);
 
-    private void OnTimelineStopped(PlayableDirector d)
-    {
-        GameManager.Instance.SetPlayerControlEnabled(true);
-        director.stopped -= OnTimelineStopped;
-
+        SyncPlayerFacing();
         ApplyActions();
-
         Destroy(gameObject);
     }
-
-    private void ApplyActions()
+    private void SyncPlayerFacing()
     {
-        if (actions.Count == 0) return;
+        var sr = player.GetComponentInChildren<SpriteRenderer>();
+        if (sr != null && sr.flipX)
+            sr.flipX = false;
 
-        foreach (var action in actions)
+        if (isPlayerFacingRight)
         {
-            if (action.target == null) continue;
-
-            switch (action.actionType)
-            {
-                case ObjectActionType.SetActiveTrue:
-                    action.target.SetActive(true);
-                    break;
-                case ObjectActionType.SetActiveFalse:
-                    action.target.SetActive(false);
-                    break;
-                case ObjectActionType.Destroy:
-                    Destroy(action.target);
-                    break;
-                default:
-                    break;
-            }
+            player.facingDir = 1;
+            player.facingRight = true;
+        }
+        else
+        {
+            player.Flip();
+            player.facingDir = -1;
+            player.facingRight = false;
         }
     }
 }
+
 

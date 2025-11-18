@@ -7,6 +7,9 @@ public class Player : Entity
 {
     [SerializeField] private LayerMask whatIsTrap;
 
+    [Header("Mirror 오브젝트")]
+    [SerializeField] private GameObject mirror;
+
     [Header("이동 정보")]
     public float moveSpeed;
     public float runSpeed;
@@ -22,8 +25,8 @@ public class Player : Entity
     private CapsuleCollider2D col;
 
     #region ColliderSetting
-    private Vector2 idleColOffset = new Vector2(0f, 0f);
-    private Vector2 idleColSize = new Vector2(0.9f, 1.3f);
+    private Vector2 idleColOffset = new Vector2(0.05f, 0.1f);
+    private Vector2 idleColSize = new Vector2(0.93f, 1.5f);
     private Vector2 sitColOffset = new Vector2(0f, -0.1f);
     private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
     private Vector2 crawColOffset = new Vector2(0f, -0.2f);
@@ -56,13 +59,14 @@ public class Player : Entity
     #endregion
 
     public bool controlEnabled { get; private set; } = true;
+    public bool IsHidden { get; private set; } = false;
+    public void SetHidden(bool value) => IsHidden = value;
 
     public void SetControlEnabled(bool isEnabled)
     {
-        if(controlEnabled ==  isEnabled) return;
-        if (!isEnabled) stateMachine.ChangeState(inputState);
-
+        if (controlEnabled == isEnabled) return;
         controlEnabled = isEnabled;
+        if (!isEnabled) stateMachine.ChangeState(inputState);
     }
 
     protected override void Awake()
@@ -87,7 +91,7 @@ public class Player : Entity
         pushState = new Player_PushState(this, stateMachine, "Push");
         airState = new Player_AirState(this, stateMachine, "Fall");
 
-        hideState = new Player_HideState(this, stateMachine, "isHiding");
+        hideState = new Player_HideState(this, stateMachine, "Hide");
 
         downState = new Player_DownState(this, stateMachine, "Down");
         upState = new Player_UpState(this, stateMachine, "Up");
@@ -112,6 +116,15 @@ public class Player : Entity
         }
 
         base.Update();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (mirror != null)
+            {
+                bool newState = !mirror.activeSelf;
+                mirror.SetActive(newState);
+            }
+        }
 
         stateMachine.currentState.Update();
     }
@@ -152,10 +165,7 @@ public class Player : Entity
         col.offset = idleColOffset;
         col.size = idleColSize;
     }
-    //private Vector2 sitColOffset = new Vector2(0f, -0.1f);
-    //private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
-    //private Vector2 crawColOffset = new Vector2(0f, -0.2f);
-    //private Vector2 crawColSize = new Vector2(2f, 0.9f);
+
     public void SetSitCollider()
     {
         col.direction = CapsuleDirection2D.Vertical;

@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
 
-    [Header("¿Àµð¿À ¼Ò½º")]
+    [Header("ì˜¤ë””ì˜¤ ì†ŒìŠ¤")]
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource entitySource;
     [SerializeField] private AudioSource envSource;
@@ -138,12 +138,14 @@ public class SoundManager : MonoBehaviour
     public void PlayFootstep(SurfaceType type)
     {
         if (!footstepDict.TryGetValue(type, out var clipList)) return;
+        if (SurfaceType.None == type) return;
         PlayPlayerSound(EntitySoundType.Footstep, clipList);
     }
 
     public void PlayCrawling(SurfaceType type)
     {
         if (!crawlingDict.TryGetValue(type, out var clipList)) return;
+        if(SurfaceType.None == type) return;
         PlayPlayerSound(EntitySoundType.Crawling, clipList);
     }
 

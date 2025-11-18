@@ -27,7 +27,7 @@ public class Boss_Attack1State : BossState
         if (!hasThrown)
         {
             hasThrown = true;
-            ThrowObject();
+            //ThrowObject();
         }
 
         if (hit && !hasEvaluated)
@@ -37,12 +37,12 @@ public class Boss_Attack1State : BossState
         {
             if (hasAttacked)
             {
-                Debug.Log("º¸½º runState·Î ÀüÈ¯!");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ runStateï¿½ï¿½ ï¿½ï¿½È¯!");
                 stateMachine.ChangeState(boss.runState);
             }
             else
             {
-                Debug.Log("Attack1 ½ÇÆÐ, idle·Î ÀüÈ¯");
+                Debug.Log("Attack1 ï¿½ï¿½ï¿½ï¿½, idleï¿½ï¿½ ï¿½ï¿½È¯");
                 stateMachine.ChangeState(boss.idleState);
             }
         }
@@ -57,45 +57,45 @@ public class Boss_Attack1State : BossState
     {
         base.AnimationFinishTrigger();
 
-        // ¾Ö´Ï¸ÞÀÌ¼Ç¸¸ idle·Î ¼öµ¿ ÀüÈ¯
+        // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼Ç¸ï¿½ idleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
         boss.anim.SetBool("Idle", true);
     }
 
-    public void ThrowObject()
-    {
-        GameObject obj = GameObject.Instantiate(boss.throwObjectPrefab, boss.throwSpawnPoint.position, Quaternion.identity);
+    // public void ThrowObject()
+    // {
+    //     GameObject obj = GameObject.Instantiate(boss.throwObjectPrefab, boss.throwSpawnPoint.position, Quaternion.identity);
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return;
+    //     GameObject player = GameObject.FindGameObjectWithTag("Player");
+    //     if (player == null) return;
 
-        // ¹æÇâ °è»ê (»ìÂ¦ À§)
-        Vector2 targetPos = player.GetComponent<Collider2D>().bounds.center;
-        Vector2 dir = (targetPos - (Vector2)obj.transform.position).normalized;
-        float launchForce = 15f;
+    //     // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½Â¦ ï¿½ï¿½)
+    //     Vector2 targetPos = player.GetComponent<Collider2D>().bounds.center;
+    //     Vector2 dir = (targetPos - (Vector2)obj.transform.position).normalized;
+    //     float launchForce = 15f;
 
-        // º¸½º Àü¿ë ½ºÅ©¸³Æ®·Î Ã³¸®
-        ThrowingObjects controller = obj.GetComponent<ThrowingObjects>();
-        if (controller != null)
-        {
-            controller.Setup(dir, player.transform, launchForce);
+    //     // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ Ã³ï¿½ï¿½
+    //     ThrowingObjects controller = obj.GetComponent<ThrowingObjects>();
+    //     if (controller != null)
+    //     {
+    //         controller.Setup(dir, player.transform, launchForce);
 
-            controller.onHitPlayerCallback = (bool hit) =>
-            {
-                Debug.Log("ÄÝ¹é µµÂø, hasEvaluated Ã³¸® ½ÃÀÛ");
-                boss.longRCoolTimer = boss.longRCoolTime;
+    //         controller.onHitPlayerCallback = (bool hit) =>
+    //         {
+    //             Debug.Log("ï¿½Ý¹ï¿½ ï¿½ï¿½ï¿½ï¿½, hasEvaluated Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+    //             boss.longRCoolTimer = boss.longRCoolTime;
 
-                if (hit)
-                {
-                    Debug.Log("Boss_Attack1State: ÇÃ·¹ÀÌ¾î Å¸°Ý ¼º°ø!");
-                    hasAttacked = true;
-                }
-                else
-                {
-                    Debug.Log("Boss_Attack1State: Å¸°Ý ½ÇÆÐ");
-                    hasAttacked = false;
-                }
-                hasEvaluated = true;
-            };
-        }
-    }
+    //             if (hit)
+    //             {
+    //                 Debug.Log("Boss_Attack1State: ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!");
+    //                 hasAttacked = true;
+    //             }
+    //             else
+    //             {
+    //                 Debug.Log("Boss_Attack1State: Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+    //                 hasAttacked = false;
+    //             }
+    //             hasEvaluated = true;
+    //         };
+    //     }
+    // }
 }

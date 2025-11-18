@@ -12,7 +12,7 @@ public class Boss_BattleState : BossState
     {
         base.Enter();
 
-        // ÇÃ·¹ÀÌ¾î Ã£±â
+        // í”Œë ˆì´ì–´ ì°¾ê¸°
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
             this.player = player.transform;
@@ -22,35 +22,40 @@ public class Boss_BattleState : BossState
     {
         base.Update();
 
-
-
-        if (boss.IsPlayerInCloseRange())    // attack2
+        // 1) ê·¼ì ‘ ë²”ìœ„ë©´ ë°”ë¡œ ê³µê²©(Attack2)
+        if (boss.IsPlayerInCloseRange())
         {
             stateMachine.ChangeState(boss.attack2State);
             return;
         }
 
-        if (boss.CanDetectLongRange && boss.IsPlayerInLongRange())  // attack1
+        // 2) ë©€ë¦¬ì„œë§Œ ë³´ì´ê±°ë‚˜(ë…¸ë€ ë°•ìŠ¤) ì¼ë°˜ ì‹œì•¼ ë°•ìŠ¤ì—ë§Œ ë‹¿ìœ¼ë©´ ì¶”ì  ì‹œì‘
+        if (boss.IsPlayerInLongRange() || boss.IsPlayerInAttackBox())
         {
-            stateMachine.ChangeState(boss.attack1State);
+            stateMachine.ChangeState(boss.walkState);
             return;
         }
 
-        // °¨Áö°¡ ¾È µÇ¸é idle·Î º¹±Í
+        // ê°ì§€ê°€ ì•ˆ ë˜ë©´ idleë¡œ ë³µê·€
         if (!boss.IsPlayerInAttackBox())
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î °¨Áö ¾ÈµÊ. Idle ÀüÈ¯");
+            Debug.Log("í”Œë ˆì´ì–´ ê°ì§€ ì•ˆë¨. Idle ì „í™˜");
             stateMachine.ChangeState(boss.idleState);
             return;
         }
 
-        // Äğ ´Ù¿î Áß + »¡°£ ¹Ú½º °¨ÁöµÊ ¡æ run
+        // ì¿¨ ë‹¤ìš´ ì¤‘ + ë¹¨ê°„ ë°•ìŠ¤ ê°ì§€ë¨ â†’ run
         if (boss.IsPlayerInAttackBox())
         {
             stateMachine.ChangeState(boss.runState);
             return;
         }
 
+        if (boss.ShouldEnterSearchOnLost())
+        {
+            stateMachine.ChangeState(boss.searchState);
+            return;
+        }
     }
 
     public override void Exit()
