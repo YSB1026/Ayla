@@ -2,8 +2,8 @@ using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-//SitState ¾È ¾µ ¿¹Á¤
-public class Player_SitState : PlayerState
+//SitState ì•ˆ ì“¸ ì˜ˆì •
+public class Player_SitState : Player_GroundedState
 {
     bool isCrawled = false;
     

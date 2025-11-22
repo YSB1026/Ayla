@@ -73,8 +73,8 @@ public class Player_HideState : PlayerState
                 anchor.position.x, anchor.position.y, player.transform.position.z);
         }
 
-        // F로 해제 → 서기(Stand) 상태로 전환
-        if (Input.GetKeyDown(KeyCode.F))
+        // 마우스 왼쪽 클릭으로 숨기 해제 → 서기(Stand) 상태로 전환
+        if (Input.GetMouseButtonDown(0))
             stateMachine.ChangeState(player.standState);
     }
 

@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-// ÇÃ·¹ÀÌ¾î »óÅÂ Å¬·¡½º
+// í”Œë ˆì´ì–´ ìƒíƒœ í´ë˜ìŠ¤
 public class PlayerState
 {
     protected PlayerStateMachine stateMachine;
@@ -14,10 +14,10 @@ public class PlayerState
 
 	protected RaycastHit2D hit;
 
-	// ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ®(Trigger)°¡ È£ÃâµÇ¾ú´ÂÁö ¿©ºÎ
+	// ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸(Trigger)ê°€ í˜¸ì¶œë˜ì—ˆëŠ”ì§€ ì—¬ë¶€
 	protected bool triggerCalled;
 
-    // »ı¼ºÀÚ: »óÅÂ¸¦ ¸¸µé ¶§ ÇÃ·¹ÀÌ¾î, »óÅÂ¸Ó½Å, ¾Ö´Ï¸ŞÀÌ¼Ç Bool ÀÌ¸§À» ¼³Á¤
+    // ìƒì„±ì: ìƒíƒœë¥¼ ë§Œë“¤ ë•Œ í”Œë ˆì´ì–´, ìƒíƒœë¨¸ì‹ , ì• ë‹ˆë©”ì´ì…˜ Bool ì´ë¦„ì„ ì„¤ì •
     public PlayerState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
     {
         this.player = _player;
@@ -25,20 +25,20 @@ public class PlayerState
         this.animBoolName = _animBoolName;
     }
 
-    // »óÅÂ¿¡ ÁøÀÔÇÒ ¶§ ½ÇÇàµÇ´Â ÇÔ¼ö
+    // ìƒíƒœì— ì§„ì…í•  ë•Œ ì‹¤í–‰ë˜ëŠ” í•¨ìˆ˜
     public virtual void Enter()
     {
-        // ÇØ´ç ¾Ö´Ï¸ŞÀÌ¼Ç Bool ÆÄ¶ó¹ÌÅÍ¸¦ true·Î ¼³Á¤ÇÏ¿© ¾Ö´Ï¸ŞÀÌ¼Ç ÀüÈ¯
+        // í•´ë‹¹ ì• ë‹ˆë©”ì´ì…˜ Bool íŒŒë¼ë¯¸í„°ë¥¼ trueë¡œ ì„¤ì •í•˜ì—¬ ì• ë‹ˆë©”ì´ì…˜ ì „í™˜
         player.anim.SetBool(animBoolName, true);
 
-        // Rigidbody2D ÂüÁ¶ °¡Á®¿À±â
+        // Rigidbody2D ì°¸ì¡° ê°€ì ¸ì˜¤ê¸°
         rb = player.rb;
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ® È£Ãâ ¿©ºÎ ÃÊ±âÈ­
+        // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ í˜¸ì¶œ ì—¬ë¶€ ì´ˆê¸°í™”
         triggerCalled = false;
     }
 
-    // »óÅÂ À¯Áö Áß ¸Å ÇÁ·¹ÀÓ¸¶´Ù ½ÇÇàµÇ´Â ÇÔ¼ö
+    // ìƒíƒœ ìœ ì§€ ì¤‘ ë§¤ í”„ë ˆì„ë§ˆë‹¤ ì‹¤í–‰ë˜ëŠ” í•¨ìˆ˜
     public virtual void Update()
     {
         xInput = Input.GetAxisRaw("Horizontal");
@@ -55,14 +55,14 @@ public class PlayerState
 
     }
 
-    // »óÅÂ¿¡¼­ ³ª°¥ ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // ìƒíƒœì—ì„œ ë‚˜ê°ˆ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
     public virtual void Exit()
     {
-        // ÇØ´ç ¾Ö´Ï¸ŞÀÌ¼Ç Bool ÆÄ¶ó¹ÌÅÍ¸¦ false·Î µÇµ¹¸²
+        // í•´ë‹¹ ì• ë‹ˆë©”ì´ì…˜ Bool íŒŒë¼ë¯¸í„°ë¥¼ falseë¡œ ë˜ëŒë¦¼
         player.anim.SetBool(animBoolName, false);
     }
 
-    // ¾Ö´Ï¸ŞÀÌ¼Ç¿¡¼­ Trigger ÀÌº¥Æ®°¡ ¹ß»ıÇßÀ» ¶§ È£ÃâµÊ
+    // ì• ë‹ˆë©”ì´ì…˜ì—ì„œ Trigger ì´ë²¤íŠ¸ê°€ ë°œìƒí–ˆì„ ë•Œ í˜¸ì¶œë¨
     public virtual void AnimationFinishTrigger()
     {
         triggerCalled = true;
@@ -70,7 +70,6 @@ public class PlayerState
 
     protected bool IsBlockedByWall()
     {
-        //Debug.Log($"facing = {player.facingDir}, input = {xInput}");
         return player.IsWallDetected() && player.facingDir == xInput;
     }
 
