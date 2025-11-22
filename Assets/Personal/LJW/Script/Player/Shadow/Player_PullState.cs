@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class Player_PullState : PlayerState
 {
@@ -38,3 +38,4 @@ public class Player_PullState : PlayerState
 		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(true);
 	}
 }
+*/

@@ -1,7 +1,4 @@
-//using System.Runtime.InteropServices.WindowsRuntime;
-//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-//using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
@@ -16,7 +13,6 @@ public class Player : Entity
     public float jumpForce;
     public float crawlSpeed;
     public float sitWalkSpeed;
-    public float grabSpeed;
     public bool isInZone;
 
     private bool canHide;
@@ -37,7 +33,6 @@ public class Player : Entity
     public PlayerStateMachine stateMachine { get; private set; }
     public Player_InputState inputState { get; private set; }
 
-    public Player_IdleState idleState { get; private set; }
     public Player_WalkState walkState { get; private set; }
     public Player_RunState runState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
@@ -46,16 +41,12 @@ public class Player : Entity
     public Player_StandState standState { get; private set; }
     public Player_SitWalkState sitWalkState { get; private set; }
     public Player_DeadState deadState { get; private set; }
-    public Player_GrabState grabState { get; private set; }
-    public Player_PullState pullState { get; private set; }
-    public Player_PushState pushState { get; private set; }
     public Player_AirState airState { get; private set; }
 
     public Player_HideState hideState { get; private set; }
 
     public Player_DownState downState { get; private set; }
     public Player_UpState upState { get; private set; }
-
     #endregion
 
     public bool controlEnabled { get; private set; } = true;
@@ -77,7 +68,6 @@ public class Player : Entity
         stateMachine = new PlayerStateMachine();
         inputState = new Player_InputState(this, stateMachine, "Idle");
 
-        idleState = new Player_IdleState(this, stateMachine, "Idle");
         walkState = new Player_WalkState(this, stateMachine, "Walk");
         runState = new Player_RunState(this, stateMachine, "Run");
         jumpState = new Player_JumpState(this, stateMachine, "Jump");
@@ -86,9 +76,6 @@ public class Player : Entity
         standState = new Player_StandState(this, stateMachine, "Stand");
         sitWalkState = new Player_SitWalkState(this, stateMachine, "SitWalk");
         deadState = new Player_DeadState(this, stateMachine, "Die");
-        grabState = new Player_GrabState(this, stateMachine, "Grab");
-        pullState = new Player_PullState(this, stateMachine, "Pull");
-        pushState = new Player_PushState(this, stateMachine, "Push");
         airState = new Player_AirState(this, stateMachine, "Fall");
 
         hideState = new Player_HideState(this, stateMachine, "Hide");
@@ -103,7 +90,7 @@ public class Player : Entity
 
         col = GetComponent<CapsuleCollider2D>();
 
-        // 게임 시작 시 초기 상태를 대기 상태(inputState)로 설정
+        // 게임 시작 시 초기 상태를 대기 상태 : (inputState)
         stateMachine.Initialize(inputState);
     }
 

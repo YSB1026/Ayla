@@ -9,29 +9,45 @@ public class Player_InputState : PlayerState
     {
         base.Enter();
 
-        player.SetZeroVelocity();   // �Է� ��� ����
+        player.SetZeroVelocity();   // 입력 대기 상태에서 속도 항상 초기화
     }
     public override void Update()
     {
         if (!player.controlEnabled)
             return;
+
         base.Update();
 
-
+        // 공중 전환
         if (!player.IsGroundDetected())
+        {
             stateMachine.ChangeState(player.airState);
+        }
+        // 점프
         else if (Input.GetKeyDown(KeyCode.Space))
+        {
             stateMachine.ChangeState(player.jumpState);
-        else if (Input.GetKeyDown(KeyCode.F) && player.IsHidingSpotDetected())
+        }
+        // 숨기 진입
+        else if (Input.GetMouseButtonDown(0) && player.IsHidingSpotDetected())
+        {
             stateMachine.ChangeState(player.hideState);
-        else if (Input.GetKeyDown(KeyCode.F) && player.IsObjectDetected())
-            stateMachine.ChangeState(player.grabState);
+        }
+        // 앉기
         else if (Input.GetKeyDown(KeyCode.S))
+        {
             stateMachine.ChangeState(player.sitState);
+        }
+        // 달리기
         else if (!IsBlockedByWall() && Input.GetKey(KeyCode.LeftShift) && xInput != 0)
+        {
             stateMachine.ChangeState(player.runState);
+        }
+        // 걷기 
         else if (!IsBlockedByWall() && xInput != 0)
+        {
             stateMachine.ChangeState(player.walkState);
+        }
     }
 
     public override void Exit()
