@@ -1,7 +1,6 @@
 using UnityEngine;
 
-//ÄÚµå ¾È ¾µ ¿¹Á¤
-public class Player_SitWalkState : PlayerState
+public class Player_SitWalkState : Player_GroundedState
 {
     public Player_SitWalkState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
@@ -10,49 +9,54 @@ public class Player_SitWalkState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        // ì´ë™ ì‹œì‘í•  ë•Œ ì•‰ì€ ìƒíƒœ ìœ ì§€ 
+        player.SetSitCollider();
+
+        // ì•‰ì€ ê±·ê¸° ì• ë‹ˆ ì†ë„ ë³´ì • 
+        if (player.anim != null)
+            player.anim.speed = 1f;
     }
     public override void Update()
     {
         base.Update();
 
-        if (xInput != 0)
-        {
-            player.SetVelocity(xInput * player.sitWalkSpeed, rb.linearVelocityY);
+        // GroundedStateê°€ ìƒíƒœ ë°”ê¿¨ìœ¼ë©´ ë” ì´ìƒ ì´ ìƒíƒœ ë¡œì§ ì§„í–‰ X 
+        if (stateMachine.currentState != this)
+            return;
 
-            // ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı
-            player.anim.speed = 1f;
-        }
-        else
+        // ì¢Œìš° ì…ë ¥ ì—†ìœ¼ë©´ ê·¸ëƒ¥ ì•‰ê¸° ìƒíƒœë¡œ ëŒì•„ê°€ê¸° 
+        if (xInput == 0)
         {
-            player.SetZeroVelocity();
-
-            // ¾Ö´Ï¸ŞÀÌ¼Ç Á¤Áö
-            player.anim.speed = 0f;
+            stateMachine.ChangeState(player.inputState);
+            return;
         }
 
+        // ì¢Œìš° ì´ë™ 
+        MoveHorizontally(player.sitWalkSpeed);
+
+        // ì¼ì–´ë‚˜ê¸° (W) 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            // ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı ¼Óµµ º¹¿ø
-            player.anim.speed = 1f;
-
-            stateMachine.ChangeState(player.inputState);
+            stateMachine.ChangeState(player.standState);
+            return;
         }
 
-        //if (Input.GetKeyDown(KeyCode.LeftControl))
-        //    stateMachine.ChangeState(player.crawlState);
-
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    // ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı ¼Óµµ º¹¿ø
-        //    player.anim.speed = 1f;
-
-        //    stateMachine.ChangeState(player.standState);
-        //}
+        // ë²½ ê°ì§€ â†’ ì•‰ê¸° ìƒíƒœë¡œ 
+        if (player.IsWallDetected())
+        {
+            stateMachine.ChangeState(player.inputState);
+            return;
+        }
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        // ì• ë‹ˆ ì†ë„ ì›ë³µ
+        if (player.anim != null)
+            player.anim.speed = 1f;
     }
 
 }

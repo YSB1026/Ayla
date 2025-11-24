@@ -2,7 +2,6 @@ using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-//SitState 안 쓸 예정
 public class Player_SitState : Player_GroundedState
 {
     bool isCrawled = false;
@@ -23,26 +22,7 @@ public class Player_SitState : Player_GroundedState
     {
         base.Update();
 
-        CheckAnimationTrasition();
-
-        #region Not used
-        //if (isCrawled)
-        //{
-        //    stateMachine.ChangeState(player.crawlState);
-        //}
-        //else
-        //{
-        //    stateMachine.ChangeState(player.standState);
-        //}
-        //if (xInput != 0)
-        //    stateMachine.ChangeState(player.sitWalkState);
-
-        //if (Input.GetKeyDown(KeyCode.W))
-        //stateMachine.ChangeState(player.standState);
-
-        //if (Input.GetKeyDown(KeyCode.LeftControl))
-        //    stateMachine.ChangeState(player.crawlState);
-        #endregion
+        CheckAnimationTransition();
     }
 
     public override void Exit()
@@ -52,7 +32,7 @@ public class Player_SitState : Player_GroundedState
         player.anim.speed = 1;
 	}
     
-    void CheckAnimationTrasition()
+    void CheckAnimationTransition()
     {
         AnimatorStateInfo state = player.anim.GetCurrentAnimatorStateInfo(0);
         if (state.normalizedTime >= 1f)
