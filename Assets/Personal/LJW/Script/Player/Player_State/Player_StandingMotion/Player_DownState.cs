@@ -9,16 +9,14 @@ public class Player_DownState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("ÇÃ·¹ÀÌ¾î Down »óÅÂ ÁøÀÔ");
-
-        player.ForceSetControlEnabled(false);
+        Debug.Log("í”Œë ˆì´ì–´ Down ìƒíƒœ ì§„ì…");
+        player.SetControlEnabled(false);   // ì¡°ì‘ë§Œ ë¹„í™œì„±í™”
+        player.SetZeroVelocity();
     }
 
     public override void Update()
     {
         base.Update();
-
-        player.ForceSetControlEnabled(false);
     }
 
     public override void Exit()
