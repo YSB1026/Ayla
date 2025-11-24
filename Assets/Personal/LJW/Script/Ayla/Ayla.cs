@@ -1,187 +1,78 @@
 using System;
 using UnityEngine;
 
-public class Ayla : Entity
+public class Ayla : MonoBehaviour
 {
-    [Header("À§Ä¡ Á¤º¸")]
-    public Transform player;          // ÇÃ·¹ÀÌ¾î
-    public Transform followPointLeft;       // ÇÃ·¹ÀÌ¾î ¿ŞÂÊ
-    public Transform followPointRight;      // ÇÃ·¹ÀÌ¾î ¿À¸¥ÂÊ
+    [Header("ë”°ë¼ê°ˆ ëŒ€ìƒ (ë³´í†µ Player)")]
+    public Transform target;
 
-    [Header("ÀÌµ¿ Á¤º¸")]
-    public float followSmoothTime = 0.3f;   // µû¶ó°¡´Â ºÎµå·¯¿ò Á¤µµ
-    public float floatSpeed = 2f;           // À§¾Æ·¡ ¶°´Ù´Ï´Â ¼Óµµ
-    public float floatAmplitude = 0.15f;    // ¶°´Ù´Ï´Â ³ôÀÌ
-    public float moveSpeed = 3f;
+    [Header("ì¢Œ/ìš° ìœ„ì¹˜ (ë¹ˆ ì˜¤ë¸Œì íŠ¸ ë“œë˜ê·¸)")]
+    public Transform leftPoint;
+    public Transform rightPoint;
 
-    private Vector3 velocity = Vector3.zero;
-    private Vector3 followBasePosition;     // µû¶ó°¥ ±âÁØ À§Ä¡
+    [Header("ë‘¥ë‘¥ ë– ë‹¤ë‹ˆëŠ” íš¨ê³¼")]
+    public float floatAmplitude = 0.04f;
+    public float floatFrequency = 2f;
 
-    private SpriteRenderer playerSpriteRenderer;
-    private SpriteRenderer aylaSpriteRenderer;
+    [Header("ë”°ë¼ê°€ëŠ” ë¶€ë“œëŸ¬ì›€")]
+    [Tooltip("ê°’ì´ í´ìˆ˜ë¡ ë” ë¹ ë¥´ê²Œ ë”°ë¼ê°")]
+    public float followSmooth = 10f;
 
-    private bool controlEnabled = false;  // Å° Á¶ÀÛ ¿©ºÎ
-    private bool isFixed = false;         // R Å°·Î °íÁ¤ ¿©ºÎ
-    public bool isCurrentlyControlled;  // ÇöÀç Á¶ÀÛµÇ°í ÀÖ´ÂÁö °¨Áö
+    [Tooltip("trueë©´ ì˜¤ë¥¸ìª½ ìœ„ì¹˜, falseë©´ ì™¼ìª½ ìœ„ì¹˜ ì‚¬ìš©")]
+    public bool onRightSide = true;
 
-    [SerializeField] private float holdTime = 0f;
-    [SerializeField] private float holdDuration = 2f;
+    private Vector3 targetPosition;    // FollowTargetì—ì„œ ê³„ì‚°
+    private float floatOffsetY;        // FloatOffsetì—ì„œ ê³„ì‚°
 
-    [Header("¿¡ÀÏ¶õ °ÔÀÌÁö")]
-    [SerializeField] private float maxAylaGauge = 100f;
-    [SerializeField] private float aylaGauge = 100f;
-
-    #region States
-    public AylaStateMachine stateMachine { get; private set; }
-
-    #endregion
-
-    private Transform overrideTargetPoint = null;
-
-    public void SetOverrideTarget(Transform target)
+    private void Update()
     {
-        overrideTargetPoint = target;
+        if (target == null) return;
+        if (leftPoint == null || rightPoint == null) return;
+
+        FollowTarget();
+        FloatOffset();
+        ApplyMovement();
     }
 
-    public void SetControlEnabled(bool isEnabled)
+    private void FollowTarget()
     {
-        controlEnabled = isEnabled;
+        Transform p = onRightSide ? rightPoint : leftPoint;
+
+        // í¬ì¸íŠ¸ì˜ x, yë¥¼ ê·¸ëŒ€ë¡œ ë”°ë¼ê°
+        targetPosition = new Vector3(
+            p.position.x,
+            p.position.y,
+            transform.position.z
+        );
     }
 
-    protected override void Awake()
+    private void FloatOffset()
     {
-        base.Awake();
-
-        playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-        aylaSpriteRenderer = GetComponent<SpriteRenderer>();
-
-        // »óÅÂ ¸Ó½Å ÀÎ½ºÅÏ½º »ı¼º
-        stateMachine = new AylaStateMachine();
+        floatOffsetY = Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
     }
 
-    protected override void Start()
+    private void ApplyMovement()
     {
-        base.Start();
-        followBasePosition = transform.position;
-        aylaGauge = maxAylaGauge;
+        Vector3 finalPos = new Vector3(
+            targetPosition.x,
+            targetPosition.y + floatOffsetY,
+            targetPosition.z
+        );
+
+        transform.position = Vector3.Lerp(
+            transform.position,
+            finalPos,
+            followSmooth * Time.deltaTime
+        );
     }
 
-    protected override void Update()
+    public void SetSide(bool right)
     {
-        base.Update();
-        stateMachine.currentState?.Update();
-
-        FixedKey();
-
-        if (isFixed)
-        {
-            Float();
-            return;
-        }
-
-        Vector2 inputDir = Vector2.zero;
-
-        if (controlEnabled)
-        {
-            // WASD Á¶ÀÛ
-            float x = Input.GetAxisRaw("Horizontal");
-            float y = Input.GetAxisRaw("Vertical");
-            inputDir = new Vector2(x, y);
-
-            followBasePosition += new Vector3(inputDir.x, inputDir.y, 0) * moveSpeed * Time.deltaTime;
-        }
-        else
-        {
-            Follow();
-        }
-        Float();
-    }
-
-    // ÇÃ·¹ÀÌ¾î µû¶ó´Ù´Ï´Â ·ÎÁ÷
-    private void Follow()
-    {
-        Transform targetPoint;
-
-        if (overrideTargetPoint != null)
-        {
-            targetPoint = overrideTargetPoint;
-        }
-        else
-        {
-            targetPoint = playerSpriteRenderer.flipX ? followPointLeft : followPointRight;
-        }
-
-        if (targetPoint == null) return;
-
-        followBasePosition = Vector3.SmoothDamp(followBasePosition, targetPoint.position, ref velocity, followSmoothTime);
-        transform.position = followBasePosition;
-    }
-
-    // µÕµÕ ¶ß´Â È¿°ú
-    private void Float()
-    {
-        // µÕ½ÇµÕ½Ç È¿°ú
-        Vector3 floatOffset = new Vector3(0f, Mathf.Sin(Time.time * floatSpeed) * floatAmplitude, 0f);
-        transform.position = followBasePosition + floatOffset;
-    }
-
-    // R Å°·Î °íÁ¤ ½ÃÅ°±â
-    private void FixedKey()
-    {
-        if (!isCurrentlyControlled)
-            return;
-
-        // R Å°·Î °íÁ¤
-        if (Input.GetKey(KeyCode.R))
-        {
-            holdTime += Time.deltaTime;
-
-            if (holdTime >= holdDuration)
-            {
-                isFixed = !isFixed;         // °íÁ¤ »óÅÂ Åä±Û
-                controlEnabled = !isFixed;  // Á¶ÀÛ ºñÈ°¼ºÈ­
-
-                if (isFixed)    // °íÁ¤
-                {
-                    followBasePosition = transform.position;
-                }
-
-                holdTime = 0f;             // ¸®¼Â (ÇÑ ¹ø¸¸ Åä±ÛµÇµµ·Ï)
-            }
-        }
-        else
-        {
-            holdTime = 0f;  // R ´©¸£°í ÀÖÁö ¾ÊÀ¸¸é ÃÊ±âÈ­
-        }
+        onRightSide = right;
     }
 
     public void ToggleSide()
     {
-        // Áö±İ µû¶ó°¡·Á´Â ¸ñÇ¥°¡ ¹ºÁö °è»ê(override°¡ ÀÖÀ¸¸é ±×°É, ¾øÀ¸¸é ±âº» ·ÎÁ÷)
-        Transform currentTarget = overrideTargetPoint != null
-            ? overrideTargetPoint
-            : (playerSpriteRenderer.flipX ? followPointLeft : followPointRight);
-
-        // ¹İ´ëÆíÀ¸·Î ÀüÈ¯
-        overrideTargetPoint = (currentTarget == followPointLeft) ? followPointRight : followPointLeft;
-    }
-
-    public void SetFollowBasePosition(Vector3 newPos)
-    {
-        followBasePosition = newPos;
-    }
-
-    public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
-
-    public void ResroreAylaGauge(float value)
-    {
-        aylaGauge += value;
-        if(aylaGauge >= maxAylaGauge) aylaGauge = maxAylaGauge;
-    }
-
-    public void ConsumeAylaGause(float value)
-    {
-        aylaGauge -= value;
-        if(aylaGauge <= 0) aylaGauge = 0;
+        onRightSide = !onRightSide;
     }
 }

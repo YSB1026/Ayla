@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -187,3 +187,4 @@ public class LockPattern2 : MonoBehaviour
         enabled = true;
     }
 }
+*/

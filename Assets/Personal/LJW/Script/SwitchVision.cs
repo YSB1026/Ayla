@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
 
@@ -20,10 +20,10 @@ public class SwitchVision : MonoBehaviour
     public bool controllingAyla = false;
     public bool canSwitch = true;
 
-    public Camera mainCamera; // À¯´ÏÆ¼ ±âº» Ä«¸Ş¶ó
+    public Camera mainCamera; // ìœ ë‹ˆí‹° ê¸°ë³¸ ì¹´ë©”ë¼
 
-    public Transform aylaPuzzleStartPoint;     // Ayla°¡ ÀÌµ¿ÇÒ À§Ä¡
-    public Transform Phase1_Ayla_CameraTarget; // ÀÎ½ºÆåÅÍ¿¡¼­ ¿¬°áÇÒ ÆÛÁñ À§Ä¡
+    public Transform aylaPuzzleStartPoint;     // Aylaê°€ ì´ë™í•  ìœ„ì¹˜
+    public Transform Phase1_Ayla_CameraTarget; // ì¸ìŠ¤í™í„°ì—ì„œ ì—°ê²°í•  í¼ì¦ ìœ„ì¹˜
 
     void Start()
     {
@@ -43,15 +43,15 @@ public class SwitchVision : MonoBehaviour
             CCamera.Follow = target;
             CCamera.LookAt = target;
 
-            // Á¶ÀÛ »óÅÂ Åä±Û
+            // ì¡°ì‘ ìƒíƒœ í† ê¸€
             bool controllingAyla = target == ayla.transform;
 
-            // Á¶ÀÛ Á¦¾î
+            // ì¡°ì‘ ì œì–´
             ayla.isCurrentlyControlled = controllingAyla;
             ayla.SetControlEnabled(controllingAyla);
             player.SetControlEnabled(!controllingAyla);
 
-            // Ä«¸Ş¶ó ·¹ÀÌ¾î ¸¶½ºÅ© ¼³Á¤Àº Main Camera¿¡¸¸ Àû¿ë
+            // ì¹´ë©”ë¼ ë ˆì´ì–´ ë§ˆìŠ¤í¬ ì„¤ì •ì€ Main Cameraì—ë§Œ ì ìš©
             if (mainCamera != null)
             {
                 if (controllingAyla)
@@ -62,3 +62,4 @@ public class SwitchVision : MonoBehaviour
         }
     }
 }
+*/

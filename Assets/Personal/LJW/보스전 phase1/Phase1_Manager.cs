@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class Phase1_Manager : MonoBehaviour
 {
@@ -86,3 +86,4 @@ public class Phase1_Manager : MonoBehaviour
 
     public bool IsPhaseActive => phaseStarted && !puzzleSolved;
 }
+*/

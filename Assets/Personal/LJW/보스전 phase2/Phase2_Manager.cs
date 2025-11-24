@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -18,10 +18,10 @@ public class Phase2_Manager : MonoBehaviour
     public GameObject teleportScriptObj;
     public Phase2Controller phase2Controller;
 
-    [Header("º¸½º ºĞ½Å")]
-    public GameObject bossClonePrefab; // ÀÎ½ºÆåÅÍ¿¡¼­ ÇÒ´ç
+    [Header("ë³´ìŠ¤ ë¶„ì‹ ")]
+    public GameObject bossClonePrefab; // ì¸ìŠ¤í™í„°ì—ì„œ í• ë‹¹
 
-    [Header("Wind ¿¬Ãâ")]
+    [Header("Wind ì—°ì¶œ")]
     public GameObject windEffect;
 
     private void Awake()
@@ -33,13 +33,13 @@ public class Phase2_Manager : MonoBehaviour
     {
         phaseActive = true;
 
-        Debug.Log($"[Phase2Manager] ½ÃÀÛ - µî·ÏµÈ ÃĞºÒ ¼ö: {candles.Count}");
+        Debug.Log($"[Phase2Manager] ì‹œì‘ - ë“±ë¡ëœ ì´›ë¶ˆ ìˆ˜: {candles.Count}");
 
-        // ÃĞºÒ ÇÏ³ª Å°°í ½ÃÀÛ
+        // ì´›ë¶ˆ í•˜ë‚˜ í‚¤ê³  ì‹œì‘
         if (candles.Count > 0)
         {
             var first = candles[0];
-            Debug.Log($"[Phase2Manager] Ã¹ ¹øÂ° ÃĞºÒ ÀÌ¸§: {first.name}, isLit: {first.isLit}");
+            Debug.Log($"[Phase2Manager] ì²« ë²ˆì§¸ ì´›ë¶ˆ ì´ë¦„: {first.name}, isLit: {first.isLit}");
 
             first.TurnOn();
         }
@@ -58,7 +58,7 @@ public class Phase2_Manager : MonoBehaviour
                                           .OrderBy(c => c.litTime)
                                           .First();
             oldest.TurnOff();
-            Debug.Log("[TryLightCandle] ¿À·¡µÈ ÃĞºÒ ²¨Áü");
+            Debug.Log("[TryLightCandle] ì˜¤ë˜ëœ ì´›ë¶ˆ êº¼ì§");
         }
 
         candle.TurnOn();
@@ -71,15 +71,15 @@ public class Phase2_Manager : MonoBehaviour
 
     private IEnumerator WindRoutine()
     {
-        yield return new WaitForSeconds(windInterval);  // ½ÃÀÛÇÏÀÚ¸¶ÀÚ ¹Ù¶÷ ºÒ±â ±İÁö
+        yield return new WaitForSeconds(windInterval);  // ì‹œì‘í•˜ìë§ˆì ë°”ëŒ ë¶ˆê¸° ê¸ˆì§€
 
         while (phaseActive)
         {
-            // 1. wind ¾Ö´Ï¸ŞÀÌ¼Ç
+            // 1. wind ì• ë‹ˆë©”ì´ì…˜
             if (windEffect != null)
                 windEffect.SetActive(true);
 
-            // 2. ·çÆ¾ : ¸ğµç ÆĞÅÏÀ» ¼ø¼­´ë·Î µ¹±â. ¹Ù¶÷ ºÒ ¶§ ÇÑ¹ø¿¡ ²¨Áö´Â ÃĞºÒ
+            // 2. ë£¨í‹´ : ëª¨ë“  íŒ¨í„´ì„ ìˆœì„œëŒ€ë¡œ ëŒê¸°. ë°”ëŒ ë¶ˆ ë•Œ í•œë²ˆì— êº¼ì§€ëŠ” ì´›ë¶ˆ
             List<int[]> windOffPatterns = new List<int[]>
             {
                 new int[] { 0, 4 },
@@ -90,7 +90,7 @@ public class Phase2_Manager : MonoBehaviour
 
             foreach (int[] pattern in windOffPatterns)
             {
-                // ÀÌ ÆĞÅÏ¿¡ ÇØ´çÇÏ´Â ÃĞºÒµé Áß¿¡¼­, À§Ä¡ x±âÁØ ¿À¸§Â÷¼ø Á¤·Ä
+                // ì´ íŒ¨í„´ì— í•´ë‹¹í•˜ëŠ” ì´›ë¶ˆë“¤ ì¤‘ì—ì„œ, ìœ„ì¹˜ xê¸°ì¤€ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
                 List<CandleTrigger> candlesToTurnOff = pattern
                     .Where(idx => idx >= 0 && idx < candles.Count && candles[idx].isLit)
                     .Select(idx => candles[idx])
@@ -100,22 +100,22 @@ public class Phase2_Manager : MonoBehaviour
                 foreach (var candle in candlesToTurnOff)
                 {
                     candle.TurnOff();
-                    yield return new WaitForSeconds(1f); // ÇÑ °³ ²¨Áú ¶§¸¶´Ù 1ÃÊ ´ë±â
+                    yield return new WaitForSeconds(1f); // í•œ ê°œ êº¼ì§ˆ ë•Œë§ˆë‹¤ 1ì´ˆ ëŒ€ê¸°
                 }
 
-                // ÆĞÅÏ ÇÏ³ª ³¡³¯ ¶§¸¶´Ù 3ÃÊ ´ë±â
+                // íŒ¨í„´ í•˜ë‚˜ ëë‚  ë•Œë§ˆë‹¤ 3ì´ˆ ëŒ€ê¸°
                 yield return new WaitForSeconds(3f);
             }
 
-            // ·çÆ¾ ÇÏ³ª Á¾·á ¡æ wind ¿¬Ãâ Á¾·á + windInterval ÁÙÀÌ±â
+            // ë£¨í‹´ í•˜ë‚˜ ì¢…ë£Œ â†’ wind ì—°ì¶œ ì¢…ë£Œ + windInterval ì¤„ì´ê¸°
             if (windEffect != null)
                 windEffect.SetActive(false);
 
-            yield return new WaitForSeconds(10f); // wind È¿°ú Á¾·á ÈÄ ´ë±â
+            yield return new WaitForSeconds(10f); // wind íš¨ê³¼ ì¢…ë£Œ í›„ ëŒ€ê¸°
             windInterval *= 0.85f;
             windInterval = Mathf.Max(5f, windInterval);
 
-            yield return new WaitForSeconds(windInterval); // ´ÙÀ½ ·çÆ¾ Àü±îÁö ´ë±â
+            yield return new WaitForSeconds(windInterval); // ë‹¤ìŒ ë£¨í‹´ ì „ê¹Œì§€ ëŒ€ê¸°
         }
     }
 
@@ -134,21 +134,22 @@ public class Phase2_Manager : MonoBehaviour
     {
         phaseActive = false;
         teleportScriptObj.SetActive(false);
-        phase2Controller.EndPhase2();   // Ãß°¡ ÀÌº¥Æ® È£Ãâ
-        Debug.Log("Phase2 Á¾·á!");
+        phase2Controller.EndPhase2();   // ì¶”ê°€ ì´ë²¤íŠ¸ í˜¸ì¶œ
+        Debug.Log("Phase2 ì¢…ë£Œ!");
     }
 
     private void Update()
     {
         if (!phaseActive) return;
 
-        // Ã¼Å©: ¸ğµç ÃĞºÒ ²¨Áö¸é »ç¸Á
+        // ì²´í¬: ëª¨ë“  ì´›ë¶ˆ êº¼ì§€ë©´ ì‚¬ë§
         if (candles.All(c => !c.isLit))
         {
-            Debug.Log("¸ğµç ÃĞºÒ ²¨Áü ¡æ ÇÃ·¹ÀÌ¾î »ç¸Á");
+            Debug.Log("ëª¨ë“  ì´›ë¶ˆ êº¼ì§ â†’ í”Œë ˆì´ì–´ ì‚¬ë§");
             player.GetComponent<Player>().Die();
 
-            phaseActive = false;    // Áßº¹ È£Ãâ ¹æÁö
+            phaseActive = false;    // ì¤‘ë³µ í˜¸ì¶œ ë°©ì§€
         }
     }
 }
+*/
