@@ -48,18 +48,6 @@ public class Player_InputState : PlayerState
         {
             stateMachine.ChangeState(player.walkState);
         }
-        // Q → 그림자 능력 상태로
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //stateMachine.ChangeState(player.shadowSkillState);
-            return;
-        }
-        // E → 에일라 능력 상태로
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //stateMachine.ChangeState(player.aylaSkillState);
-            return;
-        }
     }
 
     public override void Exit()

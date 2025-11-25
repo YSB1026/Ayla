@@ -1,5 +1,11 @@
-using System;
 using UnityEngine;
+
+public enum AylaColor
+{
+    Red,
+    Blue,
+    Green
+}
 
 public class Ayla : MonoBehaviour
 {
@@ -21,8 +27,33 @@ public class Ayla : MonoBehaviour
     [Tooltip("true면 오른쪽 위치, false면 왼쪽 위치 사용")]
     public bool onRightSide = true;
 
+    [Header("능력 색상")]
+    public AylaColor currentColor = AylaColor.Red;
+
+    // 에일라 전용 상태머신
+    public AylaStateMachine stateMachine { get; private set; }
+    public Ayla_IdleState idleState { get; private set; }
+    public Ayla_RedState redState { get; private set; }
+    public Ayla_BlueState blueState { get; private set; }
+    public Ayla_GreenState greenState { get; private set; }
+
     private Vector3 targetPosition;    // FollowTarget에서 계산
     private float floatOffsetY;        // FloatOffset에서 계산
+
+    private void Awake()
+    {
+        stateMachine = new AylaStateMachine();
+
+        idleState = new Ayla_IdleState(this, stateMachine);
+        redState = new Ayla_RedState(this, stateMachine);
+        blueState = new Ayla_BlueState(this, stateMachine);
+        greenState = new Ayla_GreenState(this, stateMachine);
+    }
+
+    private void Start()
+    {
+        stateMachine.Initialize(idleState);
+    }
 
     private void Update()
     {
@@ -32,13 +63,15 @@ public class Ayla : MonoBehaviour
         FollowTarget();
         FloatOffset();
         ApplyMovement();
+
+        // 에일라 상태 업데이트
+        stateMachine.currentState.Update();
     }
 
     private void FollowTarget()
     {
         Transform p = onRightSide ? rightPoint : leftPoint;
 
-        // 포인트의 x, y를 그대로 따라감
         targetPosition = new Vector3(
             p.position.x,
             p.position.y,
@@ -74,5 +107,22 @@ public class Ayla : MonoBehaviour
     public void ToggleSide()
     {
         onRightSide = !onRightSide;
+    }
+
+    // 플레이어가 호출할 함수
+    public void UseCurrentAbility()
+    {
+        switch (currentColor)
+        {
+            case AylaColor.Red:
+                stateMachine.ChangeState(redState);
+                break;
+            case AylaColor.Blue:
+                stateMachine.ChangeState(blueState);
+                break;
+            case AylaColor.Green:
+                stateMachine.ChangeState(greenState);
+                break;
+        }
     }
 }

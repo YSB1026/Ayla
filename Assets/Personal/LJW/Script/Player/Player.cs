@@ -25,8 +25,8 @@ public class Player : Entity
     private Vector2 idleColSize = new Vector2(0.93f, 1.5f);
     private Vector2 sitColOffset = new Vector2(0f, -0.1f);
     private Vector2 sitColSize = new Vector2(0.9f, 1.1f);
-    private Vector2 crawColOffset = new Vector2(0f, -0.2f);
-    private Vector2 crawColSize = new Vector2(2f, 0.9f);
+    private Vector2 crawlColOffset = new Vector2(0f, -0.2f);
+    private Vector2 crawlColSize = new Vector2(2f, 0.9f);
     #endregion
 
     #region States
@@ -162,8 +162,8 @@ public class Player : Entity
     public void SetCrawCollider()
     {
         col.direction = CapsuleDirection2D.Horizontal;
-        col.offset = crawColOffset;
-        col.size = crawColSize;
+        col.offset = crawlColOffset;
+        col.size = crawlColSize;
     }
 
 
