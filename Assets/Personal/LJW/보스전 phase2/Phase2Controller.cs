@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class Phase2Controller : MonoBehaviour
 {
@@ -15,14 +15,15 @@ public class Phase2Controller : MonoBehaviour
     public void StartPhase2()
     {
         phase2Manager.StartPhase();
-        teleportScriptObj.SetActive(true);  // ÅÚ·¹Æ÷Æ® ±â´É ON
+        teleportScriptObj.SetActive(true);  // í…”ë ˆí¬íŠ¸ ê¸°ëŠ¥ ON
         teleportScript.ActivatePhase2();
     }
 
     public void EndPhase2()
     {
         teleportScript.DeactivatePhase2();
-        teleportScriptObj.SetActive(false);  // ÅÚ·¹Æ÷Æ® ±â´É OFF
-        Debug.Log("Phase2Controller: Phase2 Á¾·áµÊ.");
+        teleportScriptObj.SetActive(false);  // í…”ë ˆí¬íŠ¸ ê¸°ëŠ¥ OFF
+        Debug.Log("Phase2Controller: Phase2 ì¢…ë£Œë¨.");
     }
 }
+*/

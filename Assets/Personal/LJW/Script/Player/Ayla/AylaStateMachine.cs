@@ -12,6 +12,9 @@ public class AylaStateMachine
 
     public void ChangeState(AylaState newState)
     {
+        if (currentState == newState)
+            return;
+
         currentState.Exit();
         currentState = newState;
         currentState.Enter();

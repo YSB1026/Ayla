@@ -1,68 +1,69 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class Player_Phase2Controller : MonoBehaviour
 {
-    /*[Header("ÅÚ·¹Æ÷Æ® Æ÷ÀÎÆ®")]
+    *//*[Header("í…”ë ˆí¬íŠ¸ í¬ì¸íŠ¸")]
     public Transform[] teleportPoints;
 
-    [Header("¼³Á¤")]
+    [Header("ì„¤ì •")]
     public KeyCode teleportKey = KeyCode.T;
-    public int currentTeleportIndex = 0;*/
+    public int currentTeleportIndex = 0;*//*
 
-    [Header("Phase2 Àü¿ë")]
-    public SwitchVision switchVision; // ÀÎ½ºÆåÅÍ¿¡ ¿¬°á
+    [Header("Phase2 ì „ìš©")]
+    public SwitchVision switchVision; // ì¸ìŠ¤í™í„°ì— ì—°ê²°
     private bool isPhase2Active = false;
 
     private Player player;
 
     private void Start()
     {
-        player = GetComponent<Player>();  // °°Àº ¿ÀºêÁ§Æ®¿¡ ºÙÀº Player ½ºÅ©¸³Æ® °¡Á®¿À±â
+        player = GetComponent<Player>();  // ê°™ì€ ì˜¤ë¸Œì íŠ¸ì— ë¶™ì€ Player ìŠ¤í¬ë¦½íŠ¸ ê°€ì ¸ì˜¤ê¸°
     }
 
     private void Update()
     {
-        /*if (!isPhase2Active) return;
+        *//*if (!isPhase2Active) return;
 
         if (Input.GetKeyDown(teleportKey))
         {
             TryTeleport();
         }
 
-        // ÀÎµ¦½º º¯°æ Å° (¿¹: 1~5¹ø Å°·Î ¼±ÅÃ)
+        // ì¸ë±ìŠ¤ ë³€ê²½ í‚¤ (ì˜ˆ: 1~5ë²ˆ í‚¤ë¡œ ì„ íƒ)
         if (Input.GetKeyDown(KeyCode.Alpha1)) currentTeleportIndex = 0;
         if (Input.GetKeyDown(KeyCode.Alpha2)) currentTeleportIndex = 1;
         if (Input.GetKeyDown(KeyCode.Alpha3)) currentTeleportIndex = 2;
         if (Input.GetKeyDown(KeyCode.Alpha4)) currentTeleportIndex = 3;
-        if (Input.GetKeyDown(KeyCode.Alpha5)) currentTeleportIndex = 4;*/
+        if (Input.GetKeyDown(KeyCode.Alpha5)) currentTeleportIndex = 4;*//*
     }
 
-    /*private void TryTeleport()
+    *//*private void TryTeleport()
     {
         if (teleportPoints.Length == 0) return;
 
         if (currentTeleportIndex >= 0 && currentTeleportIndex < teleportPoints.Length)
         {
             transform.position = teleportPoints[currentTeleportIndex].position;
-            Debug.Log($"ÅÚ·¹Æ÷Æ®! ÁöÁ¡ {currentTeleportIndex}");
+            Debug.Log($"í…”ë ˆí¬íŠ¸! ì§€ì  {currentTeleportIndex}");
         }
         else
         {
-            Debug.LogWarning("Àß¸øµÈ ÅÚ·¹Æ÷Æ® ÀÎµ¦½º");
+            Debug.LogWarning("ì˜ëª»ëœ í…”ë ˆí¬íŠ¸ ì¸ë±ìŠ¤");
         }
-    }*/
+    }*//*
 
     public void ActivatePhase2()
     {
         isPhase2Active = true;
         if (switchVision != null) switchVision.canSwitch = false;
-        Debug.Log("[Phase2] ÅÚ·¹Æ÷Æ® ON, Tab ½ÃÁ¡ ÀüÈ¯ OFF");
+        Debug.Log("[Phase2] í…”ë ˆí¬íŠ¸ ON, Tab ì‹œì  ì „í™˜ OFF");
     }
 
     public void DeactivatePhase2()
     {
         isPhase2Active = false;
         if (switchVision != null) switchVision.canSwitch = true;
-        Debug.Log("[Phase2] ÅÚ·¹Æ÷Æ® OFF, Tab ½ÃÁ¡ ÀüÈ¯ ON");
+        Debug.Log("[Phase2] í…”ë ˆí¬íŠ¸ OFF, Tab ì‹œì  ì „í™˜ ON");
     }
 }
+*/

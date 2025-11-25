@@ -1,13 +1,13 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using System;
 
 public class CandleTrigger : MonoBehaviour
 {
-    [Header("Fire ¿ÀºêÁ§Æ®")]
+    [Header("Fire ì˜¤ë¸Œì íŠ¸")]
     public GameObject fireObject;
 
-    [Header("Light2D ÄÄÆ÷³ÍÆ®")]
+    [Header("Light2D ì»´í¬ë„ŒíŠ¸")]
     public Light2D light2D;
 
     private bool playerInRange = false;
@@ -23,7 +23,7 @@ public class CandleTrigger : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.L))
         {
-            if (!isLit) // ÀÌ¹Ì ÄÑÁ® ÀÖÁö ¾ÊÀ¸¸é ÄÑ±â
+            if (!isLit) // ì´ë¯¸ ì¼œì ¸ ìˆì§€ ì•Šìœ¼ë©´ ì¼œê¸°
             {
                 Phase2_Manager.Instance.TryLightCandle(this);
             } 
@@ -61,3 +61,4 @@ public class CandleTrigger : MonoBehaviour
         }
     }
 }
+*/

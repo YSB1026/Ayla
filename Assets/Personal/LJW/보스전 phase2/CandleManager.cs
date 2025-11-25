@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using UnityEngine;
 
 public class CandleManager : MonoBehaviour
@@ -17,3 +17,4 @@ public class CandleManager : MonoBehaviour
         return allCandles;
     }
 }
+*/
