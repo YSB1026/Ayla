@@ -22,6 +22,9 @@ namespace YSB
                     bool inside = boxCollider.OverlapPoint(mb.transform.position);
                     reactive.IsInLight = inside;
 
+                    // 수정
+                    reactive.ApplyLightReaction();
+
                     if (inside)
                         inLightReactives.Add(reactive);
                 }
