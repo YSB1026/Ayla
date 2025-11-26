@@ -12,36 +12,19 @@ public class Player_JumpState : PlayerState
         base.Enter();
 
         rb.linearVelocity = new Vector2(rb.linearVelocityX, player.jumpForce);
-        isJumping = true; // Á¡ÇÁ ½ÃÀÛ
+        isJumping = true; // ì í”„ ì‹œì‘
     }
 
     public override void Update()
     {
         base.Update();
 
-        // Á¡ÇÁÇÏ¸é¼­ ¿òÁ÷ÀÌ´Â °ª
+        // ì í”„í•˜ë©´ì„œ ì›€ì§ì´ëŠ” ê°’
         if (xInput != 0)
             player.SetVelocity(player.moveSpeed * 0.8f * xInput, rb.linearVelocityY);
 
         if (rb.linearVelocity.y < 0)
             stateMachine.ChangeState(player.airState);
-
-		// ÇÏ°­
-			/*if (isJumping)
-			{
-				if (rb.linearVelocity.y < 0)
-				{
-					isJumping = false;
-				}
-				return; // isJumpingÀÌ¸é ÂøÁö ÆÇÁ¤ ¹«½Ã
-			}*/
-
-			// ¶¥ Ã¼Å©
-			/*if (player.IsGroundDetected())
-			{
-				stateMachine.ChangeState(player.idleState);
-			}*/
-
 	}
 
     public override void Exit()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_RunState : PlayerState
+public class Player_RunState : Player_GroundedState
 {
     public Player_RunState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
@@ -15,9 +15,12 @@ public class Player_RunState : PlayerState
     {
         base.Update();
 
-        player.SetVelocity(xInput * player.runSpeed, rb.linearVelocityY);
+        if (stateMachine.currentState != this)
+            return;
 
-		if (!player.IsGroundDetected())
+        MoveHorizontally(player.runSpeed);
+
+        if (!player.IsGroundDetected())
 			stateMachine.ChangeState(player.airState);
 		else if (Input.GetKeyDown(KeyCode.Space))
             stateMachine.ChangeState(player.jumpState);

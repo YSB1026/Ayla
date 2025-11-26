@@ -1,8 +1,8 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class Phase1_VisionHandler : MonoBehaviour
 {
-    [Header("ÂüÁ¶")]
+    [Header("ì°¸ì¡°")]
     public SwitchVision switchVision;
 
     private bool inPuzzleView = false;
@@ -18,27 +18,27 @@ public class Phase1_VisionHandler : MonoBehaviour
 
             if (inPuzzleView)
             {
-                Debug.Log("ÆÛÁñ ½ÃÁ¡ ÀüÈ¯");
+                Debug.Log("í¼ì¦ ì‹œì  ì „í™˜");
                 switchVision.ayla.GetComponent<AylaPhase1Controller>()?.Activate();
-                switchVision.ayla.SetControlEnabled(false); // ±âÁ¸ Ayla ¿òÁ÷ÀÓ OFF
+                switchVision.ayla.SetControlEnabled(false); // ê¸°ì¡´ Ayla ì›€ì§ì„ OFF
 
-                // 1. Ayla¸¦ ÆÛÁñ À§Ä¡·Î ¼ø°£ ÀÌµ¿
+                // 1. Aylaë¥¼ í¼ì¦ ìœ„ì¹˜ë¡œ ìˆœê°„ ì´ë™
                 if (switchVision.aylaPuzzleStartPoint != null)
                 {
                     Vector3 targetPos = switchVision.aylaPuzzleStartPoint.position;
 
-                    // transform.position ¼³Á¤
+                    // transform.position ì„¤ì •
                     switchVision.ayla.transform.position = targetPos;
                     switchVision.ayla.SendMessage("SetFollowBasePosition", targetPos, SendMessageOptions.DontRequireReceiver);
                 }
 
-                // ½Ã³×¸Ó½Å ÀÛµ¿ ÁßÁö
+                // ì‹œë„¤ë¨¸ì‹  ì‘ë™ ì¤‘ì§€
                 if (switchVision.CCamera != null)
                 {
                     switchVision.CCamera.gameObject.SetActive(false);
                 }
 
-                // 2. Ä«¸Ş¶ó ÆÛÁñ À§Ä¡·Î ÀÌµ¿
+                // 2. ì¹´ë©”ë¼ í¼ì¦ ìœ„ì¹˜ë¡œ ì´ë™
                 if (switchVision.Phase1_Ayla_CameraTarget != null)
                 {
                     Vector3 targetPos = switchVision.Phase1_Ayla_CameraTarget.position;
@@ -46,10 +46,10 @@ public class Phase1_VisionHandler : MonoBehaviour
                     switchVision.mainCamera.transform.position = cameraPos;
                 }
 
-                // Ä«¸Ş¶ó ÆÛÁñ ºä ¸¶½ºÅ© ÀüÈ¯
+                // ì¹´ë©”ë¼ í¼ì¦ ë·° ë§ˆìŠ¤í¬ ì „í™˜
                 switchVision.mainCamera.cullingMask = switchVision.aylaPhase1ViewMask;
 
-                // Á¶ÀÛ ±ÇÇÑ ÀüÈ¯
+                // ì¡°ì‘ ê¶Œí•œ ì „í™˜
                 switchVision.ayla.SetControlEnabled(true);
                 switchVision.ayla.isCurrentlyControlled = true;
                 switchVision.player.SetControlEnabled(false);
@@ -61,9 +61,9 @@ public class Phase1_VisionHandler : MonoBehaviour
             }
             else
             {
-                // ¢¸ ÇÃ·¹ÀÌ¾î ½ÃÁ¡ º¹±Í
+                // â—€ í”Œë ˆì´ì–´ ì‹œì  ë³µê·€
 
-                // ½Ã³×¸Ó½Å ´Ù½Ã ÄÑ±â
+                // ì‹œë„¤ë¨¸ì‹  ë‹¤ì‹œ ì¼œê¸°
                 if (switchVision.CCamera != null)
                 {
                     switchVision.CCamera.gameObject.SetActive(true);
@@ -71,10 +71,10 @@ public class Phase1_VisionHandler : MonoBehaviour
                     switchVision.CCamera.LookAt = switchVision.player.transform;
                 }
 
-                // ÇÃ·¹ÀÌ¾î ºä ¸¶½ºÅ©
+                // í”Œë ˆì´ì–´ ë·° ë§ˆìŠ¤í¬
                 switchVision.mainCamera.cullingMask = switchVision.playerViewMask;
 
-                // Á¶ÀÛ ÀüÈ¯
+                // ì¡°ì‘ ì „í™˜
                 switchVision.player.SetControlEnabled(true);
                 switchVision.ayla.SetControlEnabled(false);
                 switchVision.ayla.isCurrentlyControlled = false;
@@ -82,3 +82,4 @@ public class Phase1_VisionHandler : MonoBehaviour
         }
     }
 }
+*/

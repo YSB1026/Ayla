@@ -58,7 +58,6 @@ public class LightColorController : MonoBehaviour
         GameManager.Instance.RegistLightController(this);
     }
 
-    // Update는 매 프레임마다 호출됩니다
     void Update()
     {
         // 스페이스바를 누르면 색상 변경 (순차적으로 색상 변화)
@@ -69,6 +68,33 @@ public class LightColorController : MonoBehaviour
         //     ChangeColorWithFade(nextColor);
         // }
     }
+
+    // 새로 추가: 능력용 색 순환 (Green -> Blue -> Red)
+    public void NextAbilityColor()
+    {
+        ColorOption next;
+
+        switch (currentColor)
+        {
+            case ColorOption.Green:
+                next = ColorOption.Blue;
+                break;
+            case ColorOption.Blue:
+                next = ColorOption.Red;
+                break;
+            case ColorOption.Red:
+                next = ColorOption.Green;
+                break;
+
+            // White나 Black 상태에서 시작하면 Green으로 진입
+            default:
+                next = ColorOption.Green;
+                break;
+        }
+
+        ChangeColorWithFade(next);
+    }
+
 
     // 페이드 효과와 함께 색상 변경
     public void ChangeColorWithFade(ColorOption newColor)

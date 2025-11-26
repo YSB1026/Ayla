@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class Phase1_PuzzleTrigger : MonoBehaviour
 {
@@ -15,3 +15,4 @@ public class Phase1_PuzzleTrigger : MonoBehaviour
         }
     }
 }
+*/
