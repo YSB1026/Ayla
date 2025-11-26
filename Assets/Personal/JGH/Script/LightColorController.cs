@@ -4,11 +4,12 @@ using System.Collections;
 public enum ColorOption
 {
     White,
+    Green,
+    Blue,
     Red,
     Black,
-    Blue,
-    Green
 }
+
 public class LightColorController : MonoBehaviour
 {
     // 색상을 위한 열거형(Enum) 정의
@@ -32,6 +33,10 @@ public class LightColorController : MonoBehaviour
     [Header("HardLight2D 범위 변경 설정")]
     [SerializeField] private float rangeChangeDuration = 0.5f;
     [SerializeField] private float targetRange = 12f;
+
+    [Header("펜던트 색상")]
+    public ColorOption pendantColor;
+    
 
     private bool isFading = false;
     private Color whiteColor = new Color(214f / 255f, 236f / 255f, 248f / 255f);
@@ -72,27 +77,28 @@ public class LightColorController : MonoBehaviour
     // 새로 추가: 능력용 색 순환 (Green -> Blue -> Red)
     public void NextAbilityColor()
     {
-        ColorOption next;
+        //ColorOption next;
 
         switch (currentColor)
         {
             case ColorOption.Green:
-                next = ColorOption.Blue;
+                currentColor = ColorOption.Blue;
                 break;
             case ColorOption.Blue:
-                next = ColorOption.Red;
+                currentColor = ColorOption.Red;
                 break;
             case ColorOption.Red:
-                next = ColorOption.Green;
+                currentColor = ColorOption.Green;
                 break;
 
             // White나 Black 상태에서 시작하면 Green으로 진입
             default:
-                next = ColorOption.Green;
+                currentColor = ColorOption.Green;
                 break;
         }
 
-        ChangeColorWithFade(next);
+        GameManager.Instance.OnPendantCollected(currentColor);
+        ChangeColorWithFade(currentColor);
     }
 
 

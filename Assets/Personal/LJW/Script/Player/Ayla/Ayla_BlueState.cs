@@ -14,7 +14,7 @@ public class Ayla_BlueState : AylaState
         base.Enter();
         Debug.Log("Ayla Blue ability activated");
 
-        // 나중에 보호막, 슬로우, 제어 같은 로직
+        // 정지 로직
     }
 
     public override void Update()

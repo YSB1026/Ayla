@@ -14,7 +14,7 @@ public class Ayla_RedState : AylaState
         base.Enter();
         Debug.Log("Ayla Red ability activated");
 
-        // 나중에 빨강 능력 이펙트, 공격 로직 등 여기에서
+        // 나중에 빨강 능력 로직
     }
 
     public override void Update()

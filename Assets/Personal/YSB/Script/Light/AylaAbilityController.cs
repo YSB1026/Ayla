@@ -36,7 +36,7 @@ namespace YSB
             {
                 inLightReactives = lightMeshDetector.Detect();
                 lightController.ChangeRangeWithFade();
-                //Debug.Log($"Detected {inLightReactives.Count} light reactives.");
+                Debug.Log($"Detected {inLightReactives.Count} light reactives.");
             }
 
             // 감지된 대상에게 실제 반응 적용

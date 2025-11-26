@@ -14,7 +14,7 @@ public class Ayla_GreenState : AylaState
         base.Enter();
         Debug.Log("Ayla Green ability activated");
 
-        // 나중에 회복, 버프 등
+        // 되돌리기 로직
     }
 
     public override void Update()
