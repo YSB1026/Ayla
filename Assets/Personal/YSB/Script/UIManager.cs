@@ -6,8 +6,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    //setting panelÀÌ¶û paused panel °°¾Æµµ µÉ°Å°°Àºµ¥
-    [Header("°øÅë UI")]
+    //setting panelì´ëž‘ paused panel ê°™ì•„ë„ ë ê±°ê°™ì€ë°
+    [Header("ê³µí†µ UI")]
     [Space]
 
     [Header("Setting")]    
@@ -16,7 +16,12 @@ public class UIManager : MonoBehaviour
     [Header("Fade Image")]
     [SerializeField] private Image fadeImage;
     [SerializeField] private float fadeDuration = 1f;
-    private void Awake()
+
+    [Header("Viewer UI")]
+	[SerializeField] private Image SafeUI;
+	[SerializeField] private Image DiaryUI;
+
+	private void Awake()
     {
         if (Instance == null)
         {
@@ -28,7 +33,8 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void FadeIn(System.Action onComplete = null)
+
+	public void FadeIn(System.Action onComplete = null)
     {
         fadeImage.gameObject.SetActive(true);
         StartCoroutine(FadeRoutine(1, 0, () => {
@@ -36,11 +42,13 @@ public class UIManager : MonoBehaviour
             onComplete?.Invoke();
         }));
     }
+
     public void FadeOut(System.Action onComplete = null)
     {
         fadeImage.gameObject.SetActive(true);
         StartCoroutine(FadeRoutine(0, 1, onComplete));
     }
+
     private IEnumerator FadeRoutine(float startAlpha, float endAlpha, System.Action onComplete)
     {
         float time = 0f;
@@ -59,6 +67,36 @@ public class UIManager : MonoBehaviour
 
         onComplete?.Invoke();
     }
+
+    public void ShowViewer(ViewerUIType viewerType)
+    {
+        switch(viewerType)
+        {
+            case ViewerUIType.Safe:
+                SafeUI.gameObject.SetActive(true);
+                break;
+            case ViewerUIType.Diary:
+                DiaryUI.gameObject.SetActive(true);
+				break;
+            default:
+                break;
+        }
+    }
+
+    public void HideViewer(ViewerUIType viewerType)
+    {
+		switch (viewerType)
+		{
+			case ViewerUIType.Safe:
+				SafeUI.gameObject.SetActive(false);
+				break;
+			case ViewerUIType.Diary:
+				DiaryUI.gameObject.SetActive(false);
+				break;
+			default:
+				break;
+		}
+	}
     public void ToggleSettings()
     {
         isSettingsOpen = !isSettingsOpen;
