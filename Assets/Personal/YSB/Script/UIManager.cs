@@ -18,8 +18,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float fadeDuration = 1f;
 
     [Header("Viewer UI")]
-	[SerializeField] private Image SafeUI;
-	[SerializeField] private Image DiaryUI;
+	[SerializeField] private SafeUI SafeUI;
+	[SerializeField] private DiaryUI DiaryUI;
+
+    public SafeUI GetSafeUI() { return SafeUI; }
+    public DiaryUI GetDiaryUI() { return DiaryUI; }
 
 	private void Awake()
     {
@@ -33,6 +36,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
 	public void FadeIn(System.Action onComplete = null)
     {
@@ -97,6 +101,7 @@ public class UIManager : MonoBehaviour
 				break;
 		}
 	}
+
     public void ToggleSettings()
     {
         isSettingsOpen = !isSettingsOpen;

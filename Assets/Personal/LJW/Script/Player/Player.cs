@@ -120,8 +120,8 @@ public class Player : Entity
     {
         if (collision.gameObject.CompareTag("Ground") && IsTrapDetected())
         {
-            collision.gameObject.GetComponent<InteractiveObject>().FreezeObject(false);
-            collision.gameObject.GetComponent<InteractiveObject>().SetTrigger(true);
+            collision.gameObject.GetComponent<MovebleObject>().FreezeObject(false);
+            collision.gameObject.GetComponent<MovebleObject>().SetTrigger(true);
         }
     }
 
