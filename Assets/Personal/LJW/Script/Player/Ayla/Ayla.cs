@@ -30,30 +30,8 @@ public class Ayla : MonoBehaviour
     [Header("능력 색상")]
     public AylaColor currentColor = AylaColor.Red;
 
-    // 에일라 전용 상태머신
-    public AylaStateMachine stateMachine { get; private set; }
-    public Ayla_IdleState idleState { get; private set; }
-    public Ayla_RedState redState { get; private set; }
-    public Ayla_BlueState blueState { get; private set; }
-    public Ayla_GreenState greenState { get; private set; }
-
     private Vector3 targetPosition;    // FollowTarget에서 계산
     private float floatOffsetY;        // FloatOffset에서 계산
-
-    private void Awake()
-    {
-        stateMachine = new AylaStateMachine();
-
-        idleState = new Ayla_IdleState(this, stateMachine);
-        redState = new Ayla_RedState(this, stateMachine);
-        blueState = new Ayla_BlueState(this, stateMachine);
-        greenState = new Ayla_GreenState(this, stateMachine);
-    }
-
-    private void Start()
-    {
-        stateMachine.Initialize(idleState);
-    }
 
     private void Update()
     {
@@ -64,8 +42,6 @@ public class Ayla : MonoBehaviour
         FloatOffset();
         ApplyMovement();
 
-        // 에일라 상태 업데이트
-        stateMachine.currentState.Update();
     }
 
     private void FollowTarget()
@@ -109,20 +85,4 @@ public class Ayla : MonoBehaviour
         onRightSide = !onRightSide;
     }
 
-    // 플레이어가 호출할 함수
-    public void UseCurrentAbility()
-    {
-        switch (currentColor)
-        {
-            case AylaColor.Red:
-                stateMachine.ChangeState(redState);
-                break;
-            case AylaColor.Blue:
-                stateMachine.ChangeState(blueState);
-                break;
-            case AylaColor.Green:
-                stateMachine.ChangeState(greenState);
-                break;
-        }
-    }
 }
