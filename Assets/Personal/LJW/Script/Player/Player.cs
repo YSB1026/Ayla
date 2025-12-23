@@ -15,6 +15,11 @@ public class Player : Entity
     public float sitWalkSpeed;
     public bool isInZone;
 
+    [Header("잡기/밀기 설정")]
+    public float grabSpeed = 3f; // 에러 잡는 변수
+    public float grabDistance = 1f; // 물체 감지 거리
+    public LayerMask whatIsObject; // 밀 수 있는 물체 레이어
+
     private bool canHide;
     private Transform currentHideAnchor;
 
@@ -47,11 +52,20 @@ public class Player : Entity
 
     public Player_DownState downState { get; private set; }
     public Player_UpState upState { get; private set; }
+
+    public Player_GrabState grabState { get; private set; }
+    public Player_PushState pushState { get; private set; }
+    public Player_PullState pullState { get; private set; }
+
+    public Player_ShadowState shadowState { get; private set; }
     #endregion
 
     public bool controlEnabled { get; private set; } = true;
     public bool IsHidden { get; private set; } = false;
     public void SetHidden(bool value) => IsHidden = value;
+
+    [Header("그림자 능력 연결")]
+    public ShadowAbility shadowAbility;
 
     public void SetControlEnabled(bool isEnabled)
     {
@@ -64,7 +78,6 @@ public class Player : Entity
     {
         base.Awake();
 
-        // 상태 머신 인스턴스 생성
         stateMachine = new PlayerStateMachine();
         inputState = new Player_InputState(this, stateMachine, "Idle");
 
@@ -82,6 +95,12 @@ public class Player : Entity
 
         downState = new Player_DownState(this, stateMachine, "Down");
         upState = new Player_UpState(this, stateMachine, "Up");
+
+        grabState = new Player_GrabState(this, stateMachine, "Grab");
+        pushState = new Player_PushState(this, stateMachine, "Push");
+        pullState = new Player_PullState(this, stateMachine, "Pull");
+
+        shadowState = new Player_ShadowState(this, stateMachine, "ShadowMode");
     }
 
     protected override void Start()
@@ -90,7 +109,6 @@ public class Player : Entity
 
         col = GetComponent<CapsuleCollider2D>();
 
-        // 게임 시작 시 초기 상태를 대기 상태 : (inputState)
         stateMachine.Initialize(inputState);
     }
 
@@ -166,6 +184,25 @@ public class Player : Entity
         col.size = crawlColSize;
     }
 
+    // 물체가 앞에 있는지 확인하는 함수
+    public bool IsObjectDetected()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.right * facingDir, grabDistance, whatIsObject);
+    }
+
+    // 물체의 정보를 가져오는 함수 (InteractiveObject 접근용)
+    public RaycastHit2D GetObjectHitInfo()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.right * facingDir, grabDistance, whatIsObject);
+    }
+
+    // 기즈모 그리기
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * facingDir * grabDistance);
+    }
 
     public void ForceSetControlEnabled(bool isEnabled)
     {

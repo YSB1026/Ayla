@@ -1,8 +1,8 @@
-/*using UnityEngine;
+using UnityEngine;
 
 public class Player_PullState : PlayerState
 {
-	public Player_PullState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) 
+	public Player_PullState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
 		: base(_player, _stateMachine, _animBoolName)
 	{
 	}
@@ -22,7 +22,7 @@ public class Player_PullState : PlayerState
 		player.transform.position += new Vector3(player.grabSpeed * -player.facingDir * Time.deltaTime, 0, 0);
 
 		if (Input.GetKeyDown(KeyCode.F) || !player.IsObjectDetected())
-			stateMachine.ChangeState(player.inputState); 
+			stateMachine.ChangeState(player.inputState);
 		else if (xInput > 0 && player.facingDir == 1)
 			stateMachine.ChangeState(player.pushState);
 		else if (xInput < 0 && player.facingDir == -1)
@@ -38,4 +38,3 @@ public class Player_PullState : PlayerState
 		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(true);
 	}
 }
-*/

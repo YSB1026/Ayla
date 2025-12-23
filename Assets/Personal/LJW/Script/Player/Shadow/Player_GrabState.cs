@@ -1,8 +1,8 @@
-/*using UnityEngine;
+using UnityEngine;
 
 public class Player_GrabState : PlayerState
 {
-	public Player_GrabState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) 
+	public Player_GrabState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
 		: base(_player, _stateMachine, _animBoolName)
 	{
 	}
@@ -18,7 +18,7 @@ public class Player_GrabState : PlayerState
 	{
 		base.Update();
 
-		if(Input.GetKeyDown(KeyCode.F) || !player.IsObjectDetected())
+		if (Input.GetKeyDown(KeyCode.F) || !player.IsObjectDetected())
 			stateMachine.ChangeState(player.inputState);
 
 		if (xInput > 0 && player.facingDir == 1)
@@ -39,4 +39,3 @@ public class Player_GrabState : PlayerState
 		base.Exit();
 	}
 }
-*/
