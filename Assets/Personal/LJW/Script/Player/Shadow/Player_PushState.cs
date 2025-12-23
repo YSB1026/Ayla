@@ -1,8 +1,8 @@
-/*using UnityEngine;
+using UnityEngine;
 
 public class Player_PushState : PlayerState
 {
-	public Player_PushState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) 
+	public Player_PushState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
 		: base(_player, _stateMachine, _animBoolName)
 	{
 	}
@@ -39,4 +39,3 @@ public class Player_PushState : PlayerState
 		hit.collider.gameObject.GetComponent<InteractiveObject>()?.FreezeObject(true);
 	}
 }
-*/
