@@ -18,13 +18,6 @@ public class Player_InputState : PlayerState
 
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (player.rb.linearVelocity.magnitude < 0.1f) 
-                stateMachine.ChangeState(player.shadowState);
-            return; // 상태가 바뀌었으니 아래 코드는 실행 안 함
-        }
-
         // 공중 전환
         if (!player.IsGroundDetected())
         {

@@ -76,6 +76,13 @@ public class Player_HideState : PlayerState
         // 마우스 왼쪽 클릭으로 숨기 해제 → 서기(Stand) 상태로 전환
         if (Input.GetMouseButtonDown(0))
             stateMachine.ChangeState(player.standState);
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (player.rb.linearVelocity.magnitude < 0.1f)
+                stateMachine.ChangeState(player.shadowState);
+            return;
+        }
     }
 
     public override void Exit()
