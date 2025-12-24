@@ -4,6 +4,9 @@ public class InteractiveObject : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    [Header("설정")]
+    public float pushSpeed = 3f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -15,19 +18,21 @@ public class InteractiveObject : MonoBehaviour
         if (rb != null)
         {
             if (freeze)
-                rb.constraints = RigidbodyConstraints2D.FreezeAll; // 고정
+            {
+                // 잡지 않을 땐 모든 움직임 고정 (밀림 방지)
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
             else
-                rb.constraints = RigidbodyConstraints2D.FreezeRotation; // 회전만 잠그고 이동 허용
+            {
+                // 회전과 Y축 이동을 막고, X축 이동만 허용
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+            }
         }
     }
 
     // 실제 물건 이동시키는 함수
-    public void MoveObject(float direction)
+    public void MoveObject(float direction) // direction은 1 또는 -1
     {
-        // 여기서 물체 이동 로직 구현 (필요에 따라 수정 가능)
-        // 예시로 단순히 속도를 주는 방식보다는, 플레이어가 미는 힘을 받는 식이어야 하지만
-        // 일단 에러를 잡기 위해 빈 함수라도 있어야 합니다.
-        // 현재 PlayerState 로직상 플레이어가 직접 transform을 밀고 있으므로
-        // 여기서는 충돌 처리나 물리적인 보정만 해주면 됩니다.
+        transform.position += new Vector3(direction * pushSpeed * Time.deltaTime, 0, 0);
     }
 }

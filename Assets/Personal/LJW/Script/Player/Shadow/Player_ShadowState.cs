@@ -11,13 +11,14 @@ public class Player_ShadowState : PlayerState
     {
         base.Enter();
 
-        // 1. 플레이어를 멈춥니다.
+        // 1. 플레이어를 멈추기
         player.SetZeroVelocity();
 
-        // 2. 그림자 능력을 켭니다.
+        // 2. 그림자 능력을 켜기
         if (player.shadowAbility != null)
         {
-            //player.shadowAbility.ActivateShadow(true);
+            // 플레이어의 현재 위치를 전달하며 키기
+            player.shadowAbility.ActivateShadow(player.transform.position);
         }
     }
 
@@ -25,10 +26,10 @@ public class Player_ShadowState : PlayerState
     {
         base.Update();
 
-        // 3. 이 상태에서는 움직일 수 없으므로 이동 코드(xInput 등)를 무시하고 계속 멈춥니다.
+        // 3. 이동 코드 무시
         player.SetZeroVelocity();
 
-        // 4. Q키를 다시 누르면 원래 상태(Idle)로 돌아갑니다.
+        // 4. Q키를 다시 누르면 원래 상태(Idle)로 복귀
         if (Input.GetKeyDown(KeyCode.Q))
         {
             stateMachine.ChangeState(player.inputState);
@@ -39,10 +40,10 @@ public class Player_ShadowState : PlayerState
     {
         base.Exit();
 
-        // 5. 상태를 나갈 때 그림자 능력을 끕니다.
+        // 5. 상태를 나갈 때 그림자 능력을 끄기
         if (player.shadowAbility != null)
         {
-            //player.shadowAbility.ActivateShadow(false);
+            player.shadowAbility.DeactivateShadow();
         }
     }
 }
