@@ -53,10 +53,6 @@ public class Player : Entity
     public Player_DownState downState { get; private set; }
     public Player_UpState upState { get; private set; }
 
-    public Player_GrabState grabState { get; private set; }
-    public Player_PushState pushState { get; private set; }
-    public Player_PullState pullState { get; private set; }
-
     public Player_ShadowState shadowState { get; private set; }
     #endregion
 
@@ -65,7 +61,7 @@ public class Player : Entity
     public void SetHidden(bool value) => IsHidden = value;
 
     [Header("그림자 능력 연결")]
-    public ShadowAbility shadowAbility;
+    public Shadow shadowAbility;
 
     public void SetControlEnabled(bool isEnabled)
     {
@@ -95,10 +91,6 @@ public class Player : Entity
 
         downState = new Player_DownState(this, stateMachine, "Down");
         upState = new Player_UpState(this, stateMachine, "Up");
-
-        grabState = new Player_GrabState(this, stateMachine, "Grab");
-        pushState = new Player_PushState(this, stateMachine, "Push");
-        pullState = new Player_PullState(this, stateMachine, "Pull");
 
         shadowState = new Player_ShadowState(this, stateMachine, "ShadowMode");
     }
