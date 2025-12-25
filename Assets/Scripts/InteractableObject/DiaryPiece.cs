@@ -3,9 +3,20 @@ using UnityEngine;
 public class DiaryPiece : InteractableObject
 {
 	[SerializeField] private int PieceIndex;
-	[SerializeField] private bool isHiden = false;
+	[SerializeField] private bool isHidden = false;
 
-	public void SetIsHiden(bool hiden) { isHiden = hiden; }
+	[Header("레이어 설정")]
+	[SerializeField] private int DefaultLayer = 3;
+	[SerializeField] private int HiddenLayer = 1;
+
+	private SpriteRenderer spriteRenderer;
+
+	private void Awake()
+	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
+	}
+
+	public void SetIsHiden(bool hiden) { isHidden = hiden; }
 
 	protected override void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -13,7 +24,8 @@ public class DiaryPiece : InteractableObject
 
 		if(collision.TryGetComponent<MovebleObject>(out var movebleObject))
 		{
-			isHiden = true;
+			isHidden = true;
+			spriteRenderer.sortingLayerID = HiddenLayer;
 		}
 	}
 
@@ -23,13 +35,14 @@ public class DiaryPiece : InteractableObject
 
 		if (collision.TryGetComponent<MovebleObject>(out var movebleObject))
 		{
-			isHiden = false;
+			isHidden = false;
+			spriteRenderer.sortingLayerID = DefaultLayer;
 		}
 	}
 
 	protected override void Interact()
 	{
-		if (isHiden == true) return;
+		if (isHidden == true) return;
 
 		Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
