@@ -2,7 +2,18 @@ using UnityEngine;
 
 public class Door : InteractableObject
 {
+	private CamConfinerChanger camConfinerChanger;
+
 	[SerializeField] private Door Exit;
+	[SerializeField] private bool isPassable = true;
+
+	public void SetIsPassable(bool passable) { isPassable = passable; }
+
+	protected override void Start()
+	{
+		base.Start();
+		camConfinerChanger = GetComponent<CamConfinerChanger>();
+	}
 
 	public void SetExit(Door door)
 	{
@@ -11,7 +22,12 @@ public class Door : InteractableObject
 
 	public void EnterRoom()
 	{
-		player.transform.position = Exit.transform.position;
+		if (isPassable == false) return;
+
+		UIManager.Instance.FadeOut();
+		player.transform.position = new Vector3( Exit.transform.position.x, Exit.transform.position.y - 4.0f, Exit.transform.position.z);
+		camConfinerChanger.ChangeCam(player.gameObject);
+		UIManager.Instance.FadeIn();
 	}
 
 	protected override void Interact()

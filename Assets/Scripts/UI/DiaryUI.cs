@@ -8,9 +8,8 @@ public class DiaryUI : ViewerUI
 	private List<bool> DiaryPieceCollected = new List<bool>();
 	private int DiaryPieceIndex = -1;
 
-	protected override void Start()
+	private void Awake()
 	{
-		base.Start();
 		InitDiaryPieceCollected();
 	}
 
