@@ -5,12 +5,15 @@ using UnityEngine.UI;
 public class DiaryUI : ViewerUI
 {
 	[SerializeField] private List<Image> DiaryPieceList = new List<Image>();
-	private List<bool> DiaryPieceCollected = new List<bool>();
-	private int DiaryPieceIndex = -1;
+	[SerializeField] private List<Button> PieceBtnList = new List<Button>();
+	[SerializeField] private Button diaryBtn;
+
+	/*private List<bool> DiaryPieceCollected = new List<bool>();
+	private int DiaryPieceIndex = -1;*/
 
 	private void Awake()
 	{
-		InitDiaryPieceCollected();
+		//InitDiaryPieceCollected();
 	}
 
 	public override  void HideUI()
@@ -19,49 +22,53 @@ public class DiaryUI : ViewerUI
 		UIManager.Instance.HideViewer(ViewerUIType.Diary);
 	}
 	
-	private void InitDiaryPieceCollected()
+	/*private void InitDiaryPieceCollected()
 	{
 		for(int i = 0; i < DiaryPieceList.Count; i++)
 		{
 			DiaryPieceCollected.Add(false);
 		}
-	}
+	}*/
 
 	public void UnlockDiaryPiece(int index)
 	{
-		DiaryPieceCollected[index] = true;
-		ShowUnlockDiaryPice(index);
+		//DiaryPieceCollected[index] = true;
+		PieceBtnList[index].gameObject.SetActive(true);
+		ShowDiaryPice(index);
 	}
 
-	public void ShowUnlockDiaryPice(int index)
+	public void ShowDiaryPice(int index)
 	{
 		HideAllPiece();
-		DiaryPieceIndex = index;
-		DiaryPieceList[DiaryPieceIndex].gameObject.SetActive(true);
+		//DiaryPieceIndex = index;
+		DiaryPieceList[index].gameObject.SetActive(true);
+		diaryBtn.gameObject.SetActive(true);
 	}
 
 	public void HideAllPiece()
 	{
-		DiaryPieceIndex = -1;
+		//DiaryPieceIndex = -1;
 
 		for(int i = 0; i < DiaryPieceList.Count; i++)
 		{
 			DiaryPieceList[i].gameObject.SetActive(false);
 		}
+
+		diaryBtn.gameObject.SetActive(false);
 	}
 
-	public void MoveOnNextPiece()
+	/*public void MoveOnNextPiece()
 	{
 		if (DiaryPieceIndex >= DiaryPieceList.Count - 1) return;
 
-		 if(DiaryPieceIndex > -1) DiaryPieceList[DiaryPieceIndex].gameObject.SetActive(false);
+		if(DiaryPieceIndex > -1) DiaryPieceList[DiaryPieceIndex].gameObject.SetActive(false);
 		DiaryPieceIndex++;
 
 		if (DiaryPieceCollected[DiaryPieceIndex] == true)
 			DiaryPieceList[DiaryPieceIndex].gameObject.SetActive(true);
-	}
+	}*/
 
-	public void MoveOnPreviousPiece()
+	/*public void MoveOnPreviousPiece()
 	{
 		if (DiaryPieceIndex <= -1) return;
 
@@ -72,5 +79,5 @@ public class DiaryUI : ViewerUI
 
 		if (DiaryPieceCollected[DiaryPieceIndex] == true)
 			DiaryPieceList[DiaryPieceIndex].gameObject.SetActive(true);
-	}
+	}*/
 }
