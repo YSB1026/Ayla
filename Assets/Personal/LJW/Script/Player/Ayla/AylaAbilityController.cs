@@ -8,6 +8,7 @@ namespace YSB
     {
         [SerializeField] private LightColorController lightController;
         [SerializeField] private LightMeshDetector lightMeshDetector;
+
         [SerializeField] private List<ILightReactive> inLightReactives;
         private void Update()
         {
@@ -37,18 +38,20 @@ namespace YSB
                 inLightReactives = lightMeshDetector.Detect();
                 lightController.ChangeRangeWithFade();
                 Debug.Log($"Detected {inLightReactives.Count} light reactives.");
+
+                // 감지된 대상에게 실제 반응 적용
+                if (inLightReactives != null && inLightReactives.Count > 0)
+                {
+                    Debug.Log($"Detected {inLightReactives.Count} light reactives.");
+                    foreach (var reactive in inLightReactives)
+                    {
+                        reactive.ApplyLightReaction();
+                    }
+                    inLightReactives.Clear();
+                }
             }
 
-            // 감지된 대상에게 실제 반응 적용
-            if (inLightReactives != null && inLightReactives.Count > 0)
-            {
-                Debug.Log($"Detected {inLightReactives.Count} light reactives.");
-                foreach (var reactive in inLightReactives)
-                {
-                    reactive.ApplyLightReaction();
-                }
-                inLightReactives.Clear();
-            }
+
         }
     }
 }
