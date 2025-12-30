@@ -3,7 +3,6 @@ using UnityEngine;
 public class DiaryPiece : InteractableObject
 {
 	[SerializeField] private int PieceIndex;
-	[SerializeField] private bool isHidden = false;
 
 	[Header("레이어 설정")]
 	[SerializeField] private int DefaultLayer = 3;
