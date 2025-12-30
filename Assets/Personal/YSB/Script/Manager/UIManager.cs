@@ -77,6 +77,7 @@ public class UIManager : MonoBehaviour
         switch(viewerType)
         {
             case ViewerUIType.Safe:
+                if (SafeUI.GetIsclear()) break;
                 SafeUI.gameObject.SetActive(true);
                 break;
             case ViewerUIType.Diary:
