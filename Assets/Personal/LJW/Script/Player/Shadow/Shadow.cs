@@ -5,12 +5,14 @@ public class Shadow : MonoBehaviour
     [Header("기본 설정")]
     public float moveSpeed = 5f;
     public float grabSpeed = 3f;
-    public float grabDistance = 1f; // 물체 잡는 거리
-    public LayerMask whatIsObject;  // 잡을 수 있는 물체 레이어
+    public float grabDistance = 1f;
+    public LayerMask whatIsObject;
 
+    [Header("통과 가능한 벽 설정")]
+    public LayerMask passableWallLayer; // 통과할 벽 레이어
+    
     [Header("상태 머신")]
     public ShadowStateMachine stateMachine { get; private set; }
-
     public Shadow_IdleState idleState { get; private set; }
     public Shadow_WalkState walkState { get; private set; }
     public Shadow_GrabState grabState { get; private set; }
@@ -40,6 +42,9 @@ public class Shadow : MonoBehaviour
     private void Start()
     {
         stateMachine.Initialize(idleState);
+        
+        // 통과 가능한 벽과의 충돌 무시 설정
+        SetupPassableWallCollision();
     }
 
     private void Update()
@@ -47,29 +52,45 @@ public class Shadow : MonoBehaviour
         stateMachine.currentState.Update();
     }
 
-    // 그림자 활성화
+    // 통과 가능한 벽과의 충돌 무시 설정
+    private void SetupPassableWallCollision()
+    {
+        // Shadow의 Layer와 통과 가능한 벽 Layer 간의 충돌 무시
+        int shadowLayer = gameObject.layer;
+        int passableLayer = LayerMaskToLayer(passableWallLayer);
+        
+        Physics2D.IgnoreLayerCollision(shadowLayer, passableLayer, true);
+    }
+
+    // LayerMask를 Layer 번호로 변환
+    private int LayerMaskToLayer(LayerMask layerMask)
+    {
+        int layerNumber = 0;
+        int layer = layerMask.value;
+        while (layer > 1)
+        {
+            layer = layer >> 1;
+            layerNumber++;
+        }
+        return layerNumber;
+    }
+
     public void ActivateShadow(Vector3 _startPosition)
     {
-        // 1. 오브젝트 켜기
         gameObject.SetActive(true);
-
-        // 2. 플레이어 위치로 이동
         transform.position = _startPosition;
 
-        // 3. 상태 초기화 (Idle부터 시작)
         if (stateMachine != null && idleState != null)
         {
             stateMachine.Initialize(idleState);
         }
     }
 
-    // 그림자 비활성화
     public void DeactivateShadow()
     {
         gameObject.SetActive(false);
     }
 
-    // 방향 전환 함수
     public void FlipController(float _x)
     {
         if (_x > 0 && facingDir == -1)
@@ -84,20 +105,17 @@ public class Shadow : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
-    // 속도 제어 함수
     public void SetVelocity(float _xVelocity, float _yVelocity)
     {
         rb.linearVelocity = new Vector2(_xVelocity, _yVelocity);
         FlipController(_xVelocity);
     }
 
-    // 멈추는 함수
     public void SetZeroVelocity()
     {
         rb.linearVelocity = Vector2.zero;
     }
 
-    // 물체 감지
     public bool IsObjectDetected()
     {
         return Physics2D.Raycast(transform.position, Vector2.right * facingDir, grabDistance, whatIsObject);
@@ -113,5 +131,4 @@ public class Shadow : MonoBehaviour
     {
         return Physics2D.Raycast(transform.position, Vector2.right * facingDir, grabDistance, whatIsObject);
     }
-    
 }

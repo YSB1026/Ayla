@@ -4,6 +4,7 @@ public abstract class InteractableObject : MonoBehaviour
 {
 	[SerializeField] protected LayerMask layerMask;
 	[SerializeField] protected GameObject outline;
+	[SerializeField] protected bool isHidden = false;
 	protected Player player;
 
 

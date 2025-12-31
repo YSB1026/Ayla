@@ -36,7 +36,7 @@ public class LightColorController : MonoBehaviour
 
     [Header("펜던트 색상")]
     public ColorOption pendantColor;
-    
+
 
     private bool isFading = false;
     private Color whiteColor = new Color(214f / 255f, 236f / 255f, 248f / 255f);
@@ -63,22 +63,9 @@ public class LightColorController : MonoBehaviour
         GameManager.Instance.RegistLightController(this);
     }
 
-    void Update()
-    {
-        // 스페이스바를 누르면 색상 변경 (순차적으로 색상 변화)
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     // 다음 색상으로 변경
-        //     ColorOption nextColor = (ColorOption)(((int)currentColor + 1) % System.Enum.GetValues(typeof(ColorOption)).Length);
-        //     ChangeColorWithFade(nextColor);
-        // }
-    }
-
     // 새로 추가: 능력용 색 순환 (Green -> Blue -> Red)
     public void NextAbilityColor()
     {
-        //ColorOption next;
-
         switch (currentColor)
         {
             case ColorOption.Green:
@@ -97,7 +84,12 @@ public class LightColorController : MonoBehaviour
                 break;
         }
 
-        GameManager.Instance.OnPendantCollected(currentColor);
+        //GameManager.Instance.OnPendantCollected(currentColor);
+        if (GameManager.Instance != null && GameManager.Instance.currentSave != null)
+        {
+            GameManager.Instance.currentSave.pendantColor = currentColor;
+            Debug.Log($"[능력변경] 현재 펜던트 색상: {currentColor}");
+        }
         ChangeColorWithFade(currentColor);
     }
 
@@ -216,7 +208,7 @@ public class LightColorController : MonoBehaviour
         // if (rangeChangeCoroutine != null)
         //     StopCoroutine(rangeChangeCoroutine);
 
-        if(!isFading)
+        if (!isFading)
             rangeChangeCoroutine = StartCoroutine(FadeRange());
     }
 
