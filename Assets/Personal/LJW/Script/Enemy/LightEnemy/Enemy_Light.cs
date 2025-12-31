@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_Light : Enemy
+public class Enemy_Light : Enemy, ISlowable
 {
     public LayerMask whatIsPlayer;
 
@@ -316,25 +316,34 @@ public class Enemy_Light : Enemy
     }
 
     // 플레이어 추적
+    // 플레이어 추적
     private void ChasePlayer(Vector2 targetPos)
     {
         Vector2 toTarget = targetPos - (Vector2)transform.position;
 
-        // 방향 설정
-        if (toTarget.x != 0)
+        // 최소 이동 거리 설정 (도착 판정)
+        float minDistance = 0.5f;
+
+        if (Mathf.Abs(toTarget.x) < minDistance)
         {
-            int targetDir = toTarget.x > 0 ? 1 : -1;
-            if (targetDir != facingDir)
-            {
-                Flip();
-            }
+            // 거의 도착했으면 정지
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return;
         }
 
-        // 이동
-        float dirX = toTarget.x > 0 ? 1f : -1f;
-        rb.linearVelocity = new Vector2(dirX * applySpeed, rb.linearVelocity.y);
-    }
+        // 목표 방향 계산
+        int targetDir = toTarget.x > 0 ? 1 : -1;
 
+        // 현재 바라보는 방향과 다르면 방향 전환
+        if (targetDir != facingDir)
+        {
+            Flip();
+
+        }
+
+        // 이동 (현재 바라보는 방향으로)
+        rb.linearVelocity = new Vector2(facingDir * applySpeed, rb.linearVelocity.y);
+    }
     // 애니메이션 업데이트
     private void UpdateAnimation()
     {
@@ -371,10 +380,21 @@ public class Enemy_Light : Enemy
             anim.speed = isInLight ? 0 : 1;
         }
     }
+    [Header("슬로우 효과")]
+    private float slowFactor = 1.0f;  // 속도 배율 (1.0 = 정상, 0.3 = 30% 속도)
+
+    // ISlowable 인터페이스 구현
+    public void SetSlowFactor(float factor)
+    {
+        slowFactor = Mathf.Clamp(factor, 0.1f, 1.0f);
+        Debug.Log($"Enemy_Light SlowFactor 설정됨: {slowFactor}");
+    }
 
     // 플레이어 거리에 따른 속도 조절
     private void UpdateSpeedBasedOnPlayerDistance()
     {
+        float baseSpeed = defaultMoveSpeed;
+
         // 1순위: 현재 추격 중인 타겟이 있으면 그걸 기준으로 가속
         if (currentTarget != null)
         {
@@ -383,24 +403,27 @@ public class Enemy_Light : Enemy
             // 범위 안이면 가속, 아니면 기본 속도
             if (distanceToPlayer <= Range)
             {
-                applySpeed = defaultMoveSpeed * speedMultiplier;
+                baseSpeed = defaultMoveSpeed * speedMultiplier;
             }
             else
             {
-                applySpeed = defaultMoveSpeed;
+                baseSpeed = defaultMoveSpeed;
             }
         }
         // 2순위: 혹시 Inspector에 등록된 player 변수가 있다면 그것도 체크 (안전장치)
         else if (player != null)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            applySpeed = distanceToPlayer <= Range ? defaultMoveSpeed * speedMultiplier : defaultMoveSpeed;
+            baseSpeed = distanceToPlayer <= Range ? defaultMoveSpeed * speedMultiplier : defaultMoveSpeed;
         }
         // 3순위: 아무것도 없으면 기본 속도
         else
         {
-            applySpeed = defaultMoveSpeed;
+            baseSpeed = defaultMoveSpeed;
         }
+
+        // ★ 슬로우 효과 적용 ★
+        applySpeed = baseSpeed * slowFactor;
     }
 
     // 보이는 플레이어 찾기 (IsHidden이 false인 경우만)
@@ -532,6 +555,8 @@ public class Enemy_Light : Enemy
     {
         throw new System.NotImplementedException();
     }
+
+
 
     // 디버그용 UI
     /*private void OnGUI()
