@@ -8,6 +8,7 @@ TagManager:
   - Puzzle
   - Ayla
   - Ground
+  - PassableWall
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - HiddenPlayer
   - InteractableObject
   - Shadow
-  - 
+  - ShadowPassWall
   - 
   - 
   - 
