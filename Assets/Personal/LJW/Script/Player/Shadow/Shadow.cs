@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Shadow : MonoBehaviour
 {
@@ -9,8 +10,12 @@ public class Shadow : MonoBehaviour
     public LayerMask whatIsObject;
 
     [Header("통과 가능한 벽 설정")]
-    public LayerMask passableWallLayer; // 통과할 벽 레이어
-    
+    public LayerMask passableWallLayer;
+
+    [Header("들고 있는 오브젝트 관리")]
+    private List<FollowableObject> heldObjects = new List<FollowableObject>();
+    public int maxHoldCount = 1; // 최대로 들 수 있는 오브젝트 수
+
     [Header("상태 머신")]
     public ShadowStateMachine stateMachine { get; private set; }
     public Shadow_IdleState idleState { get; private set; }
@@ -42,8 +47,6 @@ public class Shadow : MonoBehaviour
     private void Start()
     {
         stateMachine.Initialize(idleState);
-        
-        // 통과 가능한 벽과의 충돌 무시 설정
         SetupPassableWallCollision();
     }
 
@@ -52,17 +55,13 @@ public class Shadow : MonoBehaviour
         stateMachine.currentState.Update();
     }
 
-    // 통과 가능한 벽과의 충돌 무시 설정
     private void SetupPassableWallCollision()
     {
-        // Shadow의 Layer와 통과 가능한 벽 Layer 간의 충돌 무시
         int shadowLayer = gameObject.layer;
         int passableLayer = LayerMaskToLayer(passableWallLayer);
-        
         Physics2D.IgnoreLayerCollision(shadowLayer, passableLayer, true);
     }
 
-    // LayerMask를 Layer 번호로 변환
     private int LayerMaskToLayer(LayerMask layerMask)
     {
         int layerNumber = 0;
@@ -84,11 +83,25 @@ public class Shadow : MonoBehaviour
         {
             stateMachine.Initialize(idleState);
         }
+
+        // 그림자 카메라로 전환
+        if (CameraSwapManager.Instance != null)
+        {
+            CameraSwapManager.Instance.SwitchToShadow();
+        }
     }
 
     public void DeactivateShadow()
     {
+        // Shadow 비활성화 시 모든 들고 있는 오브젝트 내려놓기
+        DropAllHeldObjects();
         gameObject.SetActive(false);
+
+        // 플레이어 카메라로 전환
+        if (CameraSwapManager.Instance != null)
+        {
+            CameraSwapManager.Instance.SwitchToPlayer();
+        }
     }
 
     public void FlipController(float _x)
@@ -121,14 +134,97 @@ public class Shadow : MonoBehaviour
         return Physics2D.Raycast(transform.position, Vector2.right * facingDir, grabDistance, whatIsObject);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * facingDir * grabDistance);
-    }
-
     public RaycastHit2D GetObjectHitInfo()
     {
         return Physics2D.Raycast(transform.position, Vector2.right * facingDir, grabDistance, whatIsObject);
     }
+
+    // ========== 들고 있는 오브젝트 관리 ==========
+
+    // 오브젝트를 들기
+    public bool AddHeldObject(FollowableObject obj)
+    {
+        // 이미 최대 개수만큼 들고 있으면 실패
+        if (heldObjects.Count >= maxHoldCount)
+        {
+            Debug.Log("더 이상 들 수 없습니다!");
+            return false;
+        }
+
+        if (!heldObjects.Contains(obj))
+        {
+            heldObjects.Add(obj);
+            Debug.Log($"{obj.gameObject.name}을(를) 들었습니다. ({heldObjects.Count}/{maxHoldCount})");
+            return true;
+        }
+
+        return false;
+    }
+
+    // 오브젝트를 내려놓기
+    public void RemoveHeldObject(FollowableObject obj)
+    {
+        if (heldObjects.Contains(obj))
+        {
+            heldObjects.Remove(obj);
+            Debug.Log($"{obj.gameObject.name}을(를) 내려놓았습니다. ({heldObjects.Count}/{maxHoldCount})");
+        }
+    }
+
+    // 모든 오브젝트 내려놓기
+    public void DropAllHeldObjects()
+    {
+        // 리스트 복사 (Drop 호출 시 리스트가 수정되므로)
+        var objectsToDrop = new List<FollowableObject>(heldObjects);
+
+        foreach (var obj in objectsToDrop)
+        {
+            if (obj != null)
+            {
+                obj.Drop();
+            }
+        }
+
+        heldObjects.Clear();
+    }
+
+    // 들고 있는 오브젝트 수 확인
+    public int GetHeldObjectCount()
+    {
+        return heldObjects.Count;
+    }
+
+    // 오브젝트를 들고 있는지 확인
+    public bool IsHoldingObject()
+    {
+        return heldObjects.Count > 0;
+    }
+
+    // 더 들 수 있는지 확인
+    public bool CanHoldMore()
+    {
+        return heldObjects.Count < maxHoldCount;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * facingDir * grabDistance);
+
+        // 들고 있는 오브젝트들 표시
+        if (heldObjects != null && heldObjects.Count > 0)
+        {
+            Gizmos.color = Color.green;
+            foreach (var obj in heldObjects)
+            {
+                if (obj != null)
+                {
+                    Gizmos.DrawLine(transform.position, obj.transform.position);
+                    Gizmos.DrawWireSphere(obj.transform.position, 0.3f);
+                }
+            }
+        }
+    }
+
+
 }
