@@ -11,7 +11,7 @@ public class Enemy_Light : Enemy
     [Header("플레이어 탐지 info")]
     public Transform player;
     public Transform playerDetect;
-    public Vector2 detectBoxSize = new Vector2(1.5f, 1f);
+    public Vector2 detectBoxSize = new Vector2(5f, 2f);
 
     [Header("탐지 안정화")]
     [SerializeField] private float detectStickTime = 0.6f; // 감지 유지 시간(초)
@@ -19,7 +19,6 @@ public class Enemy_Light : Enemy
 
     [Header("공격 설정")]
     public float attackRange = 1.5f;  // 공격 사거리
-    public Vector2 attackBoxSize = new Vector2(1f, 1f);  // 공격 범위 박스
 
     [Header("순찰 설정")]
     public float patrolTime = 3f;      // 순찰 시간
@@ -32,6 +31,17 @@ public class Enemy_Light : Enemy
     public float searchStopDistance = 0.2f;    // 마지막 본 위치까지 접근 판정 거리
     public Vector2 lastSeenPlayerPos;
     public bool hasLastSeenPlayerPos;
+    public float maxChaseDistance = 50f; // 이 거리 안에서는 박스를 벗어나도 계속 쫓음
+
+    // 로직용 타겟 변수
+    private Player currentTarget;
+
+    public float searchWaitTime = 2.0f; // 도착 후 대기 시간
+    private float currentSearchTime = 0f; // 타이머 계산용 변수
+
+    // 원래 자리로 돌아가기 위한 변수 추가
+    private Vector2 spawnPosition;
+    private bool isReturningToStart = false;
 
     public bool isInLight { get; private set; }
 
@@ -63,6 +73,9 @@ public class Enemy_Light : Enemy
     {
         base.Start();
 
+        // 태어난 위치 저장
+        spawnPosition = transform.position;
+
         stateMachine.Initialize(moveState);
         currentEnemyState = EnemyState.Patrol;
         patrolTimer = patrolTime;
@@ -72,26 +85,60 @@ public class Enemy_Light : Enemy
     {
         base.Update();
 
-        // 보이는 플레이어 추적
-        var visiblePlayer = FindVisiblePlayer();
-        bool seeingPlayer = (visiblePlayer != null);
+        // 1. 이미 쫓고 있는 타겟이 있는지 검증
+        if (currentTarget != null)
+        {
+            float dist = Vector2.Distance(transform.position, currentTarget.transform.position);
 
+            // 추격 중단 조건: 플레이어가 숨었거나(IsHidden), 너무 멀어졌거나(maxChaseDistance)
+            if (currentTarget.IsHidden || dist > maxChaseDistance)
+            {
+                Debug.Log("타겟 놓침! (숨음/거리초과)");
+
+                lastDetectTime = Time.time;
+                lastSeenPlayerPos = currentTarget.transform.position;
+                hasLastSeenPlayerPos = true;
+
+                currentTarget = null; // 타겟 해제
+                player = null;
+                // 타겟을 놓친 직후, 타이머 초기화
+                currentSearchTime = 0f;
+            }
+        }
+
+        // 2. 신규 탐지
+        if (currentTarget == null)
+        {
+            currentTarget = FindVisiblePlayer();
+
+            if (currentTarget != null)
+            {
+                Debug.Log("플레이어 발견! 추격 시작");
+                player = currentTarget.transform;
+            }
+        }
+
+        // 3. seeingPlayer 판정 : currentTarget 유무로 결정
+        bool seeingPlayer = (currentTarget != null);
+
+        // --- 상태 분기 로직 ---
         if (seeingPlayer)
         {
-            // 플레이어 발견 시
-            lastDetectTime = Time.time;
-            lastSeenPlayerPos = visiblePlayer.transform.position;
+            // 플레이어 발견 및 추격 중
+            isReturningToStart = false;
             hasLastSeenPlayerPos = true;
+            currentSearchTime = 0f;
 
-            float distanceToPlayer = Vector2.Distance(transform.position, visiblePlayer.transform.position);
+            lastDetectTime = Time.time;
+            lastSeenPlayerPos = currentTarget.transform.position;
 
-            // 공격 사거리 내에 있으면 공격 상태
+            float distanceToPlayer = Vector2.Distance(transform.position, currentTarget.transform.position);
+
             if (distanceToPlayer <= attackRange)
             {
                 currentEnemyState = EnemyState.Attack;
-                rb.linearVelocity = Vector2.zero; // 완전히 멈춤
-                
-                // 공격 상태로 전환
+                rb.linearVelocity = Vector2.zero;
+
                 if (stateMachine.currentState != attackState)
                 {
                     stateMachine.ChangeState(attackState);
@@ -99,11 +146,9 @@ public class Enemy_Light : Enemy
             }
             else
             {
-                // 공격 범위 밖이면 추적
                 currentEnemyState = EnemyState.Chase;
-                ChasePlayer(visiblePlayer.transform.position);
-                
-                // 이동 상태로 전환
+                ChasePlayer(currentTarget.transform.position); // 타겟 위치로 이동
+
                 if (stateMachine.currentState != moveState)
                 {
                     stateMachine.ChangeState(moveState);
@@ -112,29 +157,98 @@ public class Enemy_Light : Enemy
         }
         else if (hasLastSeenPlayerPos)
         {
-            // 플레이어를 잃어버린 경우 마지막 위치로 이동
-            currentEnemyState = EnemyState.Chase;
-            
+            // 놓친 위치로 이동 및 대기
             Vector2 toTarget = lastSeenPlayerPos - (Vector2)transform.position;
-            float distance = toTarget.magnitude;
+            float xDistance = Mathf.Abs(toTarget.x);
+
+            float arrivalThreshold = Mathf.Max(searchStopDistance, 1.0f);
 
             // 목표 지점에 도착했으면 순찰로 복귀
-            if (distance <= searchStopDistance)
+            if (xDistance <= arrivalThreshold)
             {
-                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-                hasLastSeenPlayerPos = false;
-                currentEnemyState = EnemyState.Patrol;
-                patrolTimer = patrolTime;
+                // 1. 상태 강제 변경 (Chase -> Idle)
+                currentEnemyState = EnemyState.Idle;
+
+                // 2. 완전 정지
+                rb.linearVelocity = Vector2.zero;
+
+                // 3. 두리번거리는 시간 체크
+                currentSearchTime += Time.deltaTime;
+
+                // 대기 시간이 지났다면
+                if (currentSearchTime >= searchWaitTime)
+                {
+                    Debug.Log("탐색 포기. 집으로 복귀합니다.");
+                    hasLastSeenPlayerPos = false; // 탐색 종료
+                    currentSearchTime = 0f;
+
+                    // '복귀' 모드로 전환
+                    isReturningToStart = true;
+                }
             }
             else
             {
+                // 아직 도착 못했으면 이동
+                currentEnemyState = EnemyState.Chase;
                 ChasePlayer(lastSeenPlayerPos);
+                currentSearchTime = 0f;
             }
-            
+
             if (stateMachine.currentState != moveState)
             {
                 stateMachine.ChangeState(moveState);
             }
+
+        }
+
+        else if (isReturningToStart)
+        {
+            // 원래 위치(spawnPosition)로 복귀
+            float distToHomeX = Mathf.Abs(transform.position.x - spawnPosition.x);
+
+            // 도착 판정 범위
+            float homeArrivalThreshold = Mathf.Max(searchStopDistance, 1.0f);
+
+            if (distToHomeX <= homeArrivalThreshold)
+            {
+                // 1. 물리적 정지 및 상태 Idle로 변경
+                rb.linearVelocity = Vector2.zero;
+                currentEnemyState = EnemyState.Idle;
+
+                // 2. 타이머 체크 (집에서 잠시 숨 고르기)
+                if (currentSearchTime == 0f)
+                {
+                    Debug.Log("집 도착! 잠시 휴식 중...");
+                }
+
+                currentSearchTime += Time.deltaTime;
+
+                // 3. 쉬는 시간(searchWaitTime)이 끝나면 순찰 시작
+                if (currentSearchTime >= searchWaitTime)
+                {
+                    Debug.Log("휴식 끝. 다시 순찰 시작.");
+
+                    isReturningToStart = false; // 복귀 모드 종료
+                    currentSearchTime = 0f;     // 타이머 초기화
+
+                    // 순찰 상태로 전환
+                    currentEnemyState = EnemyState.Patrol;
+                    patrolTimer = patrolTime;
+                    isPatrolling = true;
+                }
+
+            }
+            else
+            {
+                // 집으로 이동
+                currentEnemyState = EnemyState.Chase; // 이동 모션
+                ChasePlayer(spawnPosition);
+
+                // 이동 중엔 타이머 0으로 유지
+                currentSearchTime = 0f;
+            }
+
+            if (stateMachine.currentState != moveState) stateMachine.ChangeState(moveState);
         }
         else
         {
@@ -261,12 +375,32 @@ public class Enemy_Light : Enemy
     // 플레이어 거리에 따른 속도 조절
     private void UpdateSpeedBasedOnPlayerDistance()
     {
-        if (player == null) return;
+        // 1순위: 현재 추격 중인 타겟이 있으면 그걸 기준으로 가속
+        if (currentTarget != null)
+        {
+            float distanceToPlayer = Vector2.Distance(transform.position, currentTarget.transform.position);
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        // 플레이어 범위 안에 있으면 속도 증가
-        applySpeed = distanceToPlayer <= Range ? defaultMoveSpeed * speedMultiplier : defaultMoveSpeed;
+            // 범위 안이면 가속, 아니면 기본 속도
+            if (distanceToPlayer <= Range)
+            {
+                applySpeed = defaultMoveSpeed * speedMultiplier;
+            }
+            else
+            {
+                applySpeed = defaultMoveSpeed;
+            }
+        }
+        // 2순위: 혹시 Inspector에 등록된 player 변수가 있다면 그것도 체크 (안전장치)
+        else if (player != null)
+        {
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            applySpeed = distanceToPlayer <= Range ? defaultMoveSpeed * speedMultiplier : defaultMoveSpeed;
+        }
+        // 3순위: 아무것도 없으면 기본 속도
+        else
+        {
+            applySpeed = defaultMoveSpeed;
+        }
     }
 
     // 보이는 플레이어 찾기 (IsHidden이 false인 경우만)
@@ -290,10 +424,10 @@ public class Enemy_Light : Enemy
     public bool IsPlayerInAttackRange()
     {
         if (player == null) return false;
-        
+
         Player targetPlayer = player.GetComponent<Player>();
         if (targetPlayer == null) return false;
-        
+
         float distance = Vector2.Distance(transform.position, player.position);
         return distance <= attackRange && !targetPlayer.IsHidden;
     }
@@ -319,7 +453,7 @@ public class Enemy_Light : Enemy
     public bool CanDetectPlayer()
     {
         bool nowDetecting = IsPlayerInDetectBox();
-        
+
         if (nowDetecting)
         {
             lastDetectTime = Time.time;
@@ -398,4 +532,17 @@ public class Enemy_Light : Enemy
     {
         throw new System.NotImplementedException();
     }
+
+    // 디버그용 UI
+    /*private void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 40; // 글씨 크게
+        style.normal.textColor = Color.red;
+
+        string targetInfo = (currentTarget != null) ? "타겟: " + currentTarget.name : "타겟: 없음";
+
+        // 화면 좌측 상단에 상태 표시
+        GUI.Label(new Rect(50, 50, 400, 100), $"상태: {currentEnemyState}\n{targetInfo}", style);
+    }*/
 }
